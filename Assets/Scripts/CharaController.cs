@@ -6,6 +6,9 @@ public class CharaController : MonoBehaviour
 {
     [SerializeField] private float moveSpeed;
 
+    [SerializeField] private float limitPosX;
+    [SerializeField] private float limitPosY;
+
 
     void Update()
     {
@@ -22,6 +25,12 @@ public class CharaController : MonoBehaviour
     /// </summary>
     private void Move(Vector2 tapPos)
     {
-        transform.position = Vector2.MoveTowards(transform.position, tapPos, moveSpeed * Time.deltaTime);
+        Vector2 newPos = Vector2.MoveTowards(transform.position, tapPos, moveSpeed * Time.deltaTime);
+
+        //マップの範囲外にでないように制限をかける
+        newPos.x = Mathf.Clamp(newPos.x, -limitPosX, limitPosX);
+        newPos.y = Mathf.Clamp(newPos.y, -limitPosY, limitPosY);
+
+        transform.position = newPos;
     }
 }
