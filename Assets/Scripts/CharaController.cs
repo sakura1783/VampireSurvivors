@@ -59,7 +59,6 @@ public class CharaController : MonoBehaviour
 
         //アニメーション
         Vector2 direction = (newPos - (Vector2)transform.position).normalized;  //上ですでにtransform.positionの値はnewPosになっているのでDebugを入れて確認できる通り、directionの値は全て0になる。よって思い通りの挙動にならない。
-        Debug.Log($"DirectionXの値：{direction.y}");
 
         transform.position = newPos;  //記述する位置を修正。この処理はnewPosを計算などで使わなくなってから書くようにする。そうしないと、意図しない挙動になってしまう(今回だと、アニメーションが同期されない)
 
@@ -94,6 +93,8 @@ public class CharaController : MonoBehaviour
             {
                 mapManager.isClimbedStairs = true;
 
+                mapManager.JudgeClimbedStairs();
+
                 return;
             }
 
@@ -101,11 +102,10 @@ public class CharaController : MonoBehaviour
             {
                 mapManager.isClimbedStairs = false;
 
+                mapManager.JudgeClimbedStairs();
+
                 return;
             }
         }
-
-        //isClimbedStairsに応じて、コライダーのオンオフを切り替える
-        mapManager.JudgeClimbedStairs();
     }
 }
