@@ -55,10 +55,13 @@ public class CharaController : MonoBehaviour
         newPos.x = Mathf.Clamp(newPos.x, -limitPosX, limitPosX);
         newPos.y = Mathf.Clamp(newPos.y, -limitPosY, limitPosY);
 
-        transform.position = newPos;
+        //transform.position = newPos;  //この時点でtransform.positionの値はnewPosになっている
 
         //アニメーション
-        Vector2 direction = (newPos - (Vector2)transform.position).normalized;
+        Vector2 direction = (newPos - (Vector2)transform.position).normalized;  //上ですでにtransform.positionの値はnewPosになっているのでDebugを入れて確認できる通り、directionの値は全て0になる。よって思い通りの挙動にならない。
+        Debug.Log($"DirectionXの値：{direction.y}");
+
+        transform.position = newPos;  //記述する位置を修正。この処理はnewPosを計算などで使わなくなってから書くようにする。そうしないと、意図しない挙動になってしまう(今回だと、アニメーションが同期されない)
 
         charaAnim.SetFloat("X", direction.x);
         charaAnim.SetFloat("Y", direction.y);
@@ -66,14 +69,14 @@ public class CharaController : MonoBehaviour
         //左右アニメの切り替え(Scaleを変化させて左右移動にアニメを対応させる)
         Vector2 temp = transform.localScale;  //<= temp(一時的な)変数に現在のlocalScaleの値を代入
         temp.x = direction.x;  //目的地の方向をtemp変数に代入
-        if (temp.x > 0)
+        if (temp.x < 0)
         {
-            //0よりも大きければScaleを1にする
+            //0よりも小さければScaleを1にする
             temp.x = charaScale;
         }
         else
         {
-            //0よりも小さければScaleを-1にする
+            //0よりも大きければScaleを-1にする
             temp.x = -charaScale;
         }
         transform.localScale = temp;

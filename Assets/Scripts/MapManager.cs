@@ -16,8 +16,6 @@ public class MapManager : MonoBehaviour
     [SerializeField] private Collider2D gateTopWall;
     private TilemapCollider2D wall_TilemapCollider;
 
-    private bool isSetUpFinished;
-
 
     IEnumerator Start()
     {
