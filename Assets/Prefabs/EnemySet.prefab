@@ -153,6 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efb6f9058c4a340a39fcaf51263ef65b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackPoint: 2
   navMeshAgent2D: {fileID: 2042724052510328653}
 --- !u!114 &2042724052510328653
 MonoBehaviour:
@@ -167,7 +168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  stoppingDistance: 0.5
+  stoppingDistance: 0.2
 --- !u!61 &2042724052510328652
 BoxCollider2D:
   m_ObjectHideFlags: 0

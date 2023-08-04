@@ -2946,7 +2946,8 @@ MonoBehaviour:
   attackInterval: 2
   bulletPrefab: {fileID: 5810569422408170661, guid: e932ba920e0dd44d8bed95bf8c20b428,
     type: 3}
-  temporaryGameObjectsPlace: {fileID: 0}
+  temporaryObjectsPlace: {fileID: 530679511}
+  hp: 10
 --- !u!61 &727885834
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -31,5 +31,7 @@ public class EnemyGenerator : MonoBehaviour
 
             Debug.Log($"現在の敵の生成数：{generateCount}体");
         }
+
+        Debug.Log("全ての敵を生成しました");
     }
 }

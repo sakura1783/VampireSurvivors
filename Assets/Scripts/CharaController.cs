@@ -18,7 +18,9 @@ public class CharaController : MonoBehaviour
 
     [SerializeField] private Bullet bulletPrefab;
 
-    [SerializeField] private Transform temporaryGameObjectsPlace;
+    [SerializeField] private Transform temporaryObjectsPlace;
+
+    [SerializeField] private int hp;
 
     private Animator charaAnim;
 
@@ -113,6 +115,8 @@ public class CharaController : MonoBehaviour
         if (col.CompareTag("Enemy"))
         {
             Destroy(col.gameObject);
+
+            UpdateHp(-col.GetComponent<EnemyController>().attackPoint);
         }
     }
 
@@ -136,10 +140,18 @@ public class CharaController : MonoBehaviour
     {
         Bullet bullet = Instantiate(bulletPrefab, transform);
 
-        bullet.transform.SetParent(temporaryGameObjectsPlace);
+        bullet.transform.SetParent(temporaryObjectsPlace);
 
         bullet.Shoot(direction);
 
         Debug.Log("攻撃");
+    }
+
+    /// <summary>
+    /// HP更新
+    /// </summary>
+    private void UpdateHp(int value)
+    {
+        hp += value;
     }
 }

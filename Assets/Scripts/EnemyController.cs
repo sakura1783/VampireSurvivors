@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+    public int attackPoint;
+
     private Animator enemyAnim;
 
     private CharaController charaController;
