@@ -5,10 +5,12 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private CharaController charaController;
+    public CharaController CharaController => charaController;
 
     [SerializeField] private EnemyGenerator enemyGenerator;
 
     [SerializeField] private MapManager mapManager;
+
 
     void Start()
     {

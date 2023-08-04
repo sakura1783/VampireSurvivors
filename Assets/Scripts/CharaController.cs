@@ -28,6 +28,8 @@ public class CharaController : MonoBehaviour
 
     [SerializeField] private int totalExp;  //現在保持しているExp
 
+    [SerializeField] private BulletGenerator bulletGenerator;
+
     private Animator charaAnim;
 
     private float charaScale;  //キャラの左右アニメの設定で利用する
@@ -146,11 +148,12 @@ public class CharaController : MonoBehaviour
     /// </summary>
     private void Attack()
     {
-        Bullet bullet = Instantiate(bulletPrefab, transform);
+        //Bullet bullet = Instantiate(bulletPrefab, transform);
+        //bullet.transform.SetParent(temporaryObjectsPlace);
+        //bullet.Shoot(direction);
 
-        bullet.transform.SetParent(temporaryObjectsPlace);
-
-        bullet.Shoot(direction);
+        //上の処理をまとめる
+        bulletGenerator.PrepareGenerateBullet(direction);
 
         Debug.Log("攻撃");
     }
