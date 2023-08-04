@@ -6,15 +6,10 @@ public class EnemyController : MonoBehaviour
 {
     private Animator enemyAnim;
 
-    [SerializeField] private CharaController charaController;
+    private CharaController charaController;
 
     [SerializeField] private NavMeshAgent2D navMeshAgent2D;
 
-
-    void Start()
-    {
-        SetUpEnemyController();
-    }
 
     void Update()
     {
@@ -23,8 +18,14 @@ public class EnemyController : MonoBehaviour
         ChangeAnimDirection();
     }
 
-    public void SetUpEnemyController()
+    /// <summary>
+    /// 設定
+    /// </summary>
+    /// <param name="charaController"></param>
+    public void SetUpEnemyController(CharaController charaController)
     {
+        this.charaController = charaController;
+
         transform.GetChild(0).TryGetComponent(out enemyAnim);
     }
 

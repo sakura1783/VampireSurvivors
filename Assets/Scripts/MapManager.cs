@@ -16,11 +16,6 @@ public class MapManager : MonoBehaviour
     [SerializeField] private GameObject base_switchTilemap;
 
 
-    void Start()
-    {
-        JudgeClimbedStairs();
-    }
-
     /// <summary>
     /// 階段を登ったかどうか(建物の上にいるかどうか)を判定し、それに合わせて各地のコライダーのオンオフを切り替える
     /// (これを切り替えないと、意図しない場所でキャラが引っかかって通れない場所が発生したりする)

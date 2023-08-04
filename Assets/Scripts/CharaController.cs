@@ -9,10 +9,10 @@ public class CharaController : MonoBehaviour
     [SerializeField] private float limitPosX;
     [SerializeField] private float limitPosY;
 
-    [SerializeField] private MapManager mapManager;
+    //[SerializeField] private MapManager mapManager;
 
-    [SerializeField] private Collider2D leftStairTrigger;
-    [SerializeField] private Collider2D rightStairTrigger;  //isClimbedStairを判定するための階段のコライダー
+    //[SerializeField] private Collider2D leftStairTrigger;
+    //[SerializeField] private Collider2D rightStairTrigger;  //isClimbedStairを判定するための階段のコライダー
 
     [SerializeField] private float attackInterval;
 
@@ -26,15 +26,6 @@ public class CharaController : MonoBehaviour
 
     private Vector2 direction;  //キャラが向いている方向
 
-
-    void Start()
-    {
-        SetUpCharaController();
-
-        charaScale = transform.localScale.x;
-
-        StartCoroutine(PrepareAttack());
-    }
 
     void Update()
     {
@@ -52,6 +43,10 @@ public class CharaController : MonoBehaviour
     public void SetUpCharaController()
     {
         transform.GetChild(0).gameObject.TryGetComponent(out charaAnim);
+
+        charaScale = transform.localScale.x;  //キャラの向き変更に使う
+
+        StartCoroutine(PrepareAttack());
     }
 
     /// <summary>
