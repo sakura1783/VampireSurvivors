@@ -6,6 +6,8 @@ public class EnemyController : MonoBehaviour
 {
     public int attackPoint;
 
+    public int exp;
+
     private Animator enemyAnim;
 
     private CharaController charaController;
@@ -40,5 +42,26 @@ public class EnemyController : MonoBehaviour
 
         enemyAnim.SetFloat("X", direction.x);
         enemyAnim.SetFloat("Y", direction.y);
+    }
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.CompareTag("Bullet"))
+        {
+            Destroy(gameObject);
+
+            //Expの加算
+            charaController.AddExp(exp);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.CompareTag("Player"))
+        {
+            charaController.UpdateHp(-attackPoint);
+
+            Destroy(gameObject);
+        }
     }
 }

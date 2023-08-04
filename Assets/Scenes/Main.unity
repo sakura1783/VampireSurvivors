@@ -663,8 +663,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d39103d756549458faed4619a6bd5955, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  generateInterval: 3
-  maxGenerateCount: 3
+  generateInterval: 2
+  maxGenerateCount: 5
   enemyPrefab: {fileID: 2042724052510328650, guid: d86ed7f9f0a124b24ad7737b4b17ba95,
     type: 3}
 --- !u!1 &429494929
@@ -2905,7 +2905,7 @@ GameObject:
   - component: {fileID: 727885833}
   - component: {fileID: 727885834}
   - component: {fileID: 727885835}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: CharaSet
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -2940,6 +2940,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 136f2368502944897b791ef1e037d9e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  level: 1
   moveSpeed: 3
   limitPosX: 21.5
   limitPosY: 10.5
@@ -2948,6 +2949,8 @@ MonoBehaviour:
     type: 3}
   temporaryObjectsPlace: {fileID: 530679511}
   hp: 10
+  needExpForLevelUp: 5
+  totalExp: 0
 --- !u!61 &727885834
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2972,7 +2975,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.65, y: 0.6}
+  m_Size: {x: 0.6, y: 0.6}
   m_EdgeRadius: 0
 --- !u!50 &727885835
 Rigidbody2D:
@@ -4854,7 +4857,7 @@ GameObject:
   - component: {fileID: 1109408807}
   - component: {fileID: 1109408806}
   - component: {fileID: 1109408808}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Chara
   m_TagString: Untagged
   m_Icon: {fileID: 0}

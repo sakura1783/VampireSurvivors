@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CharaController : MonoBehaviour
 {
+    public int level = 1;
+
     [SerializeField] private float moveSpeed;
 
     [SerializeField] private float limitPosX;
@@ -22,11 +24,17 @@ public class CharaController : MonoBehaviour
 
     [SerializeField] private int hp;
 
+    [SerializeField] private int needExpForLevelUp;  //レベルアップに必要なExp
+
+    [SerializeField] private int totalExp;  //現在保持しているExp
+
     private Animator charaAnim;
 
     private float charaScale;  //キャラの左右アニメの設定で利用する
 
     private Vector2 direction;  //キャラが向いている方向
+
+    private int addPoint = 5;  //needExpForLevelUp変数に加算するポイント(レベルが上がるにつれて、必要なExpも増える)
 
 
     void Update()
@@ -88,37 +96,37 @@ public class CharaController : MonoBehaviour
         transform.localScale = temp;
     }
 
-    private void OnTriggerEnter2D(Collider2D col)
-    {
-        ////階段のコライダーと接触した際、isClimbedStairの値を変え、コライダーのアクティブ状態を切り替える
-        //if (col == leftStairTrigger || col == rightStairTrigger)
-        //{
-        //    if (!mapManager.isClimbedStairs)
-        //    {
-        //        mapManager.isClimbedStairs = true;
+    //private void OnTriggerEnter2D(Collider2D col)
+    //{
+    //    ////階段のコライダーと接触した際、isClimbedStairの値を変え、コライダーのアクティブ状態を切り替える
+    //    //if (col == leftStairTrigger || col == rightStairTrigger)
+    //    //{
+    //    //    if (!mapManager.isClimbedStairs)
+    //    //    {
+    //    //        mapManager.isClimbedStairs = true;
 
-        //        mapManager.JudgeClimbedStairs();
+    //    //        mapManager.JudgeClimbedStairs();
 
-        //        return;
-        //    }
+    //    //        return;
+    //    //    }
 
-        //    if (mapManager.isClimbedStairs)
-        //    {
-        //        mapManager.isClimbedStairs = false;
+    //    //    if (mapManager.isClimbedStairs)
+    //    //    {
+    //    //        mapManager.isClimbedStairs = false;
 
-        //        mapManager.JudgeClimbedStairs();
+    //    //        mapManager.JudgeClimbedStairs();
 
-        //        return;
-        //    }
-        //}
+    //    //        return;
+    //    //    }
+    //    //}
 
-        if (col.CompareTag("Enemy"))
-        {
-            Destroy(col.gameObject);
+    //    if (col.CompareTag("Enemy"))
+    //    {
+    //        Destroy(col.gameObject);
 
-            UpdateHp(-col.GetComponent<EnemyController>().attackPoint);
-        }
-    }
+    //        UpdateHp(-col.GetComponent<EnemyController>().attackPoint);
+    //    }
+    //}
 
     /// <summary>
     /// 攻撃準備
@@ -150,8 +158,46 @@ public class CharaController : MonoBehaviour
     /// <summary>
     /// HP更新
     /// </summary>
-    private void UpdateHp(int value)
+    public void UpdateHp(int value)
     {
         hp += value;
+    }
+
+    /// <summary>
+    /// Expを加算する
+    /// </summary>
+    /// <param name="exp"></param>
+    public void AddExp(int exp)
+    {
+        totalExp += exp;
+
+        JudgeIsReadyToLevelUp();
+    }
+
+    /// <summary>
+    /// レベルアップできるかどうかを判断し、それに伴った処理を実行する
+    /// </summary>
+    private void JudgeIsReadyToLevelUp()
+    {
+        if (totalExp >= needExpForLevelUp)
+        {
+            LevelUp();
+        }
+    }
+
+    /// <summary>
+    /// レベルアップ処理
+    /// </summary>
+    private void LevelUp()
+    {
+        //Expの値をリセットする
+        totalExp = 0;
+
+        level++;
+
+        Debug.Log($"現在のレベル：{level}");
+
+        //次のレベルアップに必要なExpを増やす(レベルが上がるにつれて、必要なExpも増える)
+        needExpForLevelUp += addPoint * (level - 1);
     }
 }
