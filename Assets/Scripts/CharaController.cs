@@ -18,9 +18,9 @@ public class CharaController : MonoBehaviour
 
     [SerializeField] private float attackInterval;
 
-    [SerializeField] private Bullet bulletPrefab;
+    //[SerializeField] private Bullet bulletPrefab;
 
-    [SerializeField] private Transform temporaryObjectsPlace;
+    //[SerializeField] private Transform temporaryObjectsPlace;
 
     [SerializeField] private int hp;
 

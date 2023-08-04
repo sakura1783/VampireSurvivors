@@ -10,6 +10,8 @@ public class BulletGenerator : MonoBehaviour
 
     [SerializeField] private GameManager gameManager;  //CharaController取得用
 
+    [SerializeField] private float offsetDegrees;  //角度の基準値(各バレット同士の角度間隔)
+
 
     /// <summary>
     /// バレット生成の準備。レベルに応じてバレットの数を増やす
@@ -24,31 +26,42 @@ public class BulletGenerator : MonoBehaviour
                 break;
 
             case 2:
-                for (int i = -1; i < 2; i++)
+                for (int i = -1; i < 2; i += 2)
                 {
-                    if (i == 0)
-                    {
-                        //以下の処理をスキップして、次のforeach文の処理に移る
-                        continue;
-                    }
+                    ////角度の補正値の決定
+                    //float offsetAngle = i * offsetDegrees;
 
-                    //補正値の計算
-                    float offset = i * 0.125f;
+                    ////上の補正値を回転させた回転情報を作る(Quaternion.Euler(a, b, c);で、x、y、z軸周りにそれぞれa、b、c度回転する)
+                    //Quaternion offsetRotation = Quaternion.Euler(0, 0, offsetAngle);
 
-                    GenerateBullet(new Vector2((direction.x + offset), direction.y));
+                    ////上記の回転情報に、directionを掛けることで、ここで弾の方向のベクトルが決まる
+                    //Vector2 offsetDirection = offsetRotation * direction;
+
+                    //GenerateBullet(offsetDirection);
+
+                    //上の処理をまとめる
+                    GenerateBullet(CalculateBulletDirection(i, direction));
                 }
                 break;
 
             case 3:
-            case 4:
-            case 5:
-            case 9:
-            case 10:
                 for (int i = -1; i < 2; i++)
                 {
-                    float offset = i * 0.125f;
+                    GenerateBullet(CalculateBulletDirection(i, direction));
+                }
+                break;
 
-                    GenerateBullet(new Vector2((direction.x + offset), (direction.y + offset)));
+            case 4:
+                for (int i = -3; i < 4; i += 2)
+                {
+                    GenerateBullet(CalculateBulletDirection(i, direction));
+                }
+                break;
+
+            default:
+                for (int i = -2; i < 3; i++)
+                {
+                    GenerateBullet(CalculateBulletDirection(i, direction));
                 }
                 break;
         }
@@ -60,10 +73,27 @@ public class BulletGenerator : MonoBehaviour
     /// <param name="direction"></param>
     private void GenerateBullet(Vector2 direction)
     {
-        Bullet bullet = Instantiate(bulletPrefab, gameManager.CharaController.transform);
+        Bullet bullet = Instantiate(bulletPrefab, gameManager.CharaController.transform.position, Quaternion.identity);  //第二引数をTransformの情報にしてしまうと親子関係が築かれてしまうのでここではpositionを指定する
 
         bullet.transform.SetParent(temporaryObjectsPlace);
 
         bullet.Shoot(direction);
+    }
+
+    /// <summary>
+    /// 弾の方向を計算する
+    /// </summary>
+    private Vector2 CalculateBulletDirection(int i, Vector2 direction)
+    {
+        //角度の補正値の決定
+        float offsetAngle = i * offsetDegrees;
+
+        //上の補正値を回転させた回転情報を作る(Quaternion.Euler(a, b, c);で、x、y、z軸周りにそれぞれa、b、c度回転する)
+        Quaternion offsetRotation = Quaternion.Euler(0, 0, offsetAngle);
+
+        //上記の回転情報に、directionを掛けることで、ここで弾の方向のベクトルが決まる(directionをoffsetRotationだけ変える)  //TODO わからない
+        Vector2 offsetDirection = offsetRotation * direction;
+
+        return offsetDirection;
     }
 }

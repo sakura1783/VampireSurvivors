@@ -2988,14 +2988,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 136f2368502944897b791ef1e037d9e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 2
+  level: 5
   moveSpeed: 3
   limitPosX: 21.5
   limitPosY: 10.5
   attackInterval: 2
-  bulletPrefab: {fileID: 5810569422408170661, guid: e932ba920e0dd44d8bed95bf8c20b428,
-    type: 3}
-  temporaryObjectsPlace: {fileID: 530679511}
   hp: 10
   needExpForLevelUp: 5
   totalExp: 0
@@ -16867,6 +16864,7 @@ MonoBehaviour:
     type: 3}
   temporaryObjectsPlace: {fileID: 530679511}
   gameManager: {fileID: 919231863}
+  offsetDegrees: 5
 --- !u!4 &1674167709
 Transform:
   m_ObjectHideFlags: 0
