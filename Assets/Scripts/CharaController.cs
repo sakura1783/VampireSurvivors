@@ -30,6 +30,9 @@ public class CharaController : MonoBehaviour
 
     [SerializeField] private BulletGenerator bulletGenerator;
 
+    [SerializeField] private EnemyGenerator enemyGenerator1;
+    [SerializeField] private EnemyGenerator enemyGenerator2;
+
     private Animator charaAnim;
 
     private float charaScale;  //キャラの左右アニメの設定で利用する
@@ -202,5 +205,14 @@ public class CharaController : MonoBehaviour
 
         //次のレベルアップに必要なExpを増やす(レベルが上がるにつれて、必要なExpも増える)
         needExpForLevelUp += addPoint * (level - 1);
+
+        if (level == 5)
+        {
+            StartCoroutine(enemyGenerator1.GenerateEnemy(this));
+        }
+        if (level == 10)
+        {
+            StartCoroutine(enemyGenerator2.GenerateEnemy(this));
+        }
     }
 }

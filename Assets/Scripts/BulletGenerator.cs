@@ -22,6 +22,7 @@ public class BulletGenerator : MonoBehaviour
             case 1:
                 GenerateBullet(direction);
                 break;
+
             case 2:
                 for (int i = -1; i < 2; i++)
                 {
@@ -35,6 +36,19 @@ public class BulletGenerator : MonoBehaviour
                     float offset = i * 0.125f;
 
                     GenerateBullet(new Vector2((direction.x + offset), direction.y));
+                }
+                break;
+
+            case 3:
+            case 4:
+            case 5:
+            case 9:
+            case 10:
+                for (int i = -1; i < 2; i++)
+                {
+                    float offset = i * 0.125f;
+
+                    GenerateBullet(new Vector2((direction.x + offset), (direction.y + offset)));
                 }
                 break;
         }
