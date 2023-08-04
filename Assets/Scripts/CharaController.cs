@@ -14,9 +14,17 @@ public class CharaController : MonoBehaviour
     [SerializeField] private Collider2D leftStairTrigger;
     [SerializeField] private Collider2D rightStairTrigger;  //isClimbedStairを判定するための階段のコライダー
 
+    [SerializeField] private float attackInterval;
+
+    [SerializeField] private Bullet bulletPrefab;
+
+    [SerializeField] private Transform temporaryGameObjectsPlace;
+
     private Animator charaAnim;
 
     private float charaScale;  //キャラの左右アニメの設定で利用する
+
+    private Vector2 direction;  //キャラが向いている方向
 
 
     void Start()
@@ -24,6 +32,8 @@ public class CharaController : MonoBehaviour
         SetUpCharaController();
 
         charaScale = transform.localScale.x;
+
+        StartCoroutine(PrepareAttack());
     }
 
     void Update()
@@ -58,7 +68,7 @@ public class CharaController : MonoBehaviour
         //transform.position = newPos;  //この時点でtransform.positionの値はnewPosになっている
 
         //アニメーション
-        Vector2 direction = (newPos - (Vector2)transform.position).normalized;  //上ですでにtransform.positionの値はnewPosになっているのでDebugを入れて確認できる通り、directionの値は全て0になる。よって思い通りの挙動にならない。
+        direction = (newPos - (Vector2)transform.position).normalized;  //上ですでにtransform.positionの値はnewPosになっているのでDebugを入れて確認できる通り、directionの値は全て0になる。よって思い通りの挙動にならない。
 
         transform.position = newPos;  //記述する位置を修正。この処理はnewPosを計算などで使わなくなってから書くようにする。そうしないと、意図しない挙動になってしまう(今回だと、アニメーションが同期されない)
 
@@ -108,4 +118,31 @@ public class CharaController : MonoBehaviour
     //        }
     //    }
     //}
+
+    /// <summary>
+    /// 攻撃準備
+    /// </summary>
+    private IEnumerator PrepareAttack()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(attackInterval);
+
+            Attack();
+        }
+    }
+
+    /// <summary>
+    /// 攻撃
+    /// </summary>
+    private void Attack()
+    {
+        Bullet bullet = Instantiate(bulletPrefab, transform);
+
+        bullet.transform.SetParent(temporaryGameObjectsPlace);
+
+        bullet.Shoot(direction);
+
+        Debug.Log("攻撃");
+    }
 }
