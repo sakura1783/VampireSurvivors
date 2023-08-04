@@ -85,27 +85,27 @@ public class CharaController : MonoBehaviour
     /// 階段のコライダーと接触した際、isClimbedStairの値を変える
     /// </summary>
     /// <param name="col"></param>
-    private void OnTriggerEnter2D(Collider2D col)
-    {
-        if (col == leftStairTrigger || col == rightStairTrigger)
-        {
-            if (!mapManager.isClimbedStairs)
-            {
-                mapManager.isClimbedStairs = true;
+    //private void OnTriggerEnter2D(Collider2D col)
+    //{
+    //    if (col == leftStairTrigger || col == rightStairTrigger)
+    //    {
+    //        if (!mapManager.isClimbedStairs)
+    //        {
+    //            mapManager.isClimbedStairs = true;
 
-                mapManager.JudgeClimbedStairs();
+    //            mapManager.JudgeClimbedStairs();
 
-                return;
-            }
+    //            return;
+    //        }
 
-            if (mapManager.isClimbedStairs)
-            {
-                mapManager.isClimbedStairs = false;
+    //        if (mapManager.isClimbedStairs)
+    //        {
+    //            mapManager.isClimbedStairs = false;
 
-                mapManager.JudgeClimbedStairs();
+    //            mapManager.JudgeClimbedStairs();
 
-                return;
-            }
-        }
-    }
+    //            return;
+    //        }
+    //    }
+    //}
 }

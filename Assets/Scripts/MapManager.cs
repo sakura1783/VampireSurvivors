@@ -6,7 +6,7 @@ using UnityEngine.Tilemaps;
 //階段を登ったら、トンネル出入り用のコライダーのオン、オフを切り替える
 public class MapManager : MonoBehaviour
 {
-    public bool isClimbedStairs = false;  //階段を登ったか、登ってないか(建物の上にいるか、下にいるか)  //TODO 確認したらprivateにする
+    public bool isClimbedStairs = false;  //階段を登ったか、登ってないか(建物の上にいるか、下にいるか)
 
     //切り替えるコライダー
     [SerializeField] private Collider2D leftTunnelWall;
@@ -25,6 +25,7 @@ public class MapManager : MonoBehaviour
     /// 階段を登ったかどうか(建物の上にいるかどうか)を判定し、それに合わせて各地のコライダーのオンオフを切り替える
     /// (これを切り替えないと、意図しない場所でキャラが引っかかって通れない場所が発生したりする)
     /// </summary>
+    /// <param name="isClimbedStairs">階段を登ったか、登ってないか(建物の上にいるか、下にいるか)</param>
     public void JudgeClimbedStairs()
     {
         //階段を登った(建物の上にいる)際の処理
