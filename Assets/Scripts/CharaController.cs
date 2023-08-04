@@ -91,33 +91,35 @@ public class CharaController : MonoBehaviour
         transform.localScale = temp;
     }
 
-    /// <summary>
-    /// 階段のコライダーと接触した際、isClimbedStairの値を変える
-    /// </summary>
-    /// <param name="col"></param>
-    //private void OnTriggerEnter2D(Collider2D col)
-    //{
-    //    if (col == leftStairTrigger || col == rightStairTrigger)
-    //    {
-    //        if (!mapManager.isClimbedStairs)
-    //        {
-    //            mapManager.isClimbedStairs = true;
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        ////階段のコライダーと接触した際、isClimbedStairの値を変え、コライダーのアクティブ状態を切り替える
+        //if (col == leftStairTrigger || col == rightStairTrigger)
+        //{
+        //    if (!mapManager.isClimbedStairs)
+        //    {
+        //        mapManager.isClimbedStairs = true;
 
-    //            mapManager.JudgeClimbedStairs();
+        //        mapManager.JudgeClimbedStairs();
 
-    //            return;
-    //        }
+        //        return;
+        //    }
 
-    //        if (mapManager.isClimbedStairs)
-    //        {
-    //            mapManager.isClimbedStairs = false;
+        //    if (mapManager.isClimbedStairs)
+        //    {
+        //        mapManager.isClimbedStairs = false;
 
-    //            mapManager.JudgeClimbedStairs();
+        //        mapManager.JudgeClimbedStairs();
 
-    //            return;
-    //        }
-    //    }
-    //}
+        //        return;
+        //    }
+        //}
+
+        if (col.CompareTag("Enemy"))
+        {
+            Destroy(col.gameObject);
+        }
+    }
 
     /// <summary>
     /// 攻撃準備
