@@ -26,21 +26,24 @@ namespace Cainos.PixelArtTopDown_Basic
             //    sr.sortingLayerName = sortingLayer;
             //}
 
-            if (!mapManager.isClimbedStairs)
+            if (other.CompareTag("Player"))
             {
-                mapManager.isClimbedStairs = true;
+                if (!mapManager.isClimbedStairs)
+                {
+                    mapManager.isClimbedStairs = true;
 
-                mapManager.JudgeClimbedStairs();
+                    mapManager.JudgeClimbedStairs();
 
-                return;
-            }
-            else
-            {
-                mapManager.isClimbedStairs = false;
+                    return;
+                }
+                else
+                {
+                    mapManager.isClimbedStairs = false;
 
-                mapManager.JudgeClimbedStairs();
+                    mapManager.JudgeClimbedStairs();
 
-                return;
+                    return;
+                }
             }
         }
 
