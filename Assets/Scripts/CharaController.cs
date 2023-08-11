@@ -8,8 +8,10 @@ public class CharaController : MonoBehaviour
 
     [SerializeField] private float moveSpeed;
 
-    [SerializeField] private float limitPosX;
-    [SerializeField] private float limitPosY;
+    //[SerializeField] private float limitPosX;
+    //[SerializeField] private float limitPosY;
+    [SerializeField] private Transform leftBottomLimitTran;
+    [SerializeField] private Transform rightTopLimitTran;
 
     //[SerializeField] private MapManager mapManager;
 
@@ -72,10 +74,12 @@ public class CharaController : MonoBehaviour
         Vector2 newPos = Vector2.MoveTowards(transform.position, tapPos, moveSpeed * Time.deltaTime);
 
         //マップの範囲外にでないように制限をかける
-        newPos.x = Mathf.Clamp(newPos.x, -limitPosX, limitPosX);
-        newPos.y = Mathf.Clamp(newPos.y, -limitPosY, limitPosY);
+        //newPos.x = Mathf.Clamp(newPos.x, -limitPosX, limitPosX);
+        //newPos.y = Mathf.Clamp(newPos.y, -limitPosY, limitPosY);
+        newPos.x = Mathf.Clamp(newPos.x, leftBottomLimitTran.position.x, rightTopLimitTran.position.x);
+        newPos.y = Mathf.Clamp(newPos.y, leftBottomLimitTran.position.y, rightTopLimitTran.position.y);
 
-        //transform.position = newPos;  //この時点でtransform.positionの値はnewPosになっている
+        //transform.position = newPos;  //この時点でtransform.positionの値はnewPosになっている。よってここに書くと思い通りの挙動にならないのでコメントアウト
 
         //アニメーション
         direction = (newPos - (Vector2)transform.position).normalized;  //上ですでにtransform.positionの値はnewPosになっているのでDebugを入れて確認できる通り、directionの値は全て0になる。よって思い通りの挙動にならない。
@@ -87,17 +91,22 @@ public class CharaController : MonoBehaviour
 
         //左右アニメの切り替え(Scaleを変化させて左右移動にアニメを対応させる)
         Vector2 temp = transform.localScale;  //<= temp(一時的な)変数に現在のlocalScaleの値を代入
-        temp.x = direction.x;  //目的地の方向をtemp変数に代入
-        if (temp.x < 0)
-        {
-            //0よりも小さければScaleを1にする
-            temp.x = charaScale;
-        }
-        else
-        {
-            //0よりも大きければScaleを-1にする
-            temp.x = -charaScale;
-        }
+
+        //temp.x = direction.x;  //目的地の方向をtemp変数に代入
+        //if (temp.x < 0)
+        //{
+        //    //0よりも小さければScaleを1にする
+        //    temp.x = charaScale;
+        //}
+        //else
+        //{
+        //    //0よりも大きければScaleを-1にする
+        //    temp.x = -charaScale;
+        //}
+
+        //上の処理を三項演算子で記述
+        temp.x = direction.x < 0 ? charaScale : -charaScale;
+
         transform.localScale = temp;
     }
 

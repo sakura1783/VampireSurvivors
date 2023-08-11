@@ -5,11 +5,12 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private CharaController charaController;
-    public CharaController CharaController => charaController;
 
     [SerializeField] private EnemyGenerator enemyGenerator;
 
     [SerializeField] private MapManager mapManager;
+
+    [SerializeField] private CharaManager charaManager;
 
 
     void Start()
@@ -17,6 +18,7 @@ public class GameManager : MonoBehaviour
         mapManager.JudgeClimbedStairs();
 
         charaController.SetUpCharaController();
+        //charaManager.SetUpCharaManager();
 
         StartCoroutine(enemyGenerator.GenerateEnemy(charaController));
     }

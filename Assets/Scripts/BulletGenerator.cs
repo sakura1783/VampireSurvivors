@@ -8,7 +8,8 @@ public class BulletGenerator : MonoBehaviour
 
     [SerializeField] private Transform temporaryObjectsPlace;
 
-    [SerializeField] private GameManager gameManager;  //CharaController取得用
+    //[SerializeField] private GameManager gameManager;  //CharaController取得用
+    [SerializeField] private CharaController charaController;
 
     [SerializeField] private float offsetDegrees;  //角度の基準値(各バレット同士の角度間隔)
 
@@ -19,7 +20,7 @@ public class BulletGenerator : MonoBehaviour
     /// <param name="direction"></param>
     public void PrepareGenerateBullet(Vector2 direction)
     {
-        switch (gameManager.CharaController.level)
+        switch (charaController.level)
         {
             case 1:
                 GenerateBullet(direction);
@@ -73,7 +74,8 @@ public class BulletGenerator : MonoBehaviour
     /// <param name="direction"></param>
     private void GenerateBullet(Vector2 direction)
     {
-        Bullet bullet = Instantiate(bulletPrefab, gameManager.CharaController.transform.position, Quaternion.identity);  //第二引数をTransformの情報にしてしまうと親子関係が築かれてしまうのでここではpositionを指定する
+        //Bullet bullet = Instantiate(bulletPrefab, gameManager.CharaController.transform.position, Quaternion.identity);  //第二引数をTransformの情報にしてしまうと親子関係が築かれてしまうのでここではpositionを指定する
+        Bullet bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);  //このクラスをCharaSetにアタッチすれば、transform.positionがキャラの位置になる
 
         bullet.transform.SetParent(temporaryObjectsPlace);
 
@@ -91,7 +93,7 @@ public class BulletGenerator : MonoBehaviour
         //上の補正値を回転させた回転情報を作る(Quaternion.Euler(a, b, c);で、x、y、z軸周りにそれぞれa、b、c度回転する)
         Quaternion offsetRotation = Quaternion.Euler(0, 0, offsetAngle);
 
-        //上記の回転情報に、directionを掛けることで、ここで弾の方向のベクトルが決まる(directionをoffsetRotationだけ変える)  //TODO わからない
+        //上記の回転情報に、directionを掛けることで、ここで弾の方向のベクトルが決まる(Unityの場合、Quaternion * Vector3をすると、Vector3をQuaternionで回転させた座標が得られる。directionをoffsetRotationだけ変える。directionの方向を維持しつつ、Z軸だけを回転させた情報を持っている新しいベクトルを作成している。)
         Vector2 offsetDirection = offsetRotation * direction;
 
         return offsetDirection;
