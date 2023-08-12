@@ -1053,7 +1053,7 @@ GameObject:
   - component: {fileID: 355235889}
   - component: {fileID: 355235888}
   m_Layer: 5
-  m_Name: btnNewWeaponPlace
+  m_Name: btnNewWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1176,7 +1176,7 @@ GameObject:
   - component: {fileID: 355369403}
   - component: {fileID: 355369402}
   m_Layer: 5
-  m_Name: btnLevelUpPlace
+  m_Name: btnLevelUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3849,6 +3849,7 @@ GameObject:
   - component: {fileID: 727885834}
   - component: {fileID: 727885835}
   - component: {fileID: 727885836}
+  - component: {fileID: 727885837}
   m_Layer: 11
   m_Name: CharaSet
   m_TagString: Player
@@ -3884,7 +3885,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 136f2368502944897b791ef1e037d9e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 5
+  level: 1
   moveSpeed: 3
   leftBottomLimitTran: {fileID: 774257007}
   rightTopLimitTran: {fileID: 297009556}
@@ -3893,6 +3894,7 @@ MonoBehaviour:
   needExpForLevelUp: 5
   totalExp: 0
   bulletGenerator: {fileID: 727885836}
+  bulletGenerator1: {fileID: 727885837}
   enemyGenerator1: {fileID: 1939668178}
   enemyGenerator2: {fileID: 147531462}
 --- !u!61 &727885834
@@ -3959,6 +3961,20 @@ MonoBehaviour:
   temporaryObjectsPlace: {fileID: 530679511}
   charaController: {fileID: 727885833}
   offsetDegrees: 5
+--- !u!114 &727885837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 727885831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53113f89deff340db8cb70a23e2bbfc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 7561750187626492420, guid: 03892eb2f38894886a7363f604c3a801,
+    type: 3}
 --- !u!1 &729908978
 GameObject:
   m_ObjectHideFlags: 0

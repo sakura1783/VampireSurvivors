@@ -32,6 +32,8 @@ public class CharaController : MonoBehaviour
 
     [SerializeField] private BulletGenerator bulletGenerator;
 
+    [SerializeField] private BulletGenerator1 bulletGenerator1;
+
     [SerializeField] private EnemyGenerator enemyGenerator1;
     [SerializeField] private EnemyGenerator enemyGenerator2;
 
@@ -43,6 +45,12 @@ public class CharaController : MonoBehaviour
 
     private int addPoint = 5;  //needExpForLevelUp変数に加算するポイント(レベルが上がるにつれて、必要なExpも増える)
 
+    //テスト
+    void Start()
+    {
+        bulletGenerator1.SetUpBulletGenerator1();
+        bulletGenerator1.PrepareGenerateBullet();
+    }
 
     void Update()
     {
