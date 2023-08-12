@@ -48,6 +48,9 @@ public class EnemyController : MonoBehaviour
     {
         if (col.CompareTag("Bullet"))
         {
+            //リストから削除
+            GameData.instance.enemiesList.Remove(this);
+
             Destroy(gameObject);
 
             //Expの加算
@@ -59,7 +62,11 @@ public class EnemyController : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Player"))
         {
+            //HPの更新
             charaController.UpdateHp(-attackPoint);
+
+            //リストから削除
+            GameData.instance.enemiesList.Remove(this);
 
             Destroy(gameObject);
         }

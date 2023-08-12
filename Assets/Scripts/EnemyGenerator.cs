@@ -25,6 +25,8 @@ public class EnemyGenerator : MonoBehaviour
 
             EnemyController enemy = Instantiate(enemyPrefab, transform);
 
+            GameData.instance.enemiesList.Add(enemy);
+
             enemy.SetUpEnemyController(charaController);
 
             generateCount++;

@@ -45,11 +45,13 @@ public class CharaController : MonoBehaviour
 
     private int addPoint = 5;  //needExpForLevelUp変数に加算するポイント(レベルが上がるにつれて、必要なExpも増える)
 
+
     //TODO テスト用。終わったら消す
     void Start()
     {
+        direction = new Vector2(0, -1);  //プレイヤーの初期方向をセット。何も設定をしないと最初directionは(0, 0)なので、これでプレイヤーの向きと同期する
         bulletGenerator1.SetUpBulletGenerator1();
-        bulletGenerator1.PrepareGenerateBullet();
+        bulletGenerator1.PrepareGenerateBullet(direction);
     }
 
     void Update()

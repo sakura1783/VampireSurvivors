@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private MapManager mapManager;
 
-    [SerializeField] private CharaManager charaManager;
+    //[SerializeField] private CharaManager charaManager;
 
 
     void Start()
