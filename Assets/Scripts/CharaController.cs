@@ -45,7 +45,7 @@ public class CharaController : MonoBehaviour
 
     private int addPoint = 5;  //needExpForLevelUp変数に加算するポイント(レベルが上がるにつれて、必要なExpも増える)
 
-    //テスト
+    //TODO テスト用。終わったら消す
     void Start()
     {
         bulletGenerator1.SetUpBulletGenerator1();
@@ -69,7 +69,7 @@ public class CharaController : MonoBehaviour
     {
         transform.GetChild(0).gameObject.TryGetComponent(out charaAnim);
 
-        charaScale = transform.localScale.x;  //キャラの向き変更に使う
+        charaScale = transform.GetChild(0).localScale.x;  //キャラの向き変更に使う
 
         StartCoroutine(PrepareAttack());
     }
@@ -98,7 +98,7 @@ public class CharaController : MonoBehaviour
         charaAnim.SetFloat("Y", direction.y);
 
         //左右アニメの切り替え(Scaleを変化させて左右移動にアニメを対応させる)
-        Vector2 temp = transform.localScale;  //<= temp(一時的な)変数に現在のlocalScaleの値を代入
+        Vector2 temp = transform.GetChild(0).localScale;  //<= temp(一時的な)変数に現在のlocalScaleの値を代入
 
         //temp.x = direction.x;  //目的地の方向をtemp変数に代入
         //if (temp.x < 0)
@@ -115,7 +115,7 @@ public class CharaController : MonoBehaviour
         //上の処理を三項演算子で記述
         temp.x = direction.x < 0 ? charaScale : -charaScale;
 
-        transform.localScale = temp;
+        transform.GetChild(0).localScale = temp;
     }
 
     //private void OnTriggerEnter2D(Collider2D col)

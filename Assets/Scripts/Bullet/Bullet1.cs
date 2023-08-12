@@ -7,17 +7,11 @@ public class Bullet1 : MonoBehaviour
 {
     [SerializeField] private float rotateSpeed = 3;
 
-    //[SerializeField] private Vector2 distanceFromTarget = new Vector2(1, 1);  //ターゲットからの距離
-
-    //[SerializeField] private float distanceFromTarget = 1;  //ターゲット(回転の中心)からの距離(小さいほど近くなる)
-
     //[SerializeField] private float duration = 1.0f;
 
     [SerializeField] private Transform target;  //旋回の軸となるターゲット
 
     private float direction = -1;  //-1で時計回り、1で半時計回り
-
-    //private float angle;  //現在の角度
 
 
     void Update()
@@ -45,7 +39,7 @@ public class Bullet1 : MonoBehaviour
     /// </summary>
     //private void Spin()
     //{
-    //    //transform.DORotate(new Vector3(0, 0, 360), duration, RotateMode.FastBeyond360).SetEase(Ease.Linear).SetLoops(-1, LoopType.Restart).SetLink(gameObject);
+    //    transform.DORotate(new Vector3(0, 0, 360), duration, RotateMode.FastBeyond360).SetEase(Ease.Linear).SetLoops(-1, LoopType.Restart).SetLink(gameObject);
     //}
 
     /// <summary>
