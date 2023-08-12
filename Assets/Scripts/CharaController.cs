@@ -31,8 +31,8 @@ public class CharaController : MonoBehaviour
     [SerializeField] private int totalExp;  //現在保持しているExp
 
     [SerializeField] private BulletGenerator bulletGenerator;
-
-    [SerializeField] private BulletGenerator1 bulletGenerator1;
+    //[SerializeField] private BulletGenerator1 bulletGenerator1;
+    [SerializeField] private BulletGenerator2 bulletGenerator2;
 
     [SerializeField] private EnemyGenerator enemyGenerator1;
     [SerializeField] private EnemyGenerator enemyGenerator2;
@@ -42,6 +42,7 @@ public class CharaController : MonoBehaviour
     private float charaScale;  //キャラの左右アニメの設定で利用する
 
     private Vector2 direction;  //キャラが向いている方向
+    public Vector2 Direction => direction;
 
     private int addPoint = 5;  //needExpForLevelUp変数に加算するポイント(レベルが上がるにつれて、必要なExpも増える)
 
@@ -50,8 +51,8 @@ public class CharaController : MonoBehaviour
     void Start()
     {
         direction = new Vector2(0, -1);  //プレイヤーの初期方向をセット。何も設定をしないと最初directionは(0, 0)なので、これでプレイヤーの向きと同期する
-        bulletGenerator1.SetUpBulletGenerator1();
-        bulletGenerator1.PrepareGenerateBullet(direction);
+        //bulletGenerator1.SetUpBulletGenerator1();
+        //bulletGenerator1.PrepareGenerateBullet(direction);
     }
 
     void Update()
@@ -175,7 +176,9 @@ public class CharaController : MonoBehaviour
         //bullet.Shoot(direction);
 
         //上の処理をまとめる
-        bulletGenerator.PrepareGenerateBullet(direction);
+        //bulletGenerator.PrepareGenerateBullet(direction);
+
+        StartCoroutine(bulletGenerator2.PrepareGenerateBullet());
 
         Debug.Log("攻撃");
     }

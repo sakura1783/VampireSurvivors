@@ -8,6 +8,8 @@ public class GameData : MonoBehaviour
 
     public List<EnemyController> enemiesList = new();
 
+    public List<EnemyController> targetList = new();  //追尾弾の追尾対象のリスト(追尾対象が被らないようにする)
+
 
     void Awake()
     {
