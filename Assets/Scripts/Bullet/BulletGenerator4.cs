@@ -42,7 +42,8 @@ public class BulletGenerator4 : MonoBehaviour
 
             Destroy(bullet.gameObject, bullet.destroyTime);
 
-            Debug.Log("攻撃！");
+            //targetListからtargetを削除
+            GameData.instance.targetList.Remove(target);
         }
     }
 
@@ -83,14 +84,19 @@ public class BulletGenerator4 : MonoBehaviour
     {
         target = null;
 
-        //do_while文 <= do{ 条件式がtrueの間繰り返される処理 }while(条件式)。この場合、targetListにtargetが含まれている間、do{}内の処理を繰り返す
-        do
+        if (GameData.instance.enemiesList.Count > 0)
         {
-            int randomNo = Random.Range(0, GameData.instance.enemiesList.Count);
+            //do_while文 <= do{ 条件式がtrueの間繰り返される処理 }while(条件式)。この場合、targetListにtargetが含まれている間、do{}内の処理を繰り返す
+            do
+            {
+                int randomNo = Random.Range(0, GameData.instance.enemiesList.Count);
 
-            target = GameData.instance.enemiesList[randomNo];
+                target = GameData.instance.enemiesList[randomNo];
 
-        } while (GameData.instance.targetList.Contains(target));
+            } while (GameData.instance.targetList.Contains(target));
+
+            GameData.instance.targetList.Add(target);
+        }
 
         yield return null;
     }
