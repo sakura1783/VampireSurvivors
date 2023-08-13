@@ -49,28 +49,48 @@ public class BulletGenerator4 : MonoBehaviour
     /// <summary>
     /// 一番近い敵を見つけ、攻撃対象とする。ただし、すでにtargetListに入っている敵は攻撃対象としない
     /// </summary>
-    private IEnumerator FindNearestEnemy()
+    //private IEnumerator FindNearestEnemy()
+    //{
+    //    target = null;
+
+    //    var sortedEnemies = GameData.instance.enemiesList.OrderBy(enemy => Vector2.Distance(transform.position, enemy.transform.position));
+
+    //    foreach (EnemyController enemy in sortedEnemies)
+    //    {
+    //        if (GameData.instance.targetList.Exists(existingTarget => existingTarget == enemy))
+    //        {
+    //            continue;
+    //        }
+
+    //        target = enemy;
+
+    //        break;
+    //    }
+
+    //    if (target)
+    //    {
+    //        GameData.instance.targetList.Add(target);
+    //    }
+
+    //    yield return null;
+    //}
+
+    /// <summary>
+    /// ランダムな敵を攻撃対象とする(すでにtargetListに入っている敵はターゲットとしない)
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator FindTarget()
     {
         target = null;
 
-        var sortedEnemies = GameData.instance.enemiesList.OrderBy(enemy => Vector2.Distance(transform.position, enemy.transform.position));
-
-        foreach (EnemyController enemy in sortedEnemies)
+        //do_while文 <= do{ 条件式がtrueの間繰り返される処理 }while(条件式)。この場合、targetListにtargetが含まれている間、do{}内の処理を繰り返す
+        do
         {
-            if (GameData.instance.targetList.Exists(existingTarget => existingTarget == enemy))
-            {
-                continue;
-            }
+            int randomNo = Random.Range(0, GameData.instance.enemiesList.Count);
 
-            target = enemy;
+            target = GameData.instance.enemiesList[randomNo];
 
-            break;
-        }
-
-        if (target)
-        {
-            GameData.instance.targetList.Add(target);
-        }
+        } while (GameData.instance.targetList.Contains(target));
 
         yield return null;
     }
@@ -80,7 +100,9 @@ public class BulletGenerator4 : MonoBehaviour
     /// </summary>
     private IEnumerator CalculateGeneratePos()
     {
-        yield return StartCoroutine(FindNearestEnemy());
+        //yield return StartCoroutine(FindNearestEnemy());
+
+        yield return StartCoroutine(FindTarget());
 
         if (target)
         {
