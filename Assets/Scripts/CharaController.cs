@@ -30,10 +30,11 @@ public class CharaController : MonoBehaviour
 
     [SerializeField] private int totalExp;  //現在保持しているExp
 
-    //[SerializeField] private BulletGenerator bulletGenerator;
+    [SerializeField] private BulletGenerator bulletGenerator;
     //[SerializeField] private BulletGenerator1 bulletGenerator1;
     //[SerializeField] private BulletGenerator2 bulletGenerator2;
-    [SerializeField] private BulletGenerator3 bulletGenerator3;
+    //[SerializeField] private BulletGenerator3 bulletGenerator3;
+    [SerializeField] private BulletGenerator4 bulletGenerator4;
 
     [SerializeField] private EnemyGenerator enemyGenerator1;
     [SerializeField] private EnemyGenerator enemyGenerator2;
@@ -52,6 +53,14 @@ public class CharaController : MonoBehaviour
 
     private int addPoint = 5;  //needExpForLevelUp変数に加算するポイント(レベルが上がるにつれて、必要なExpも増える)
 
+    //private BulletGenerator1 bulletGenerator1;
+    //private BulletGenerator2 bulletGenerator2;
+    //private BulletGenerator3 bulletGenerator3;
+    //private BulletGenerator4 bulletGenerator4;
+
+    private float defaultTimer;
+    private float bullet4Timer;
+
 
     //TODO テスト用。終わったら消す
     void Start()
@@ -59,6 +68,11 @@ public class CharaController : MonoBehaviour
         direction = new Vector2(0, -1);  //プレイヤーの初期方向をセット。何も設定をしないと最初directionは(0, 0)なので、これでプレイヤーの向きと同期する
         //bulletGenerator1.SetUpBulletGenerator1();
         //bulletGenerator1.PrepareGenerateBullet(direction);
+
+        //各BulletGeneratorがアタッチされているか確認  //TODO メソッドにする。最初だけでなくレベルアップ時にも確認する必要があるため
+        //TryGetComponent(out bulletGenerator4);  //取得できた場合はtrueを返し、取得できなかった場合はfalseを返す。取得できなかった場合も取得できないだけで、エラーは出ない
+
+        bulletGenerator4.SetAttackIntervalByLevel();
     }
 
     void Update()
@@ -163,15 +177,41 @@ public class CharaController : MonoBehaviour
     //}
 
     /// <summary>
-    /// 攻撃準備
+    /// 攻撃準備。バレットごとにインターバル時間を変える
     /// </summary>
     private IEnumerator PrepareAttack()
     {
         while (true)
         {
-            yield return new WaitForSeconds(attackInterval);
+            if (bulletGenerator4)
+            {
+                bullet4Timer += Time.deltaTime;
 
-            Attack();
+                if (bullet4Timer >= bulletGenerator4.attackInterval)
+                {
+                    bullet4Timer = 0;
+
+                    //Attack();
+                    bulletGenerator4.PrepareGenerateBullet();
+                }
+            }
+            else
+            {
+                defaultTimer += Time.deltaTime;
+
+                if (defaultTimer >= attackInterval)
+                {
+                    defaultTimer = 0;
+
+                    Attack();
+                }
+            }
+
+            //yield return new WaitForSeconds(attackInterval);
+
+            //Attack();
+
+            yield return null;
         }
     }
 
@@ -184,12 +224,10 @@ public class CharaController : MonoBehaviour
         //bullet.transform.SetParent(temporaryObjectsPlace);
         //bullet.Shoot(direction);
 
-        //TODO 攻撃処理
         //上の処理をまとめる
-        //bulletGenerator.PrepareGenerateBullet(direction);
+        bulletGenerator.PrepareGenerateBullet(direction);
         //StartCoroutine(bulletGenerator2.PrepareGenerateBullet());
-        bulletGenerator3.PrepareGenerateBullet(direction);
-
+        //bulletGenerator3.PrepareGenerateBullet(direction);
 
         Debug.Log("攻撃");
     }
@@ -239,6 +277,10 @@ public class CharaController : MonoBehaviour
         //次のレベルアップに必要なExpを増やす(レベルが上がるにつれて、必要なExpも増える)
         needExpForLevelUp += addPoint * (level - 1);
 
+        //レベルに応じてバレット4の生成時間を短縮
+        bulletGenerator4.SetAttackIntervalByLevel();
+
+        //TODO 値変える
         if (level == 5)
         {
             StartCoroutine(enemyGenerator1.GenerateEnemy(this));
