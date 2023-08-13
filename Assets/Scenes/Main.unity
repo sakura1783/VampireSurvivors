@@ -3224,7 +3224,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4, y: -4, z: -10}
+  m_LocalPosition: {x: -6, y: -6, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3911,7 +3911,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 727885831}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4, y: -4, z: 0}
+  m_LocalPosition: {x: -6, y: -7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3931,16 +3931,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 136f2368502944897b791ef1e037d9e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 3
+  level: 2
   moveSpeed: 3
   leftBottomLimitTran: {fileID: 774257007}
   rightTopLimitTran: {fileID: 297009556}
-  attackInterval: 8
+  attackInterval: 2
   hp: 10
   needExpForLevelUp: 5
   totalExp: 0
-  bulletGenerator: {fileID: 727885836}
-  bulletGenerator2: {fileID: 727885837}
+  bulletGenerator3: {fileID: 727885837}
   enemyGenerator1: {fileID: 1939668178}
   enemyGenerator2: {fileID: 147531462}
 --- !u!61 &727885834
@@ -4016,13 +4015,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 727885831}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac87478118415408ca66e7dea8b0eca1, type: 3}
+  m_Script: {fileID: 11500000, guid: e04c4076748274d85897ab8ef5851cc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 1810241835130644378, guid: afe29dcd45a504d7da481ac949769896,
+  bulletPrefab: {fileID: 1381188170190734675, guid: 17bd5f521b9d04d61857ee56353ce37d,
     type: 3}
   temporaryObjectsPlace: {fileID: 530679511}
   charaController: {fileID: 727885833}
+  bulletDistance: 0.2
 --- !u!1 &729908978
 GameObject:
   m_ObjectHideFlags: 0
@@ -20633,7 +20633,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2000548308}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4, y: -4, z: -10}
+  m_LocalPosition: {x: -6, y: -7, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

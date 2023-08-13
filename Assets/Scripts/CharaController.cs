@@ -30,14 +30,20 @@ public class CharaController : MonoBehaviour
 
     [SerializeField] private int totalExp;  //現在保持しているExp
 
-    [SerializeField] private BulletGenerator bulletGenerator;
+    //[SerializeField] private BulletGenerator bulletGenerator;
     //[SerializeField] private BulletGenerator1 bulletGenerator1;
-    [SerializeField] private BulletGenerator2 bulletGenerator2;
+    //[SerializeField] private BulletGenerator2 bulletGenerator2;
+    [SerializeField] private BulletGenerator3 bulletGenerator3;
 
     [SerializeField] private EnemyGenerator enemyGenerator1;
     [SerializeField] private EnemyGenerator enemyGenerator2;
 
     private Animator charaAnim;
+    public Animator CharaAnim => charaAnim;
+
+    //TODO 確認用。終わったらprivateにする
+    //[SerializeField] private AnimatorClipInfo[] animatorClipInfo = new AnimatorClipInfo[0];  //現在のアニメの取得用(BulletGenerator3で使用)
+    //public AnimatorClipInfo[] AnimatorClipInofo => animatorClipInfo;
 
     private float charaScale;  //キャラの左右アニメの設定で利用する
 
@@ -62,6 +68,9 @@ public class CharaController : MonoBehaviour
             Vector2 tapPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
             Move(tapPos);
+
+            //現在のアニメを取得。0はアニメのレイヤー番号
+            //animatorClipInfo = charaAnim.GetCurrentAnimatorClipInfo(0);
         }
     }
 
@@ -175,10 +184,12 @@ public class CharaController : MonoBehaviour
         //bullet.transform.SetParent(temporaryObjectsPlace);
         //bullet.Shoot(direction);
 
+        //TODO 攻撃処理
         //上の処理をまとめる
         //bulletGenerator.PrepareGenerateBullet(direction);
+        //StartCoroutine(bulletGenerator2.PrepareGenerateBullet());
+        bulletGenerator3.PrepareGenerateBullet(direction);
 
-        StartCoroutine(bulletGenerator2.PrepareGenerateBullet());
 
         Debug.Log("攻撃");
     }
