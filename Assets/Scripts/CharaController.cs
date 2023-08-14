@@ -31,11 +31,11 @@ public class CharaController : MonoBehaviour
     [SerializeField] private int totalExp;  //現在保持しているExp
 
     //[SerializeField] private BulletGenerator bulletGenerator;
-    [SerializeField] private BulletGenerator1 bulletGenerator1;
+    //[SerializeField] private BulletGenerator1 bulletGenerator1;
     //[SerializeField] private BulletGenerator2 bulletGenerator2;
-    //[SerializeField] private BulletGenerator3 bulletGenerator3;
+    [SerializeField] private BulletGenerator3 bulletGenerator3;
     //[SerializeField] private BulletGenerator4 bulletGenerator4;
-    [SerializeField] private BulletGenerator5 bulletGenerator5;
+    //[SerializeField] private BulletGenerator5 bulletGenerator5;
 
     [SerializeField] private EnemyGenerator enemyGenerator1;
     [SerializeField] private EnemyGenerator enemyGenerator2;
@@ -58,6 +58,7 @@ public class CharaController : MonoBehaviour
     //private BulletGenerator2 bulletGenerator2;
     //private BulletGenerator3 bulletGenerator3;
     //private BulletGenerator4 bulletGenerator4;
+    //private BulletGenerator5 bulletGenerator5;
 
     private float defaultTimer;
     private float bullet4Timer;
@@ -67,8 +68,8 @@ public class CharaController : MonoBehaviour
     void Start()
     {
         direction = new Vector2(0, -1);  //プレイヤーの初期方向をセット。何も設定をしないと最初directionは(0, 0)なので、これでプレイヤーの向きと同期する
-        bulletGenerator1.SetUpBulletGenerator1();
-        bulletGenerator1.PrepareGenerateBullet(direction);
+        //bulletGenerator1.SetUpBulletGenerator1();
+        //bulletGenerator1.PrepareGenerateBullet(direction);
 
         //各BulletGeneratorがアタッチされているか確認  //TODO メソッドにする。最初だけでなくレベルアップ時にも確認する必要があるため
         //TryGetComponent(out bulletGenerator4);  //取得できた場合はtrueを返し、取得できなかった場合はfalseを返す。取得できなかった場合も取得できないだけで、エラーは出ない
@@ -228,8 +229,8 @@ public class CharaController : MonoBehaviour
         //上の処理をまとめる
         //bulletGenerator.PrepareGenerateBullet(direction);
         //StartCoroutine(bulletGenerator2.PrepareGenerateBullet());
-        //bulletGenerator3.PrepareGenerateBullet(direction);
-        bulletGenerator5.PrepareGenerateBullet(direction);
+        bulletGenerator3.PrepareGenerateBullet(direction);
+        //bulletGenerator5.PrepareGenerateBullet(direction);
 
         //Debug.Log("攻撃");
     }

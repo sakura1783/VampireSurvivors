@@ -127,6 +127,8 @@ public class BulletGenerator3 : MonoBehaviour
                 //    break;
         }
 
+        Debug.Log($"GetCurrentAnimatorClipInfoの値：{charaController.CharaAnim.GetCurrentAnimatorClipInfo(0)[0].clip.name}");
+
         Vector2 offsetPos = new Vector2(posX, posY);
 
         return offsetPos;

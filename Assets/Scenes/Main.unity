@@ -4295,7 +4295,7 @@ MonoBehaviour:
   needExpForLevelUp: 5
   totalExp: 0
   bulletGenerator1: {fileID: 727885840}
-  bulletGenerator5: {fileID: 727885841}
+  bulletGenerator3: {fileID: 727885837}
   enemyGenerator1: {fileID: 1939668178}
   enemyGenerator2: {fileID: 147531462}
 --- !u!61 &727885834
@@ -18429,7 +18429,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
