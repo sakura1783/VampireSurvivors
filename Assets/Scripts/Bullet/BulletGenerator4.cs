@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
+/// <summary>
+/// 雷
+/// </summary>
 public class BulletGenerator4 : MonoBehaviour
 {
     [SerializeField] private Bullet4 bulletPrefab;

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
+/// <summary>
+/// 手裏剣
+/// </summary>
 public class Bullet1 : MonoBehaviour
 {
     [SerializeField] private float rotateSpeed = 3;

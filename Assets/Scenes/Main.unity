@@ -3497,7 +3497,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4, y: -3, z: -10}
+  m_LocalPosition: {x: -3, y: -5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4168,8 +4168,11 @@ GameObject:
   - component: {fileID: 727885834}
   - component: {fileID: 727885835}
   - component: {fileID: 727885836}
+  - component: {fileID: 727885840}
+  - component: {fileID: 727885839}
   - component: {fileID: 727885837}
   - component: {fileID: 727885838}
+  - component: {fileID: 727885841}
   m_Layer: 11
   m_Name: CharaSet
   m_TagString: Player
@@ -4185,7 +4188,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 727885831}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4, y: -3, z: 0}
+  m_LocalPosition: {x: -3, y: -5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4213,8 +4216,8 @@ MonoBehaviour:
   hp: 10
   needExpForLevelUp: 5
   totalExp: 0
-  bulletGenerator: {fileID: 727885836}
-  bulletGenerator4: {fileID: 727885838}
+  bulletGenerator1: {fileID: 727885840}
+  bulletGenerator5: {fileID: 727885841}
   enemyGenerator1: {fileID: 1939668178}
   enemyGenerator2: {fileID: 147531462}
 --- !u!61 &727885834
@@ -4314,7 +4317,54 @@ MonoBehaviour:
     type: 3}
   temporaryObjectsPlace: {fileID: 530679511}
   charaController: {fileID: 727885833}
-  attackInterval: 0
+  attackInterval: 3
+--- !u!114 &727885839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 727885831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac87478118415408ca66e7dea8b0eca1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 1810241835130644378, guid: afe29dcd45a504d7da481ac949769896,
+    type: 3}
+  temporaryObjectsPlace: {fileID: 530679511}
+  charaController: {fileID: 727885833}
+--- !u!114 &727885840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 727885831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53113f89deff340db8cb70a23e2bbfc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 7561750187626492420, guid: 03892eb2f38894886a7363f604c3a801,
+    type: 3}
+--- !u!114 &727885841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 727885831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f876021c20d34d758b730b75f2dd1b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 4909106928436698919, guid: c23fc5fdfa7f04e0c9714f1c0249c030,
+    type: 3}
+  temporaryObjectsPlace: {fileID: 530679511}
+  charaController: {fileID: 727885833}
+  offsetDegrees: 5
 --- !u!1 &729908978
 GameObject:
   m_ObjectHideFlags: 0
@@ -21130,7 +21180,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2000548308}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4, y: -3, z: -10}
+  m_LocalPosition: {x: -3, y: -5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

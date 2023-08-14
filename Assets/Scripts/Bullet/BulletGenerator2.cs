@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 追尾弾
+/// </summary>
 public class BulletGenerator2 : MonoBehaviour
 {
     [SerializeField] private Bullet2 bulletPrefab;

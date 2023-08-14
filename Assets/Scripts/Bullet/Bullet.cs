@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// デフォルト
+/// </summary>
 public class Bullet : MonoBehaviour
 {
     [SerializeField] private float bulletSpeed;

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
+/// <summary>
+/// 追尾弾
+/// </summary>
 public class Bullet2 : MonoBehaviour
 {
     [SerializeField] private float bulletSpeed;

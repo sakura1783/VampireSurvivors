@@ -8,6 +8,8 @@ public class EnemyController : MonoBehaviour
 
     public int exp;
 
+    public bool isFrozen = false;  //凍っているかどうか。trueの場合は一定時間動きを止める
+
     private Animator enemyAnim;
 
     private CharaController charaController;
@@ -17,6 +19,11 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
+        if (isFrozen)
+        {
+            return;
+        }
+
         navMeshAgent2D.destination = charaController.transform.position;
 
         ChangeAnimDirection();

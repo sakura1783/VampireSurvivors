@@ -1,0 +1,3909 @@
+fileFormatVersion: 2
+guid: ef8be0ec8a6e845c6bcbbcab821846a5
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Hyoukai_0
+      rect:
+        serializedVersion: 2
+        x: 946
+        y: 893
+        width: 59
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e32430280193945a7b14284db3a60c46
+      internalID: 1773463246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_1
+      rect:
+        serializedVersion: 2
+        x: 1183
+        y: 1056
+        width: 45
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d091587de4d1a4a9089d025ba288d2c3
+      internalID: -1797941931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_2
+      rect:
+        serializedVersion: 2
+        x: 1232
+        y: 1076
+        width: 10
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 617eb0eead5c84123a1d9a9b6237879e
+      internalID: 619198413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_3
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 968
+        width: 35
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e75bcf714426f41279dccfe44747f06e
+      internalID: 566340797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_4
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 393
+        width: 313
+        height: 629
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db14786d4e2494b719d09693a7dc6e36
+      internalID: -232101294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_5
+      rect:
+        serializedVersion: 2
+        x: 642
+        y: 984
+        width: 18
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51266455150394128b65613fb11ce423
+      internalID: -1127583229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_6
+      rect:
+        serializedVersion: 2
+        x: 1196
+        y: 817
+        width: 64
+        height: 208
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b22a8b8c78784a22913e2a8c6c3e020
+      internalID: 87450887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_7
+      rect:
+        serializedVersion: 2
+        x: 1250
+        y: 972
+        width: 28
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b422c62cdc00a48c7968529e2da663e6
+      internalID: -586075141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_8
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 954
+        width: 18
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9752c0563e8e34ff684a787efc53598a
+      internalID: -220543577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_9
+      rect:
+        serializedVersion: 2
+        x: 666
+        y: 972
+        width: 18
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 167fca35c8332462b94f20d87fb694ef
+      internalID: 404302601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_10
+      rect:
+        serializedVersion: 2
+        x: 703
+        y: 973
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb59a506588894abc9e6061943bdee26
+      internalID: -1560316191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_11
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 932
+        width: 18
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c4bf1d3036624877a0a714d76c5a540
+      internalID: -1076343476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_12
+      rect:
+        serializedVersion: 2
+        x: 642
+        y: 943
+        width: 10
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86327a8e682ff43539d7f4d172695285
+      internalID: 17484038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_13
+      rect:
+        serializedVersion: 2
+        x: 721
+        y: 955
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cd4679c9d681456ba0cd85ec8248150
+      internalID: -511708111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_14
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 948
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d4eb1a371abc4b4e87f4da3bbf5182a
+      internalID: -455450254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_15
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 948
+        width: 5
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d220ed349a3b24bba93bccbef228ea1e
+      internalID: 974816797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_16
+      rect:
+        serializedVersion: 2
+        x: 684
+        y: 913
+        width: 22
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02cae21e80a0a4b6a9cc266fbf41f3cf
+      internalID: -1344739823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_17
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 925
+        width: 6
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6e24ecb5bec74a52beb23d1a4a3d0c2
+      internalID: -1680580677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_18
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 920
+        width: 4
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f5c5df78b66b430bb8b46f2a19c0914
+      internalID: 1929482146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_19
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 919
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c36e7dac78b9a4cd780fd024a6c1e86b
+      internalID: 672033538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_20
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 852
+        width: 42
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a90b5837ffced439ab2e649663cae959
+      internalID: -1230317727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_21
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 885
+        width: 14
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c540ec0d2b85493e9e74e99331fae69
+      internalID: -59582484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_22
+      rect:
+        serializedVersion: 2
+        x: 628
+        y: 886
+        width: 14
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32888559f91c14441a98ecc5457d52bd
+      internalID: 2069480785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_23
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 894
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2dbde9ec70aaa44e3bead11b32a308a5
+      internalID: 762774929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_24
+      rect:
+        serializedVersion: 2
+        x: 1011
+        y: 709
+        width: 108
+        height: 209
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ef9838af2f3847d1a9a79acbdaf6a5b
+      internalID: -251443349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_25
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 876
+        width: 11
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76b9ce9a242264635940c9c224a52ab3
+      internalID: -1765873486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_26
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 882
+        width: 6
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8df41e61fd1f4681a89bdf594fe3861
+      internalID: 431340006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_27
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 882
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43255ced62aad4a0cb1b9ebba75bc91b
+      internalID: 552974228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_28
+      rect:
+        serializedVersion: 2
+        x: 714
+        y: 870
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 239875c7aafbc4746890f9d32d5f195a
+      internalID: 1824724028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_29
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 870
+        width: 5
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bfea75c5cc02479ea36a070ac185ffd
+      internalID: -1493563231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_30
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 870
+        width: 6
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69699ef7bb2054fa4928d413ad238f78
+      internalID: -1941722069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_31
+      rect:
+        serializedVersion: 2
+        x: 958
+        y: 804
+        width: 33
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26dec122aae564f3e90a9d93b8109c45
+      internalID: -1953876035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_32
+      rect:
+        serializedVersion: 2
+        x: 631
+        y: 850
+        width: 11
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf705d486672147dcbdac28997a1334f
+      internalID: 8068351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_33
+      rect:
+        serializedVersion: 2
+        x: 686
+        y: 846
+        width: 13
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4df048a78118941d2ab91671d2c19124
+      internalID: -83909605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_34
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 241
+        width: 203
+        height: 595
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ed848b57419440d78ca29a15fc7831c
+      internalID: 1884472316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_35
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 816
+        width: 10
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a76d0955fa8bb4ef69c68dfea8217aa1
+      internalID: 1780466217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_36
+      rect:
+        serializedVersion: 2
+        x: 643
+        y: 833
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4fb897a2b39c4c6eaaa4b6c4994c35f
+      internalID: 1581462034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_37
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 801
+        width: 15
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f3f50537cc2441fbaf2685f969f9ab5
+      internalID: -1726433950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_38
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 767
+        width: 21
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb944d9534b6648c58fbdd3cbea3aaf4
+      internalID: -600031041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_39
+      rect:
+        serializedVersion: 2
+        x: 668
+        y: 772
+        width: 8
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b397dd5ed3f504810ba91c53faa8284e
+      internalID: 108673869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_40
+      rect:
+        serializedVersion: 2
+        x: 674
+        y: 787
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 158286847907d4731b3f963ccdd741fb
+      internalID: 472341451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_41
+      rect:
+        serializedVersion: 2
+        x: 888
+        y: 774
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec00bf5ac7f9e4797acc8d4abeba4e41
+      internalID: 1471867786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_42
+      rect:
+        serializedVersion: 2
+        x: 415
+        y: 179
+        width: 423
+        height: 594
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b979e5ebfa3684e6ca00f43d36ccfbdc
+      internalID: -360529521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_43
+      rect:
+        serializedVersion: 2
+        x: 678
+        y: 749
+        width: 9
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b3599c28061a42df875b0c55d0dac15
+      internalID: -554377176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_44
+      rect:
+        serializedVersion: 2
+        x: 882
+        y: 768
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1caab13aa93da41ae9adf70b4ee4a36d
+      internalID: 282082837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_45
+      rect:
+        serializedVersion: 2
+        x: 870
+        y: 756
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14fd2d79f6c084f7d929009f16692d85
+      internalID: -560833382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_46
+      rect:
+        serializedVersion: 2
+        x: 888
+        y: 732
+        width: 6
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8de27b78e67f5499088dfa945396d7df
+      internalID: -1520230221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_47
+      rect:
+        serializedVersion: 2
+        x: 883
+        y: 721
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a7eaa533b0a1419c89582ecaca9dd4f
+      internalID: 1176284155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_48
+      rect:
+        serializedVersion: 2
+        x: 924
+        y: 714
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4202e24d7125c4956bd8f1d9fa2971df
+      internalID: -1669649230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_49
+      rect:
+        serializedVersion: 2
+        x: 901
+        y: 708
+        width: 4
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1dd53f6fb5408476ebd4ac77fcb4709b
+      internalID: 1663811007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_50
+      rect:
+        serializedVersion: 2
+        x: 924
+        y: 696
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 763bb951d2f5040598eae48071566fd3
+      internalID: 1863974844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_51
+      rect:
+        serializedVersion: 2
+        x: 874
+        y: 658
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d108a4ac0efe246eba1da00c64012bc1
+      internalID: 1976026832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_52
+      rect:
+        serializedVersion: 2
+        x: 852
+        y: 648
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 459ad7737bfa548a28e618c206911e27
+      internalID: -1485918031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_53
+      rect:
+        serializedVersion: 2
+        x: 849
+        y: 630
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59ba3120979eb42259beda5c816ffb4e
+      internalID: 883703713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_54
+      rect:
+        serializedVersion: 2
+        x: 865
+        y: 630
+        width: 8
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c365b071f81c46a9b5c13171efce544
+      internalID: -170345964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_55
+      rect:
+        serializedVersion: 2
+        x: 938
+        y: 62
+        width: 488
+        height: 583
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf8a4c0ca3ba244a583afc6a0174927c
+      internalID: 448987236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_56
+      rect:
+        serializedVersion: 2
+        x: 834
+        y: 611
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 676c61c83287748cebd85dd2e1a2f604
+      internalID: -776468539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_57
+      rect:
+        serializedVersion: 2
+        x: 876
+        y: 612
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab514687fe1604eac98ce847eb0cb53f
+      internalID: 171733663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_58
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 616
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f8e7495384a4477d9cf5dd750e81328
+      internalID: -712430067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_59
+      rect:
+        serializedVersion: 2
+        x: 876
+        y: 597
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e725a2894713476ebb257df951b30a8
+      internalID: 1251519820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_60
+      rect:
+        serializedVersion: 2
+        x: 905
+        y: 588
+        width: 7
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0e88f68a7ada43218297d325dfb3ebd
+      internalID: -1051393727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_61
+      rect:
+        serializedVersion: 2
+        x: 912
+        y: 594
+        width: 6
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 466579076ac574b29947626ae8edeec2
+      internalID: 1233071737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_62
+      rect:
+        serializedVersion: 2
+        x: 854
+        y: 588
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 863f693f4256c4ddeb2a6853ee775096
+      internalID: -62705356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_63
+      rect:
+        serializedVersion: 2
+        x: 834
+        y: 578
+        width: 5
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 653387d9d50fe4ca9a1fd44cfbeecbfc
+      internalID: -1789871095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_64
+      rect:
+        serializedVersion: 2
+        x: 882
+        y: 574
+        width: 5
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd82c8b4b83f442c190e73c3190233b6
+      internalID: 2117870208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_65
+      rect:
+        serializedVersion: 2
+        x: 834
+        y: 572
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2e926978c75a41428036be2b0ccc168
+      internalID: -1738957889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_66
+      rect:
+        serializedVersion: 2
+        x: 859
+        y: 559
+        width: 5
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24f0031eae808489491825022d489cd2
+      internalID: -301390906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_67
+      rect:
+        serializedVersion: 2
+        x: 908
+        y: 566
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 977ef691a1f5f492585866b2237b86f3
+      internalID: -199375604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_68
+      rect:
+        serializedVersion: 2
+        x: 865
+        y: 534
+        width: 10
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4eeb496f47e0040bcb384b8fa3b042c2
+      internalID: 1197442838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_69
+      rect:
+        serializedVersion: 2
+        x: 889
+        y: 548
+        width: 10
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efe27a8de91d4494ba050e387a466a6c
+      internalID: -2094411472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_70
+      rect:
+        serializedVersion: 2
+        x: 858
+        y: 528
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4696a9107f55b456484a12e0f4173e35
+      internalID: 1200168296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_71
+      rect:
+        serializedVersion: 2
+        x: 930
+        y: 528
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1e777ed0784449ccb96d3b88114a6dd
+      internalID: -1254107033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_72
+      rect:
+        serializedVersion: 2
+        x: 848
+        y: 510
+        width: 10
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6446c54100c44fee92fd6d6bd0ada0b
+      internalID: 351931678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_73
+      rect:
+        serializedVersion: 2
+        x: 906
+        y: 498
+        width: 6
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1ab367fdb07740c8b4b7c7e3f33344a
+      internalID: -769353966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_74
+      rect:
+        serializedVersion: 2
+        x: 846
+        y: 474
+        width: 12
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b18b2def34a44b65a1ae7261932bd37
+      internalID: -1894644061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_75
+      rect:
+        serializedVersion: 2
+        x: 870
+        y: 468
+        width: 7
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2545f31ec85c4e12b2dc328b0901df9
+      internalID: 207447988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_76
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 468
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6dca4e8c42514336a68ce9068053f7e
+      internalID: 1269910471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_77
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 456
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 539b9058812a543a69b056f476fb6efb
+      internalID: 278699200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_78
+      rect:
+        serializedVersion: 2
+        x: 750
+        y: 402
+        width: 96
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48fecd91a6c6a4d939d2c4f657150000
+      internalID: -1265064668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_79
+      rect:
+        serializedVersion: 2
+        x: 876
+        y: 443
+        width: 7
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a690e701a91e041988f6edaff922a777
+      internalID: -772406961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_80
+      rect:
+        serializedVersion: 2
+        x: 882
+        y: 408
+        width: 36
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9019e743299ca4105905db06835d70ad
+      internalID: -767930258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_81
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 406
+        width: 4
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b022a222735948578e2d5c0927d1691
+      internalID: -132222008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_82
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 408
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 619b40e2576b54d249fcbe0502fe6003
+      internalID: 1250207903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_83
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 378
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 686a9fbc7a7d2492994c8d4ecfcaed54
+      internalID: 1811487008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_84
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 379
+        width: 12
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dccef6c27ff8a476bbf46831337e30b8
+      internalID: 2109293226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_85
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 367
+        width: 13
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0fede19f1fb8a4090831cf74e8448596
+      internalID: -1899038617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_86
+      rect:
+        serializedVersion: 2
+        x: 345
+        y: 382
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a19dcb848ea54d8e855bf1da15e3b32
+      internalID: 257427885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_87
+      rect:
+        serializedVersion: 2
+        x: 318
+        y: 360
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d4773e7fcb01474bb3b8d222f8e827c
+      internalID: -459967140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_88
+      rect:
+        serializedVersion: 2
+        x: 374
+        y: 357
+        width: 21
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3d0fd385d0904b1cb1f1e31c19ef94c
+      internalID: 213211388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_89
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 342
+        width: 10
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 273a6231e4699480d81cda39feb8c8aa
+      internalID: 421591946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_90
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 336
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fc3e868edeb147f08f290a8af749877
+      internalID: -1427276343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_91
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 336
+        width: 4
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 311f917caea324979991427a541b0a2c
+      internalID: -1138447323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_92
+      rect:
+        serializedVersion: 2
+        x: 397
+        y: 334
+        width: 5
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 979086ef1da5e4a719e1b44b347c79e1
+      internalID: 691503922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_93
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 307
+        width: 7
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44f6b0ceff73e492daea81d13855bdbd
+      internalID: 907155769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_94
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 303
+        width: 8
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8012ad1904a984e4b9f9048322ff0f40
+      internalID: 367872725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_95
+      rect:
+        serializedVersion: 2
+        x: 349
+        y: 308
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 000dea721771043c9940bc09ee9ad31b
+      internalID: -1356980806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_96
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 295
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1012e08d70bfd4c40a73689548efc3f1
+      internalID: 685913534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_97
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 294
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2bd8952da0f0b4ea5b204b4dc0872c9b
+      internalID: 1591408829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_98
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 302
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b9f980f01adb437189d69eaf263fe2f
+      internalID: -374701490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_99
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 270
+        width: 14
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99c20be6f195248abac4835583985e41
+      internalID: 60844637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_100
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 282
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b76619392f7f94d94936ad3a7b45dba4
+      internalID: 2035609070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_101
+      rect:
+        serializedVersion: 2
+        x: 316
+        y: 286
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b61b7429ad8174ba78a5777fa03413fe
+      internalID: -1248402636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_102
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 271
+        width: 14
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3674707649df34490b3674a7703a0833
+      internalID: -839806308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_103
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 276
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f94cdf50b24064eeb8eb35dbeca43985
+      internalID: -1302676743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_104
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 270
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d470cd1c4e114885b065f274e7b4ada
+      internalID: -480606830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_105
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 270
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e59e66adcacd04e29be514cb1e283b35
+      internalID: 710474110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_106
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 256
+        width: 4
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 146540dfc48854b7f8dfff67dcad0164
+      internalID: -1251373481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_107
+      rect:
+        serializedVersion: 2
+        x: 372
+        y: 258
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1849d243697a34f17979b2b7f114f07d
+      internalID: -1851908297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_108
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 240
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: edf14595016ca41f5957eb4ab3f6cf92
+      internalID: -548645132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_109
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 228
+        width: 17
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fea410b0d1edf4a1eb1e03a468ddc58e
+      internalID: 265267134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_110
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 249
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d589765add4774b189c8c5496498ca48
+      internalID: -1065716006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_111
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 243
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 745a9bdedb299447698118584ee8d91a
+      internalID: 1576744060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_112
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 234
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e81021887b72484fb1b60842e66602b
+      internalID: 1654767934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_113
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 243
+        width: 4
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66f3f15b37948437f9c926eb60a43f60
+      internalID: 1432096616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_114
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 234
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6d07a573d624415f8e49f89ab4300e7
+      internalID: 970186822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_115
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 234
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc2873e13a68d468e90e10ef895329ba
+      internalID: -1168544030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_116
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 232
+        width: 4
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d976d22493a64737813f511a04530fa
+      internalID: -1094244800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_117
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 222
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4cc60cf09ec2c4905a65fa9dccf0b3fe
+      internalID: -822238112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_118
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 226
+        width: 4
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 395cda07256a14d6098a3a61f69ce314
+      internalID: 1006970194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_119
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 222
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f2ddb6c407f04013a1a496d2c36e9b2
+      internalID: 2127702342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_120
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 216
+        width: 11
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98815336eea934101bc5438c7993f547
+      internalID: 1351819905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_121
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 198
+        width: 6
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7acb539ba6ea4be2a277ed966c2787d
+      internalID: -1238496675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_122
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 195
+        width: 5
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b76baa2c3424b40a792eaeba73e4e1bd
+      internalID: 1440435496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_123
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 168
+        width: 11
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5da4e65000d5472a94c1f2657ff1c98
+      internalID: -1394737402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_124
+      rect:
+        serializedVersion: 2
+        x: 362
+        y: 197
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d10740bf3d93414388e48bb95cac1c7
+      internalID: -658219972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_125
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 202
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6e580d9fc38147698f3a5e4f5624e70
+      internalID: -2125608545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_126
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 192
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7e708a6967a445d0be479f5c224abc0
+      internalID: -2032472527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_127
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 180
+        width: 6
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2df1d660df22046a78f524271b5e7032
+      internalID: 916981709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_128
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 182
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98edfef87d2a04db1a5fe1155a1600ff
+      internalID: 1831223290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_129
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 176
+        width: 7
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff840de5f6b0c4f11ad8f2a986064ecb
+      internalID: 174330753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_130
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 172
+        width: 12
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02ec0c197809a4ee7ab2b84f69b8734c
+      internalID: 1770166970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_131
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 162
+        width: 11
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee879d428179c454a9674114c1da8cd6
+      internalID: -1652727776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_132
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 180
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c95637ee35f7343a68fa18252e32ccb6
+      internalID: -1922187949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_133
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 164
+        width: 19
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d24c07d644d934b778fc8b5979bf98b4
+      internalID: 1800064961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_134
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 178
+        width: 5
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81a6c005b0f6d4c6caf9e6280beb5730
+      internalID: -583878833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_135
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 180
+        width: 4
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c76270be327f84b84a30c310ab29eda3
+      internalID: -1538373151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_136
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 158
+        width: 9
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23d3c29c5b6e84a70afa286b5c76d68a
+      internalID: -114625358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_137
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 156
+        width: 5
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed2e46be08b89496197c0eb70b30f6b3
+      internalID: -479565277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_138
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 166
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d07b0f77046d4ca7a81c7cac341372e
+      internalID: -1510786518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_139
+      rect:
+        serializedVersion: 2
+        x: 343
+        y: 155
+        width: 10
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41516f8eb3d6b43a297f0774b9e32053
+      internalID: -1016757578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_140
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 151
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e0f8a488399d4e3abc12fdedfa89d3d
+      internalID: 909383091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_141
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 147
+        width: 10
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c8d343f510a6411da58136fbe4a7ffe
+      internalID: -1202665286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_142
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 144
+        width: 12
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63c22f3913624439080ab5192ae5d94a
+      internalID: -1821651131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_143
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 136
+        width: 19
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac71f6be18565464ba9bb143a87800e8
+      internalID: 1734496726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_144
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 150
+        width: 4
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 434f8cd09a4f6429f98dd9bec3321f3b
+      internalID: 1456280834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_145
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 145
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b183e35909584885aeedd1e7d592528
+      internalID: 332032855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_146
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 143
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63b36df6637fe4021b2387e95960355b
+      internalID: -1287122544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_147
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 139
+        width: 5
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24fc77ffc16a648659360139bc95e4aa
+      internalID: -762864620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_148
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 144
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2fff3c00b75394460ba5db8a3ac21243
+      internalID: -1819818038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_149
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 135
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa8dba8bd2e154d09b38ae6f5b77f846
+      internalID: -1381988985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_150
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 134
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f4bed4a280694224b966a4d55be16b1
+      internalID: -939461418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_151
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 117
+        width: 10
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98a01ec4788934d799d526446ad13482
+      internalID: 1636117137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_152
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 135
+        width: 4
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00dc19279455247869d3826ef3eddd93
+      internalID: 1696359160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_153
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 114
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4db1582720aa54d71b1967c33375d13e
+      internalID: -1579432448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_154
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 120
+        width: 6
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a4db2a58d2384179902a961ff9f71ad
+      internalID: -939759793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_155
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 102
+        width: 15
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58c1f115ebafd42728fbb50aa1063687
+      internalID: -80561753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_156
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 114
+        width: 7
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1582597f8d9e47ce8e56eeda6ddbb5a
+      internalID: -377590059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_157
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 115
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a86a0c53730548619abd3c4e07b9aa1
+      internalID: 1958213181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_158
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 90
+        width: 54
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 614aaa928c44c468abc57bacabebbb99
+      internalID: 2106961582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_159
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 109
+        width: 6
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3eeba6e54aec4b689776aad0a079453
+      internalID: -1459265769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_160
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 94
+        width: 41
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 255eb17e3da954b768ff276371222d37
+      internalID: -2019644976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_161
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 102
+        width: 4
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d13db248efe2c492aa41e311641905e1
+      internalID: -950273157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_162
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 84
+        width: 4
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31c15f7e9bded4026a85a53162498770
+      internalID: 216122806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_163
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 72
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5cf3914eb9bc34a7f82f3be161d3afa8
+      internalID: 2053326511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_164
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 60
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac00b257bce3240749c7fb75055ecf4f
+      internalID: 366376637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_165
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 54
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d334e8aa15b3f4d039f464454161a080
+      internalID: 256462571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_166
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 54
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e2cac947dcba40ff99eb3d2b22897b5
+      internalID: -597466682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_167
+      rect:
+        serializedVersion: 2
+        x: 1098
+        y: 36
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 271ef990802bb44c487915ae0d2f5990
+      internalID: -273564906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_168
+      rect:
+        serializedVersion: 2
+        x: 1109
+        y: 42
+        width: 13
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 187968c961c3a4c3594ce249fcbc0417
+      internalID: 201978125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_169
+      rect:
+        serializedVersion: 2
+        x: 1086
+        y: 36
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dffee09f590954e83bd216afc5debd34
+      internalID: -431653377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hyoukai_170
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 30
+        width: 12
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3579e3350523243b8a4046b41ba2f23f
+      internalID: -1502385082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Hyoukai_0: 1773463246
+      Hyoukai_1: -1797941931
+      Hyoukai_10: -1560316191
+      Hyoukai_100: 2035609070
+      Hyoukai_101: -1248402636
+      Hyoukai_102: -839806308
+      Hyoukai_103: -1302676743
+      Hyoukai_104: -480606830
+      Hyoukai_105: 710474110
+      Hyoukai_106: -1251373481
+      Hyoukai_107: -1851908297
+      Hyoukai_108: -548645132
+      Hyoukai_109: 265267134
+      Hyoukai_11: -1076343476
+      Hyoukai_110: -1065716006
+      Hyoukai_111: 1576744060
+      Hyoukai_112: 1654767934
+      Hyoukai_113: 1432096616
+      Hyoukai_114: 970186822
+      Hyoukai_115: -1168544030
+      Hyoukai_116: -1094244800
+      Hyoukai_117: -822238112
+      Hyoukai_118: 1006970194
+      Hyoukai_119: 2127702342
+      Hyoukai_12: 17484038
+      Hyoukai_120: 1351819905
+      Hyoukai_121: -1238496675
+      Hyoukai_122: 1440435496
+      Hyoukai_123: -1394737402
+      Hyoukai_124: -658219972
+      Hyoukai_125: -2125608545
+      Hyoukai_126: -2032472527
+      Hyoukai_127: 916981709
+      Hyoukai_128: 1831223290
+      Hyoukai_129: 174330753
+      Hyoukai_13: -511708111
+      Hyoukai_130: 1770166970
+      Hyoukai_131: -1652727776
+      Hyoukai_132: -1922187949
+      Hyoukai_133: 1800064961
+      Hyoukai_134: -583878833
+      Hyoukai_135: -1538373151
+      Hyoukai_136: -114625358
+      Hyoukai_137: -479565277
+      Hyoukai_138: -1510786518
+      Hyoukai_139: -1016757578
+      Hyoukai_14: -455450254
+      Hyoukai_140: 909383091
+      Hyoukai_141: -1202665286
+      Hyoukai_142: -1821651131
+      Hyoukai_143: 1734496726
+      Hyoukai_144: 1456280834
+      Hyoukai_145: 332032855
+      Hyoukai_146: -1287122544
+      Hyoukai_147: -762864620
+      Hyoukai_148: -1819818038
+      Hyoukai_149: -1381988985
+      Hyoukai_15: 974816797
+      Hyoukai_150: -939461418
+      Hyoukai_151: 1636117137
+      Hyoukai_152: 1696359160
+      Hyoukai_153: -1579432448
+      Hyoukai_154: -939759793
+      Hyoukai_155: -80561753
+      Hyoukai_156: -377590059
+      Hyoukai_157: 1958213181
+      Hyoukai_158: 2106961582
+      Hyoukai_159: -1459265769
+      Hyoukai_16: -1344739823
+      Hyoukai_160: -2019644976
+      Hyoukai_161: -950273157
+      Hyoukai_162: 216122806
+      Hyoukai_163: 2053326511
+      Hyoukai_164: 366376637
+      Hyoukai_165: 256462571
+      Hyoukai_166: -597466682
+      Hyoukai_167: -273564906
+      Hyoukai_168: 201978125
+      Hyoukai_169: -431653377
+      Hyoukai_17: -1680580677
+      Hyoukai_170: -1502385082
+      Hyoukai_18: 1929482146
+      Hyoukai_19: 672033538
+      Hyoukai_2: 619198413
+      Hyoukai_20: -1230317727
+      Hyoukai_21: -59582484
+      Hyoukai_22: 2069480785
+      Hyoukai_23: 762774929
+      Hyoukai_24: -251443349
+      Hyoukai_25: -1765873486
+      Hyoukai_26: 431340006
+      Hyoukai_27: 552974228
+      Hyoukai_28: 1824724028
+      Hyoukai_29: -1493563231
+      Hyoukai_3: 566340797
+      Hyoukai_30: -1941722069
+      Hyoukai_31: -1953876035
+      Hyoukai_32: 8068351
+      Hyoukai_33: -83909605
+      Hyoukai_34: 1884472316
+      Hyoukai_35: 1780466217
+      Hyoukai_36: 1581462034
+      Hyoukai_37: -1726433950
+      Hyoukai_38: -600031041
+      Hyoukai_39: 108673869
+      Hyoukai_4: -232101294
+      Hyoukai_40: 472341451
+      Hyoukai_41: 1471867786
+      Hyoukai_42: -360529521
+      Hyoukai_43: -554377176
+      Hyoukai_44: 282082837
+      Hyoukai_45: -560833382
+      Hyoukai_46: -1520230221
+      Hyoukai_47: 1176284155
+      Hyoukai_48: -1669649230
+      Hyoukai_49: 1663811007
+      Hyoukai_5: -1127583229
+      Hyoukai_50: 1863974844
+      Hyoukai_51: 1976026832
+      Hyoukai_52: -1485918031
+      Hyoukai_53: 883703713
+      Hyoukai_54: -170345964
+      Hyoukai_55: 448987236
+      Hyoukai_56: -776468539
+      Hyoukai_57: 171733663
+      Hyoukai_58: -712430067
+      Hyoukai_59: 1251519820
+      Hyoukai_6: 87450887
+      Hyoukai_60: -1051393727
+      Hyoukai_61: 1233071737
+      Hyoukai_62: -62705356
+      Hyoukai_63: -1789871095
+      Hyoukai_64: 2117870208
+      Hyoukai_65: -1738957889
+      Hyoukai_66: -301390906
+      Hyoukai_67: -199375604
+      Hyoukai_68: 1197442838
+      Hyoukai_69: -2094411472
+      Hyoukai_7: -586075141
+      Hyoukai_70: 1200168296
+      Hyoukai_71: -1254107033
+      Hyoukai_72: 351931678
+      Hyoukai_73: -769353966
+      Hyoukai_74: -1894644061
+      Hyoukai_75: 207447988
+      Hyoukai_76: 1269910471
+      Hyoukai_77: 278699200
+      Hyoukai_78: -1265064668
+      Hyoukai_79: -772406961
+      Hyoukai_8: -220543577
+      Hyoukai_80: -767930258
+      Hyoukai_81: -132222008
+      Hyoukai_82: 1250207903
+      Hyoukai_83: 1811487008
+      Hyoukai_84: 2109293226
+      Hyoukai_85: -1899038617
+      Hyoukai_86: 257427885
+      Hyoukai_87: -459967140
+      Hyoukai_88: 213211388
+      Hyoukai_89: 421591946
+      Hyoukai_9: 404302601
+      Hyoukai_90: -1427276343
+      Hyoukai_91: -1138447323
+      Hyoukai_92: 691503922
+      Hyoukai_93: 907155769
+      Hyoukai_94: 367872725
+      Hyoukai_95: -1356980806
+      Hyoukai_96: 685913534
+      Hyoukai_97: 1591408829
+      Hyoukai_98: -374701490
+      Hyoukai_99: 60844637
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
