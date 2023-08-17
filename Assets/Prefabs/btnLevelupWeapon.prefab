@@ -79,7 +79,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "2 \u2192 3"
+  m_Text: 
 --- !u!1 &6540124961779084836
 GameObject:
   m_ObjectHideFlags: 0
@@ -294,3 +294,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   imgLevelupWeaponBtn: {fileID: 6540124961779084838}
   btnLevelupWeapon: {fileID: 6540124962061209750}
+  txtLevel: {fileID: 6540124960043691931}

@@ -30,11 +30,22 @@ public class LevelupPopUp : MonoBehaviour
 
     //各BulletGenerator
     private BulletGenerator bulletGenerator;
+    public BulletGenerator BulletGenerator => bulletGenerator;
+
     private BulletGenerator1 bulletGenerator1;
+    public BulletGenerator1 BulletGenerator1 => bulletGenerator1;
+
     private BulletGenerator2 bulletGenerator2;
+    public BulletGenerator2 BulletGenerator2 => bulletGenerator2;
+
     private BulletGenerator3 bulletGenerator3;
+    public BulletGenerator3 BulletGenerator3 => bulletGenerator3;
+
     private BulletGenerator4 bulletGenerator4;
+    public BulletGenerator4 BulletGenerator4 => bulletGenerator4;
+
     private BulletGenerator5 bulletGenerator5;
+    public BulletGenerator5 BulletGenerator5 => bulletGenerator5;
 
     private BulletDataSO.BulletData selectedBulletData;  //選ばれたバレットのデータ
 
@@ -188,6 +199,10 @@ public class LevelupPopUp : MonoBehaviour
         {
             Destroy(button);
         }
+
+        //txtDescliptionの初期化
+        txtBulletDescliption.text = "";
+        txtLevelupDescliption.text = "";
     }
 
     /// <summary>
