@@ -155,7 +155,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackPoint: 2
-  exp: 4
+  exp: 5
+  isFrozen: 0
   navMeshAgent2D: {fileID: 2042724052510328653}
 --- !u!114 &2042724052510328653
 MonoBehaviour:

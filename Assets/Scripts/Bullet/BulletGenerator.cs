@@ -7,6 +7,8 @@ using UnityEngine;
 /// </summary>
 public class BulletGenerator : MonoBehaviour
 {
+    public int bulletLevel = 1;
+
     [SerializeField] private Bullet bulletPrefab;
 
     [SerializeField] private Transform temporaryObjectsPlace;
@@ -23,7 +25,7 @@ public class BulletGenerator : MonoBehaviour
     /// <param name="direction"></param>
     public void PrepareGenerateBullet(Vector2 direction)
     {
-        switch (charaController.level)
+        switch (bulletLevel)
         {
             case 1:
                 GenerateBullet(direction);

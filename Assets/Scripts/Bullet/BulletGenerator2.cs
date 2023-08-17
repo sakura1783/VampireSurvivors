@@ -7,19 +7,33 @@ using UnityEngine;
 /// </summary>
 public class BulletGenerator2 : MonoBehaviour
 {
-    [SerializeField] private Bullet2 bulletPrefab;
+    public int bulletLevel = 1;
 
-    [SerializeField] private Transform temporaryObjectsPlace;
+    private Bullet2 bulletPrefab;
 
-    [SerializeField] private CharaController charaController;
+    Transform temporaryObjectsPlace;
 
+    private CharaController charaController;
+
+
+    /// <summary>
+    /// 初期設定
+    /// </summary>
+    public void SetUpBulletGenerator2(CharaController charaController)
+    {
+        this.charaController = charaController;
+
+        bulletPrefab = this.charaController.bullet2Prefab;
+
+        temporaryObjectsPlace = this.charaController.temporaryObjectsPlace;
+    }
 
     /// <summary>
     /// バレット生成の準備
     /// </summary>
     public IEnumerator PrepareGenerateBullet()
     {
-        switch (charaController.level)
+        switch (bulletLevel)
         {
             case 1:
                 yield return StartCoroutine(GenerateBullet());

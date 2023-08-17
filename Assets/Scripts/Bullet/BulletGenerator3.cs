@@ -7,6 +7,8 @@ using UnityEngine;
 /// </summary>
 public class BulletGenerator3 : MonoBehaviour
 {
+    //public int bulletLevel = 1;
+
     [SerializeField] private Bullet3 bulletPrefab;
 
     [SerializeField] private Transform temporaryObjectsPlace;
@@ -17,11 +19,23 @@ public class BulletGenerator3 : MonoBehaviour
 
 
     /// <summary>
+    /// 初期設定
+    /// </summary>
+    //public void SetUpBulletGenerator3(CharaController charaController)
+    //{
+    //    this.charaController = charaController;
+
+    //    bulletPrefab = this.charaController.bullet3Prefab;
+
+    //    temporaryObjectsPlace = this.charaController.temporaryObjectsPlace;
+    //}
+
+    /// <summary>
     /// バレット生成準備
     /// </summary>
     public void PrepareGenerateBullet(Vector2 direction)
     {
-        switch (charaController.level)
+        switch (charaController.charaLevel)
         {
             case 1:
                 GenerateBullet(direction, CalculateGeneratePos(0));

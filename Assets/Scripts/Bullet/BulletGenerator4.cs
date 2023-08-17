@@ -8,18 +8,33 @@ using System.Linq;
 /// </summary>
 public class BulletGenerator4 : MonoBehaviour
 {
-    [SerializeField] private Bullet4 bulletPrefab;
+    public int bulletLevel = 1;
 
-    [SerializeField] private Transform temporaryObjectsPlace;
+    public float attackInterval;
 
-    [SerializeField] private CharaController charaController;
+    private Bullet4 bulletPrefab;
+
+    private Transform temporaryObjectsPlace;
+
+    private CharaController charaController;
 
     private EnemyController target;  //攻撃対象
 
     private Vector2 offsetPos;  //最終的な生成位置
 
-    public float attackInterval;
 
+    /// <summary>
+    /// 初期設定
+    /// </summary>
+    /// <param name="charaController"></param>
+    public void SetUpBulletGenerator4(CharaController charaController)
+    {
+        this.charaController = charaController;
+
+        bulletPrefab = this.charaController.bullet4Prefab;
+
+        temporaryObjectsPlace = this.charaController.temporaryObjectsPlace;
+    }
 
     /// <summary>
     /// GenerateBulletを実行
@@ -124,7 +139,7 @@ public class BulletGenerator4 : MonoBehaviour
     /// </summary>
     public void SetAttackIntervalByLevel()
     {
-        switch (charaController.level)
+        switch (bulletLevel)
         {
             case 1:
                 attackInterval = 3.0f;
@@ -146,7 +161,7 @@ public class BulletGenerator4 : MonoBehaviour
                 attackInterval = 1.0f;
                 break;
 
-            case 6:
+            default:
                 attackInterval = 0.5f;
                 break;
         }

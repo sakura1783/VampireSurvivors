@@ -4,7 +4,20 @@ using UnityEngine;
 
 public class CharaController : MonoBehaviour
 {
-    public int level = 1;
+    public int charaLevel = 1;
+
+    public List<BulletDataSO.BulletData> bulletDatasList = new();  //ポップアップに渡す情報。レベルアップ時にポップアップを出すのでここに宣言する
+
+    public LevelupPopUp levelupPop;
+
+    //ここから各BulletGeneratorへのアサイン用変数
+    public Bullet1 bullet1Prefab;
+    public Bullet2 bullet2Prefab;
+    public Bullet3 bullet3Prefab;
+    public Bullet4 bullet4Prefab;
+    public Bullet5 bullet5Prefab;
+
+    public Transform temporaryObjectsPlace;
 
     [SerializeField] private float moveSpeed;
 
@@ -33,7 +46,7 @@ public class CharaController : MonoBehaviour
     //[SerializeField] private BulletGenerator bulletGenerator;
     //[SerializeField] private BulletGenerator1 bulletGenerator1;
     //[SerializeField] private BulletGenerator2 bulletGenerator2;
-    [SerializeField] private BulletGenerator3 bulletGenerator3;
+    //[SerializeField] private BulletGenerator3 bulletGenerator3;
     //[SerializeField] private BulletGenerator4 bulletGenerator4;
     //[SerializeField] private BulletGenerator5 bulletGenerator5;
 
@@ -43,10 +56,6 @@ public class CharaController : MonoBehaviour
     private Animator charaAnim;
     public Animator CharaAnim => charaAnim;
 
-    //TODO 確認用。終わったらprivateにする
-    //[SerializeField] private AnimatorClipInfo[] animatorClipInfo = new AnimatorClipInfo[0];  //現在のアニメの取得用(BulletGenerator3で使用)
-    //public AnimatorClipInfo[] AnimatorClipInofo => animatorClipInfo;
-
     private float charaScale;  //キャラの左右アニメの設定で利用する
 
     private Vector2 direction;  //キャラが向いている方向
@@ -54,31 +63,56 @@ public class CharaController : MonoBehaviour
 
     private int addPoint = 5;  //needExpForLevelUp変数に加算するポイント(レベルが上がるにつれて、必要なExpも増える)
 
-    //private BulletGenerator1 bulletGenerator1;
-    //private BulletGenerator2 bulletGenerator2;
-    //private BulletGenerator3 bulletGenerator3;
-    //private BulletGenerator4 bulletGenerator4;
-    //private BulletGenerator5 bulletGenerator5;
+    //各BulletGenerator
+    private BulletGenerator bulletGenerator;
+    public BulletGenerator BulletGenerator => bulletGenerator;
 
-    private float defaultTimer;
-    private float bullet4Timer;
+    private BulletGenerator1 bulletGenerator1;
+    public BulletGenerator1 BulletGenerator1 => bulletGenerator1;
+
+    private BulletGenerator2 bulletGenerator2;
+    public BulletGenerator2 BulletGenerator2 => bulletGenerator2;
+
+    private BulletGenerator3 bulletGenerator3;
+    public BulletGenerator3 BulletGenerator3 => bulletGenerator3;
+
+    private BulletGenerator4 bulletGenerator4; 
+    public BulletGenerator4 BulletGenerator4 => bulletGenerator4;
+
+    private BulletGenerator5 bulletGenerator5;
+    public BulletGenerator5 BulletGenerator5 => bulletGenerator5;
+
+    //各バレットの攻撃のインターバル時間
+    //private float defaultTimer;
+    private float bulletTimer0;
+    private float bulletTimer1;
+    private float bulletTimer2;
+    private float bulletTimer3;
+    private float bulletTimer4;
+    private float bulletTimer5;
 
 
-    //TODO テスト用。終わったら消す
-    void Start()
-    {
-        direction = new Vector2(0, -1);  //プレイヤーの初期方向をセット。何も設定をしないと最初directionは(0, 0)なので、これでプレイヤーの向きと同期する
-        //bulletGenerator1.SetUpBulletGenerator1();
-        //bulletGenerator1.PrepareGenerateBullet(direction);
+    //テスト用。終わったら消す
+    //void Start()
+    //{
+    //    //direction = new Vector2(0, -1);  //プレイヤーの初期方向をセット。何も設定をしないと最初directionは(0, 0)なので、これでプレイヤーの向きと同期する
+    //    //bulletGenerator1.SetUpBulletGenerator1();
+    //    //bulletGenerator1.PrepareGenerateBullet(direction);
 
-        //各BulletGeneratorがアタッチされているか確認  //TODO メソッドにする。最初だけでなくレベルアップ時にも確認する必要があるため
-        //TryGetComponent(out bulletGenerator4);  //取得できた場合はtrueを返し、取得できなかった場合はfalseを返す。取得できなかった場合も取得できないだけで、エラーは出ない
+    //    //各BulletGeneratorがアタッチされているか確認  //メソッドにする。最初だけでなくレベルアップ時にも確認する必要があるため
+    //    //TryGetComponent(out bulletGenerator4);  //取得できた場合はtrueを返し、取得できなかった場合はfalseを返す。取得できなかった場合も取得できないだけで、エラーは出ない
 
-        //bulletGenerator4.SetAttackIntervalByLevel();
-    }
+    //    //bulletGenerator4.SetAttackIntervalByLevel();
+    //}
 
     void Update()
     {
+        //ポップアップ表示中は動かない
+        if (levelupPop.isDisplayPopUp)
+        {
+            return;
+        }
+
         if (Input.GetMouseButton(0))
         {
             Vector2 tapPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -91,15 +125,27 @@ public class CharaController : MonoBehaviour
     }
 
     /// <summary>
-    /// 設定
+    /// 初期設定
     /// </summary>
     public void SetUpCharaController()
     {
+        //プレイヤーの初期方向をセット
+        direction = new Vector2(0, -1);  
+
         transform.GetChild(0).gameObject.TryGetComponent(out charaAnim);
 
         charaScale = transform.GetChild(0).localScale.x;  //キャラの向き変更に使う
 
         StartCoroutine(PrepareAttack());
+
+        //バレットのデータをリスト化
+        CreateBulletDatasList();
+
+        //アタッチされているBulletGeneratorたちを各変数に入れる
+        AssainBulletGenerators();
+
+        //LevelupPopUpの設定
+        levelupPop.SetUpLevelupPopUp(this, bulletDatasList);
     }
 
     /// <summary>
@@ -185,6 +231,14 @@ public class CharaController : MonoBehaviour
     {
         while (true)
         {
+            //ポップアップ表示中は攻撃しない
+            if (levelupPop.isDisplayPopUp)
+            {
+                yield return null;
+
+                continue;
+            }
+
             //if (bulletGenerator4)
             //{
             //    bullet4Timer += Time.deltaTime;
@@ -199,19 +253,98 @@ public class CharaController : MonoBehaviour
             //}
             //else
             //{
-            defaultTimer += Time.deltaTime;
+            //bulletTimer0 += Time.deltaTime;
 
-            if (defaultTimer >= attackInterval)
-            {
-                defaultTimer = 0;
+            //if (bulletTimer0 >= attackInterval)
+            //{
+            //    bulletTimer0 = 0;
 
-                Attack();
-            }
+            //    Attack();
+            //}
             //}
 
             //yield return new WaitForSeconds(attackInterval);
 
             //Attack();
+
+            if (bulletGenerator)
+            {
+                bulletTimer0 += Time.deltaTime;
+
+                if (bulletTimer0 >= bulletDatasList[0].attackInterval)
+                {
+                    bulletTimer0 = 0;
+
+                    bulletGenerator.PrepareGenerateBullet(direction);
+
+                    Debug.Log("デフォルト弾発射");
+                }
+            }
+            //if (bulletGenerator1)
+            //{
+            //    bulletTimer1 += Time.deltaTime;
+
+            //    if (bulletTimer1 >= bulletDatasList[1].attackInterval)
+            //    {
+            //        bulletTimer1 = 0;
+
+            //        bulletGenerator1.PrepareGenerateBullet(direction);
+
+            //        Debug.Log("手裏剣発射");
+            //    }
+            //}
+            if (bulletGenerator2)
+            {
+                bulletTimer2 += Time.deltaTime;
+
+                if (bulletTimer2 >= bulletDatasList[2].attackInterval)
+                {
+                    bulletTimer2 = 0;
+
+                    StartCoroutine(bulletGenerator2.PrepareGenerateBullet());
+
+                    Debug.Log("追尾弾発射");
+                }
+            }
+            if (bulletGenerator3)
+            {
+                bulletTimer3 += Time.deltaTime;
+
+                if (bulletTimer3 >= bulletDatasList[3].attackInterval)
+                {
+                    bulletTimer3 = 0;
+
+                    bulletGenerator3.PrepareGenerateBullet(direction);
+
+                    Debug.Log("レーザー発射");
+                }
+            }
+            if (bulletGenerator4)
+            {
+                bulletTimer4 += Time.deltaTime;
+
+                if (bulletTimer4 >= bulletGenerator4.attackInterval)  //bullet4(雷)だけはattackIntervalが変化するのでbulletGenerator4から値をもらう
+                {
+                    bulletTimer4 = 0;
+
+                    bulletGenerator4.PrepareGenerateBullet();
+
+                    Debug.Log("雷発射");
+                }
+            }
+            if (bulletGenerator5)
+            {
+                bulletTimer5 += Time.deltaTime;
+
+                if (bulletTimer5 >= bulletDatasList[5].attackInterval)
+                {
+                    bulletTimer5 = 0;
+
+                    bulletGenerator5.PrepareGenerateBullet(direction);
+
+                    Debug.Log("氷発射");
+                }
+            }
 
             yield return null;
         }
@@ -220,20 +353,20 @@ public class CharaController : MonoBehaviour
     /// <summary>
     /// 攻撃
     /// </summary>
-    private void Attack()
-    {
-        //Bullet bullet = Instantiate(bulletPrefab, transform);
-        //bullet.transform.SetParent(temporaryObjectsPlace);
-        //bullet.Shoot(direction);
+    //private void Attack()
+    //{
+    //    //Bullet bullet = Instantiate(bulletPrefab, transform);
+    //    //bullet.transform.SetParent(temporaryObjectsPlace);
+    //    //bullet.Shoot(direction);
 
-        //上の処理をまとめる
-        //bulletGenerator.PrepareGenerateBullet(direction);
-        //StartCoroutine(bulletGenerator2.PrepareGenerateBullet());
-        bulletGenerator3.PrepareGenerateBullet(direction);
-        //bulletGenerator5.PrepareGenerateBullet(direction);
+    //    //上の処理をまとめる
+    //    //bulletGenerator.PrepareGenerateBullet(direction);
+    //    //StartCoroutine(bulletGenerator2.PrepareGenerateBullet());
+    //    //bulletGenerator3.PrepareGenerateBullet(direction);
+    //    //bulletGenerator5.PrepareGenerateBullet(direction);
 
-        //Debug.Log("攻撃");
-    }
+    //    //Debug.Log("攻撃");
+    //}
 
     /// <summary>
     /// HP更新
@@ -273,24 +406,52 @@ public class CharaController : MonoBehaviour
         //Expの値をリセットする
         totalExp = 0;
 
-        level++;
+        charaLevel++;
 
-        Debug.Log($"現在のレベル：{level}");
+        Debug.Log($"現在のレベル：{charaLevel}");
 
         //次のレベルアップに必要なExpを増やす(レベルが上がるにつれて、必要なExpも増える)
-        needExpForLevelUp += addPoint * (level - 1);
+        needExpForLevelUp += addPoint * (charaLevel - 1);
+
+        levelupPop.ShowPopUp(bulletDatasList);
 
         //レベルに応じてバレット4の生成時間を短縮
         //bulletGenerator4.SetAttackIntervalByLevel();
 
         //TODO 値変える
-        if (level == 5)
+        if (charaLevel == 5)
         {
             StartCoroutine(enemyGenerator1.GenerateEnemy(this));
         }
-        if (level == 10)
+        if (charaLevel == 10)
         {
             StartCoroutine(enemyGenerator2.GenerateEnemy(this));
         }
+    }
+
+    /// <summary>
+    /// バレットのデータをリスト化
+    /// </summary>
+    private void CreateBulletDatasList()
+    {
+        foreach (var bulletData in DataBaseManager.instance.bulletDataSO.bulletDataList)
+        {
+            bulletDatasList.Add(bulletData);
+        }
+    }
+
+    /// <summary>
+    /// アタッチされているBulletGeneratorを各変数に入れる
+    /// </summary>
+    public void AssainBulletGenerators()
+    {
+        TryGetComponent(out bulletGenerator);
+        TryGetComponent(out bulletGenerator1);
+        TryGetComponent(out bulletGenerator2);
+        TryGetComponent(out bulletGenerator3);
+        TryGetComponent(out bulletGenerator4);
+        TryGetComponent(out bulletGenerator5);
+
+        Debug.Log("AssainBulletGeneratorsが動きました");
     }
 }

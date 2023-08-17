@@ -7,14 +7,28 @@ using UnityEngine;
 /// </summary>
 public class BulletGenerator5 : MonoBehaviour
 {
-    [SerializeField] private Bullet5 bulletPrefab;
+    public int bulletLevel = 1;
 
-    [SerializeField] private Transform temporaryObjectsPlace;
+    private Bullet5 bulletPrefab;
 
-    [SerializeField] private CharaController charaController;
+    private Transform temporaryObjectsPlace;
 
     [SerializeField] private float offsetDegrees = 5;  //バレット同士の角度間隔
 
+    private CharaController charaController;
+
+
+    /// <summary>
+    /// 初期設定
+    /// </summary>
+    public void SetUpBulletGenerator5(CharaController charaController)
+    {
+        this.charaController = charaController;
+
+        bulletPrefab = this.charaController.bullet5Prefab;
+
+        temporaryObjectsPlace = this.charaController.temporaryObjectsPlace;
+    }
 
     /// <summary>
     /// バレット生成の準備
@@ -22,7 +36,7 @@ public class BulletGenerator5 : MonoBehaviour
     /// <param name="direction"></param>
     public void PrepareGenerateBullet(Vector2 direction)
     {
-        switch (charaController.level)
+        switch (bulletLevel)
         {
             case 1:
                 GenerateBullet(direction);

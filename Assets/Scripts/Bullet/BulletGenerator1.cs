@@ -7,7 +7,9 @@ using UnityEngine;
 /// </summary>
 public class BulletGenerator1 : MonoBehaviour
 {
-    [SerializeField] private Bullet1 bulletPrefab;
+    public int bulletLevel = 1;
+
+    private Bullet1 bulletPrefab;
 
     //[SerializeField] private float offsetDistance;
 
@@ -19,9 +21,11 @@ public class BulletGenerator1 : MonoBehaviour
     /// <summary>
     /// 初期設定
     /// </summary>
-    public void SetUpBulletGenerator1()
+    public void SetUpBulletGenerator1(CharaController charaController)
     {
-        charaController = GetComponent<CharaController>();
+        this.charaController = charaController;
+
+        bulletPrefab = this.charaController.bullet1Prefab;
     }
 
     /// <summary>
@@ -29,7 +33,7 @@ public class BulletGenerator1 : MonoBehaviour
     /// </summary>
     public void PrepareGenerateBullet(Vector2 direction)
     {
-        switch (charaController.level)
+        switch (bulletLevel)
         {
             case 1:
                 GenerateBullet(CalculateBulletDirection(0, 360, direction));

@@ -19,6 +19,12 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
+        //ポップアップ表示中は動きを止める
+        if (charaController.levelupPop.isDisplayPopUp)
+        {
+            return;
+        }
+
         if (isFrozen)
         {
             return;
