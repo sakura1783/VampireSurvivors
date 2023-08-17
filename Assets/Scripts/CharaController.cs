@@ -53,6 +53,8 @@ public class CharaController : MonoBehaviour
     [SerializeField] private EnemyGenerator enemyGenerator1;
     [SerializeField] private EnemyGenerator enemyGenerator2;
 
+    [SerializeField] private UIManager uiManager;
+
     private Animator charaAnim;
     public Animator CharaAnim => charaAnim;
 
@@ -412,6 +414,9 @@ public class CharaController : MonoBehaviour
 
         //次のレベルアップに必要なExpを増やす(レベルが上がるにつれて、必要なExpも増える)
         needExpForLevelUp += addPoint * (charaLevel - 1);
+
+        //キャラのレベルのUI更新
+        uiManager.UpdateDisplayCharaLevel();
 
         levelupPop.ShowPopUp(bulletDatasList);
 
