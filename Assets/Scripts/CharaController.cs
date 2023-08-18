@@ -46,7 +46,7 @@ public class CharaController : MonoBehaviour
     //[SerializeField] private BulletGenerator bulletGenerator;
     //[SerializeField] private BulletGenerator1 bulletGenerator1;
     //[SerializeField] private BulletGenerator2 bulletGenerator2;
-    //[SerializeField] private BulletGenerator3 bulletGenerator3;
+    [SerializeField] private BulletGenerator3 bulletGenerator3;
     //[SerializeField] private BulletGenerator4 bulletGenerator4;
     //[SerializeField] private BulletGenerator5 bulletGenerator5;
 
@@ -75,8 +75,8 @@ public class CharaController : MonoBehaviour
     private BulletGenerator2 bulletGenerator2;
     public BulletGenerator2 BulletGenerator2 => bulletGenerator2;
 
-    private BulletGenerator3 bulletGenerator3;
-    public BulletGenerator3 BulletGenerator3 => bulletGenerator3;
+    //private BulletGenerator3 bulletGenerator3;
+    //public BulletGenerator3 BulletGenerator3 => bulletGenerator3;
 
     private BulletGenerator4 bulletGenerator4; 
     public BulletGenerator4 BulletGenerator4 => bulletGenerator4;
