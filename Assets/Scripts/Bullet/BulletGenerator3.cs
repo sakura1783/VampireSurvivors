@@ -17,7 +17,7 @@ public class BulletGenerator3 : MonoBehaviour
 
     private Vector3 lineDirection;
 
-    [SerializeField] private float bulletDistance = 0.5f;  //バレット間の距離
+    [SerializeField] private float bulletDistance = 0.3f;  //バレット間の距離
     //[SerializeField] private float bulletLine;  //直線
 
     [SerializeField] private bool isDebugDrawRayOn;  //デバッグ用のオンオフのスイッチ

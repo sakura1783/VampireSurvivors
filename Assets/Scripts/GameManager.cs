@@ -12,6 +12,9 @@ public class GameManager : MonoBehaviour
 
     //[SerializeField] private CharaManager charaManager;
 
+    [SerializeField] private Cannon cannon0;
+    [SerializeField] private Cannon cannon1;
+
 
     void Start()
     {
@@ -20,6 +23,11 @@ public class GameManager : MonoBehaviour
         charaController.SetUpCharaController();
         //charaManager.SetUpCharaManager();
 
+        //敵の生成開始
         StartCoroutine(enemyGenerator.GenerateEnemy(charaController));
+
+        //大砲の攻撃開始
+        StartCoroutine(cannon0.PrepareGenerateBullet());
+        StartCoroutine(cannon1.PrepareGenerateBullet());
     }
 }
