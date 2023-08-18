@@ -60,6 +60,19 @@ public class LevelupPopUp : MonoBehaviour
     public bool isDisplayPopUp = false;  //ポップアップ表示中かどうか
 
 
+    void Update()
+    {
+        //ポップアップ表示中は物理演算で動いているゲームオブジェクト(例えばバレットなど)の動きを一時停止する
+        if (isDisplayPopUp)
+        {
+            Time.timeScale = 0;
+        }
+        else
+        {
+            Time.timeScale = 1;
+        }
+    }
+
     /// <summary>
     /// 初期設定。CharaControllerのSetUpメソッドで実行する
     /// </summary>

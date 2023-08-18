@@ -22,6 +22,14 @@ public class Cannon : MonoBehaviour
     {
         while (true)
         {
+            //ポップアップ表示中は新たなバレットを生成しない
+            if (charaController.levelupPop.isDisplayPopUp)
+            {
+                yield return null;
+
+                continue;
+            }
+
             //yield return new WaitForSeconds(attackInterval);
 
             timer += Time.deltaTime;
