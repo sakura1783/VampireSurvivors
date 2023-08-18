@@ -19,6 +19,10 @@ public class CharaController : MonoBehaviour
 
     public Transform temporaryObjectsPlace;
 
+    public int maxHp;
+
+    public int hp;
+
     [SerializeField] private float moveSpeed;
 
     //[SerializeField] private float limitPosX;
@@ -37,8 +41,6 @@ public class CharaController : MonoBehaviour
 
     //[SerializeField] private Transform temporaryObjectsPlace;
 
-    [SerializeField] private int hp;
-
     [SerializeField] private int needExpForLevelUp;  //レベルアップに必要なExp
 
     [SerializeField] private int totalExp;  //現在保持しているExp
@@ -46,7 +48,7 @@ public class CharaController : MonoBehaviour
     //[SerializeField] private BulletGenerator bulletGenerator;
     //[SerializeField] private BulletGenerator1 bulletGenerator1;
     //[SerializeField] private BulletGenerator2 bulletGenerator2;
-    [SerializeField] private BulletGenerator3 bulletGenerator3;
+    //[SerializeField] private BulletGenerator3 bulletGenerator3;
     //[SerializeField] private BulletGenerator4 bulletGenerator4;
     //[SerializeField] private BulletGenerator5 bulletGenerator5;
 
@@ -75,8 +77,8 @@ public class CharaController : MonoBehaviour
     private BulletGenerator2 bulletGenerator2;
     public BulletGenerator2 BulletGenerator2 => bulletGenerator2;
 
-    //private BulletGenerator3 bulletGenerator3;
-    //public BulletGenerator3 BulletGenerator3 => bulletGenerator3;
+    private BulletGenerator3 bulletGenerator3;
+    public BulletGenerator3 BulletGenerator3 => bulletGenerator3;
 
     private BulletGenerator4 bulletGenerator4; 
     public BulletGenerator4 BulletGenerator4 => bulletGenerator4;
@@ -131,6 +133,10 @@ public class CharaController : MonoBehaviour
     /// </summary>
     public void SetUpCharaController()
     {
+        hp = maxHp;
+
+        uiManager.UpdateHpGauge();
+
         //プレイヤーの初期方向をセット
         direction = new Vector2(0, -1);  
 
@@ -375,7 +381,9 @@ public class CharaController : MonoBehaviour
     /// </summary>
     public void UpdateHp(int value)
     {
-        hp += value;
+        hp = Mathf.Clamp(hp += value, 0, maxHp);
+
+        uiManager.UpdateHpGauge();
     }
 
     /// <summary>

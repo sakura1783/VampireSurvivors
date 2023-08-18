@@ -51,15 +51,13 @@ public class LevelupPopUp : MonoBehaviour
 
     private CharaController charaController;
 
-    //TODO 確認したらprivateにする
-    public List<int> attatchedBulletList = new();  //CharaSetにアタッチ済みのバレットのリスト(NewWeapon用)
+    private List<int> attatchedBulletList = new();  //CharaSetにアタッチ済みのバレットのリスト(NewWeapon用)
 
-    //TODO 確認したらprivateにする
-    public int[] attatchedBulletGeneratorsArray = new int[6];  //CharaSetにアタッチされているBulletGeneratorを順番に入れる(LevelupWeapon用)
-
-    public bool isDisplayPopUp = false;  //ポップアップ表示中かどうか
+    private int[] attatchedBulletGeneratorsArray = new int[6];  //CharaSetにアタッチされているBulletGeneratorを順番に入れる(LevelupWeapon用)
 
     private List<GameObject> btnsList = new();  //生成した全てのボタンのリスト
+
+    public bool isDisplayPopUp = false;  //ポップアップ表示中かどうか
 
 
     /// <summary>
@@ -297,7 +295,7 @@ public class LevelupPopUp : MonoBehaviour
 
             case 3:
                 bulletGenerator3 = charaController.gameObject.AddComponent<BulletGenerator3>();
-                //TODO bulletGenerator3.SetUpBulletGenerator3(charaController);
+                bulletGenerator3.SetUpBulletGenerator3(charaController);
                 Debug.Log($"bulletNo：{selectedBulletData.bulletNo}、BulletGenerator3をアタッチします");
                 break;
 
@@ -365,10 +363,10 @@ public class LevelupPopUp : MonoBehaviour
         {
             attatchedBulletGeneratorsArray[2] = 2;
         }
-        //if (charaController.BulletGenerator3)
-        //{
-        //    attatchedBulletGeneratorsArray[3] = 3;
-        //}
+        if (charaController.BulletGenerator3)
+        {
+            attatchedBulletGeneratorsArray[3] = 3;
+        }
         if (charaController.BulletGenerator4)
         {
             attatchedBulletGeneratorsArray[4] = 4;
@@ -409,12 +407,12 @@ public class LevelupPopUp : MonoBehaviour
                 }
                 return false;
 
-            //case 3:
-            //    if (bulletGenerator3.bulletLevel >= charaController.bulletDatasList[count].maxLevel)
-            //    {
-            //        return true;
-            //    }
-            //    return false;
+            case 3:
+                if (bulletGenerator3.bulletLevel >= charaController.bulletDatasList[count].maxLevel)
+                {
+                    return true;
+                }
+                return false;
 
             case 4:
                 if (bulletGenerator4.bulletLevel >= charaController.bulletDatasList[count].maxLevel)
@@ -456,7 +454,7 @@ public class LevelupPopUp : MonoBehaviour
                 break;
 
             case 3:
-                //bulletGenerator3.bulletLevel++;
+                bulletGenerator3.bulletLevel++;
                 break;
 
             case 4:

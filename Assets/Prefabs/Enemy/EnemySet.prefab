@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efb6f9058c4a340a39fcaf51263ef65b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackPoint: 2
+  attackPoint: 15
   exp: 5
   isFrozen: 0
   navMeshAgent2D: {fileID: 2042724052510328653}

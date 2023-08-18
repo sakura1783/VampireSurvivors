@@ -7,20 +7,20 @@ using UnityEngine;
 /// </summary>
 public class BulletGenerator3 : MonoBehaviour
 {
-    //public int bulletLevel = 1;
+    public int bulletLevel = 1;
 
-    [SerializeField] private Bullet3 bulletPrefab;
+    private Bullet3 bulletPrefab;
 
-    [SerializeField] private Transform temporaryObjectsPlace;
+    private Transform temporaryObjectsPlace;
 
-    [SerializeField] private CharaController charaController;
+    private CharaController charaController;
 
-    [SerializeField] private float bulletDistance;  //バレット間の距離
+    private Vector3 lineDirection;
+
+    [SerializeField] private float bulletDistance = 0.5f;  //バレット間の距離
     //[SerializeField] private float bulletLine;  //直線
 
     [SerializeField] private bool isDebugDrawRayOn;  //デバッグ用のオンオフのスイッチ
-
-    private Vector3 lineDirection;
 
 
     void Update()
@@ -37,14 +37,14 @@ public class BulletGenerator3 : MonoBehaviour
     /// <summary>
     /// 初期設定
     /// </summary>
-    //public void SetUpBulletGenerator3(CharaController charaController)
-    //{
-    //    this.charaController = charaController;
+    public void SetUpBulletGenerator3(CharaController charaController)
+    {
+        this.charaController = charaController;
 
-    //    bulletPrefab = this.charaController.bullet3Prefab;
+        bulletPrefab = this.charaController.bullet3Prefab;
 
-    //    temporaryObjectsPlace = this.charaController.temporaryObjectsPlace;
-    //}
+        temporaryObjectsPlace = this.charaController.temporaryObjectsPlace;
+    }
 
     /// <summary>
     /// バレット生成準備
@@ -93,7 +93,7 @@ public class BulletGenerator3 : MonoBehaviour
     public void PrepareGenerateBullet(Vector2 direction)
     {
         //レベルに応じて、直線の長さを調整する(適宜、計算方法を検討する)
-        float currentBulletLine = bulletDistance / 2 * charaController.charaLevel;
+        float currentBulletLine = bulletDistance / 2 * bulletLevel;
 
         //directionの情報をもとに、プレイヤーの向きに関する角度(ラジアン)を求め(Mathf.Atan2)、その情報を度数に変換し(* Mathf.Rad2Deg)、プレイヤーの向きに合わせて傾ける角度を求める。角度の初期値は右90度(時計の針の3時)を0として始まるので、水平にするには90を足す
         float tilt = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + 90;  //tilt = 傾ける
@@ -105,16 +105,16 @@ public class BulletGenerator3 : MonoBehaviour
         //中心点(プレイヤーの位置)を基準に、プレイヤーの向きに応じて傾いた直線ベクトル(方向)を算出。rotation(傾けた回転角度) * Vector3.right(ワールド座標での水平(x軸)方向)
         lineDirection = rotation * Vector3.right;
 
-        for (int i = 0; i < charaController.charaLevel; i++)
+        for (int i = 0; i < bulletLevel; i++)
         {
             //直線上の一つあたりの角度の初期値
             float angle = 0;
 
             //レベル2以上なら角度間隔を調整する
-            if (charaController.charaLevel > 1)
+            if (bulletLevel > 1)
             {
                 //直線上の等間隔数の計算
-                float t = (float)i / (charaController.charaLevel - 1);
+                float t = (float)i / (bulletLevel - 1);
 
                 //直線上に用意する弾の数で、各弾の角度間隔を算出(Mathf.Lerp([マイナス側の半径値], [プラス側の半径値], [直線上の等間隔数]))
                 angle = Mathf.Lerp(-currentBulletLine / 2, currentBulletLine / 2, t);

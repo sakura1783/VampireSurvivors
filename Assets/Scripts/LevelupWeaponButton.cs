@@ -53,10 +53,10 @@ public class LevelupWeaponButton : MonoBehaviour
                 txtLevel.text = bulletLevel2 + " → " + (bulletLevel2 += 1);
                 break;
 
-            //case 3:
-            //    int bulletLevel3 = levelupPop.BulletGenerator3.bulletLevel;
-            //    txtLevel.text = bulletLevel3 + " → " + (bulletLevel3 += 1);
-            //    break;
+            case 3:
+                int bulletLevel3 = levelupPop.BulletGenerator3.bulletLevel;
+                txtLevel.text = bulletLevel3 + " → " + (bulletLevel3 += 1);
+                break;
 
             case 4:
                 int bulletLevel4 = levelupPop.BulletGenerator4.bulletLevel;
