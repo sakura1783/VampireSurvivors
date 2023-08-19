@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Koumori_Override
+  m_Controller: {fileID: 9100000, guid: cf94b6bf992a446278c4ea2b3a847093, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 581ab9c371e7d49eca465d87b3b34802, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: f3e1d75312b0c4b8285f85bb64894b3f, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: ca79c0b5ddfac46fc8ad123982f22b92, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: bae4d97fd8f094c3fabfb3fdde219acb, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 216438635228a436f803fb5cdd1ccc9c, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 36f6bd623d13440a7a888c872ccc0adb, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: da971c9b685bf47b88a4cdb84082fe8d, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: b0ef86c48aae84acab12e53888bb11c8, type: 2}

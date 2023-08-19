@@ -17,8 +17,8 @@ public class BulletGenerator3 : MonoBehaviour
 
     private Vector3 lineDirection;
 
-    [SerializeField] private float bulletDistance = 0.3f;  //バレット間の距離
-    //[SerializeField] private float bulletLine;  //直線
+    //[SerializeField] private float bulletDistance = 0.3f;  //バレット間の距離
+    [SerializeField] private float bulletLine = 0.3f;  //バレットたちが配置される直線
 
     [SerializeField] private bool isDebugDrawRayOn;  //デバッグ用のオンオフのスイッチ
 
@@ -92,8 +92,8 @@ public class BulletGenerator3 : MonoBehaviour
     /// </summary>
     public void PrepareGenerateBullet(Vector2 direction)
     {
-        //レベルに応じて、直線の長さを調整する(適宜、計算方法を検討する)
-        float currentBulletLine = bulletDistance / 2 * bulletLevel;
+        //レベルに応じて、直線の長さを調整する(レベルが上がるにつれてbulletLineが大きくなる(大きくならないとバレット同士がぎゅうぎゅうに詰まってしまう)。/2はバレット同士の間隔は広げつつ、急激に広がりすぎないようにするための調整)
+        float currentBulletLine = bulletLine / 2 * bulletLevel;
 
         //directionの情報をもとに、プレイヤーの向きに関する角度(ラジアン)を求め(Mathf.Atan2)、その情報を度数に変換し(* Mathf.Rad2Deg)、プレイヤーの向きに合わせて傾ける角度を求める。角度の初期値は右90度(時計の針の3時)を0として始まるので、水平にするには90を足す
         float tilt = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + 90;  //tilt = 傾ける
@@ -114,10 +114,11 @@ public class BulletGenerator3 : MonoBehaviour
             if (bulletLevel > 1)
             {
                 //直線上の等間隔数の計算
-                float t = (float)i / (bulletLevel - 1);
+                float t = (float)i / (bulletLevel - 1);  //tは0から1の間をとる。これを用いることで、弾の間隔を均等にすることができる
 
                 //直線上に用意する弾の数で、各弾の角度間隔を算出(Mathf.Lerp([マイナス側の半径値], [プラス側の半径値], [直線上の等間隔数]))
-                angle = Mathf.Lerp(-currentBulletLine / 2, currentBulletLine / 2, t);
+                //Mathf.Lerp(最小値, 最大値, 最小値~最大値の何割になる値を使うか(0~1))。i = 0の時は(-5, 5, 0)で、これは、-5と5の範囲を0~100%で表現するとした時、0%の時の値を計算して、というもの。0%の時は、-5になる(Mathf.Lerp(-5, 5, 0) = -5)。
+                angle = Mathf.Lerp(-currentBulletLine / 2, currentBulletLine / 2, t);  //-currentBulletLine/2からcurrentBulletLine/2の範囲で角度を補完
             }
 
             //angle * lineDirectionをすることで、傾いた状態での直線上の等間隔の値が算出できる
