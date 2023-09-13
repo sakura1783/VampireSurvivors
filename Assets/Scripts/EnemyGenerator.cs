@@ -10,7 +10,9 @@ public class EnemyGenerator : MonoBehaviour
 
     [SerializeField] private EnemyController enemyPrefab;
 
-    [SerializeField] private LevelupPopUp levelupPop;
+    //[SerializeField] private LevelupPopUp levelupPop;
+
+    [SerializeField] private GameManager gameManager;
 
 
     /// <summary>
@@ -24,7 +26,7 @@ public class EnemyGenerator : MonoBehaviour
         while (generateCount < maxGenerateCount)
         {
             //ポップアップ表示中の場合、処理をスキップしてwhile文の最初に戻り、ポップアップが非表示になるまで新しい敵を生成しない
-            if (levelupPop.isDisplayPopUp)
+            if (gameManager.IsDisplayPopUp)
             {
                 yield return null;  //これを書かないと無限ループになる。注意
 

@@ -7,6 +7,7 @@ public class DataBaseManager : MonoBehaviour
     public static DataBaseManager instance;
 
     public BulletDataSO bulletDataSO;
+    public ItemDataSO itemDataSO;
 
 
     void Awake()

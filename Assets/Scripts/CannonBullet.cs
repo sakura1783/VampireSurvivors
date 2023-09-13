@@ -33,8 +33,14 @@ public class CannonBullet : MonoBehaviour
     {
         if (col.CompareTag("Player"))
         {
-            //プレイヤーのHpを減らす
-            charaController.UpdateHp(-attackPoint);
+            //無敵でない場合のみ
+            if (!charaController.Item.IsInvincible)
+            {
+                //プレイヤーのHPを減らす
+                //charaController.UpdateHp(-attackPoint);
+                //シールド中なら、ダメージを1減らす
+                charaController.UpdateHp(-(attackPoint += charaController.Item.IsShielded ? -1 : 0));
+            }
 
             Destroy(gameObject);
         }

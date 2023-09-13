@@ -17,15 +17,19 @@ public class BulletGenerator1 : MonoBehaviour
 
     private CharaController charaController;
 
+    private Transform shurikenPlace;
+
 
     /// <summary>
     /// 初期設定
     /// </summary>
-    public void SetUpBulletGenerator1(CharaController charaController)
+    public void SetUpBulletGenerator1(CharaController charaController, Transform shurikenPlace)
     {
         this.charaController = charaController;
 
         bulletPrefab = this.charaController.bullet1Prefab;
+
+        this.shurikenPlace = shurikenPlace;
     }
 
     /// <summary>
@@ -97,7 +101,8 @@ public class BulletGenerator1 : MonoBehaviour
         //Bullet1 bullet = Instantiate(bulletPrefab, (Vector2)transform.position + generatePos, Quaternion.identity);  //CalculateBulletDirectionの戻り値で自分の座標 + 修正値をもらっているが、そこにさらに自分の座標を足してしまっている
         Bullet1 bullet = Instantiate(bulletPrefab, generatePos, Quaternion.identity);
 
-        bullet.transform.SetParent(charaController.transform);
+        //bullet.transform.SetParent(charaController.transform);
+        bullet.transform.SetParent(shurikenPlace);
 
         bullet.SetUpBullet1(charaController);
 
@@ -112,6 +117,7 @@ public class BulletGenerator1 : MonoBehaviour
         for (int i = 0; i < bullet1List.Count; i++)
         {
             Destroy(bullet1List[i].gameObject);
+            Debug.Log($"Destroyしたもの：{bullet1List[i].gameObject}");
         }
 
         bullet1List.Clear();

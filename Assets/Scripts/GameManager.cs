@@ -15,6 +15,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Cannon cannon0;
     [SerializeField] private Cannon cannon1;
 
+    [SerializeField] private Transform shurikenPlace;
+
+    private bool isDisplayPopUp;  //ポップアップ表示中かどうか
+    public bool IsDisplayPopUp { get; set; }
+
 
     void Start()
     {
@@ -29,5 +34,18 @@ public class GameManager : MonoBehaviour
         //大砲の攻撃開始
         StartCoroutine(cannon0.PrepareGenerateBullet());
         StartCoroutine(cannon1.PrepareGenerateBullet());
+    }
+
+    void Update()
+    {
+        //ポップアップ表示中は物理演算で動いているゲームオブジェクト(例えばバレットなど)の動きを一時停止する
+        if (isDisplayPopUp)
+        {
+            Time.timeScale = 0;
+        }
+        else
+        {
+            Time.timeScale = 1;
+        }
     }
 }

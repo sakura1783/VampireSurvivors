@@ -28,6 +28,10 @@ public class LevelupPopUp : MonoBehaviour
     //step2_newWeapon
     [SerializeField] private Text txtBulletDescliption;
 
+    [SerializeField] private Transform shurikenPlace;
+
+    [SerializeField] private GameManager gameManager;
+
     //各BulletGenerator
     private BulletGenerator bulletGenerator;
     public BulletGenerator BulletGenerator => bulletGenerator;
@@ -57,21 +61,8 @@ public class LevelupPopUp : MonoBehaviour
 
     private List<GameObject> btnsList = new();  //生成した全てのボタンのリスト
 
-    public bool isDisplayPopUp = false;  //ポップアップ表示中かどうか
+    //public bool isDisplayPopUp = false;  //ポップアップ表示中かどうか
 
-
-    void Update()
-    {
-        //ポップアップ表示中は物理演算で動いているゲームオブジェクト(例えばバレットなど)の動きを一時停止する
-        if (isDisplayPopUp)
-        {
-            Time.timeScale = 0;
-        }
-        else
-        {
-            Time.timeScale = 1;
-        }
-    }
 
     /// <summary>
     /// 初期設定。CharaControllerのSetUpメソッドで実行する
@@ -163,7 +154,7 @@ public class LevelupPopUp : MonoBehaviour
     /// </summary>
     public void ShowPopUp(List<BulletDataSO.BulletData> bulletDatasList)
     {
-        isDisplayPopUp = true;
+        gameManager.IsDisplayPopUp = true;
 
         //btnNewWeaponの生成
         GenerateBtnNewWeapon(bulletDatasList);
@@ -181,7 +172,7 @@ public class LevelupPopUp : MonoBehaviour
     /// </summary>
     public void HidePopUp()
     {
-        isDisplayPopUp = false;
+        gameManager.IsDisplayPopUp = false;
 
         InitializePopUp();
     }
@@ -295,7 +286,7 @@ public class LevelupPopUp : MonoBehaviour
         {
             case 1:
                 bulletGenerator1 = charaController.gameObject.AddComponent<BulletGenerator1>();
-                bulletGenerator1.SetUpBulletGenerator1(charaController);
+                bulletGenerator1.SetUpBulletGenerator1(charaController, shurikenPlace);
                 bulletGenerator1.PrepareGenerateBullet(charaController.Direction);
                 Debug.Log($"bulletNo：{selectedBulletData.bulletNo}、BulletGenerator1をアタッチします");
                 break;

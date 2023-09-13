@@ -20,7 +20,7 @@ public class EnemyController : MonoBehaviour
     void Update()
     {
         //ポップアップ表示中は動きを止める
-        if (charaController.levelupPop.isDisplayPopUp)
+        if (charaController.GameManager.IsDisplayPopUp)
         {
             return;
         }
@@ -65,6 +65,7 @@ public class EnemyController : MonoBehaviour
             GameData.instance.enemiesList.Remove(this);
 
             Destroy(gameObject);
+            Debug.Log($"Destroyしたもの２：{col.gameObject}");
 
             //Expの加算
             charaController.AddExp(exp);
@@ -75,8 +76,14 @@ public class EnemyController : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Player"))
         {
-            //HPの更新
-            charaController.UpdateHp(-attackPoint);
+            //無敵でない場合のみ
+            if (!charaController.Item.IsInvincible)
+            {
+                //プレイヤーのHPを減らす
+                //charaController.UpdateHp(-attackPoint);
+                //シールド中なら、ダメージを1減らす
+                charaController.UpdateHp(-(attackPoint += charaController.Item.IsShielded ? -1 : 0));
+            }
 
             //リストから削除
             GameData.instance.enemiesList.Remove(this);

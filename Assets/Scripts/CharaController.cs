@@ -57,6 +57,12 @@ public class CharaController : MonoBehaviour
 
     [SerializeField] private UIManager uiManager;
 
+    [SerializeField] private GameManager gameManager;
+    public GameManager GameManager => gameManager;
+
+    [SerializeField] private Item item;
+    public Item Item => item;
+
     private Animator charaAnim;
     public Animator CharaAnim => charaAnim;
 
@@ -112,7 +118,7 @@ public class CharaController : MonoBehaviour
     void Update()
     {
         //ポップアップ表示中は動かない
-        if (levelupPop.isDisplayPopUp)
+        if (GameManager.IsDisplayPopUp)
         {
             return;
         }
@@ -240,7 +246,7 @@ public class CharaController : MonoBehaviour
         while (true)
         {
             //ポップアップ表示中は攻撃しない
-            if (levelupPop.isDisplayPopUp)
+            if (gameManager.IsDisplayPopUp)
             {
                 yield return null;
 
@@ -277,7 +283,9 @@ public class CharaController : MonoBehaviour
 
             if (bulletGenerator)
             {
-                bulletTimer0 += Time.deltaTime;
+                //bulletTimer0 += Time.deltaTime;
+                //アタックポーションの効果中は攻撃速度を1.5倍にする
+                bulletTimer0 += item.IsAttackTimeReduced ? Time.deltaTime * (float)1.5f : Time.deltaTime;
 
                 if (bulletTimer0 >= bulletDatasList[0].attackInterval)
                 {
@@ -303,7 +311,8 @@ public class CharaController : MonoBehaviour
             //}
             if (bulletGenerator2)
             {
-                bulletTimer2 += Time.deltaTime;
+                //bulletTimer2 += Time.deltaTime;
+                bulletTimer2 += item.IsAttackTimeReduced ? Time.deltaTime * (float)1.5f : Time.deltaTime;
 
                 if (bulletTimer2 >= bulletDatasList[2].attackInterval)
                 {
@@ -316,7 +325,8 @@ public class CharaController : MonoBehaviour
             }
             if (bulletGenerator3)
             {
-                bulletTimer3 += Time.deltaTime;
+                //bulletTimer3 += Time.deltaTime;
+                bulletTimer3 += item.IsAttackTimeReduced ? Time.deltaTime * (float)1.5f : Time.deltaTime;
 
                 if (bulletTimer3 >= bulletDatasList[3].attackInterval)
                 {
@@ -329,7 +339,8 @@ public class CharaController : MonoBehaviour
             }
             if (bulletGenerator4)
             {
-                bulletTimer4 += Time.deltaTime;
+                //bulletTimer4 += Time.deltaTime;
+                bulletTimer4 += item.IsAttackTimeReduced ? Time.deltaTime * (float)1.5f : Time.deltaTime;
 
                 if (bulletTimer4 >= bulletGenerator4.attackInterval)  //bullet4(雷)だけはattackIntervalが変化するのでbulletGenerator4から値をもらう
                 {
@@ -342,7 +353,8 @@ public class CharaController : MonoBehaviour
             }
             if (bulletGenerator5)
             {
-                bulletTimer5 += Time.deltaTime;
+                //bulletTimer5 += Time.deltaTime;
+                bulletTimer5 += item.IsAttackTimeReduced ? Time.deltaTime * (float)1.5f : Time.deltaTime;
 
                 if (bulletTimer5 >= bulletDatasList[5].attackInterval)
                 {
@@ -384,6 +396,8 @@ public class CharaController : MonoBehaviour
         hp = Mathf.Clamp(hp += value, 0, maxHp);
 
         uiManager.UpdateHpGauge();
+
+        //TODO 死亡時の処理
     }
 
     /// <summary>
