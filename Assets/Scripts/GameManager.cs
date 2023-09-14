@@ -21,8 +21,17 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private Transform shurikenPlace;
 
-    private bool isDisplayPopUp;  //ポップアップ表示中かどうか
-    public bool IsDisplayPopUp { get; set; }
+    [SerializeField] private ItemPopUp itemPop;
+
+    [SerializeField] private TreasureChestGenerator treasureChestGenerator;
+
+    [SerializeField] private bool isDisplayPopUp;  //ポップアップ表示中かどうか
+    //public bool IsDisplayPopUp { get; set; }
+    public bool IsDisplayPopUp
+    {
+        get { return isDisplayPopUp; }
+        set { isDisplayPopUp = value; }
+    }
 
 
     void Start()
@@ -31,8 +40,13 @@ public class GameManager : MonoBehaviour
 
         mapManager.JudgeClimbedStairs();
 
+        //各初期設定
         charaController.SetUpCharaController();
         //charaManager.SetUpCharaManager();
+
+        itemPop.SetUpItemPopUp();
+
+        treasureChestGenerator.SetUpTreasureChestGenerator();
 
         //敵の生成開始
         StartCoroutine(enemyGenerator.GenerateEnemy(charaController));

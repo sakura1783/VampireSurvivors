@@ -68,7 +68,7 @@ public class TreasureChestGenerator : MonoBehaviour
         //データをクリア
         generateCountByItemType.Clear();
 
-        //itemDataListを走査(スキャン)しながら各要素(ItemData)のenemyNoをキー、Valueを0として初期設定
+        //itemDataListを走査(スキャン)しながら各要素(ItemData)のitemTypeをキー、Valueを0として初期設定
         foreach (var itemData in itemDataList)
         {
             generateCountByItemType[itemData.itemType] = 0;

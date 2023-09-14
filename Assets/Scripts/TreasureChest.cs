@@ -18,7 +18,7 @@ public class TreasureChest : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        if (CompareTag("Player"))
+        if (col.gameObject.CompareTag("Player"))
         {
             //ランダムにアイテムを決定し、ポップアップに情報を渡す
             //GetRandomItem();

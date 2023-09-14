@@ -38,7 +38,7 @@ public class ItemPopUp : MonoBehaviour
         //ボタンを押せなく(反応させなく)する
         popUpCanvasGroup.blocksRaycasts = false;
 
-        step1CanvasGroup.blocksRaycasts = false;
+        step1CanvasGroup.blocksRaycasts = true;
         step2CanvasGroup.blocksRaycasts = false;
 
         //アイテムのデータをリスト化

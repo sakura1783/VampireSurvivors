@@ -28,6 +28,38 @@ public class Item : MonoBehaviour
     /// </summary>
     public void ApplyItemEffect(ItemType itemType)
     {
+        //すでに効果を持っている場合は、メソッドから抜けて、重ねて効果を発動しないようにする
+        switch (itemType)
+        {
+            case ItemType.アタックポーション:
+                if (isAttackTimeReduced)
+                {
+                    return;
+                }
+                break;
+
+            case ItemType.インヴィンシブルポーション:
+                if (isInvincible)
+                {
+                    return;
+                }
+                break;
+
+            case ItemType.ガーディアンシールド:
+                if (isShielded)
+                {
+                    return;
+                }
+                break;
+
+            case ItemType.ヴェノムドリンク:
+                if (isPoisoned)
+                {
+                    return;
+                }
+                break;
+        }
+
         switch (itemType)
         {
             case ItemType.ヒーリングポーション:
@@ -47,7 +79,7 @@ public class Item : MonoBehaviour
                 break;
 
             case ItemType.ヴェノムドリンク:
-                VenomDrink(itemType);
+                StartCoroutine(VenomDrink(itemType));
                 break;
 
             default:
@@ -62,7 +94,7 @@ public class Item : MonoBehaviour
     /// 効果時間の計測
     /// </summary>
     /// <param name="itemType"></param>
-    private void ItemEffectTimer(ItemType itemType)
+    private IEnumerator ItemEffectTimer(ItemType itemType)
     {
         float timer = 0;
 
@@ -71,6 +103,8 @@ public class Item : MonoBehaviour
         while (timer < itemData.effectDuration)
         {
             timer += Time.deltaTime;
+
+            yield return null;
         }
 
         //効果時間を過ぎたらアイテム効果を無くす
@@ -111,7 +145,7 @@ public class Item : MonoBehaviour
     {
         isAttackTimeReduced = true;
 
-        ItemEffectTimer(itemType);
+        StartCoroutine(ItemEffectTimer(itemType));
     }
 
     /// <summary>
@@ -122,7 +156,7 @@ public class Item : MonoBehaviour
     {
         isInvincible = true;
 
-        ItemEffectTimer(itemType);
+        StartCoroutine(ItemEffectTimer(itemType));
     }
 
     /// <summary>
@@ -133,7 +167,7 @@ public class Item : MonoBehaviour
     {
         isShielded = true;
 
-        ItemEffectTimer(itemType);
+        StartCoroutine(ItemEffectTimer(itemType));
     }
 
     /// <summary>
@@ -144,9 +178,9 @@ public class Item : MonoBehaviour
         //プレイヤーが死亡状態であれば(再確認)
         if (charaController.hp <= 0)
         {
-            charaController.hp = charaController.maxHp / 2;  //もし答えが少数だった場合は小数点以下は切り捨てられる
-
             hasReviveItem = false;  //複数回使えないようにする
+
+            charaController.hp = charaController.maxHp / 2;  //もし答えが少数だった場合は小数点以下は切り捨てられる
         }
     }
 
@@ -154,11 +188,11 @@ public class Item : MonoBehaviour
     /// ヴェノムドリンク
     /// </summary>
     /// <param name="itemType"></param>
-    private void VenomDrink(ItemType itemType)
+    private IEnumerator VenomDrink(ItemType itemType)
     {
         isPoisoned = true;
 
-        ItemEffectTimer(itemType);
+        StartCoroutine(ItemEffectTimer(itemType));
 
         float timer = 0;
 
@@ -172,6 +206,8 @@ public class Item : MonoBehaviour
 
                 charaController.UpdateHp(-1);
             }
+
+            yield return null;
         }
     }
 }

@@ -4907,6 +4907,7 @@ MonoBehaviour:
   uiManager: {fileID: 309846100}
   gameManager: {fileID: 919231863}
   item: {fileID: 1513181108}
+  treasureChestGenerator: {fileID: 1174501253}
 --- !u!61 &727885834
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6465,6 +6466,8 @@ MonoBehaviour:
   cannon0: {fileID: 1498167934}
   cannon1: {fileID: 22233462}
   shurikenPlace: {fileID: 1178054115}
+  itemPop: {fileID: 244501596}
+  treasureChestGenerator: {fileID: 1174501253}
 --- !u!1 &924147309
 GameObject:
   m_ObjectHideFlags: 0
@@ -8126,7 +8129,7 @@ MonoBehaviour:
   txtLevelupDescliption: {fileID: 1500289536}
   txtBulletDescliption: {fileID: 1076528242}
   shurikenPlace: {fileID: 1178054115}
-  gameManager: {fileID: 0}
+  gameManager: {fileID: 919231863}
 --- !u!1 &1174501251
 GameObject:
   m_ObjectHideFlags: 0
