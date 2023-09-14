@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private float gameTime;  //1ゲームの時間
+
+    [SerializeField] private float remainingTime;  //残り時間
+
     [SerializeField] private CharaController charaController;
 
     [SerializeField] private EnemyGenerator enemyGenerator;
@@ -23,6 +27,8 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        remainingTime = gameTime;
+
         mapManager.JudgeClimbedStairs();
 
         charaController.SetUpCharaController();
@@ -38,6 +44,14 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        //残り時間の更新
+        remainingTime = Mathf.Clamp(remainingTime -= Time.deltaTime, 0, gameTime);
+
+        if (remainingTime <= 0)
+        {
+            //TODO ゲーム終了の処理
+        }
+
         //ポップアップ表示中は物理演算で動いているゲームオブジェクト(例えばバレットなど)の動きを一時停止する
         if (isDisplayPopUp)
         {

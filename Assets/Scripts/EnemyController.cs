@@ -14,7 +14,11 @@ public class EnemyController : MonoBehaviour
 
     private CharaController charaController;
 
+    private TreasureChestGenerator treasureChestGenerator;
+
     [SerializeField] private NavMeshAgent2D navMeshAgent2D;
+
+    [SerializeField] private int itemGenerateRate;
 
 
     void Update()
@@ -42,6 +46,7 @@ public class EnemyController : MonoBehaviour
     public void SetUpEnemyController(CharaController charaController)
     {
         this.charaController = charaController;
+        this.treasureChestGenerator = charaController.TreasureChestGenerator;
 
         transform.GetChild(0).TryGetComponent(out enemyAnim);
     }
@@ -66,6 +71,14 @@ public class EnemyController : MonoBehaviour
 
             Destroy(gameObject);
             Debug.Log($"Destroyしたもの２：{col.gameObject}");
+
+            //宝箱の生成
+            int randomNo = Random.Range(0, 100);
+
+            if (randomNo < itemGenerateRate)
+            {
+                treasureChestGenerator.GenerateTreasureChest(transform);
+            }
 
             //Expの加算
             charaController.AddExp(exp);

@@ -24,7 +24,7 @@ public class TreasureChest : MonoBehaviour
             //GetRandomItem();
 
             //ポップアップを表示
-            itemPop.ShowPopUp();
+            itemPop.ShowPopUp(this.gameObject);
         }
     }
 }

@@ -25,6 +25,8 @@ public class ItemPopUp : MonoBehaviour
 
     private ItemDataSO.ItemData selectedItemData;  //選ばれたアイテムのItemData
 
+    private GameObject treasureChestObj;
+
 
     /// <summary>
     /// 初期設定
@@ -80,12 +82,14 @@ public class ItemPopUp : MonoBehaviour
     /// <summary>
     /// ポップアップを表示
     /// </summary>
-    public void ShowPopUp()
+    public void ShowPopUp(GameObject treasureChestObj)
     {
         gameManager.IsDisplayPopUp = true;
 
         popUpCanvasGroup.alpha = 1;
         popUpCanvasGroup.blocksRaycasts = true;
+
+        this.treasureChestObj = treasureChestObj;
     }
 
     /// <summary>
@@ -96,6 +100,9 @@ public class ItemPopUp : MonoBehaviour
         gameManager.IsDisplayPopUp = false;
 
         InitializePopUp();
+
+        //ポップアップを閉じるタイミングで宝箱も破棄
+        Destroy(treasureChestObj);
     }
 
     /// <summary>

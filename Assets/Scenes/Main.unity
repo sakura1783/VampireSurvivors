@@ -278,6 +278,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletDataSO: {fileID: 11400000, guid: f525b9b3e2fe64a1fa76a10a4520ef84, type: 2}
+  itemDataSO: {fileID: 11400000, guid: 7544d4f67707c45c8be8885ff5cf5d5f, type: 2}
 --- !u!4 &41856252
 Transform:
   m_ObjectHideFlags: 0
@@ -791,7 +792,7 @@ MonoBehaviour:
   maxGenerateCount: 5
   enemyPrefab: {fileID: 1366000708758563288, guid: 4e4258da16c6e4f21ba3843847be4ff6,
     type: 3}
-  gameManager: {fileID: 0}
+  gameManager: {fileID: 919231863}
 --- !u!4 &147531463
 Transform:
   m_ObjectHideFlags: 0
@@ -1003,6 +1004,7 @@ GameObject:
   - component: {fileID: 244501594}
   - component: {fileID: 244501593}
   - component: {fileID: 244501595}
+  - component: {fileID: 244501596}
   m_Layer: 5
   m_Name: ItemPopUp
   m_TagString: Untagged
@@ -1077,10 +1079,32 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 244501591}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &244501596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 244501591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c1ab294552ad4cefa05479501139614, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  popUpCanvasGroup: {fileID: 244501595}
+  step1CanvasGroup: {fileID: 1071086902}
+  step2CanvasGroup: {fileID: 1989931230}
+  btnNext: {fileID: 941249580}
+  btnGet: {fileID: 2140648391}
+  txtItemName: {fileID: 2058734155}
+  txtDescliption: {fileID: 292475154}
+  imgItem: {fileID: 377656747}
+  gameManager: {fileID: 919231863}
+  item: {fileID: 1513181108}
 --- !u!1 &271649948
 GameObject:
   m_ObjectHideFlags: 0
@@ -2036,7 +2060,7 @@ MonoBehaviour:
   maxGenerateCount: 30
   enemyPrefab: {fileID: 2042724052510328650, guid: d86ed7f9f0a124b24ad7737b4b17ba95,
     type: 3}
-  gameManager: {fileID: 0}
+  gameManager: {fileID: 919231863}
 --- !u!1 &405607013
 GameObject:
   m_ObjectHideFlags: 0
@@ -4881,7 +4905,8 @@ MonoBehaviour:
   enemyGenerator1: {fileID: 1939668178}
   enemyGenerator2: {fileID: 147531462}
   uiManager: {fileID: 309846100}
-  gameManager: {fileID: 0}
+  gameManager: {fileID: 919231863}
+  item: {fileID: 1513181108}
 --- !u!61 &727885834
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6432,6 +6457,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd4d5f277506a400cb63ecbc0feb74ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameTime: 60
+  remainingTime: 0
   charaController: {fileID: 727885833}
   enemyGenerator: {fileID: 384574941}
   mapManager: {fileID: 459637159}
@@ -7358,7 +7385,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1071086900}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -8100,6 +8127,73 @@ MonoBehaviour:
   txtBulletDescliption: {fileID: 1076528242}
   shurikenPlace: {fileID: 1178054115}
   gameManager: {fileID: 0}
+--- !u!1 &1174501251
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1174501252}
+  - component: {fileID: 1174501253}
+  m_Layer: 0
+  m_Name: TreasureChestGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1174501252
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1174501251}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 24
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1174501253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1174501251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0fd3257af2494654838692a2634d9f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemPop: {fileID: 244501596}
+  treasureChestPrefab: {fileID: 6548488438946669253, guid: 846f78740ca1c4a28952283c22fa6190,
+    type: 3}
+  temporaryObjectsPlace: {fileID: 530679511}
+  itemDataList:
+  - itemType: 0
+    maxGenerateCount: 99
+    generateRate: 30
+  - itemType: 1
+    maxGenerateCount: 99
+    generateRate: 30
+  - itemType: 2
+    maxGenerateCount: 2
+    generateRate: 10
+  - itemType: 3
+    maxGenerateCount: 99
+    generateRate: 30
+  - itemType: 4
+    maxGenerateCount: 1
+    generateRate: 5
+  - itemType: 5
+    maxGenerateCount: 2
+    generateRate: 5
 --- !u!1 &1175785807
 GameObject:
   m_ObjectHideFlags: 0
@@ -19930,6 +20024,99 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
+--- !u!1 &1513181107
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1513181109}
+  - component: {fileID: 1513181108}
+  m_Layer: 0
+  m_Name: Item
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1513181108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1513181107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc53f691315ab42fb98aa5e069469290, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemPop: {fileID: 244501596}
+  charaController: {fileID: 727885833}
+--- !u!4 &1513181109
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1513181107}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 23
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1530357731
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1530357732}
+  - component: {fileID: 1530357733}
+  m_Layer: 0
+  m_Name: ItemGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1530357732
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530357731}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 22
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1530357733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530357731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 642383f5b6af04b6387a5b09b6aa4246, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  treasureChest: {fileID: 6548488438946669248, guid: 846f78740ca1c4a28952283c22fa6190,
+    type: 3}
+  temporaryObjectsPlace: {fileID: 530679511}
 --- !u!1 &1570540625
 GameObject:
   m_ObjectHideFlags: 0
@@ -22901,7 +23088,7 @@ MonoBehaviour:
   maxGenerateCount: 5
   enemyPrefab: {fileID: 8710062228191938084, guid: fd1739aace8d84501a0fcfcdc839a8a3,
     type: 3}
-  gameManager: {fileID: 0}
+  gameManager: {fileID: 919231863}
 --- !u!4 &1939668179
 Transform:
   m_ObjectHideFlags: 0
@@ -23150,7 +23337,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1989931228}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -23545,7 +23732,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u30B9\u30D4\u30FC\u30C9\u30EA\u30C0\u30AF\u30B7\u30E7\u30F3\u30DD\u30FC\u30B7\u30E7\u30F3"
+  m_Text: "\u30A2\u30A4\u30C6\u30E0\u540D"
 --- !u!222 &2058734156
 CanvasRenderer:
   m_ObjectHideFlags: 0

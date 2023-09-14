@@ -15,7 +15,7 @@ public class TreasureChestGenerator : MonoBehaviour
     /// <summary>
     /// 宝箱生成
     /// </summary>
-    private void GenerateTreasureChest(Transform enemyTran)
+    public void GenerateTreasureChest(Transform enemyTran)
     {
         TreasureChest treasureChest = Instantiate(treasureChestPrefab, enemyTran.position, Quaternion.identity);
 

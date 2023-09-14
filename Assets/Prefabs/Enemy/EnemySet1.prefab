@@ -158,6 +158,7 @@ MonoBehaviour:
   exp: 5
   isFrozen: 0
   navMeshAgent2D: {fileID: 8710062228191938139}
+  itemGenerateRate: 5
 --- !u!114 &8710062228191938139
 MonoBehaviour:
   m_ObjectHideFlags: 0

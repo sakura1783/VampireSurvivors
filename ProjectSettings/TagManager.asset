@@ -16,7 +16,7 @@ TagManager:
   - 
   - Confiner
   - TilemapNavMesh
-  - 
+  - TreasureChest
   - Enemy
   - Player
   - Bullet

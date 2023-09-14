@@ -63,6 +63,9 @@ public class CharaController : MonoBehaviour
     [SerializeField] private Item item;
     public Item Item => item;
 
+    [SerializeField] private TreasureChestGenerator treasureChestGenerator;  //EnemyControllerに渡す用
+    public TreasureChestGenerator TreasureChestGenerator => treasureChestGenerator;
+
     private Animator charaAnim;
     public Animator CharaAnim => charaAnim;
 
