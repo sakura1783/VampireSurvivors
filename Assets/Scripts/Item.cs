@@ -28,7 +28,7 @@ public class Item : MonoBehaviour
     /// </summary>
     public void ApplyItemEffect(ItemType itemType)
     {
-        //すでに効果を持っている場合は、メソッドから抜けて、重ねて効果を発動しないようにする
+        //すでに効果を持っている場合は、switch文から抜けて、重ねて効果を発動しないようにする
         switch (itemType)
         {
             case ItemType.アタックポーション:
@@ -60,6 +60,7 @@ public class Item : MonoBehaviour
                 break;
         }
 
+        //アイテムの効果を発動
         switch (itemType)
         {
             case ItemType.ヒーリングポーション:

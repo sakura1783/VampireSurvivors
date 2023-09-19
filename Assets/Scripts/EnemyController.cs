@@ -66,6 +66,14 @@ public class EnemyController : MonoBehaviour
     {
         if (col.CompareTag("Bullet"))
         {
+            //エフェクト生成
+            //GameObject effectPrefab = EffectManager.instance.GetEffect(EffectName.enemyDown);
+            //GameObject effect = Instantiate(effectPrefab, transform.position, Quaternion.identity);
+
+            GameObject effect = Instantiate(EffectManager.instance.GetEffect(EffectName.enemyDown), transform.position, Quaternion.identity);
+
+            Destroy(effect, 1.5f);
+
             //リストから削除
             GameData.instance.enemiesList.Remove(this);
 

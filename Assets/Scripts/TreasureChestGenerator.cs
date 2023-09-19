@@ -12,21 +12,6 @@ public class TreasureChestGenerator : MonoBehaviour
     [SerializeField] private Transform temporaryObjectsPlace;
 
 
-    /// <summary>
-    /// 宝箱生成
-    /// </summary>
-    public void GenerateTreasureChest(Transform enemyTran)
-    {
-        TreasureChest treasureChest = Instantiate(treasureChestPrefab, enemyTran.position, Quaternion.identity);
-
-        treasureChest.transform.SetParent(temporaryObjectsPlace);
-
-        treasureChest.SetUpTreasureChest(itemPop);
-
-        //ランダムにアイテムを決定し、ポップアップにアイテムの情報を渡す
-        GetRandomItem();
-    }
-
     [System.Serializable]
     public class ItemData
     {
@@ -50,6 +35,21 @@ public class TreasureChestGenerator : MonoBehaviour
     public int MaxGenerateItemCount => itemDataList.Sum(itemData => itemData.maxGenerateCount);
 
     private int totalGenerateRate = 0;
+
+    /// <summary>
+    /// 宝箱生成
+    /// </summary>
+    public void GenerateTreasureChest(Transform enemyTran)
+    {
+        TreasureChest treasureChest = Instantiate(treasureChestPrefab, enemyTran.position, Quaternion.identity);
+
+        treasureChest.transform.SetParent(temporaryObjectsPlace);
+
+        treasureChest.SetUpTreasureChest(itemPop);
+
+        //ランダムにアイテムを決定し、ポップアップにアイテムの情報を渡す
+        GetRandomItem();
+    }
 
     /// <summary>
     /// 初期設定
@@ -114,6 +114,8 @@ public class TreasureChestGenerator : MonoBehaviour
         if (itemType == ItemType.None)
         {
             Debug.Log("アイテムがありません");
+
+            return;
         }
 
         //生成した種類のアイテムだけカウントアップ

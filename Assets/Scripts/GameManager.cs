@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float gameTime;  //1ゲームの時間
 
     [SerializeField] private float remainingTime;  //残り時間
+    public float RemainingTime => remainingTime;
 
     [SerializeField] private CharaController charaController;
 
@@ -25,12 +26,16 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private TreasureChestGenerator treasureChestGenerator;
 
-    [SerializeField] private bool isDisplayPopUp;  //ポップアップ表示中かどうか
+    [SerializeField] private UIManager uiManager;
+
+    private bool isDisplayPopUp;  //ポップアップ表示中かどうか
     //public bool IsDisplayPopUp { get; set; }
     public bool IsDisplayPopUp
     {
         get { return isDisplayPopUp; }
+        //get => isDisplayPopUp;
         set { isDisplayPopUp = value; }
+        //set => isDisplayPopUp = value;  //setするときに2行以上処理を書くときは省略は使えないので注意
     }
 
 
@@ -60,6 +65,9 @@ public class GameManager : MonoBehaviour
     {
         //残り時間の更新
         remainingTime = Mathf.Clamp(remainingTime -= Time.deltaTime, 0, gameTime);
+
+        //残り時間表示のUIを更新
+        uiManager.UpdateDisplayGameTime();
 
         if (remainingTime <= 0)
         {
