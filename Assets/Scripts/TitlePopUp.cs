@@ -21,7 +21,7 @@ public class TitlePopUp : MonoBehaviour
     {
         SetUpButtons();
 
-        lblTapPromptCanvasGroup.DOFade(0, 1.5f).SetEase(Ease.Linear).SetLoops(-1, LoopType.Yoyo);
+        lblTapPromptCanvasGroup.DOFade(0, 1.5f).SetEase(Ease.Linear).SetLoops(-1, LoopType.Yoyo).SetLink(gameObject);  //ループ処理があるのでSetLinkを書く
 
         Debug.Log("SetUpTitlePopupが動きました");
     }
@@ -48,7 +48,7 @@ public class TitlePopUp : MonoBehaviour
     public void HidePopUp()
     {
         popupCanvasGroup.blocksRaycasts = false;
-        popupCanvasGroup.DOFade(0, 1f).SetEase(Ease.Linear).SetLink(gameObject);
+        popupCanvasGroup.DOFade(0, 1f).SetEase(Ease.Linear);  //ここにはループの処理はないためSetLinkは書かなくてよい
 
         gameManager.IsDisplayPopUp = false;
     }
