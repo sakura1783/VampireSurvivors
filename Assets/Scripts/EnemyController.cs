@@ -16,9 +16,13 @@ public class EnemyController : MonoBehaviour
 
     private TreasureChestGenerator treasureChestGenerator;
 
+    private GameManager gameManager;
+
     [SerializeField] private NavMeshAgent2D navMeshAgent2D;
 
     [SerializeField] private int itemGenerateRate;
+
+    [SerializeField] private int score;
 
 
     void Update()
@@ -47,6 +51,7 @@ public class EnemyController : MonoBehaviour
     {
         this.charaController = charaController;
         this.treasureChestGenerator = charaController.TreasureChestGenerator;
+        this.gameManager = charaController.GameManager;
 
         transform.GetChild(0).TryGetComponent(out enemyAnim);
     }
@@ -77,8 +82,13 @@ public class EnemyController : MonoBehaviour
             //リストから削除
             GameData.instance.enemiesList.Remove(this);
 
+            //倒した敵の数を加算
+            gameManager.AddKillEnemyCount();
+
+            //スコア加算
+            gameManager.AddScore(score);
+
             Destroy(gameObject);
-            Debug.Log($"Destroyしたもの２：{col.gameObject}");
 
             //宝箱の生成
             int randomNo = Random.Range(0, 100);
@@ -108,6 +118,8 @@ public class EnemyController : MonoBehaviour
 
             //リストから削除
             GameData.instance.enemiesList.Remove(this);
+
+            //プレイヤーと敵が直接ぶつかった場合は敵キル数、スコアともに加算しない
 
             Destroy(gameObject);
         }

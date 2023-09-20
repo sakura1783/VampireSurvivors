@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private float gameTime;  //1ゲームの時間
+    [SerializeField] private float gameTime;
+    public float GameTime => gameTime;
 
-    [SerializeField] private float remainingTime;  //残り時間
-    public float RemainingTime => remainingTime;
+    //[SerializeField] private float remainingTime;  //残り時間
+    //public float RemainingTime => remainingTime;
 
     [SerializeField] private CharaController charaController;
 
@@ -28,7 +29,11 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private UIManager uiManager;
 
-    private bool isDisplayPopUp;  //ポップアップ表示中かどうか
+    [SerializeField] private int scorePerSecond;  //1秒あたりのスコア加算ポイント
+
+    [SerializeField] private TitlePopUp titlePop;
+
+    private bool isDisplayPopUp = true;  //ポップアップ表示中かどうか
     //public bool IsDisplayPopUp { get; set; }
     public bool IsDisplayPopUp
     {
@@ -38,10 +43,18 @@ public class GameManager : MonoBehaviour
         //set => isDisplayPopUp = value;  //setするときに2行以上処理を書くときは省略は使えないので注意
     }
 
+    private int killEnemyCount;
+
+    private int totalScore;
+
+    private float scoreTimer;  //時間経過でもスコアを加算する
+
 
     void Start()
     {
-        remainingTime = gameTime;
+        titlePop.SetUpTitlePopUp();
+
+        //remainingTime = gameTime;
 
         mapManager.JudgeClimbedStairs();
 
@@ -64,14 +77,23 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         //残り時間の更新
-        remainingTime = Mathf.Clamp(remainingTime -= Time.deltaTime, 0, gameTime);
+        gameTime += Time.deltaTime;
 
         //残り時間表示のUIを更新
         uiManager.UpdateDisplayGameTime();
 
-        if (remainingTime <= 0)
+        //if (remainingTime <= 0)
+        //{
+        //    //ゲーム終了の処理
+        //}
+
+        //時間経過でもスコアを加算(1秒ごとに10加算)
+        scoreTimer += Time.deltaTime;
+        if (scoreTimer >= 1)
         {
-            //TODO ゲーム終了の処理
+            scoreTimer = 0;
+
+            AddScore(scorePerSecond);
         }
 
         //ポップアップ表示中は物理演算で動いているゲームオブジェクト(例えばバレットなど)の動きを一時停止する
@@ -83,5 +105,25 @@ public class GameManager : MonoBehaviour
         {
             Time.timeScale = 1;
         }
+    }
+
+    /// <summary>
+    /// 倒した敵の数をカウントアップし、同時にUIも更新
+    /// </summary>
+    public void AddKillEnemyCount()
+    {
+        killEnemyCount++;
+
+        uiManager.UpdateDisplayKillEnemyCount(killEnemyCount);
+    }
+
+    /// <summary>
+    /// スコアを加算し、UIも更新
+    /// </summary>
+    public void AddScore(int point)
+    {
+        totalScore += point;
+
+        uiManager.UpdateDisplayTotalScore(totalScore);
     }
 }

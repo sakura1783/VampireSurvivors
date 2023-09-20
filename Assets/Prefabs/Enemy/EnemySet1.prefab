@@ -159,6 +159,7 @@ MonoBehaviour:
   isFrozen: 0
   navMeshAgent2D: {fileID: 8710062228191938139}
   itemGenerateRate: 5
+  score: 150
 --- !u!114 &8710062228191938139
 MonoBehaviour:
   m_ObjectHideFlags: 0

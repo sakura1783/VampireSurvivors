@@ -457,6 +457,7 @@ public class CharaController : MonoBehaviour
         {
             StartCoroutine(enemyGenerator2.GenerateEnemy(this));
         }
+        //TODO レベルアップにつれて難易度アップ(敵生成頻度、ダメージアップ)永遠にゲームが続いてしまわないようにする
     }
 
     /// <summary>
