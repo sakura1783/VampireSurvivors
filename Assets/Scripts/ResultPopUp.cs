@@ -44,12 +44,10 @@ public class ResultPopUp : MonoBehaviour
     /// </summary>
     private void OnClickBtnToTitle()
     {
-        //TODO フェードイン・フェードアウト
-
-        //TODO isDisplayResultPopUpの切り替え
+        gameManager.IsDisplayResultPopUp = false;
 
         //シーン遷移
-        SceneManager.LoadScene("Main");
+        TransitionManager.instance.PrepareLoadNextScene();
     }
 
     /// <summary>
@@ -57,6 +55,8 @@ public class ResultPopUp : MonoBehaviour
     /// </summary>
     public void ShowPopUp()
     {
+        gameManager.IsDisplayResultPopUp = true;
+
         Sequence seqence = DOTween.Sequence();
 
         seqence.Append(gameObject.transform.DOLocalMoveY(0, 1.5f));

@@ -23,7 +23,7 @@ public class Cannon : MonoBehaviour
         while (true)
         {
             //ポップアップ表示中は新たなバレットを生成しない
-            if (charaController.GameManager.IsDisplayPopUp)
+            if (charaController.GameManager.IsDisplayPopUp || charaController.GameManager.IsDisplayTitlePopUp || charaController.GameManager.IsDisplayResultPopUp)
             {
                 yield return null;
 
@@ -71,6 +71,8 @@ public class Cannon : MonoBehaviour
         bullet.transform.SetParent(temporaryObjectsPlace);
 
         bullet.Shoot(charaController, direction);
+
+        Debug.Log("大砲発射");
     }
 
     /// <summary>

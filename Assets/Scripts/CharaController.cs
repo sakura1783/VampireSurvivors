@@ -66,6 +66,8 @@ public class CharaController : MonoBehaviour
     [SerializeField] private TreasureChestGenerator treasureChestGenerator;  //EnemyControllerに渡す用
     public TreasureChestGenerator TreasureChestGenerator => treasureChestGenerator;
 
+    [SerializeField] private ResultPopUp resultPop;
+
     private Animator charaAnim;
     public Animator CharaAnim => charaAnim;
 
@@ -249,7 +251,7 @@ public class CharaController : MonoBehaviour
         while (true)
         {
             //ポップアップ表示中は攻撃しない
-            if (gameManager.IsDisplayPopUp)
+            if (gameManager.IsDisplayPopUp || gameManager.IsDisplayTitlePopUp || gameManager.IsDisplayResultPopUp)
             {
                 yield return null;
 
@@ -400,7 +402,17 @@ public class CharaController : MonoBehaviour
 
         uiManager.UpdateHpGauge();
 
-        //TODO 死亡時の処理
+        if (hp <= 0)
+        {
+            //TODO ゲーム終了時の処理
+
+            //TODO 死亡アニメ
+
+            //TODO アニメが終わってから
+            //resultPop.ShowPopUp();
+
+            //TODO ランキング作成
+        }
     }
 
     /// <summary>
@@ -483,6 +495,6 @@ public class CharaController : MonoBehaviour
         TryGetComponent(out bulletGenerator4);
         TryGetComponent(out bulletGenerator5);
 
-        Debug.Log("AssainBulletGeneratorsが動きました");
+        //Debug.Log("AssainBulletGeneratorsが動きました");
     }
 }

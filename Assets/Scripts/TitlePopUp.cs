@@ -7,11 +7,14 @@ using UnityEngine.UI;
 public class TitlePopUp : MonoBehaviour
 {
     [SerializeField] private CanvasGroup popupCanvasGroup;
-    [SerializeField] private CanvasGroup lblTapPromptCanvasGroup;
+    //[SerializeField] private CanvasGroup lblTapPromptCanvasGroup;
 
     [SerializeField] private Button btnGameStart;
+    [SerializeField] private Button btnEditName;
 
     [SerializeField] private GameManager gameManager;
+
+    [SerializeField] private NameEntryPopUp nameEntryPop;
 
 
     /// <summary>
@@ -21,9 +24,9 @@ public class TitlePopUp : MonoBehaviour
     {
         SetUpButtons();
 
-        lblTapPromptCanvasGroup.DOFade(0, 1.5f).SetEase(Ease.Linear).SetLoops(-1, LoopType.Yoyo).SetLink(gameObject);  //ループ処理があるのでSetLinkを書く
+        //lblTapPromptCanvasGroup.DOFade(0, 1.5f).SetEase(Ease.Linear).SetLoops(-1, LoopType.Yoyo).SetLink(gameObject);  //ループ処理があるのでSetLinkを書く
 
-        Debug.Log("SetUpTitlePopupが動きました");
+        //Debug.Log("SetUpTitlePopupが動きました");
     }
 
     /// <summary>
@@ -32,6 +35,7 @@ public class TitlePopUp : MonoBehaviour
     private void SetUpButtons()
     {
         btnGameStart.onClick.AddListener(OnClickBtnGameStart);
+        btnEditName.onClick.AddListener(OnClickBtnEditName);
     }
 
     /// <summary>
@@ -40,6 +44,17 @@ public class TitlePopUp : MonoBehaviour
     private void OnClickBtnGameStart()
     {
         HidePopUp();
+    }
+
+    /// <summary>
+    /// btnEditNameを押した際の処理
+    /// </summary>
+    private void OnClickBtnEditName()
+    {
+        //ポップアップのボタン押下反応を無くす
+        popupCanvasGroup.blocksRaycasts = false;
+
+        nameEntryPop.ShowPopUp();
     }
 
     /// <summary>

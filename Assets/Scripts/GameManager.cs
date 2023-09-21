@@ -33,6 +33,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private TitlePopUp titlePop;
 
+    [SerializeField] private NameEntryPopUp nameEntryPop;
+
     private bool isDisplayPopUp = false;  //ポップアップ表示中かどうか
     //public bool IsDisplayPopUp { get; set; }
     public bool IsDisplayPopUp
@@ -63,10 +65,18 @@ public class GameManager : MonoBehaviour
 
     private float scoreTimer;  //時間経過でもスコアを加算する
 
+    private string playerName;
+    public string PlayerName
+    {
+        get => playerName; set => playerName = value;
+    }
+
 
     void Start()
     {
         titlePop.SetUpTitlePopUp();
+
+        nameEntryPop.SetUpNameEntryPopUp();
 
         //remainingTime = gameTime;
 
@@ -144,5 +154,20 @@ public class GameManager : MonoBehaviour
         totalScore += point;
 
         uiManager.UpdateDisplayTotalScore(totalScore);
+    }
+
+    /// <summary>
+    /// ランキングの作成
+    /// </summary>
+    public void SetRanking()
+    {
+        if (totalScore >= GameData.instance.firstScore)
+        {
+            //TODO 2位、3位の順位をずらす
+
+            GameData.instance.firstScore = totalScore;
+
+            //TODO 名前を変える
+        }
     }
 }
