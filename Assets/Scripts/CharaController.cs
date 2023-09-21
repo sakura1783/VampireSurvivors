@@ -121,7 +121,7 @@ public class CharaController : MonoBehaviour
     void Update()
     {
         //ポップアップ表示中は動かない
-        if (GameManager.IsDisplayPopUp)
+        if (gameManager.IsDisplayPopUp || gameManager.IsDisplayTitlePopUp || gameManager.IsDisplayResultPopUp)
         {
             return;
         }

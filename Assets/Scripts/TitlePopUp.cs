@@ -48,8 +48,6 @@ public class TitlePopUp : MonoBehaviour
     public void HidePopUp()
     {
         popupCanvasGroup.blocksRaycasts = false;
-        popupCanvasGroup.DOFade(0, 1f).SetEase(Ease.Linear);  //ここにはループの処理はないためSetLinkは書かなくてよい
-
-        gameManager.IsDisplayPopUp = false;
+        popupCanvasGroup.DOFade(0, 1f).SetEase(Ease.Linear).OnComplete(() => gameManager.IsDisplayTitlePopUp = false);  //ここにはループの処理はないためSetLinkは書かなくてよい
     }
 }

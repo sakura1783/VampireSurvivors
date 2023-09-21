@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private TitlePopUp titlePop;
 
-    private bool isDisplayPopUp = true;  //ポップアップ表示中かどうか
+    private bool isDisplayPopUp = false;  //ポップアップ表示中かどうか
     //public bool IsDisplayPopUp { get; set; }
     public bool IsDisplayPopUp
     {
@@ -43,9 +43,23 @@ public class GameManager : MonoBehaviour
         //set => isDisplayPopUp = value;  //setするときに2行以上処理を書くときは省略は使えないので注意
     }
 
+    private bool isDisplayTitlePopUp = true;
+    public bool IsDisplayTitlePopUp
+    {
+        get => isDisplayTitlePopUp; set => isDisplayTitlePopUp = value;
+    }
+
+    private bool isDisplayResultPopUp = false;
+    public bool IsDisplayResultPopUp
+    {
+        get => isDisplayResultPopUp; set => isDisplayResultPopUp = value;
+    }
+
     private int killEnemyCount;
+    public int KillEnemyCount => killEnemyCount;
 
     private int totalScore;
+    public int TotalScore => totalScore;
 
     private float scoreTimer;  //時間経過でもスコアを加算する
 
@@ -76,6 +90,11 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        if (isDisplayTitlePopUp || isDisplayResultPopUp)
+        {
+            return;
+        }
+
         //残り時間の更新
         gameTime += Time.deltaTime;
 
