@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
@@ -157,17 +158,91 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// ランキングの作成
+    /// ランキング更新
     /// </summary>
-    public void SetRanking()
+    public void UpdateRanking()
     {
-        if (totalScore >= GameData.instance.firstScore)
+        //何回foreach文が回ったか。この値で何位に値を入れるか決定
+        int count = 0;
+
+        //ランキングに同じプレイヤーが入らないようにプレイヤーの名前を保管するリストを宣言
+        List<string> playerList = new();
+
+        //スコアが高い順にPlayersDataディクショナリを並び替える
+        var sortedPlayersDataDic = GameData.instance.playersData.OrderByDescending(x => x.Value);  //xはplayersDataを表し、これはplayersDataのvalueを降順に並べている
+
+        //sortedPlayersDataDicから順に要素を取り出す
+        foreach (var playerData in sortedPlayersDataDic)
         {
-            //TODO 2位、3位の順位をずらす
+            //count++;  //ここでカウントすると同じプレイヤーが含まれていた場合値が入らなくなってしまうので注意
 
-            GameData.instance.firstScore = totalScore;
+            //リストにプレイヤーの名前を追加
+            playerList.Add(playerData.Key);
 
-            //TODO 名前を変える
+            //スコアが初期値(0)の場合は「--」と表示する
+            if (playerData.Value == 0)
+            {
+                if (count == 0)
+                {
+                    GameData.instance.txt1stName.text = "--";
+                    GameData.instance.txt1stScore.text = "--";
+                }
+                if (count == 1)
+                {
+                    GameData.instance.txt2ndName.text = "--";
+                    GameData.instance.txt2ndScore.text = "--";
+                }
+                if (count == 2)
+                {
+                    GameData.instance.txt3rdName.text = "--";
+                    GameData.instance.txt3rdScore.text = "--";
+
+                    //値が無いにしろランキングが埋まったら処理を抜ける
+                    return;
+                }
+
+                count++;
+            }
+
+            //同じプレイヤーが含まれていなかった場合のみ、ランキングに表示
+            if (playerList.Contains(playerData.Key) && playerData.Value != 0) //<= 2つめの条件で、スコアが初期値の場合はこのブロック内に入らないようにする
+            {
+                if (count == 0)
+                {
+                    GameData.instance.txt1stName.text = playerData.Key;
+                    GameData.instance.txt1stScore.text = playerData.Value.ToString();
+                }
+                if (count == 1)
+                {
+                    GameData.instance.txt2ndName.text = playerData.Key;
+                    GameData.instance.txt2ndScore.text = playerData.Value.ToString();
+                }
+                if (count == 2)
+                {
+                    GameData.instance.txt3rdName.text = playerData.Key;
+                    GameData.instance.txt3rdScore.text = playerData.Value.ToString();
+
+                    //ランキングに入るか否かを決めるthirdScore変数にここで値を代入
+                    GameData.instance.thirdScore = playerData.Value;
+
+                    //ランキングが埋まったら処理を抜ける
+                    return;
+                }
+
+                count++;
+            }
+        }
+    }
+
+    /// <summary>
+    /// playersDataディクショナリに値を追加する
+    /// </summary>
+    public void AddToPlayersDataDic()
+    {
+        //スコアが3位以内ならディクショナリに追加
+        if (totalScore >= GameData.instance.thirdScore)
+        {
+            GameData.instance.playersData.Add(playerName, totalScore);
         }
     }
 }

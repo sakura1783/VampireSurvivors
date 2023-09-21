@@ -94,7 +94,7 @@ public class TreasureChestGenerator : MonoBehaviour
             }
         }
 
-        Debug.Log($"生成合計値 : {totalGenerateRate}");  //TODO 確認したらコメントアウト
+        Debug.Log($"生成合計値 : {totalGenerateRate}");
     }
 
     /// <summary>
@@ -106,7 +106,7 @@ public class TreasureChestGenerator : MonoBehaviour
         CalculateTotalGenerateRate();
 
         int randomNo = Random.Range(0, totalGenerateRate);
-        Debug.Log($"ランダムな値：{randomNo}");  //TODO 確認したらコメントアウト
+        Debug.Log($"ランダムな値：{randomNo}");
 
         //取得したランダムな値をGetRandomItemTypeの引数に渡して、どのアイテムを生成するか、アイテムの番号を取得
         ItemType itemType = GetRandomItemType(randomNo);
@@ -120,7 +120,7 @@ public class TreasureChestGenerator : MonoBehaviour
 
         //生成した種類のアイテムだけカウントアップ
         generateCountByItemType[itemType]++;
-        Debug.Log($"アイテムの種類は{itemType}です");  //TODO 確認したらコメントアウト
+        Debug.Log($"アイテムの種類は{itemType}です");
 
         //アイテムの情報をポップアップに渡す
         itemPop.SetRandomItemDetail(itemType);

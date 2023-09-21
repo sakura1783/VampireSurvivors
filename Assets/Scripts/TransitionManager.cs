@@ -9,8 +9,6 @@ public class TransitionManager : MonoBehaviour
 
     [SerializeField] private Fade fade;
 
-    [SerializeField] private FadeImage fadeImage;
-
     [SerializeField] private float fadeDuration;
 
 

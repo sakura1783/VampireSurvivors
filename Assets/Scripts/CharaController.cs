@@ -404,14 +404,14 @@ public class CharaController : MonoBehaviour
 
         if (hp <= 0)
         {
+            //TODO リバイブを持っていたら生き返る
+
             //TODO ゲーム終了時の処理
 
             //TODO 死亡アニメ
 
             //TODO アニメが終わってから
-            //resultPop.ShowPopUp();
-
-            //TODO ランキング作成
+            resultPop.ShowPopUp();
         }
     }
 

@@ -23,13 +23,13 @@ public class ResultPopUp : MonoBehaviour
     /// <summary>
     /// 初期設定
     /// </summary>
-    public void SetUpResultPopUp()
-    {
-        SetUpButtons();
+    //private void SetUpResultPopUp()
+    //{
+    //    SetUpButtons();
 
-        //点滅表示
-        lblTapPromptCanvasGroup.DOFade(0, 1f).SetEase(Ease.Linear).SetLoops(-1, LoopType.Yoyo).SetLink(gameObject);
-    }
+    //    //点滅表示
+    //    lblTapPromptCanvasGroup.DOFade(0, 1f).SetEase(Ease.Linear).SetLoops(-1, LoopType.Yoyo).SetLink(gameObject);
+    //}
 
     /// <summary>
     /// 各ボタンの設定
@@ -44,6 +44,12 @@ public class ResultPopUp : MonoBehaviour
     /// </summary>
     private void OnClickBtnToTitle()
     {
+        //3位以内の場合、プレイヤーの名前とスコアをディクショナリに追加
+        gameManager.AddToPlayersDataDic();
+
+        //ランキング更新
+        gameManager.UpdateRanking();
+
         gameManager.IsDisplayResultPopUp = false;
 
         //シーン遷移
@@ -68,6 +74,8 @@ public class ResultPopUp : MonoBehaviour
     /// </summary>
     private void SetPlayerResult()
     {
+        SetUpButtons();
+
         Sequence seqence = DOTween.Sequence();
 
         seqence.Append(txtScore.DOCounter(0, gameManager.TotalScore, 1f).SetEase(Ease.InQuad));
@@ -77,6 +85,12 @@ public class ResultPopUp : MonoBehaviour
         seqence.AppendInterval(1f);
 
         seqence.Append(txtSurvivedTime.DOCounter(0, (int)gameManager.GameTime, 1f).SetEase(Ease.InQuad));
-        seqence.AppendInterval(1f).OnComplete(() => btnToTitle.image.raycastTarget = true);  //<= 全ての処理が終わってからボタン押下反応をアクティブにする
+        seqence.AppendInterval(1f).OnComplete(() =>
+        {
+            //点滅表示
+            lblTapPromptCanvasGroup.DOFade(0, 1f).SetEase(Ease.Linear).SetLoops(-1, LoopType.Yoyo).SetLink(gameObject);
+
+            btnToTitle.image.raycastTarget = true;  //<= 全ての処理が終わってからボタン押下反応をアクティブにする
+        });  
     }
 }
