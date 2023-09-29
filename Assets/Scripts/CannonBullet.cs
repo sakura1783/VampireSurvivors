@@ -36,6 +36,11 @@ public class CannonBullet : MonoBehaviour
             //無敵でない場合のみ
             if (!charaController.Item.IsInvincible)
             {
+                //エフェクト生成
+                GameObject effect = Instantiate(EffectManager.instance.GetEffect(EffectName.Hit), transform.position, Quaternion.identity);
+
+                effect.transform.SetParent(charaController.TreasureChestGenerator.TemporaryObjectsPlace);
+
                 //プレイヤーのHPを減らす
                 //charaController.UpdateHp(-attackPoint);
                 //シールド中なら、ダメージを1減らす

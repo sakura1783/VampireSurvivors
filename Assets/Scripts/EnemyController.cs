@@ -74,10 +74,11 @@ public class EnemyController : MonoBehaviour
             //エフェクト生成
             //GameObject effectPrefab = EffectManager.instance.GetEffect(EffectName.enemyDown);
             //GameObject effect = Instantiate(effectPrefab, transform.position, Quaternion.identity);
+            GameObject effect = Instantiate(EffectManager.instance.GetEffect(EffectName.Hit), transform.position, Quaternion.identity);
 
-            GameObject effect = Instantiate(EffectManager.instance.GetEffect(EffectName.enemyDown), transform.position, Quaternion.identity);
+            effect.transform.SetParent(treasureChestGenerator.TemporaryObjectsPlace);
 
-            Destroy(effect, 1.5f);
+            //Destroy(effect, 1.5f);
 
             //リストから削除
             GameData.instance.enemiesList.Remove(this);
@@ -115,6 +116,13 @@ public class EnemyController : MonoBehaviour
                 //シールド中なら、ダメージを1減らす
                 charaController.UpdateHp(-(attackPoint += charaController.Item.IsShielded ? -1 : 0));
             }
+
+            //エフェクト生成
+            GameObject effect = Instantiate(EffectManager.instance.GetEffect(EffectName.Hit), transform.position, Quaternion.identity);
+
+            effect.transform.SetParent(treasureChestGenerator.TemporaryObjectsPlace);
+
+            //Destroy(effect, 1.5f);
 
             //リストから削除
             GameData.instance.enemiesList.Remove(this);

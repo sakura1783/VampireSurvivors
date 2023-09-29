@@ -801,12 +801,6 @@ MonoBehaviour:
   enemiesList: []
   targetList: []
   thirdScore: 0
-  txt1stName: {fileID: 971202144}
-  txt1stScore: {fileID: 1613237282}
-  txt2ndName: {fileID: 2051261818}
-  txt2ndScore: {fileID: 2000283379}
-  txt3rdName: {fileID: 984021558}
-  txt3rdScore: {fileID: 1938645117}
 --- !u!1 &105116346
 GameObject:
   m_ObjectHideFlags: 0
@@ -955,6 +949,12 @@ MonoBehaviour:
   btnEditName: {fileID: 737324367}
   gameManager: {fileID: 919231863}
   nameEntryPop: {fileID: 358688894}
+  txt1stName: {fileID: 971202144}
+  txt1stScore: {fileID: 1613237282}
+  txt2ndName: {fileID: 2051261818}
+  txt2ndScore: {fileID: 2000283379}
+  txt3rdName: {fileID: 984021558}
+  txt3rdScore: {fileID: 1938645117}
 --- !u!1 &115609253
 GameObject:
   m_ObjectHideFlags: 0
@@ -2077,7 +2077,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1554783106}
     m_Modifications:
     - target: {fileID: 141186, guid: 53c22e1773be7f84aad8ed8b7b58fa6e, type: 3}
       propertyPath: m_Name
@@ -2097,7 +2097,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 22424616, guid: 53c22e1773be7f84aad8ed8b7b58fa6e, type: 3}
       propertyPath: m_RootOrder
-      value: 26
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22424616, guid: 53c22e1773be7f84aad8ed8b7b58fa6e, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2185,6 +2185,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d416d1715bbc06d4789612d1211da8d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &350960958 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 22424616, guid: 53c22e1773be7f84aad8ed8b7b58fa6e,
+    type: 3}
+  m_PrefabInstance: {fileID: 350960953}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &353230239
 GameObject:
   m_ObjectHideFlags: 0
@@ -6120,7 +6126,7 @@ MonoBehaviour:
   bullet5Prefab: {fileID: 4909106928436698919, guid: c23fc5fdfa7f04e0c9714f1c0249c030,
     type: 3}
   temporaryObjectsPlace: {fileID: 530679511}
-  maxHp: 5
+  maxHp: 30
   hp: 0
   moveSpeed: 3
   leftBottomLimitTran: {fileID: 774257007}
@@ -6354,7 +6360,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 27
+  m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &735033005
 GameObject:
@@ -9262,7 +9268,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1063314880}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -10411,13 +10417,13 @@ MonoBehaviour:
     generateRate: 30
   - itemType: 1
     maxGenerateCount: 99
-    generateRate: 30
+    generateRate: 25
   - itemType: 2
     maxGenerateCount: 2
     generateRate: 10
   - itemType: 3
     maxGenerateCount: 99
-    generateRate: 30
+    generateRate: 25
   - itemType: 4
     maxGenerateCount: 1
     generateRate: 5
@@ -22958,7 +22964,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 350960958}
   m_Father: {fileID: 0}
   m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -22975,7 +22982,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fade: {fileID: 350960954}
-  fadeDuration: 1.5
+  fadeDuration: 1
 --- !u!1 &1558128327
 GameObject:
   m_ObjectHideFlags: 0

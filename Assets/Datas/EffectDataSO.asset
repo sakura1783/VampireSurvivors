@@ -14,8 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   effectDataList:
   - effectName: 0
-    effectPrefab: {fileID: 0}
-  - effectName: 1
     effectPrefab: {fileID: 100000, guid: f06e78284f831ae469c74624ab5d513b, type: 3}
+  - effectName: 1
+    effectPrefab: {fileID: 1545806602296978, guid: 9e4577abe56a95f4a91d29a0473cd30c,
+      type: 3}
   - effectName: 2
-    effectPrefab: {fileID: 0}
+    effectPrefab: {fileID: 100004, guid: 757df604761b8ef42831192c70ee1099, type: 3}
+  - effectName: 3
+    effectPrefab: {fileID: 1727626132299242, guid: b0bc1b6b391734647b9bb142bafc0819,
+      type: 3}
+  - effectName: 4
+    effectPrefab: {fileID: 100004, guid: 7867af58a6ec48846ae807eb4022fbaa, type: 3}

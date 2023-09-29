@@ -136,6 +136,9 @@ public class Item : MonoBehaviour
     /// </summary>
     private void HealingPortion()
     {
+        //エフェクト
+        GameObject effect = Instantiate(EffectManager.instance.GetEffect(EffectName.HealEffect), charaController.transform);
+
         charaController.UpdateHp(5);
     }
 
@@ -144,6 +147,10 @@ public class Item : MonoBehaviour
     /// </summary>
     private void AttackPortion(ItemType itemType)
     {
+        //エフェクト
+        GameObject effect = Instantiate(EffectManager.instance.GetEffect(EffectName.GoodItemEffect), charaController.transform);
+        Destroy(effect, 2f);  //このエフェクトは永遠に続くので2秒で破壊する
+
         isAttackTimeReduced = true;
 
         StartCoroutine(ItemEffectTimer(itemType));
@@ -155,6 +162,10 @@ public class Item : MonoBehaviour
     /// <param name="itemType"></param>
     private void InvinciblePortion(ItemType itemType)
     {
+        //エフェクト
+        GameObject effect = Instantiate(EffectManager.instance.GetEffect(EffectName.GoodItemEffect), charaController.transform);
+        Destroy(effect, 2f);
+
         isInvincible = true;
 
         StartCoroutine(ItemEffectTimer(itemType));
@@ -166,6 +177,10 @@ public class Item : MonoBehaviour
     /// <param name="itemType"></param>
     private void GuardianShield(ItemType itemType)
     {
+        //エフェクト
+        GameObject effect = Instantiate(EffectManager.instance.GetEffect(EffectName.GoodItemEffect), charaController.transform);
+        Destroy(effect, 2f);
+
         isShielded = true;
 
         StartCoroutine(ItemEffectTimer(itemType));
@@ -176,6 +191,8 @@ public class Item : MonoBehaviour
     /// </summary>
     public void Revive()  //TODO 死亡時に呼び出す
     {
+        //TODO エフェクト
+
         //プレイヤーが死亡状態であれば(再確認)
         if (charaController.hp <= 0)
         {
@@ -191,6 +208,9 @@ public class Item : MonoBehaviour
     /// <param name="itemType"></param>
     private IEnumerator VenomDrink(ItemType itemType)
     {
+        //エフェクト
+        GameObject effect = Instantiate(EffectManager.instance.GetEffect(EffectName.BadItemEffect), charaController.transform);
+
         isPoisoned = true;
 
         StartCoroutine(ItemEffectTimer(itemType));

@@ -10,6 +10,7 @@ public class TreasureChestGenerator : MonoBehaviour
     [SerializeField] private TreasureChest treasureChestPrefab;
 
     [SerializeField] private Transform temporaryObjectsPlace;
+    public Transform TemporaryObjectsPlace => temporaryObjectsPlace;
 
 
     [System.Serializable]
@@ -41,11 +42,15 @@ public class TreasureChestGenerator : MonoBehaviour
     /// </summary>
     public void GenerateTreasureChest(Transform enemyTran)
     {
+        //宝箱生成
         TreasureChest treasureChest = Instantiate(treasureChestPrefab, enemyTran.position, Quaternion.identity);
-
         treasureChest.transform.SetParent(temporaryObjectsPlace);
-
         treasureChest.SetUpTreasureChest(itemPop);
+
+        //エフェクト
+        GameObject effect = Instantiate(EffectManager.instance.GetEffect(EffectName.TreasureAppear), treasureChest.transform.position, Quaternion.identity);
+        effect.transform.SetParent(temporaryObjectsPlace);
+
 
         //ランダムにアイテムを決定し、ポップアップにアイテムの情報を渡す
         GetRandomItem();
