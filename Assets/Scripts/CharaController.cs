@@ -395,10 +395,16 @@ public class CharaController : MonoBehaviour
     //}
 
     /// <summary>
-    /// HP更新
+    /// HP更新　　//TODO コメント
     /// </summary>
     public void UpdateHp(int value)
     {
+        //HPが0以下の場合は処理しない
+        if (hp <= 0)
+        {
+            return;
+        }
+
         //レベル25以上の時受けるダメージの量+1
         if (charaLevel >= 25 && value < 0)
         {

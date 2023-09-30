@@ -47,13 +47,19 @@ public class ResultPopUp : MonoBehaviour
         //3位以内の場合、プレイヤーの名前とスコアをリストに追加
         gameManager.AddToPlayersDataList();
 
+        Debug.Log("1");
+
         //プレイヤーのスコアと名前をランキングに追加
         GameData.instance.AddRanking();
+
+        Debug.Log("2");
 
         gameManager.IsDisplayResultPopUp = false;
 
         //シーン遷移
         TransitionManager.instance.PrepareLoadNextScene();
+
+        Debug.Log("3");
     }
 
     /// <summary>

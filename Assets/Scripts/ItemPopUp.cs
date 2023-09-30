@@ -118,8 +118,11 @@ public class ItemPopUp : MonoBehaviour
         step1CanvasGroup.blocksRaycasts = true;
         step2CanvasGroup.blocksRaycasts = false;
 
-        txtItemName.text = "";
-        txtDescliption.text = "";
+        //初期化の際はDebugで順番を確認する。今回は値を設定した後に初期化してしまっていたのでポップアップの表示に問題が生じた
+        //txtItemName.text = "";
+        //txtDescliption.text = "";
+
+        Debug.Log("通過しました");
     }
 
     /// <summary>
@@ -128,6 +131,8 @@ public class ItemPopUp : MonoBehaviour
     public void SetRandomItemDetail(ItemType itemType)
     {
         selectedItemData = GetItemDataByItemType(itemType);
+
+        Debug.Log($"アイテムの中身：{selectedItemData}");
 
         txtItemName.text = selectedItemData.itemType.ToString();
         txtDescliption.text = selectedItemData.descliption;

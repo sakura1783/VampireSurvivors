@@ -6124,7 +6124,7 @@ MonoBehaviour:
   bullet5Prefab: {fileID: 4909106928436698919, guid: c23fc5fdfa7f04e0c9714f1c0249c030,
     type: 3}
   temporaryObjectsPlace: {fileID: 530679511}
-  maxHp: 5
+  maxHp: 1
   hp: 0
   moveSpeed: 3
   leftBottomLimitTran: {fileID: 774257007}
