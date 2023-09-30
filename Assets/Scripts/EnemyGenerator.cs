@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyGenerator : MonoBehaviour
 {
     [SerializeField] private float generateInterval;
+    public float GenerateInterval { get => generateInterval; set => generateInterval = value; }
 
     //[SerializeField] private int maxGenerateCount;
 

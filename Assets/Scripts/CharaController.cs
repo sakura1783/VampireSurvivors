@@ -52,6 +52,7 @@ public class CharaController : MonoBehaviour
     //[SerializeField] private BulletGenerator4 bulletGenerator4;
     //[SerializeField] private BulletGenerator5 bulletGenerator5;
 
+    [SerializeField] private EnemyGenerator enemyGenerator0;
     [SerializeField] private EnemyGenerator enemyGenerator1;
     [SerializeField] private EnemyGenerator enemyGenerator2;
 
@@ -398,19 +399,30 @@ public class CharaController : MonoBehaviour
     /// </summary>
     public void UpdateHp(int value)
     {
+        //レベル25以上の時受けるダメージの量+1
+        if (charaLevel >= 25 && value < 0)
+        {
+            value -= 1;
+        }
+
         hp = Mathf.Clamp(hp += value, 0, maxHp);
 
         uiManager.UpdateHpGauge();
 
         if (hp <= 0)
         {
-            //TODO リバイブを持っていたら生き返る
-
-            //TODO ゲーム終了時の処理
-
             //TODO 死亡アニメ
 
             //TODO アニメが終わってから
+
+            //リバイブを持っていたら生き返る
+            if (item.HasReviveItem)
+            {
+                item.Revive();
+
+                return;
+            }
+
             resultPop.ShowPopUp();
         }
     }
@@ -460,7 +472,7 @@ public class CharaController : MonoBehaviour
         //レベルに応じてバレット4の生成時間を短縮
         //bulletGenerator4.SetAttackIntervalByLevel();
 
-        //TODO 値変える
+        //TODO 必要に応じて変更
         if (charaLevel == 5)
         {
             StartCoroutine(enemyGenerator1.GenerateEnemy(this));
@@ -469,7 +481,12 @@ public class CharaController : MonoBehaviour
         {
             StartCoroutine(enemyGenerator2.GenerateEnemy(this));
         }
-        //TODO レベルアップにつれて難易度アップ(敵生成頻度、ダメージアップ)永遠にゲームが続いてしまわないようにする
+        if (charaLevel == 15 || charaLevel == 20)
+        {
+            enemyGenerator0.GenerateInterval -= 0.5f;
+            enemyGenerator1.GenerateInterval -= 0.5f;
+            enemyGenerator2.GenerateInterval -= 0.5f;
+        }
     }
 
     /// <summary>

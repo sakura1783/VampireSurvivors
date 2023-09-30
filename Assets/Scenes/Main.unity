@@ -6132,6 +6132,7 @@ MonoBehaviour:
   attackInterval: 2
   needExpForLevelUp: 5
   totalExp: 0
+  enemyGenerator0: {fileID: 0}
   enemyGenerator1: {fileID: 1939668178}
   enemyGenerator2: {fileID: 147531462}
   uiManager: {fileID: 309846100}
@@ -10415,7 +10416,7 @@ MonoBehaviour:
     generateRate: 30
   - itemType: 1
     maxGenerateCount: 99
-    generateRate: 25
+    generateRate: 30
   - itemType: 2
     maxGenerateCount: 2
     generateRate: 10
@@ -10424,7 +10425,7 @@ MonoBehaviour:
     generateRate: 25
   - itemType: 4
     maxGenerateCount: 1
-    generateRate: 5
+    generateRate: 100
   - itemType: 5
     maxGenerateCount: 2
     generateRate: 5

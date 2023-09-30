@@ -21,6 +21,7 @@ public class Item : MonoBehaviour
     private bool isPoisoned = false;
 
     private bool hasReviveItem = false;
+    public bool HasReviveItem => hasReviveItem;
 
 
     /// <summary>
@@ -77,6 +78,10 @@ public class Item : MonoBehaviour
 
             case ItemType.ガーディアンシールド:
                 GuardianShield(itemType);
+                break;
+
+            case ItemType.リバイブ:
+                hasReviveItem = true;
                 break;
 
             case ItemType.ヴェノムドリンク:
@@ -201,9 +206,11 @@ public class Item : MonoBehaviour
     /// <summary>
     /// リバイブ
     /// </summary>
-    public void Revive()  //TODO 死亡時に呼び出す
+    public void Revive()
     {
-        //TODO エフェクト
+        //エフェクト
+        GameObject effect = Instantiate(EffectManager.instance.GetEffect(EffectName.GoodItemEffect), charaController.transform);
+        Destroy(effect, 2f);
 
         //SE再生
         AudioManager.instance.PlaySE(SeType.ApplyItemEffect);
@@ -213,7 +220,8 @@ public class Item : MonoBehaviour
         {
             hasReviveItem = false;  //複数回使えないようにする
 
-            charaController.hp = charaController.maxHp / 2;  //もし答えが少数だった場合は小数点以下は切り捨てられる
+            //最大HPの半分で生き返る
+            charaController.UpdateHp(charaController.maxHp / 2);  //もし答えが少数だった場合は小数点以下は切り捨てられる
         }
     }
 
