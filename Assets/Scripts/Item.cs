@@ -139,6 +139,9 @@ public class Item : MonoBehaviour
         //エフェクト
         GameObject effect = Instantiate(EffectManager.instance.GetEffect(EffectName.HealEffect), charaController.transform);
 
+        //SE再生
+        AudioManager.instance.PlaySE(SeType.ApplyItemEffect);
+
         charaController.UpdateHp(5);
     }
 
@@ -150,6 +153,9 @@ public class Item : MonoBehaviour
         //エフェクト
         GameObject effect = Instantiate(EffectManager.instance.GetEffect(EffectName.GoodItemEffect), charaController.transform);
         Destroy(effect, 2f);  //このエフェクトは永遠に続くので2秒で破壊する
+
+        //SE再生
+        AudioManager.instance.PlaySE(SeType.ApplyItemEffect);
 
         isAttackTimeReduced = true;
 
@@ -166,6 +172,9 @@ public class Item : MonoBehaviour
         GameObject effect = Instantiate(EffectManager.instance.GetEffect(EffectName.GoodItemEffect), charaController.transform);
         Destroy(effect, 2f);
 
+        //SE再生
+        AudioManager.instance.PlaySE(SeType.ApplyItemEffect);
+
         isInvincible = true;
 
         StartCoroutine(ItemEffectTimer(itemType));
@@ -181,6 +190,9 @@ public class Item : MonoBehaviour
         GameObject effect = Instantiate(EffectManager.instance.GetEffect(EffectName.GoodItemEffect), charaController.transform);
         Destroy(effect, 2f);
 
+        //SE再生
+        AudioManager.instance.PlaySE(SeType.ApplyItemEffect);
+
         isShielded = true;
 
         StartCoroutine(ItemEffectTimer(itemType));
@@ -192,6 +204,9 @@ public class Item : MonoBehaviour
     public void Revive()  //TODO 死亡時に呼び出す
     {
         //TODO エフェクト
+
+        //SE再生
+        AudioManager.instance.PlaySE(SeType.ApplyItemEffect);
 
         //プレイヤーが死亡状態であれば(再確認)
         if (charaController.hp <= 0)
@@ -210,6 +225,9 @@ public class Item : MonoBehaviour
     {
         //エフェクト
         GameObject effect = Instantiate(EffectManager.instance.GetEffect(EffectName.BadItemEffect), charaController.transform);
+
+        //SE再生
+        AudioManager.instance.PlaySE(SeType.ApplyItemEffect);
 
         isPoisoned = true;
 

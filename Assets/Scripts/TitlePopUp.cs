@@ -46,6 +46,8 @@ public class TitlePopUp : MonoBehaviour
         //ランキングの読み込み(シーン遷移によってテキスト(UI)が初期状態に戻ってしまうのでここでランキングを読み込んで表示する)
         GameData.instance.LoadRanking();
 
+        //BGM再生
+        AudioManager.instance.PreparePlayBGM(BgmType.Title);
     }
 
     /// <summary>
@@ -62,6 +64,8 @@ public class TitlePopUp : MonoBehaviour
     /// </summary>
     private void OnClickBtnGameStart()
     {
+        AudioManager.instance.PlaySE(SeType.GameStartBtn);
+
         HidePopUp();
     }
 
@@ -82,6 +86,12 @@ public class TitlePopUp : MonoBehaviour
     public void HidePopUp()
     {
         popupCanvasGroup.blocksRaycasts = false;
-        popupCanvasGroup.DOFade(0, 1f).SetEase(Ease.Linear).OnComplete(() => gameManager.IsDisplayTitlePopUp = false);  //ここにはループの処理はないためSetLinkは書かなくてよい
+        popupCanvasGroup.DOFade(0, 1f).SetEase(Ease.Linear).OnComplete(() =>  //ここにはループの処理はないためSetLinkは書かなくてよい
+        {
+            gameManager.IsDisplayTitlePopUp = false;
+
+            //BGM再生
+            AudioManager.instance.PreparePlayBGM(BgmType.Battle);
+        });  
     }
 }

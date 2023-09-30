@@ -66,7 +66,13 @@ public class ResultPopUp : MonoBehaviour
         Sequence seqence = DOTween.Sequence();
 
         seqence.Append(gameObject.transform.DOLocalMoveY(0, 1.5f));
-        seqence.AppendInterval(1.5f).OnComplete(() => SetPlayerResult());  //ポップアップが画面にスライドするのを待ってからSetPlayerResultメソッドを実行
+        seqence.AppendInterval(1.5f).OnComplete(() =>
+        {
+            //BGM再生
+            AudioManager.instance.PreparePlayBGM(BgmType.Result);
+
+            SetPlayerResult();
+        });  //ポップアップが画面にスライドするのを待ってからSetPlayerResultメソッドを実行
     }
 
     /// <summary>

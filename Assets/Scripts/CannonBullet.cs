@@ -41,6 +41,9 @@ public class CannonBullet : MonoBehaviour
 
                 effect.transform.SetParent(charaController.TreasureChestGenerator.TemporaryObjectsPlace);
 
+                //SE再生
+                AudioManager.instance.PlaySE(SeType.Hit);
+
                 //プレイヤーのHPを減らす
                 //charaController.UpdateHp(-attackPoint);
                 //シールド中なら、ダメージを1減らす

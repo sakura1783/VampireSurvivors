@@ -80,6 +80,9 @@ public class EnemyController : MonoBehaviour
 
             //Destroy(effect, 1.5f);
 
+            //SE再生
+            AudioManager.instance.PlaySE(SeType.Hit);
+
             //リストから削除
             GameData.instance.enemiesList.Remove(this);
 
@@ -123,6 +126,9 @@ public class EnemyController : MonoBehaviour
             effect.transform.SetParent(treasureChestGenerator.TemporaryObjectsPlace);
 
             //Destroy(effect, 1.5f);
+
+            //SE再生
+            AudioManager.instance.PlaySE(SeType.Hit);
 
             //リストから削除
             GameData.instance.enemiesList.Remove(this);
