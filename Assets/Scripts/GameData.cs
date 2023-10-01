@@ -21,7 +21,7 @@ public class GameData : MonoBehaviour
     //public string thirdName;
 
     //public Dictionary<string, int> playersData = new();  //プレイヤーの名前とスコアのデータ
-    public List<(string playerName, int score)> playersData = new();  //ディクショナリだとKeyが一意でなければならない(プレイヤー同士の名前の重複が許可されない)のでtuple(タプル)型に変更 
+    public List<(string playerName, int score)> playersDataList = new();  //ディクショナリだとKeyが一意でなければならない(プレイヤー同士の名前の重複が許可されない)のでtuple(タプル)型に変更 
 
     private Text txt1stName;
     private Text txt1stScore;
@@ -88,80 +88,133 @@ public class GameData : MonoBehaviour
     /// <summary>
     /// プレイヤーのスコアと名前をランキングに追加
     /// </summary>
-    public void AddRanking()
+    //public void AddRanking()
+    //{
+    //    //何回foreach文が回ったか。この値で何位に値を入れるか決定
+    //    int count = 0;
+
+    //    //ランキングに同じプレイヤーが入らないようにプレイヤーの名前を保管するリストを宣言
+    //    List<string> playerList = new();
+
+    //    //スコアが高い順にPlayersDataリストを並び替える
+    //    //var sortedPlayersDataDic = GameData.instance.playersData.OrderByDescending(x => x.Value);  //xはplayersDataを表し、これはplayersDataのvalueを降順に並べている
+    //    var sortedPlayersDataList = playersData.OrderByDescending(data => data.score);
+
+    //    //sortedPlayersDataDicから順に要素を取り出す
+    //    foreach (var playerData in sortedPlayersDataList)
+    //    {
+    //        //スコアが初期値(0)の場合は「--」と表示する
+    //        if (playerData.score <= 0)
+    //        {
+    //            //if (count == 0)
+    //            //{
+    //            //    GameData.instance.txt1stName.text = "--";
+    //            //    GameData.instance.txt1stScore.text = "--";
+    //            //}
+    //            //if (count == 1)
+    //            //{
+    //            //    GameData.instance.txt2ndName.text = "--";
+    //            //    GameData.instance.txt2ndScore.text = "--";
+    //            //}
+    //            if (count == 2)
+    //            {
+    //                //GameData.instance.txt3rdName.text = "--";
+    //                //GameData.instance.txt3rdScore.text = "--";
+
+    //                //値が無いにしろランキングが埋まったら(3回処理を回したら)処理を抜ける
+    //                //return;
+    //            }
+    //        }
+
+    //        //同じプレイヤーが含まれていなかった場合のみ、ランキングに表示
+    //        if (!playerList.Contains(playerData.playerName) && playerData.score >= 0)  //<= 2つめの条件で、スコアが初期値の場合はこのブロック内に入らないようにする
+    //        {
+    //            //if (count == 0)
+    //            //{
+    //            //    GameData.instance.txt1stName.text = playerData.playerName;
+    //            //    GameData.instance.txt1stScore.text = playerData.score.ToString();
+    //            //}
+    //            //if (count == 1)
+    //            //{
+    //            //    GameData.instance.txt2ndName.text = playerData.playerName;
+    //            //    GameData.instance.txt2ndScore.text = playerData.score.ToString();
+    //            //}
+    //            if (count == 2)
+    //            {
+    //                //GameData.instance.txt3rdName.text = playerData.playerName;
+    //                //GameData.instance.txt3rdScore.text = playerData.score.ToString();
+
+    //                //ランキングに入るか否かを決めるthirdScore変数にここで値を代入
+    //                GameData.instance.thirdScore = playerData.score;
+
+    //                //ランキングが埋まったら処理を抜ける
+    //                //return;
+    //            }
+    //        }
+
+    //        //同じプレイヤーが含まれていた場合、リストから削除
+    //        if (playerList.Contains(playerData.playerName))
+    //        {
+    //            playersData.Remove((playerData.playerName, playerData.score));
+    //        }
+
+    //        //ランキング4位以下もリストから削除
+    //        if (count >= 3)
+    //        {
+    //            playersData.Remove((playerData.playerName, playerData.score));
+
+    //            //必要なデータのみリストに保存できたらメソッドから抜ける
+    //            return;
+    //        }
+
+    //        //ランキングに同じプレイヤーが重複しないようにリストに追加
+    //        playerList.Add(playerData.playerName);
+
+    //        count++;
+    //    }
+    //}
+
+    /// <summary>
+    /// PlayersDataListの整理と並び替え
+    /// </summary>
+    public void OrganizePlayersDataList()
     {
-        //何回foreach文が回ったか。この値で何位に値を入れるか決定
+        //何回foreach文が回ったか
         int count = 0;
 
         //ランキングに同じプレイヤーが入らないようにプレイヤーの名前を保管するリストを宣言
         List<string> playerList = new();
 
-        //スコアが高い順にPlayersDataリストを並び替える
-        //var sortedPlayersDataDic = GameData.instance.playersData.OrderByDescending(x => x.Value);  //xはplayersDataを表し、これはplayersDataのvalueを降順に並べている
-        var sortedPlayersDataList = playersData.OrderByDescending(data => data.score);
+        //スコアが高い順にPlayersDataListを並び替える
+        var sortedPlayersDataList = playersDataList.OrderByDescending(data => data.score);
 
         //sortedPlayersDataDicから順に要素を取り出す
         foreach (var playerData in sortedPlayersDataList)
         {
-            //スコアが初期値(0)の場合は「--」と表示する
-            if (playerData.score <= 0)
+            //同じプレイヤーが含まれておらず、かつスコアが0以上の場合
+            if (!playerList.Contains(playerData.playerName) && playerData.score > 0)
             {
-                //if (count == 0)
-                //{
-                //    GameData.instance.txt1stName.text = "--";
-                //    GameData.instance.txt1stScore.text = "--";
-                //}
-                //if (count == 1)
-                //{
-                //    GameData.instance.txt2ndName.text = "--";
-                //    GameData.instance.txt2ndScore.text = "--";
-                //}
-                if (count == 2)
+                if (count == 3)
                 {
-                    //GameData.instance.txt3rdName.text = "--";
-                    //GameData.instance.txt3rdScore.text = "--";
-
-                    //値が無いにしろランキングが埋まったら(3回処理を回したら)処理を抜ける
-                    //return;
-                }
-            }
-
-            //同じプレイヤーが含まれていなかった場合のみ、ランキングに表示
-            if (!playerList.Contains(playerData.playerName) && playerData.score >= 0)  //<= 2つめの条件で、スコアが初期値の場合はこのブロック内に入らないようにする
-            {
-                //if (count == 0)
-                //{
-                //    GameData.instance.txt1stName.text = playerData.playerName;
-                //    GameData.instance.txt1stScore.text = playerData.score.ToString();
-                //}
-                //if (count == 1)
-                //{
-                //    GameData.instance.txt2ndName.text = playerData.playerName;
-                //    GameData.instance.txt2ndScore.text = playerData.score.ToString();
-                //}
-                if (count == 2)
-                {
-                    //GameData.instance.txt3rdName.text = playerData.playerName;
-                    //GameData.instance.txt3rdScore.text = playerData.score.ToString();
-
-                    //ランキングに入るか否かを決めるthirdScore変数にここで値を代入
+                    //ランキングに入るかどうかを決めるthirdScore変数に値を代入
                     GameData.instance.thirdScore = playerData.score;
 
-                    //ランキングが埋まったら処理を抜ける
-                    //return;
+                    //thirdScoreをセーブ
+                    PlayerPrefs.SetInt("ThirdScore_Key", thirdScore);
+                    PlayerPrefs.Save();
                 }
             }
 
             //同じプレイヤーが含まれていた場合、リストから削除
             if (playerList.Contains(playerData.playerName))
             {
-                playersData.Remove((playerData.playerName, playerData.score));
+                playersDataList.Remove((playerData.playerName, playerData.score));
             }
 
             //ランキング4位以下もリストから削除
             if (count >= 3)
             {
-                playersData.Remove((playerData.playerName, playerData.score));
+                playersDataList.Remove((playerData.playerName, playerData.score));
 
                 //必要なデータのみリストに保存できたらメソッドから抜ける
                 return;
@@ -172,6 +225,9 @@ public class GameData : MonoBehaviour
 
             count++;
         }
+
+        //playersDataListをセーブ
+        PlayerPrefsUtility.SaveList<(string, int)>("PlayersDataList_Key", GameData.instance.playersDataList);
     }
 
     /// <summary>
@@ -179,11 +235,15 @@ public class GameData : MonoBehaviour
     /// </summary>
     public void LoadRanking()
     {
+        //セーブしておいたplayersDataリストをロード
+        playersDataList = PlayerPrefsUtility.LoadList<(string, int)>("PlayersDataList_Key");
+
         //何回foreach文が回ったか。この値でどの順位にどの値を入れるかを決める
         int count = 0;
 
         //スコアが高い順にリストを並び替え
-        var sortedPlayersDataList = playersData.OrderByDescending(data => data.score);
+        //var sortedPlayersDataList = playersData.OrderByDescending(data => data.score);
+        var sortedPlayersDataList = playersDataList.OrderByDescending(data => data.score);
 
         foreach (var playerData in sortedPlayersDataList)
         {

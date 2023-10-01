@@ -44,13 +44,13 @@ public class ResultPopUp : MonoBehaviour
     /// </summary>
     private void OnClickBtnToTitle()
     {
-        //3位以内の場合、プレイヤーの名前とスコアをリストに追加
+        //3位以内の場合、プレイヤーの名前とスコアをplayersDataListに追加
         gameManager.AddToPlayersDataList();
 
         Debug.Log("1");
 
-        //プレイヤーのスコアと名前をランキングに追加
-        GameData.instance.AddRanking();
+        //playersDataListの整理と並び替え
+        GameData.instance.OrganizePlayersDataList();
 
         Debug.Log("2");
 

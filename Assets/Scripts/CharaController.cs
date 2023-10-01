@@ -395,12 +395,12 @@ public class CharaController : MonoBehaviour
     //}
 
     /// <summary>
-    /// HP更新　　//TODO コメント
+    /// HP更新　
     /// </summary>
     public void UpdateHp(int value)
     {
-        //HPが0以下の場合は処理しない
-        if (hp <= 0)
+        //ゲーム終了(isGameUpがtrue)の場合は処理しない。この処理を書かないと、リザルト画面時、敵とぶつかった時に以下の処理が繰り返されてしまう
+        if (gameManager.IsGameUp)
         {
             return;
         }
@@ -428,6 +428,8 @@ public class CharaController : MonoBehaviour
 
                 return;
             }
+
+            gameManager.IsGameUp = true;
 
             resultPop.ShowPopUp();
         }

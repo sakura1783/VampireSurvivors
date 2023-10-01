@@ -36,6 +36,11 @@ public class CannonBullet : MonoBehaviour
             //無敵でない場合のみ
             if (!charaController.Item.IsInvincible)
             {
+                if (charaController.GameManager.IsGameUp)
+                {
+                    return;
+                }
+
                 //エフェクト生成
                 GameObject effect = Instantiate(EffectManager.instance.GetEffect(EffectName.Hit), transform.position, Quaternion.identity);
 

@@ -20,7 +20,7 @@ public class Item : MonoBehaviour
 
     private bool isPoisoned = false;
 
-    private bool hasReviveItem = false;
+    [SerializeField] private bool hasReviveItem = false;
     public bool HasReviveItem => hasReviveItem;
 
 

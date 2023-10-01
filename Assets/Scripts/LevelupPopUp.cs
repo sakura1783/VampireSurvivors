@@ -156,11 +156,16 @@ public class LevelupPopUp : MonoBehaviour
     {
         gameManager.IsDisplayPopUp = true;
 
+        //TODO 新しい武器があるか、レベルアップできる武器があるかを判断してボタンの描画と押下反応を制御
+
         //btnNewWeaponの生成
         GenerateBtnNewWeapon(bulletDatasList);
 
         //btnLevelupの生成
         StartCoroutine(GenerateLevelupWeaponBtn());
+
+        //TODO わからない
+        //int count = (int)GenerateLevelupWeaponBtn().Current;
 
         popUpCanvasGroup.alpha = 1;
 
@@ -196,6 +201,8 @@ public class LevelupPopUp : MonoBehaviour
         step2_LevelupCanvasGroup.blocksRaycasts = false;
         step2_NewWeaponCanvasGroup.blocksRaycasts = false;
 
+        //TODO ボタンの押下反応と描画の初期化
+
         //生成した全てのボタンを破壊
         foreach (var button in btnsList)
         {
@@ -205,6 +212,14 @@ public class LevelupPopUp : MonoBehaviour
         //txtDescliptionの初期化
         txtBulletDescliption.text = "";
         txtLevelupDescliption.text = "";
+    }
+
+    /// <summary>
+    /// 新しい武器またはレベルアップできる武器があるかどうか判断して、ボタンの押下反応と描画を切り替える
+    /// </summary>
+    private void ToggleButtonVisibility()
+    {
+
     }
 
     /// <summary>
@@ -323,6 +338,9 @@ public class LevelupPopUp : MonoBehaviour
     /// </summary>
     private IEnumerator GenerateLevelupWeaponBtn()
     {
+        //TODO いくつボタンが生成されたか
+        //int count = 0;
+
         //CharaSetにアタッチされているBulletGeneratorの番号を配列に順番に入れる
         yield return StartCoroutine(CreateAttatchedBulletGeneratorsArray());
 
@@ -349,7 +367,11 @@ public class LevelupPopUp : MonoBehaviour
 
             //ボタンの設定
             button.SetUpLevelupWeaponBtn(this, charaController.bulletDatasList[i]);
+
+            //count++;
         }
+
+        //yield return count;
     }
 
     /// <summary>

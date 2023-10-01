@@ -71,6 +71,11 @@ public class EnemyController : MonoBehaviour
     {
         if (col.CompareTag("Bullet"))
         {
+            if (gameManager.IsGameUp)
+            {
+                return;
+            }
+
             //エフェクト生成
             //GameObject effectPrefab = EffectManager.instance.GetEffect(EffectName.enemyDown);
             //GameObject effect = Instantiate(effectPrefab, transform.position, Quaternion.identity);
@@ -111,6 +116,11 @@ public class EnemyController : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Player"))
         {
+            if (gameManager.IsGameUp)
+            {
+                return;
+            }
+
             //無敵でない場合のみ
             if (!charaController.Item.IsInvincible)
             {

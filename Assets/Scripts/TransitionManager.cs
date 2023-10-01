@@ -45,7 +45,7 @@ public class TransitionManager : MonoBehaviour
         Scene scene = SceneManager.GetSceneByName("Main");
 
         //シーンの読み込み終了を待つ
-        //yield return new WaitUntil(() => scene.isLoaded);
+        yield return new WaitUntil(() => scene.isLoaded);
 
         //シーンの読み込みが終了してからフェードアウトして、場面転換を完了する
         fade.FadeOut(fadeDuration);

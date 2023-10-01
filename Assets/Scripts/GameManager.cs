@@ -72,6 +72,9 @@ public class GameManager : MonoBehaviour
         get => playerName; set => playerName = value;
     }
 
+    private bool isGameUp = false;
+    public bool IsGameUp { get => isGameUp; set => isGameUp = value; }
+
 
     void Start()
     {
@@ -174,10 +177,13 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void AddToPlayersDataList()
     {
+        //セーブしておいたthirdScoreをロード
+        GameData.instance.thirdScore = PlayerPrefs.GetInt("ThirdScore_Key");
+
         //スコアが3位以内ならリストに値を追加
         if (totalScore >= GameData.instance.thirdScore)
         {
-            GameData.instance.playersData.Add((playerName, totalScore));  //タプルを使っているのでカッコを忘れないようにする。タプルは(型1 値1, 型2 値2)という風に記述するため
+            GameData.instance.playersDataList.Add((playerName, totalScore));  //タプルを使っているのでカッコを忘れないようにする。タプルは(型1 値1, 型2 値2)という風に記述するため
         }
     }
 }
