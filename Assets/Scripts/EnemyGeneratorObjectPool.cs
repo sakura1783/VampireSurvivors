@@ -60,7 +60,7 @@ public class EnemyGeneratorObjectPool : MonoBehaviour
 
         GameData.instance.enemiesList.Add(enemyInstance);
 
-        Debug.Log("生成");
+        Debug.Log("敵を生成");
         Debug.Log(enemyInstance.ObjectPool);
 
         return enemyInstance;
@@ -73,6 +73,8 @@ public class EnemyGeneratorObjectPool : MonoBehaviour
     private void OnGetFromPool(EnemyController target)
     {
         target.gameObject.SetActive(true);
+
+        Debug.Log("プールから敵を取得");
     }
 
     /// <summary>
@@ -84,12 +86,12 @@ public class EnemyGeneratorObjectPool : MonoBehaviour
     /// <returns></returns>
     public EnemyController GetEnemy(Vector3 position, Quaternion rotation)
     {
-        //自動分岐
+        //自動分岐。ここの分岐で第1または第2引数(30/31行目)の命令が動く
         EnemyController enemy = enemyPool.Get();
         enemy.transform.position = position;
         enemy.transform.rotation = rotation;
 
-        Debug.Log("取得");
+        Debug.Log("敵の生成または取得");
         return enemy;
     }
 
