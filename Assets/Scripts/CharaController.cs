@@ -52,9 +52,12 @@ public class CharaController : MonoBehaviour
     //[SerializeField] private BulletGenerator4 bulletGenerator4;
     //[SerializeField] private BulletGenerator5 bulletGenerator5;
 
-    [SerializeField] private EnemyGenerator enemyGenerator0;
-    [SerializeField] private EnemyGenerator enemyGenerator1;
-    [SerializeField] private EnemyGenerator enemyGenerator2;
+    //[SerializeField] private EnemyGenerator enemyGenerator;
+    //[SerializeField] private EnemyGenerator enemyGenerator1;
+    //[SerializeField] private EnemyGenerator enemyGenerator2;
+    [SerializeField] private EnemyGeneratorObjectPool enemyGenerator;
+    [SerializeField] private EnemyGeneratorObjectPool enemyGenerator1;
+    [SerializeField] private EnemyGeneratorObjectPool enemyGenerator2;
 
     [SerializeField] private UIManager uiManager;
 
@@ -491,7 +494,7 @@ public class CharaController : MonoBehaviour
         }
         if (charaLevel == 11 || charaLevel == 14 || charaLevel == 17)
         {
-            enemyGenerator0.GenerateInterval -= 0.5f;
+            enemyGenerator.GenerateInterval -= 0.5f;
             enemyGenerator1.GenerateInterval -= 0.5f;
             enemyGenerator2.GenerateInterval -= 0.5f;
         }

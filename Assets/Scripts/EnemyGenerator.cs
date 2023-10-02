@@ -25,7 +25,7 @@ public class EnemyGenerator : MonoBehaviour
         int generateCount = 0;
 
         //while (generateCount < maxGenerateCount)
-        while (true)
+        while (!gameManager.IsGameUp)
         {
             //ポップアップ表示中の場合、処理をスキップしてwhile文の最初に戻り、ポップアップが非表示になるまで新しい敵を生成しない
             if (gameManager.IsDisplayPopUp || gameManager.IsDisplayTitlePopUp || gameManager.IsDisplayResultPopUp)

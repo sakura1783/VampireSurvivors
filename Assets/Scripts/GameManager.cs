@@ -13,7 +13,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private CharaController charaController;
 
-    [SerializeField] private EnemyGenerator enemyGenerator;
+    //[SerializeField] private EnemyGenerator enemyGenerator;
+    [SerializeField] private EnemyGeneratorObjectPool enemyGenerator;
 
     [SerializeField] private MapManager mapManager;
 
