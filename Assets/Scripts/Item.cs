@@ -93,7 +93,7 @@ public class Item : MonoBehaviour
                 break;
         }
 
-        Debug.Log($"{itemType}の効果が適用されます");
+        //Debug.Log($"{itemType}の効果が適用されます");
     }
 
     /// <summary>
@@ -133,7 +133,7 @@ public class Item : MonoBehaviour
                 break;
         }
 
-        Debug.Log($"{itemType}の効果が切れました");
+        //Debug.Log($"{itemType}の効果が切れました");
     }
 
     /// <summary>

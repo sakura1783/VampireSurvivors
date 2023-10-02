@@ -299,7 +299,7 @@ public class CharaController : MonoBehaviour
 
                     bulletGenerator.PrepareGenerateBullet(direction);
 
-                    Debug.Log("デフォルト弾発射");
+                    //Debug.Log("デフォルト弾発射");
                 }
             }
             //if (bulletGenerator1)
@@ -326,7 +326,7 @@ public class CharaController : MonoBehaviour
 
                     StartCoroutine(bulletGenerator2.PrepareGenerateBullet());
 
-                    Debug.Log("追尾弾発射");
+                    //Debug.Log("追尾弾発射");
                 }
             }
             if (bulletGenerator3)
@@ -340,7 +340,7 @@ public class CharaController : MonoBehaviour
 
                     bulletGenerator3.PrepareGenerateBullet(direction);
 
-                    Debug.Log("レーザー発射");
+                    //Debug.Log("レーザー発射");
                 }
             }
             if (bulletGenerator4)
@@ -354,7 +354,7 @@ public class CharaController : MonoBehaviour
 
                     bulletGenerator4.PrepareGenerateBullet();
 
-                    Debug.Log("雷発射");
+                    //Debug.Log("雷発射");
                 }
             }
             if (bulletGenerator5)
@@ -368,7 +368,7 @@ public class CharaController : MonoBehaviour
 
                     bulletGenerator5.PrepareGenerateBullet(direction);
 
-                    Debug.Log("氷発射");
+                    //Debug.Log("氷発射");
                 }
             }
 
@@ -467,7 +467,7 @@ public class CharaController : MonoBehaviour
 
         charaLevel++;
 
-        Debug.Log($"現在のレベル：{charaLevel}");
+        //Debug.Log($"現在のレベル：{charaLevel}");
 
         //次のレベルアップに必要なExpを増やす(レベルが上がるにつれて、必要なExpも増える)
         needExpForLevelUp += addPoint * (charaLevel - 1);

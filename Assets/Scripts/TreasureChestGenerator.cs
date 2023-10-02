@@ -79,7 +79,7 @@ public class TreasureChestGenerator : MonoBehaviour
             generateCountByItemType[itemData.itemType] = 0;
         }
 
-        Debug.Log("アイテムの生成数初期化");
+        //Debug.Log("アイテムの生成数初期化");
     }
 
     /// <summary>
@@ -99,7 +99,7 @@ public class TreasureChestGenerator : MonoBehaviour
             }
         }
 
-        Debug.Log($"生成合計値 : {totalGenerateRate}");
+        //Debug.Log($"生成合計値 : {totalGenerateRate}");
     }
 
     /// <summary>
@@ -111,21 +111,21 @@ public class TreasureChestGenerator : MonoBehaviour
         CalculateTotalGenerateRate();
 
         int randomNo = Random.Range(0, totalGenerateRate);
-        Debug.Log($"ランダムな値：{randomNo}");
+        //Debug.Log($"ランダムな値：{randomNo}");
 
         //取得したランダムな値をGetRandomItemTypeの引数に渡して、どのアイテムを生成するか、アイテムの番号を取得
         ItemType itemType = GetRandomItemType(randomNo);
 
         if (itemType == ItemType.None)
         {
-            Debug.Log("アイテムがありません");
+            //Debug.Log("アイテムがありません");
 
             return;
         }
 
         //生成した種類のアイテムだけカウントアップ
         generateCountByItemType[itemType]++;
-        Debug.Log($"アイテムの種類は{itemType}です");
+        //Debug.Log($"アイテムの種類は{itemType}です");
 
         //アイテムの情報をポップアップに渡す
         itemPop.SetRandomItemDetail(itemType);

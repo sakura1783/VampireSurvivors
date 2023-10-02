@@ -72,7 +72,7 @@ public class Cannon : MonoBehaviour
 
         bullet.Shoot(charaController, direction);
 
-        Debug.Log("大砲発射");
+        //Debug.Log("大砲発射");
     }
 
     /// <summary>

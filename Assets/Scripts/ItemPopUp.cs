@@ -122,7 +122,7 @@ public class ItemPopUp : MonoBehaviour
         //txtItemName.text = "";
         //txtDescliption.text = "";
 
-        Debug.Log("通過しました");
+        //Debug.Log("通過しました");
     }
 
     /// <summary>
@@ -132,7 +132,7 @@ public class ItemPopUp : MonoBehaviour
     {
         selectedItemData = GetItemDataByItemType(itemType);
 
-        Debug.Log($"アイテムの中身：{selectedItemData}");
+        //Debug.Log($"アイテムの中身：{selectedItemData}");
 
         txtItemName.text = selectedItemData.itemType.ToString();
         txtDescliption.text = selectedItemData.descliption;

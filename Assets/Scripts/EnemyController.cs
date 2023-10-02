@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 
 public class EnemyController : MonoBehaviour
 {
@@ -17,6 +18,13 @@ public class EnemyController : MonoBehaviour
     private TreasureChestGenerator treasureChestGenerator;
 
     private GameManager gameManager;
+
+    private IObjectPool<EnemyController> objectPool;
+    public IObjectPool<EnemyController> ObjectPool
+    {
+        get => objectPool;
+        set => objectPool = value;
+    }
 
     [SerializeField] private NavMeshAgent2D navMeshAgent2D;
 
@@ -41,6 +49,16 @@ public class EnemyController : MonoBehaviour
         navMeshAgent2D.destination = charaController.transform.position;
 
         ChangeAnimDirection();
+    }
+
+    /// <summary>
+    /// 敵をオブジェクトプールに戻す
+    /// </summary>
+    public void ReleaseEnemy()
+    {
+        objectPool.Release(this);
+
+        Debug.Log("ObjectPool");
     }
 
     /// <summary>
@@ -97,7 +115,10 @@ public class EnemyController : MonoBehaviour
             //スコア加算
             gameManager.AddScore(score);
 
-            Destroy(gameObject);
+            //Destroy(gameObject);
+
+            //オブジェクトプールに戻す
+            ReleaseEnemy();
 
             //宝箱の生成
             int randomNo = Random.Range(0, 100);
@@ -143,9 +164,11 @@ public class EnemyController : MonoBehaviour
             //リストから削除
             GameData.instance.enemiesList.Remove(this);
 
-            //プレイヤーと敵が直接ぶつかった場合は敵キル数、スコアともに加算しない
+            //※プレイヤーと敵が直接ぶつかった場合は敵キル数、スコアともに加算しない
 
             Destroy(gameObject);
+
+            ReleaseEnemy();
         }
     }
 }

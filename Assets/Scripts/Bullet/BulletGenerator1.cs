@@ -117,7 +117,7 @@ public class BulletGenerator1 : MonoBehaviour
         for (int i = 0; i < bullet1List.Count; i++)
         {
             Destroy(bullet1List[i].gameObject);
-            Debug.Log($"Destroyしたもの：{bullet1List[i].gameObject}");
+            //Debug.Log($"Destroyしたもの：{bullet1List[i].gameObject}");
         }
 
         bullet1List.Clear();

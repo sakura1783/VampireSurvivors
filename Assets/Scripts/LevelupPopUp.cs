@@ -63,6 +63,8 @@ public class LevelupPopUp : MonoBehaviour
 
     //public bool isDisplayPopUp = false;  //ポップアップ表示中かどうか
 
+    private bool isAllWeaponsMaxLevel = false;  //全ての武器が最大レベルに達しているかどうか。達している場合は、レベルアップしてもポップアップを表示しない
+
 
     /// <summary>
     /// 初期設定。CharaControllerのSetUpメソッドで実行する
@@ -154,10 +156,6 @@ public class LevelupPopUp : MonoBehaviour
     /// </summary>
     public void ShowPopUp(List<BulletDataSO.BulletData> bulletDatasList)
     {
-        gameManager.IsDisplayPopUp = true;
-
-        //TODO 新しい武器があるか、レベルアップできる武器があるかを判断してボタンの描画と押下反応を制御
-
         //btnNewWeaponの生成
         GenerateBtnNewWeapon(bulletDatasList);
 
@@ -166,6 +164,17 @@ public class LevelupPopUp : MonoBehaviour
 
         //TODO わからない
         //int count = (int)GenerateLevelupWeaponBtn().Current;
+
+        //TODO 追加できる新しい武器があるか、レベルアップできる武器があるかを判断してボタンの描画と押下反応を制御
+        //ToggleButtonVisibility();
+
+        //全ての武器を獲得していて、かつ最大レベルまで達している場合、ポップアップ表示の処理をしない
+        if (isAllWeaponsMaxLevel)
+        {
+            return;
+        }
+
+        gameManager.IsDisplayPopUp = true;
 
         popUpCanvasGroup.alpha = 1;
 
@@ -201,7 +210,12 @@ public class LevelupPopUp : MonoBehaviour
         step2_LevelupCanvasGroup.blocksRaycasts = false;
         step2_NewWeaponCanvasGroup.blocksRaycasts = false;
 
-        //TODO ボタンの押下反応と描画の初期化
+        //ToggleButtonVisibilityメソッドで変更を加えたStep1のボタンの押下反応と描画の初期化
+        btnNewWeapon.gameObject.SetActive(true);
+        btnNewWeapon.interactable = true;
+
+        btnLevelup.gameObject.SetActive(true);
+        btnLevelup.interactable = true;
 
         //生成した全てのボタンを破壊
         foreach (var button in btnsList)
@@ -215,11 +229,35 @@ public class LevelupPopUp : MonoBehaviour
     }
 
     /// <summary>
-    /// 新しい武器またはレベルアップできる武器があるかどうか判断して、ボタンの押下反応と描画を切り替える
+    /// 追加できる新しい武器またはレベルアップできる武器があるかどうか判断して、ボタンの押下反応と描画を切り替える
     /// </summary>
-    private void ToggleButtonVisibility()
+    private void ToggleButtonVisibility(int newWeaponBtnCount, int levelUpWeaponBtnCount)
     {
+        //全ての武器を獲得していて、かつ最大レベルまで達している場合
+        if (newWeaponBtnCount == 0 && levelUpWeaponBtnCount == 0)
+        {
+            isAllWeaponsMaxLevel = true;
 
+            return;
+        }
+
+        //全ての武器を獲得している場合
+        if (newWeaponBtnCount == 0)
+        {
+            //描画をしない
+            btnNewWeapon.gameObject.SetActive(false);
+
+            //押下反応しない
+            btnNewWeapon.interactable = false;
+        }
+
+        //持っている武器が全て最大レベルに達している場合
+        if (levelUpWeaponBtnCount == 0)
+        {
+            btnLevelup.gameObject.SetActive(false);
+
+            btnLevelup.interactable = false;
+        }
     }
 
     /// <summary>

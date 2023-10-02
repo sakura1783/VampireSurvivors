@@ -63,7 +63,7 @@ public class Bullet5 : MonoBehaviour
     /// </summary>
     private IEnumerator GenerateIceEffect(Collider2D col)
     {
-        Debug.Log("氷を生成します");
+        //Debug.Log("氷を生成します");
 
         GameObject effect = Instantiate(iceEffectPrefab, col.transform.position, Quaternion.identity);
 
@@ -76,6 +76,6 @@ public class Bullet5 : MonoBehaviour
 
         frozenEnemy.isFrozen = false;
 
-        Debug.Log("氷が溶けました");
+        //Debug.Log("氷が溶けました");
     }
 }
