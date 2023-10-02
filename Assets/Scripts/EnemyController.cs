@@ -54,12 +54,12 @@ public class EnemyController : MonoBehaviour
     /// <summary>
     /// 敵をオブジェクトプールに戻す
     /// </summary>
-    public void ReleaseEnemy()
-    {
-        objectPool.Release(this);
+    //public void ReleaseEnemy()
+    //{
+    //    objectPool.Release(this);
 
-        Debug.Log("ObjectPool");
-    }
+    //    Debug.Log("ObjectPool");
+    //}
 
     /// <summary>
     /// 設定
@@ -115,10 +115,10 @@ public class EnemyController : MonoBehaviour
             //スコア加算
             gameManager.AddScore(score);
 
-            //Destroy(gameObject);
+            Destroy(gameObject);
 
             //オブジェクトプールに戻す
-            ReleaseEnemy();
+            //ReleaseEnemy();
 
             //宝箱の生成
             int randomNo = Random.Range(0, 100);
@@ -168,7 +168,7 @@ public class EnemyController : MonoBehaviour
 
             Destroy(gameObject);
 
-            ReleaseEnemy();
+            //ReleaseEnemy();
         }
     }
 }

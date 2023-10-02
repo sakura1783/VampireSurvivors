@@ -485,14 +485,23 @@ public class CharaController : MonoBehaviour
         {
             StartCoroutine(enemyGenerator1.GenerateEnemy(this));
         }
-        if (charaLevel == 10)
+        if (charaLevel == 8)
         {
             StartCoroutine(enemyGenerator2.GenerateEnemy(this));
         }
-        if (charaLevel == 15 || charaLevel == 20)
+        if (charaLevel == 11 || charaLevel == 14 || charaLevel == 17)
         {
             enemyGenerator0.GenerateInterval -= 0.5f;
             enemyGenerator1.GenerateInterval -= 0.5f;
+            enemyGenerator2.GenerateInterval -= 0.5f;
+        }
+        if (charaLevel == 19)
+        {
+            enemyGenerator1.GenerateInterval -= 0.5f;
+            enemyGenerator2.GenerateInterval -= 0.5f;
+        }
+        if (charaLevel == 21)
+        {
             enemyGenerator2.GenerateInterval -= 0.5f;
         }
     }

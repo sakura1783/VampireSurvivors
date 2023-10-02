@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;  //絶対ではないがUnitaskを使う時は入れておくとよい
+using Cysharp.Threading.Tasks;  //UniTask
 
 public class LevelupPopUp : MonoBehaviour
 {
@@ -154,19 +156,18 @@ public class LevelupPopUp : MonoBehaviour
     /// <summary>
     /// ポップアップの表示。CharaControllerのLevelUpメソッドで実行する
     /// </summary>
-    public void ShowPopUp(List<BulletDataSO.BulletData> bulletDatasList)
+    public async void ShowPopUp(List<BulletDataSO.BulletData> bulletDatasList)
     {
         //btnNewWeaponの生成
-        GenerateBtnNewWeapon(bulletDatasList);
+        //GenerateBtnNewWeapon(bulletDatasList);
+        int newWeaponBtnCount = GenerateBtnNewWeapon(bulletDatasList);
 
         //btnLevelupの生成
-        StartCoroutine(GenerateLevelupWeaponBtn());
+        //StartCoroutine(GenerateLevelupWeaponBtn());
+        int levelUpWeaponBtnCount = await GenerateLevelupWeaponBtn();
 
-        //TODO わからない
-        //int count = (int)GenerateLevelupWeaponBtn().Current;
-
-        //TODO 追加できる新しい武器があるか、レベルアップできる武器があるかを判断してボタンの描画と押下反応を制御
-        //ToggleButtonVisibility();
+        //追加できる新しい武器があるか、レベルアップできる武器があるかを判断してボタンの描画と押下反応を制御
+        ToggleButtonVisibility(newWeaponBtnCount, levelUpWeaponBtnCount);
 
         //全ての武器を獲得していて、かつ最大レベルまで達している場合、ポップアップ表示の処理をしない
         if (isAllWeaponsMaxLevel)
@@ -263,10 +264,38 @@ public class LevelupPopUp : MonoBehaviour
     /// <summary>
     /// btnNewWeaponの生成
     /// </summary>
-    private void GenerateBtnNewWeapon(List<BulletDataSO.BulletData> bulletDatasList)
+    private int GenerateBtnNewWeapon(List<BulletDataSO.BulletData> bulletDatasList)
     {
-        //まだ手に入れていないバレットが2個未満になった場合、ループを1回にする(つまり、ループをしない)
-        if (attatchedBulletList.Count < 5)
+        int count = 0;
+
+        //持っていないバレットが0個(全てのバレットを手に入れている)場合
+        if (attatchedBulletList.Count >= 6)
+        {
+            return count;  //ボタンは生成されない(0個)
+        }
+        //手に入れていないバレットが1個(持っているバレットが5つ以上)の場合
+        else if (attatchedBulletList.Count >= 5)
+        {
+            int randomNo = 0;
+
+            do
+            {
+                randomNo = UnityEngine.Random.Range(0, bulletDatasList.Count);
+
+            } while (attatchedBulletList.Contains(randomNo));
+
+            NewWeaponButton button = Instantiate(newWeaponBtnPrefab, newWeaponsPlace);
+
+            btnsList.Add(button.gameObject);
+
+            button.SetUpBtnNewWeapon(this, bulletDatasList[randomNo]);
+
+            count++;
+
+            return count;  //ボタンの生成数は必ず1個
+        }
+        //手に入れていないバレットが2個以上(持っているバレットが1個以上)の場合
+        else if (attatchedBulletList.Count >= 0)
         {
             //とりあえずの初期値
             int randomNo = 0;
@@ -279,7 +308,7 @@ public class LevelupPopUp : MonoBehaviour
                 //attatchedBulletNoListにrandomNoが含まれている、またはrandomNoとusedNoが同じ間ずっと繰り返す
                 do
                 {
-                    randomNo = Random.Range(0, bulletDatasList.Count);
+                    randomNo = UnityEngine.Random.Range(0, bulletDatasList.Count);
 
                 } while (attatchedBulletList.Contains(randomNo) || randomNo == usedNo);
 
@@ -291,24 +320,14 @@ public class LevelupPopUp : MonoBehaviour
                 btnsList.Add(button.gameObject);
 
                 button.SetUpBtnNewWeapon(this, bulletDatasList[randomNo]);
+
+                count++;  //ボタンの生成数は2個以上になる
             }
+
+            return count;
         }
-        else
-        {
-            int randomNo = 0;
 
-            do
-            {
-                randomNo = Random.Range(0, bulletDatasList.Count);
-
-            } while (attatchedBulletList.Contains(randomNo));
-
-            NewWeaponButton button = Instantiate(newWeaponBtnPrefab, newWeaponsPlace);
-
-            btnsList.Add(button.gameObject);
-
-            button.SetUpBtnNewWeapon(this, bulletDatasList[randomNo]);
-        }
+        return count;
     }
 
     /// <summary>
@@ -374,13 +393,17 @@ public class LevelupPopUp : MonoBehaviour
     /// <summary>
     /// btnLevelupWeaponの生成
     /// </summary>
-    private IEnumerator GenerateLevelupWeaponBtn()
+    //private IEnumerator GenerateLevelupWeaponBtn()
+    private async UniTask<int> GenerateLevelupWeaponBtn()
     {
-        //TODO いくつボタンが生成されたか
-        //int count = 0;
+        //いくつボタンが生成されたか
+        int count = 0;
 
         //CharaSetにアタッチされているBulletGeneratorの番号を配列に順番に入れる
-        yield return StartCoroutine(CreateAttatchedBulletGeneratorsArray());
+        //yield return StartCoroutine(CreateAttatchedBulletGeneratorsArray());
+
+        //上記を書き換え。async、awaitを使うことでUniTaskを使った非同期処理ができるようになる
+        await CreateAttatchedBulletGeneratorsArray();
 
         //foreach (var count in attatchedBulletGeneratorsArray) //この場合、countとはattactchedBulletGenratorsArrayの各要素の中身の番号を表すので(例えばこのクラスの場合、1個目にはは10が入っている)、これだとIndexOutOfRangeExceptionエラーが出てしまう
         //上の処理を修正。for文に変更
@@ -406,10 +429,10 @@ public class LevelupPopUp : MonoBehaviour
             //ボタンの設定
             button.SetUpLevelupWeaponBtn(this, charaController.bulletDatasList[i]);
 
-            //count++;
+            count++;
         }
 
-        //yield return count;
+        return count;
     }
 
     /// <summary>
