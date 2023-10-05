@@ -42,7 +42,7 @@ public class EnemyGeneratorObjectPool : MonoBehaviour
         //EnemyController enemy2 = enemyPool.Get();  //再表示する
         //enemyPool.Get();  //ないので作る
 
-        Debug.Log("オブジェクトプール 初期化完了");
+        Debug.Log("敵のオブジェクトプール 初期化完了");
 
         //StartCoroutine(GenerateEnemy(chara));
     }
@@ -60,7 +60,7 @@ public class EnemyGeneratorObjectPool : MonoBehaviour
 
         GameData.instance.enemiesList.Add(enemyInstance);
 
-        Debug.Log("敵を生成");
+        Debug.Log("新しく敵を生成");
         Debug.Log(enemyInstance.ObjectPool);
 
         return enemyInstance;
@@ -91,7 +91,7 @@ public class EnemyGeneratorObjectPool : MonoBehaviour
         enemy.transform.position = position;
         enemy.transform.rotation = rotation;
 
-        Debug.Log("敵の生成または取得");
+        Debug.Log("生成命令(敵)");
         return enemy;
     }
 

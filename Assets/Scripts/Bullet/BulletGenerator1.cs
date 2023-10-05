@@ -3,6 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
+/// 弾の状態
+/// </summary>
+public enum Bullet1State
+{
+    Nothing,
+    Turning,
+    Throwing,
+}
+
+/// <summary>
 /// 手裏剣
 /// </summary>
 public class BulletGenerator1 : MonoBehaviour

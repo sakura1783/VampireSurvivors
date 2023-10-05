@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 
 //抽象クラス(abstractクラス)。抽象メソッド(宣言部分のみが記述され、処理の本体が存在しない)を1つ以上持っているクラス。
 public abstract class BulletBase : MonoBehaviour, IShootable
@@ -8,6 +7,23 @@ public abstract class BulletBase : MonoBehaviour, IShootable
     protected Rigidbody2D rb;
     public Rigidbody2D Rb => rb;
 
+    private IObjectPool<BulletBase> objectPool;
+    public IObjectPool<BulletBase> ObjectPool  //弾にObjectPoolへの参照を与えるプロパティ
+    {
+        get => objectPool;
+        set => objectPool = value;
+    }
+
+
+    /// <summary>
+    /// 弾をオブジェクトプールに戻す
+    /// </summary>
+    public virtual void ReleaseBullet()
+    {
+        objectPool.Release(this);
+
+        Debug.Log(objectPool);
+    }
 
     /// <summary>
     /// 初期設定用の仮想メソッド(動作内容を変更できるメソッド。virtual/override)
