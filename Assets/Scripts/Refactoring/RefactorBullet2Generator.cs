@@ -27,8 +27,6 @@ public class RefactorBullet2Generator : BulletGeneratorBase
     /// <param name="charaController"></param>
     public override void SetUpBulletGenerator(CharaController charaController)
     {
-        base.SetUpBulletGenerator(charaController);
-
         temporaryObjectsPlace = this.charaController.temporaryObjectsPlace;
     }
 

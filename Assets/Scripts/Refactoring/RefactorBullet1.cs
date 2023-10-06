@@ -26,8 +26,6 @@ public class RefactorBullet1 : BulletBase
 
     public override void SetUpBullet<T>(T charaController)
     {
-        base.SetUpBullet(charaController);
-
         //T型の型が判明できていないため、if文とis演算子を使ってキャストのチェックとキャストをする([変数名] is [キャストできるか確認する型名] [キャストできた場合の変数名])
         if (charaController is CharaController chara)
         {
@@ -37,6 +35,8 @@ public class RefactorBullet1 : BulletBase
         {
             Debug.Log("CharaControllerが取得できませんでした");
         }
+
+        Debug.Log("RefactorBullet1のSetUpメソッドが動きました");
     }
 
     public override void Shoot(Vector2 direction) { }  //このクラスでは利用しないが、BulletBaseでShootメソッドがabstractで定義されているため、必ず定義しなければいけない
