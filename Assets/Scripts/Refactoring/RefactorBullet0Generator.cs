@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// デフォルト弾
+/// </summary>
 public class RefactorBullet0Generator : BulletGeneratorBase
 {
     private int bulletLevel = 1;
@@ -32,6 +35,8 @@ public class RefactorBullet0Generator : BulletGeneratorBase
             bullet.Shoot(CalculateBulletDirection(i, direction));
         }
     }
+
+    public override void GenerateBullet() { }
 
     public override void GenerateBullet<T>(Vector2 direction, T t) { }
 

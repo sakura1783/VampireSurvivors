@@ -98,6 +98,8 @@ public abstract class BulletGeneratorBase : MonoBehaviour, IGeneratable
         Debug.Log("初期設定 完了");
     }
 
+    public abstract void GenerateBullet();
+
     public abstract void GenerateBullet(Vector2 direction);
 
     public abstract void GenerateBullet<T>(Vector2 direction, T t);

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// オブジェクトプールとクラス継承を利用
+/// 手裏剣
 /// </summary>
 public class RefactorBullet1Generator : BulletGeneratorBase
 {
@@ -49,6 +49,8 @@ public class RefactorBullet1Generator : BulletGeneratorBase
             bulletList.Add(bullet);
         }
     }
+
+    public override void GenerateBullet() { }
 
     public override void GenerateBullet<T>(Vector2 direction, T t) { }
 

@@ -23,6 +23,17 @@ public class RefactorBullet2 : BulletBase
         transform.position = Vector2.MoveTowards(transform.position, target.transform.position, bulletSpeed * Time.deltaTime);
     }
 
+    public override void SetUpBullet<T>(T target)
+    {
+        if (target is EnemyController trackingTarget)
+        {
+            this.target = trackingTarget;
+
+            //TODO このログが出るか確認
+            Debug.Log("RefactorBullet2のSetUpメソッドによりtargetに情報が代入されました");
+        }
+    }
+
     public override void Shoot(Vector2 direction) { }
 
     private void OnTriggerEnter2D(Collider2D col)
