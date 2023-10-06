@@ -1,13 +1,12 @@
 using UnityEngine;
 using UnityEngine.Pool;
+using Cysharp.Threading.Tasks;
 
 //抽象クラス(abstractクラス)。抽象メソッド(宣言部分のみが記述され、処理の本体が存在しない)を1つ以上持っているクラス。
 public abstract class BulletBase : MonoBehaviour, IShootable
 {
     protected Rigidbody2D rb;
     public Rigidbody2D Rb => rb;
-
-    protected float destroyTime = 5;
 
     private IObjectPool<BulletBase> objectPool;
     public IObjectPool<BulletBase> ObjectPool  //弾にObjectPoolへの参照を与えるプロパティ
@@ -20,8 +19,10 @@ public abstract class BulletBase : MonoBehaviour, IShootable
     /// <summary>
     /// 弾をオブジェクトプールに戻す
     /// </summary>
-    public virtual void ReleaseBullet()
+    public virtual async void ReleaseBullet(float destroyTime = 0)
     {
+        await UniTask.Delay(System.TimeSpan.FromSeconds(destroyTime));
+
         objectPool.Release(this);
 
         Debug.Log(objectPool);

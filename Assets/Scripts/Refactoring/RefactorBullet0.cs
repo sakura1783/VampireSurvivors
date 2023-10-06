@@ -9,6 +9,8 @@ public class RefactorBullet0 : BulletBase
 {
     [SerializeField] private float bulletSpeed;
 
+    [SerializeField] private float destroyTime = 5;
+
 
     /// <summary>
     /// 弾発射
@@ -23,7 +25,8 @@ public class RefactorBullet0 : BulletBase
             rb.AddForce(direction * bulletSpeed);
         }
 
-        Destroy(gameObject, destroyTime);
+        //プールに戻す
+        ReleaseBullet(destroyTime);
     }
 
     private void OnTriggerEnter2D(Collider2D col)
