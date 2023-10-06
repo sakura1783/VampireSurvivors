@@ -7,7 +7,7 @@ public abstract class BulletBase : MonoBehaviour, IShootable
     protected Rigidbody2D rb;
     public Rigidbody2D Rb => rb;
 
-    protected float destroyTime;
+    protected float destroyTime = 5;
 
     private IObjectPool<BulletBase> objectPool;
     public IObjectPool<BulletBase> ObjectPool  //弾にObjectPoolへの参照を与えるプロパティ

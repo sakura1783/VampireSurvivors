@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// デフォルト弾
+/// </summary>
 public class RefactorBullet0 : BulletBase
 {
     [SerializeField] private float bulletSpeed;
@@ -27,7 +30,8 @@ public class RefactorBullet0 : BulletBase
     {
         if (col.CompareTag("Enemy"))
         {
-            Destroy(gameObject);
+            //プールに戻す
+            ReleaseBullet();
         }
     }
 }

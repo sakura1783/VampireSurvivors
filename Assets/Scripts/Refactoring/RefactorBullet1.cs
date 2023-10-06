@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 手裏剣
+/// </summary>
 public class RefactorBullet1 : BulletBase
 {
     [SerializeField] private float rotateSpeed;
