@@ -7,6 +7,8 @@ public abstract class BulletBase : MonoBehaviour, IShootable
     protected Rigidbody2D rb;
     public Rigidbody2D Rb => rb;
 
+    protected float destroyTime;
+
     private IObjectPool<BulletBase> objectPool;
     public IObjectPool<BulletBase> ObjectPool  //弾にObjectPoolへの参照を与えるプロパティ
     {
@@ -32,6 +34,14 @@ public abstract class BulletBase : MonoBehaviour, IShootable
     /// <typeparam name="T"></typeparam>
     /// <param name="t">初期設定に使用するジェネリック型のパラメータ。メソッドの実行側で適切な型を指定する。</param>
     public virtual void SetUpBullet<T>(T t)
+    {
+        TryGetComponent(out rb);
+    }
+
+    /// <summary>
+    /// 上記メソッドのオーバーロード
+    /// </summary>
+    public virtual void SetUpBullet()
     {
         TryGetComponent(out rb);
     }
