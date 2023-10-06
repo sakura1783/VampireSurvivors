@@ -7,7 +7,12 @@ using UnityEngine;
 /// </summary>
 public class RefactorBullet1Generator : BulletGeneratorBase
 {
-    public int bulletLevel = 1;
+    private int bulletLevel = 1;
+    public int BulletLevel
+    {
+        get => bulletLevel;
+        set => bulletLevel = value;
+    }
 
     private List<BulletBase> bulletList = new();
 
@@ -25,7 +30,7 @@ public class RefactorBullet1Generator : BulletGeneratorBase
         float offsetDegrees = 360 / bulletLevel;
 
         //弾のレベルに応じて生成する数を変更
-        for (int i = 0; i < bulletLevel;)
+        for (int i = 0; i < bulletLevel; i++)
         {
             //回転情報にdirectionをかけることで、ここで弾の方向のベクトルが決まる
             Vector2 offsetDirection = Quaternion.Euler(0, 0, i * offsetDegrees) * direction;

@@ -14,7 +14,7 @@ public class BulletGenerator : MonoBehaviour
     [SerializeField] private Transform temporaryObjectsPlace;
 
     //[SerializeField] private GameManager gameManager;  //CharaController取得用
-    [SerializeField] private CharaController charaController;
+    //[SerializeField] private CharaController charaController;
 
     [SerializeField] private float offsetDegrees;  //角度の基準値(各バレット同士の角度間隔)
 
