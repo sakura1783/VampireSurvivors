@@ -31,6 +31,7 @@ public class RefactorBullet5Generator : BulletGeneratorBase
     /// <param name="direction"></param>
     public void PrepareGenerateBullet(Vector2 direction)
     {
+        //TODO switch文無くす
         switch (bulletLevel)
         {
             case 1:

@@ -26,7 +26,7 @@ public class BulletGenerator2 : MonoBehaviour
     {
         this.charaController = charaController;
 
-        bulletPrefab = this.charaController.bullet2Prefab;
+        //bulletPrefab = this.charaController.bullet2Prefab;
 
         temporaryObjectsPlace = this.charaController.temporaryObjectsPlace;
     }

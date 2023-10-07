@@ -41,7 +41,7 @@ public class BulletGenerator3 : MonoBehaviour
     {
         this.charaController = charaController;
 
-        bulletPrefab = this.charaController.bullet3Prefab;
+        //bulletPrefab = this.charaController.bullet3Prefab;
 
         temporaryObjectsPlace = this.charaController.temporaryObjectsPlace;
     }

@@ -11,11 +11,16 @@ public class CharaController : MonoBehaviour
     public LevelupPopUp levelupPop;
 
     //ここから各BulletGeneratorへのアサイン用変数
-    public Bullet1 bullet1Prefab;
-    public Bullet2 bullet2Prefab;
-    public Bullet3 bullet3Prefab;
-    public Bullet4 bullet4Prefab;
-    public Bullet5 bullet5Prefab;
+    //public Bullet1 bullet1Prefab;
+    //public Bullet2 bullet2Prefab;
+    //public Bullet3 bullet3Prefab;
+    //public Bullet4 bullet4Prefab;
+    //public Bullet5 bullet5Prefab;
+    public RefactorBullet1 bullet1;
+    public RefactorBullet2 bullet2;
+    public RefactorBullet3 bullet3;
+    public RefactorBullet4 bullet4;
+    public RefactorBullet5 bullet5;
 
     public Transform temporaryObjectsPlace;
 
@@ -83,23 +88,41 @@ public class CharaController : MonoBehaviour
     private int addPoint = 5;  //needExpForLevelUp変数に加算するポイント(レベルが上がるにつれて、必要なExpも増える)
 
     //各BulletGenerator
-    private BulletGenerator bulletGenerator;
-    public BulletGenerator BulletGenerator => bulletGenerator;
+    //private BulletGenerator bulletGenerator;
+    //public BulletGenerator BulletGenerator => bulletGenerator;
 
-    private BulletGenerator1 bulletGenerator1;
-    public BulletGenerator1 BulletGenerator1 => bulletGenerator1;
+    //private BulletGenerator1 bulletGenerator1;
+    //public BulletGenerator1 BulletGenerator1 => bulletGenerator1;
 
-    private BulletGenerator2 bulletGenerator2;
-    public BulletGenerator2 BulletGenerator2 => bulletGenerator2;
+    //private BulletGenerator2 bulletGenerator2;
+    //public BulletGenerator2 BulletGenerator2 => bulletGenerator2;
 
-    private BulletGenerator3 bulletGenerator3;
-    public BulletGenerator3 BulletGenerator3 => bulletGenerator3;
+    //private BulletGenerator3 bulletGenerator3;
+    //public BulletGenerator3 BulletGenerator3 => bulletGenerator3;
 
-    private BulletGenerator4 bulletGenerator4; 
-    public BulletGenerator4 BulletGenerator4 => bulletGenerator4;
+    //private BulletGenerator4 bulletGenerator4; 
+    //public BulletGenerator4 BulletGenerator4 => bulletGenerator4;
 
-    private BulletGenerator5 bulletGenerator5;
-    public BulletGenerator5 BulletGenerator5 => bulletGenerator5;
+    //private BulletGenerator5 bulletGenerator5;
+    //public BulletGenerator5 BulletGenerator5 => bulletGenerator5;
+
+    private RefactorBullet0Generator bullet0Generator;
+    public RefactorBullet0Generator Bullet0Generator => bullet0Generator;
+
+    private RefactorBullet1Generator bullet1Generator;
+    public RefactorBullet1Generator Bullet1Generator => bullet1Generator;
+
+    private RefactorBullet2Generator bullet2Generator;
+    public RefactorBullet2Generator Bullet2Generator => bullet2Generator;
+
+    private RefactorBullet3Generator bullet3Generator;
+    public RefactorBullet3Generator Bullet3Generator => bullet3Generator;
+
+    private RefactorBullet4Generator bullet4Generator;
+    public RefactorBullet4Generator Bullet4Generator => bullet4Generator;
+
+    private RefactorBullet5Generator bullet5Generator;
+    public RefactorBullet5Generator Bullet5Generator => bullet5Generator;
 
     //各バレットの攻撃のインターバル時間
     //private float defaultTimer;
@@ -327,7 +350,7 @@ public class CharaController : MonoBehaviour
                 {
                     bulletTimer2 = 0;
 
-                    StartCoroutine(bulletGenerator2.PrepareGenerateBullet());
+                    StartCoroutine(bullet2Generator.GenerateBullet());
 
                     //Debug.Log("追尾弾発射");
                 }
