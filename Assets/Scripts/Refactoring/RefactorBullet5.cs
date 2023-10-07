@@ -21,6 +21,19 @@ public class RefactorBullet5 : BulletBase
     private Transform temporaryObjectsPlace;
 
 
+    /// <summary>
+    /// 初期設定
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="parentTran"></param>
+    public override void SetUpBullet<T>(T parentTran)
+    {
+        if (parentTran is Transform temporaryObjectsPlace)
+        {
+            this.temporaryObjectsPlace = temporaryObjectsPlace;
+        }
+    }
+
     public override void Shoot(Vector2 direction)
     {
         SetUpBullet();

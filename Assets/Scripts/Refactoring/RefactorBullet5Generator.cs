@@ -2,10 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// デフォルト弾
-/// </summary>
-public class RefactorBullet0Generator : BulletGeneratorBase
+public class RefactorBullet5Generator : BulletGeneratorBase
 {
     private int bulletLevel = 1;
     public int BulletLevel
@@ -14,10 +11,19 @@ public class RefactorBullet0Generator : BulletGeneratorBase
         set => bulletLevel = value;
     }
 
-    [SerializeField] private Transform temporaryObjectsPlace;
+    private Transform temporaryObjectsPlace;
 
-    [SerializeField] private float offsetDegrees;  //角度の基準値(各バレット同士の角度間隔)
+    [SerializeField] private float offsetDegrees;  //バレット同士の角度間隔
 
+
+    /// <summary>
+    /// 初期設定
+    /// </summary>
+    /// <param name="charaController"></param>
+    public override void SetUpBulletGenerator(CharaController charaController)
+    {
+        temporaryObjectsPlace = this.charaController.temporaryObjectsPlace;
+    }
 
     /// <summary>
     /// 弾生成の準備
@@ -62,20 +68,19 @@ public class RefactorBullet0Generator : BulletGeneratorBase
     }
 
     /// <summary>
-    /// バレット生成
+    /// 弾生成
     /// </summary>
     /// <param name="direction"></param>
     public override void GenerateBullet(Vector2 direction)
     {
-        for (int i = 0; i < bulletLevel; i++)
-        {
-            //プールから弾を取得。ない場合は新しく生成
-            BulletBase bullet = GetBullet(transform.position, Quaternion.identity);
+        //プールから取り出す。ない場合は新しく生成
+        BulletBase bullet = GetBullet(transform.position, Quaternion.identity);
 
-            bullet.transform.SetParent(temporaryObjectsPlace);
+        bullet.transform.SetParent(temporaryObjectsPlace);
 
-            bullet.Shoot(direction);
-        }
+        bullet.SetUpBullet(temporaryObjectsPlace);
+
+        bullet.Shoot(direction);
     }
 
     public override void GenerateBullet() { }
@@ -83,7 +88,7 @@ public class RefactorBullet0Generator : BulletGeneratorBase
     public override void GenerateBullet<T>(Vector2 direction, T t) { }
 
     /// <summary>
-    /// 弾の方向を計算する
+    /// バレットの方向を計算
     /// </summary>
     /// <param name="count"></param>
     /// <param name="direction"></param>
@@ -93,12 +98,12 @@ public class RefactorBullet0Generator : BulletGeneratorBase
         //角度の補正値の決定
         float offsetAngle = count * offsetDegrees;
 
-        //上の補正値を回転させた回転情報を作る(Quaternion.Euler(a, b, c);で、x, y, z軸周りにそれぞれa, b, c度回転する)
+        //上の補正値を回転させた回転情報を作る
         Quaternion offsetRotation = Quaternion.Euler(0, 0, offsetAngle);
 
-        //上の回転情報に、directionを掛けることで、弾の方向ベクトルが決まる(Unityの場合、Quaternion * Vector3をすると、Vector3をQuaternionで回転させた座標が得られる。directionをoffsetRotationだけ変える。directionの方向を維持しつつ、Z軸だけを回転させた情報を持っている新しいベクトルを作成している。)
-        Vector2 offsetDirection = offsetRotation * direction;
+        //上記の回転情報に、directionを掛けることで、ここで弾の方向のベクトルが決まる
+        Vector2 bulletDirection = offsetRotation * direction;
 
-        return offsetDirection;
+        return bulletDirection;
     }
 }
