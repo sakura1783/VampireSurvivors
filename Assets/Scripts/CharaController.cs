@@ -16,11 +16,6 @@ public class CharaController : MonoBehaviour
     //public Bullet3 bullet3Prefab;
     //public Bullet4 bullet4Prefab;
     //public Bullet5 bullet5Prefab;
-    public RefactorBullet1 bullet1;
-    public RefactorBullet2 bullet2;
-    public RefactorBullet3 bullet3;
-    public RefactorBullet4 bullet4;
-    public RefactorBullet5 bullet5;
 
     public Transform temporaryObjectsPlace;
 
@@ -106,32 +101,14 @@ public class CharaController : MonoBehaviour
     //private BulletGenerator5 bulletGenerator5;
     //public BulletGenerator5 BulletGenerator5 => bulletGenerator5;
 
-    private RefactorBullet0Generator bullet0Generator;
-    public RefactorBullet0Generator Bullet0Generator => bullet0Generator;
-
-    private RefactorBullet1Generator bullet1Generator;
-    public RefactorBullet1Generator Bullet1Generator => bullet1Generator;
-
-    private RefactorBullet2Generator bullet2Generator;
-    public RefactorBullet2Generator Bullet2Generator => bullet2Generator;
-
-    private RefactorBullet3Generator bullet3Generator;
-    public RefactorBullet3Generator Bullet3Generator => bullet3Generator;
-
-    private RefactorBullet4Generator bullet4Generator;
-    public RefactorBullet4Generator Bullet4Generator => bullet4Generator;
-
-    private RefactorBullet5Generator bullet5Generator;
-    public RefactorBullet5Generator Bullet5Generator => bullet5Generator;
-
     //各バレットの攻撃のインターバル時間
     //private float defaultTimer;
-    private float bulletTimer0;
-    private float bulletTimer1;
-    private float bulletTimer2;
-    private float bulletTimer3;
-    private float bulletTimer4;
-    private float bulletTimer5;
+    //private float bulletTimer0;
+    //private float bulletTimer1;
+    //private float bulletTimer2;
+    //private float bulletTimer3;
+    //private float bulletTimer4;
+    //private float bulletTimer5;
 
 
     //テスト用。終わったら消す
@@ -182,13 +159,13 @@ public class CharaController : MonoBehaviour
 
         charaScale = transform.GetChild(0).localScale.x;  //キャラの向き変更に使う
 
-        StartCoroutine(PrepareAttack());
+        //StartCoroutine(PrepareAttack());
 
         //バレットのデータをリスト化
         CreateBulletDatasList();
 
         //アタッチされているBulletGeneratorたちを各変数に入れる
-        AssainBulletGenerators();
+        //AssainBulletGenerators();
 
         //LevelupPopUpの設定
         levelupPop.SetUpLevelupPopUp(this, bulletDatasList);
@@ -273,134 +250,134 @@ public class CharaController : MonoBehaviour
     /// <summary>
     /// 攻撃準備。バレットごとにインターバル時間を変える
     /// </summary>
-    private IEnumerator PrepareAttack()
-    {
-        while (true)
-        {
-            //ポップアップ表示中は攻撃しない
-            if (gameManager.IsDisplayPopUp || gameManager.IsDisplayTitlePopUp || gameManager.IsDisplayResultPopUp)
-            {
-                yield return null;
+    //private IEnumerator PrepareAttack()
+    //{
+    //    while (true)
+    //    {
+    //        //ポップアップ表示中は攻撃しない
+    //        if (gameManager.IsDisplayPopUp || gameManager.IsDisplayTitlePopUp || gameManager.IsDisplayResultPopUp)
+    //        {
+    //            yield return null;
 
-                continue;
-            }
+    //            continue;
+    //        }
 
-            //if (bulletGenerator4)
-            //{
-            //    bullet4Timer += Time.deltaTime;
+    //        //if (bulletGenerator4)
+    //        //{
+    //        //    bullet4Timer += Time.deltaTime;
 
-            //    if (bullet4Timer >= bulletGenerator4.attackInterval)
-            //    {
-            //        bullet4Timer = 0;
+    //        //    if (bullet4Timer >= bulletGenerator4.attackInterval)
+    //        //    {
+    //        //        bullet4Timer = 0;
 
-            //        //Attack();
-            //        bulletGenerator4.PrepareGenerateBullet();
-            //    }
-            //}
-            //else
-            //{
-            //bulletTimer0 += Time.deltaTime;
+    //        //        //Attack();
+    //        //        bulletGenerator4.PrepareGenerateBullet();
+    //        //    }
+    //        //}
+    //        //else
+    //        //{
+    //        //bulletTimer0 += Time.deltaTime;
 
-            //if (bulletTimer0 >= attackInterval)
-            //{
-            //    bulletTimer0 = 0;
+    //        //if (bulletTimer0 >= attackInterval)
+    //        //{
+    //        //    bulletTimer0 = 0;
 
-            //    Attack();
-            //}
-            //}
+    //        //    Attack();
+    //        //}
+    //        //}
 
-            //yield return new WaitForSeconds(attackInterval);
+    //        //yield return new WaitForSeconds(attackInterval);
 
-            //Attack();
+    //        //Attack();
 
-            if (bulletGenerator)
-            {
-                //bulletTimer0 += Time.deltaTime;
-                //アタックポーションの効果中は攻撃速度を1.5倍にする
-                bulletTimer0 += item.IsAttackTimeReduced ? Time.deltaTime * (float)1.5f : Time.deltaTime;
+    //        if (bulletGenerator)
+    //        {
+    //            //bulletTimer0 += Time.deltaTime;
+    //            //アタックポーションの効果中は攻撃速度を1.5倍にする
+    //            bulletTimer0 += item.IsAttackTimeReduced ? Time.deltaTime * (float)1.5f : Time.deltaTime;
 
-                if (bulletTimer0 >= bulletDatasList[0].attackInterval)
-                {
-                    bulletTimer0 = 0;
+    //            if (bulletTimer0 >= bulletDatasList[0].attackInterval)
+    //            {
+    //                bulletTimer0 = 0;
 
-                    bulletGenerator.PrepareGenerateBullet(direction);
+    //                bulletGenerator.PrepareGenerateBullet(direction);
 
-                    //Debug.Log("デフォルト弾発射");
-                }
-            }
-            //if (bulletGenerator1)
-            //{
-            //    bulletTimer1 += Time.deltaTime;
+    //                //Debug.Log("デフォルト弾発射");
+    //            }
+    //        }
+    //        //if (bulletGenerator1)
+    //        //{
+    //        //    bulletTimer1 += Time.deltaTime;
 
-            //    if (bulletTimer1 >= bulletDatasList[1].attackInterval)
-            //    {
-            //        bulletTimer1 = 0;
+    //        //    if (bulletTimer1 >= bulletDatasList[1].attackInterval)
+    //        //    {
+    //        //        bulletTimer1 = 0;
 
-            //        bulletGenerator1.PrepareGenerateBullet(direction);
+    //        //        bulletGenerator1.PrepareGenerateBullet(direction);
 
-            //        Debug.Log("手裏剣発射");
-            //    }
-            //}
-            if (bulletGenerator2)
-            {
-                //bulletTimer2 += Time.deltaTime;
-                bulletTimer2 += item.IsAttackTimeReduced ? Time.deltaTime * (float)1.5f : Time.deltaTime;
+    //        //        Debug.Log("手裏剣発射");
+    //        //    }
+    //        //}
+    //        if (bulletGenerator2)
+    //        {
+    //            //bulletTimer2 += Time.deltaTime;
+    //            bulletTimer2 += item.IsAttackTimeReduced ? Time.deltaTime * (float)1.5f : Time.deltaTime;
 
-                if (bulletTimer2 >= bulletDatasList[2].attackInterval)
-                {
-                    bulletTimer2 = 0;
+    //            if (bulletTimer2 >= bulletDatasList[2].attackInterval)
+    //            {
+    //                bulletTimer2 = 0;
 
-                    StartCoroutine(bullet2Generator.GenerateBullet());
+    //                StartCoroutine(bullet2Generator.GenerateBullet());
 
-                    //Debug.Log("追尾弾発射");
-                }
-            }
-            if (bulletGenerator3)
-            {
-                //bulletTimer3 += Time.deltaTime;
-                bulletTimer3 += item.IsAttackTimeReduced ? Time.deltaTime * (float)1.5f : Time.deltaTime;
+    //                //Debug.Log("追尾弾発射");
+    //            }
+    //        }
+    //        if (bulletGenerator3)
+    //        {
+    //            //bulletTimer3 += Time.deltaTime;
+    //            bulletTimer3 += item.IsAttackTimeReduced ? Time.deltaTime * (float)1.5f : Time.deltaTime;
 
-                if (bulletTimer3 >= bulletDatasList[3].attackInterval)
-                {
-                    bulletTimer3 = 0;
+    //            if (bulletTimer3 >= bulletDatasList[3].attackInterval)
+    //            {
+    //                bulletTimer3 = 0;
 
-                    bulletGenerator3.PrepareGenerateBullet(direction);
+    //                bulletGenerator3.PrepareGenerateBullet(direction);
 
-                    //Debug.Log("レーザー発射");
-                }
-            }
-            if (bulletGenerator4)
-            {
-                //bulletTimer4 += Time.deltaTime;
-                bulletTimer4 += item.IsAttackTimeReduced ? Time.deltaTime * (float)1.5f : Time.deltaTime;
+    //                //Debug.Log("レーザー発射");
+    //            }
+    //        }
+    //        if (bulletGenerator4)
+    //        {
+    //            //bulletTimer4 += Time.deltaTime;
+    //            bulletTimer4 += item.IsAttackTimeReduced ? Time.deltaTime * (float)1.5f : Time.deltaTime;
 
-                if (bulletTimer4 >= bulletGenerator4.attackInterval)  //bullet4(雷)だけはattackIntervalが変化するのでbulletGenerator4から値をもらう
-                {
-                    bulletTimer4 = 0;
+    //            if (bulletTimer4 >= bulletGenerator4.attackInterval)  //bullet4(雷)だけはattackIntervalが変化するのでbulletGenerator4から値をもらう
+    //            {
+    //                bulletTimer4 = 0;
 
-                    bulletGenerator4.PrepareGenerateBullet();
+    //                bulletGenerator4.PrepareGenerateBullet();
 
-                    //Debug.Log("雷発射");
-                }
-            }
-            if (bulletGenerator5)
-            {
-                //bulletTimer5 += Time.deltaTime;
-                bulletTimer5 += item.IsAttackTimeReduced ? Time.deltaTime * (float)1.5f : Time.deltaTime;
+    //                //Debug.Log("雷発射");
+    //            }
+    //        }
+    //        if (bulletGenerator5)
+    //        {
+    //            //bulletTimer5 += Time.deltaTime;
+    //            bulletTimer5 += item.IsAttackTimeReduced ? Time.deltaTime * (float)1.5f : Time.deltaTime;
 
-                if (bulletTimer5 >= bulletDatasList[5].attackInterval)
-                {
-                    bulletTimer5 = 0;
+    //            if (bulletTimer5 >= bulletDatasList[5].attackInterval)
+    //            {
+    //                bulletTimer5 = 0;
 
-                    bulletGenerator5.PrepareGenerateBullet(direction);
+    //                bulletGenerator5.PrepareGenerateBullet(direction);
 
-                    //Debug.Log("氷発射");
-                }
-            }
+    //                //Debug.Log("氷発射");
+    //            }
+    //        }
 
-            yield return null;
-        }
-    }
+    //        yield return null;
+    //    }
+    //}
 
     /// <summary>
     /// 攻撃
@@ -546,15 +523,15 @@ public class CharaController : MonoBehaviour
     /// <summary>
     /// アタッチされているBulletGeneratorを各変数に入れる
     /// </summary>
-    public void AssainBulletGenerators()
-    {
-        TryGetComponent(out bulletGenerator);
-        TryGetComponent(out bulletGenerator1);
-        TryGetComponent(out bulletGenerator2);
-        TryGetComponent(out bulletGenerator3);
-        TryGetComponent(out bulletGenerator4);
-        TryGetComponent(out bulletGenerator5);
+    //public void AssainBulletGenerators()
+    //{
+    //    TryGetComponent(out bulletGenerator);
+    //    TryGetComponent(out bulletGenerator1);
+    //    TryGetComponent(out bulletGenerator2);
+    //    TryGetComponent(out bulletGenerator3);
+    //    TryGetComponent(out bulletGenerator4);
+    //    TryGetComponent(out bulletGenerator5);
 
-        //Debug.Log("AssainBulletGeneratorsが動きました");
-    }
+    //    //Debug.Log("AssainBulletGeneratorsが動きました");
+    //}
 }

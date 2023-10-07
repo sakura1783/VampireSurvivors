@@ -76,7 +76,7 @@ public class LevelupPopUp : MonoBehaviour
         this.charaController = charaController;
 
         //BulletGeneratorの情報をセット
-        bulletGenerator = charaController.BulletGenerator;
+        //bulletGenerator = charaController.BulletGenerator;
 
         popUpCanvasGroup.alpha = 0;
 
@@ -135,7 +135,7 @@ public class LevelupPopUp : MonoBehaviour
         AttatchBulletGenerator();
 
         //CharaSetにアタッチされているBulletGeneratorたちをCharaControllerの各変数に入れる
-        charaController.AssainBulletGenerators();
+        //charaController.AssainBulletGenerators();
 
         attatchedBulletList.Add(selectedBulletData.bulletNo);
 
@@ -156,7 +156,7 @@ public class LevelupPopUp : MonoBehaviour
     /// <summary>
     /// ポップアップの表示。CharaControllerのLevelUpメソッドで実行する
     /// </summary>
-    public async void ShowPopUp(List<BulletDataSO.BulletData> bulletDatasList)
+    public void ShowPopUp(List<BulletDataSO.BulletData> bulletDatasList)
     {
         //btnNewWeaponの生成
         //GenerateBtnNewWeapon(bulletDatasList);
@@ -164,7 +164,7 @@ public class LevelupPopUp : MonoBehaviour
 
         //btnLevelupの生成
         //StartCoroutine(GenerateLevelupWeaponBtn());
-        int levelUpWeaponBtnCount = await GenerateLevelupWeaponBtn();
+        int levelUpWeaponBtnCount = GenerateLevelupWeaponBtn();
 
         //追加できる新しい武器があるか、レベルアップできる武器があるかを判断してボタンの描画と押下反応を制御
         ToggleButtonVisibility(newWeaponBtnCount, levelUpWeaponBtnCount);
@@ -358,7 +358,7 @@ public class LevelupPopUp : MonoBehaviour
         {
             case 1:
                 bulletGenerator1 = charaController.gameObject.AddComponent<BulletGenerator1>();
-                bulletGenerator1.SetUpBulletGenerator1(charaController, shurikenPlace);
+                //bulletGenerator1.SetUpBulletGenerator1(charaController, selectedBulletData, shurikenPlace);
                 bulletGenerator1.PrepareGenerateBullet(charaController.Direction);
                 Debug.Log($"bulletNo：{selectedBulletData.bulletNo}、BulletGenerator1をアタッチします");
                 break;
@@ -394,7 +394,7 @@ public class LevelupPopUp : MonoBehaviour
     /// btnLevelupWeaponの生成
     /// </summary>
     //private IEnumerator GenerateLevelupWeaponBtn()
-    private async UniTask<int> GenerateLevelupWeaponBtn()
+    private int GenerateLevelupWeaponBtn()
     {
         //いくつボタンが生成されたか
         int count = 0;
@@ -403,7 +403,7 @@ public class LevelupPopUp : MonoBehaviour
         //yield return StartCoroutine(CreateAttatchedBulletGeneratorsArray());
 
         //上記を書き換え。async、awaitを使うことでUniTaskを使った非同期処理ができるようになる
-        await CreateAttatchedBulletGeneratorsArray();
+        //await CreateAttatchedBulletGeneratorsArray();
 
         //foreach (var count in attatchedBulletGeneratorsArray) //この場合、countとはattactchedBulletGenratorsArrayの各要素の中身の番号を表すので(例えばこのクラスの場合、1個目にはは10が入っている)、これだとIndexOutOfRangeExceptionエラーが出てしまう
         //上の処理を修正。for文に変更
@@ -438,33 +438,33 @@ public class LevelupPopUp : MonoBehaviour
     /// <summary>
     /// CharaSetにアタッチされているBulletGeneratorの番号を配列に順番に入れる
     /// </summary>
-    private IEnumerator CreateAttatchedBulletGeneratorsArray()
-    {
-        attatchedBulletGeneratorsArray[0] = 10;  //適当な大きな数字を代入
+    //private IEnumerator CreateAttatchedBulletGeneratorsArray()
+    //{
+    //    attatchedBulletGeneratorsArray[0] = 10;  //適当な大きな数字を代入
 
-        if (charaController.BulletGenerator1)
-        {
-            attatchedBulletGeneratorsArray[1] = 1;
-        }
-        if (charaController.BulletGenerator2)
-        {
-            attatchedBulletGeneratorsArray[2] = 2;
-        }
-        if (charaController.BulletGenerator3)
-        {
-            attatchedBulletGeneratorsArray[3] = 3;
-        }
-        if (charaController.BulletGenerator4)
-        {
-            attatchedBulletGeneratorsArray[4] = 4;
-        }
-        if (charaController.BulletGenerator5)
-        {
-            attatchedBulletGeneratorsArray[5] = 5;
-        }
+    //    if (charaController.BulletGenerator1)
+    //    {
+    //        attatchedBulletGeneratorsArray[1] = 1;
+    //    }
+    //    if (charaController.BulletGenerator2)
+    //    {
+    //        attatchedBulletGeneratorsArray[2] = 2;
+    //    }
+    //    if (charaController.BulletGenerator3)
+    //    {
+    //        attatchedBulletGeneratorsArray[3] = 3;
+    //    }
+    //    if (charaController.BulletGenerator4)
+    //    {
+    //        attatchedBulletGeneratorsArray[4] = 4;
+    //    }
+    //    if (charaController.BulletGenerator5)
+    //    {
+    //        attatchedBulletGeneratorsArray[5] = 5;
+    //    }
 
-        yield return null;
-    }
+    //    yield return null;
+    //}
 
     /// <summary>
     /// bulletLevelがmaxLevelに達しているか判断する

@@ -16,11 +16,14 @@ public class BulletDataSO : ScriptableObject
     {
         public int bulletNo;
         public float attackInterval;
+        public float destroyTime;
         public int maxLevel;
 
         public Sprite bulletSprite;
 
         [Multiline] public string descliptionBullet;
         [Multiline] public string descliptionLevelup;
+
+        public BulletBase bulletPrefab;
     }
 }

@@ -25,9 +25,24 @@ public class RefactorBullet2Generator : BulletGeneratorBase
     /// 初期設定
     /// </summary>
     /// <param name="charaController"></param>
-    public override void SetUpBulletGenerator(CharaController charaController)
+    public override void SetUpBulletGenerator(CharaController charaController, BulletDataSO.BulletData bulletData, Transform place)
     {
+        base.SetUpBulletGenerator(charaController, bulletData);
+
         temporaryObjectsPlace = this.charaController.temporaryObjectsPlace;
+    }
+
+    protected override void Update()
+    {
+        //アタックポーションの効果中は攻撃速度を1.5倍にする
+        bulletTimer += charaController.Item.IsAttackTimeReduced ? Time.deltaTime * (float)1.5f : Time.deltaTime;
+
+        if (bulletTimer >= bulletData.attackInterval)
+        {
+            bulletTimer = 0;
+
+            GenerateBullet();
+        }
     }
 
     /// <summary>

@@ -33,8 +33,10 @@ public class RefactorBullet4Generator : BulletGeneratorBase
     /// 初期設定
     /// </summary>
     /// <param name="charaController"></param>
-    public override void SetUpBulletGenerator(CharaController charaController)
+    public override void SetUpBulletGenerator(CharaController charaController, BulletDataSO.BulletData bulletData, Transform place)
     {
+        base.SetUpBulletGenerator(charaController, bulletData);
+
         temporaryObjectsPlace = this.charaController.temporaryObjectsPlace;
     }
 

@@ -20,8 +20,10 @@ public class RefactorBullet5Generator : BulletGeneratorBase
     /// 初期設定
     /// </summary>
     /// <param name="charaController"></param>
-    public override void SetUpBulletGenerator(CharaController charaController)
+    public override void SetUpBulletGenerator(CharaController charaController, BulletDataSO.BulletData bulletData, Transform place = null)
     {
+        base.SetUpBulletGenerator(charaController, bulletData);
+
         temporaryObjectsPlace = this.charaController.temporaryObjectsPlace;
     }
 

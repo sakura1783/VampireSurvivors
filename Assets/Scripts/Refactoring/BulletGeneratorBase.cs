@@ -5,9 +5,15 @@ public abstract class BulletGeneratorBase : MonoBehaviour, IGeneratable
 {
     //[SerializeField] protected float bulletSpeed;
 
-    [SerializeField] protected BulletBase bulletPrefab;
+    //[SerializeField] protected BulletBase bulletPrefab;
 
     protected CharaController charaController;
+
+    protected float bulletTimer;
+
+    protected BulletDataSO.BulletData bulletData;
+
+    protected bool isSetUp = false;
 
     protected IObjectPool<BulletBase> bulletPool;  //弾用のオブジェクトプール(参照はインターフェースで持っておくとスタック型(スタック型のオブジェクトプールは、新しいオブジェクトの取得と返却が高速だが、オブジェクトの返却順序は保証されない)と連結リスト型(連結リスト型のオブジェクトプールはオブジェクトの取得と返却が一定の時間で行われるため、一定の性能が期待できるが、一部の操作がスタック型より遅い可能性がある)の実装を変更可能。newのタイミングで実装変更できる)
 
@@ -39,13 +45,31 @@ public abstract class BulletGeneratorBase : MonoBehaviour, IGeneratable
         Debug.Log("弾のオブジェクトプール 初期化完了");
     }
 
+    protected virtual void Update()
+    {
+        if (!isSetUp)
+        {
+            return;
+        }
+
+        //アタックポーションの効果中は攻撃速度を1.5倍にする
+        bulletTimer += charaController.Item.IsAttackTimeReduced ? Time.deltaTime * (float)1.5f : Time.deltaTime;
+
+        if (bulletTimer >= bulletData.attackInterval)
+        {
+            bulletTimer = 0;
+
+            GenerateBullet(charaController.Direction);
+        }
+    }
+
     /// <summary>
     /// bulletPool.Get()メソッドにより、createFunkとして実行される
     /// </summary>
     /// <returns></returns>
     private BulletBase Create()
     {
-        BulletBase bulletInstance = Instantiate(bulletPrefab);
+        BulletBase bulletInstance = Instantiate(bulletData.bulletPrefab);
 
         //参照を与えておく(依存性注入する)ことによって、Bullet側でReleaseできる
         bulletInstance.ObjectPool = bulletPool;
@@ -91,9 +115,11 @@ public abstract class BulletGeneratorBase : MonoBehaviour, IGeneratable
     /// 初期設定
     /// </summary>
     /// <param name="charaController"></param>
-    public virtual void SetUpBulletGenerator(CharaController charaController)
+    public virtual void SetUpBulletGenerator(CharaController charaController, BulletDataSO.BulletData bulletData, Transform place = null)
     {
         this.charaController = charaController;
+
+        this.bulletData = bulletData;
 
         Debug.Log("初期設定 完了");
     }
