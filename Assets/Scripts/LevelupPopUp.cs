@@ -434,8 +434,8 @@ public class LevelupPopUp : MonoBehaviour
             //生成したボタンのゲームオブジェクトをリストに追加
             btnsList.Add(button.gameObject);
 
-            //ボタンの設定
-            button.SetUpLevelupWeaponBtn(this, charaController.bulletDatasList[i]);
+            //TODO ボタンの設定 コメントアウト外して修正する
+            //button.SetUpLevelupWeaponBtn(this, charaController.bulletDatasList[i]);
 
             count++;
         }
