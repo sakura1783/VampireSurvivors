@@ -8,12 +8,12 @@ using Cysharp.Threading.Tasks;
 /// </summary>
 public class RefactorBullet4Generator : BulletGeneratorBase
 {
-    private int bulletLevel = 1;
-    public int BulletLevel
-    {
-        get => bulletLevel;
-        set => bulletLevel = value;
-    }
+    //private int bulletLevel = 1;
+    //public int BulletLevel
+    //{
+    //    get => bulletLevel;
+    //    set => bulletLevel = value;
+    //}
 
     [SerializeField] private float attackInterval;
     public float AttackInterval

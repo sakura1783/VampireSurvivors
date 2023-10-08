@@ -26,6 +26,8 @@ public class EnemyController : MonoBehaviour
         set => objectPool = value;
     }
 
+    private bool isReleasedToPool = false;
+
     [SerializeField] private NavMeshAgent2D navMeshAgent2D;
 
     [SerializeField] private int itemGenerateRate;
@@ -56,9 +58,14 @@ public class EnemyController : MonoBehaviour
     /// </summary>
     public void ReleaseEnemy()
     {
-        objectPool.Release(this);
+        if (!isReleasedToPool)
+        {
+            isReleasedToPool = true;
 
-        Debug.Log("ObjectPool");
+            objectPool.Release(this);
+
+            Debug.Log("ObjectPool");
+        }
     }
 
     /// <summary>

@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class RefactorBullet5Generator : BulletGeneratorBase
 {
-    private int bulletLevel = 1;
-    public int BulletLevel
-    {
-        get => bulletLevel;
-        set => bulletLevel = value;
-    }
+    //private int bulletLevel = 1;
+    //public int BulletLevel
+    //{
+    //    get => bulletLevel;
+    //    set => bulletLevel = value;
+    //}
 
     private Transform temporaryObjectsPlace;
 

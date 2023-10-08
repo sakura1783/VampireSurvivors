@@ -7,12 +7,12 @@ using UnityEngine;
 /// </summary>
 public class RefactorBullet0Generator : BulletGeneratorBase
 {
-    private int bulletLevel = 1;
-    public int BulletLevel
-    {
-        get => bulletLevel;
-        set => bulletLevel = value;
-    }
+    //private int bulletLevel = 1;
+    //public int BulletLevel
+    //{
+    //    get => bulletLevel;
+    //    set => bulletLevel = value;
+    //}
 
     [SerializeField] private Transform temporaryObjectsPlace;
 

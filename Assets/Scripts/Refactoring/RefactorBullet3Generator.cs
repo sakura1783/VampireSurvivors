@@ -7,12 +7,12 @@ using UnityEngine;
 /// </summary>
 public class RefactorBullet3Generator : BulletGeneratorBase
 {
-    private int bulletLevel = 1;
-    public int BulletLevel
-    {
-        get => bulletLevel;
-        set => bulletLevel = value;
-    }
+    //private int bulletLevel = 1;
+    //public int BulletLevel
+    //{
+    //    get => bulletLevel;
+    //    set => bulletLevel = value;
+    //}
 
     private Transform temporaryObjectsPlace;
 
@@ -23,8 +23,10 @@ public class RefactorBullet3Generator : BulletGeneratorBase
     [SerializeField] private bool isDebugDrawRayOn;  //デバッグ用の描画処理をするかどうか
 
 
-    void Update()
+    protected override void Update()
     {
+        base.Update();
+
         if (!isDebugDrawRayOn)
         {
             return;

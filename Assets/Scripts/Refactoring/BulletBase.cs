@@ -15,6 +15,8 @@ public abstract class BulletBase : MonoBehaviour, IShootable
         set => objectPool = value;
     }
 
+    private bool isReleasedToPool = false;  //弾がすでにプールに戻されているか
+
 
     /// <summary>
     /// 弾をオブジェクトプールに戻す
@@ -23,9 +25,14 @@ public abstract class BulletBase : MonoBehaviour, IShootable
     {
         await UniTask.Delay(System.TimeSpan.FromSeconds(destroyTime));
 
-        objectPool.Release(this);
+        if (!isReleasedToPool)
+        {
+            isReleasedToPool = true;
 
-        Debug.Log(objectPool);
+            objectPool.Release(this);
+
+            Debug.Log(objectPool);
+        }
     }
 
     /// <summary>

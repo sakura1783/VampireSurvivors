@@ -7,12 +7,12 @@ using UnityEngine;
 /// </summary>
 public class RefactorBullet1Generator : BulletGeneratorBase
 {
-    private int bulletLevel = 1;
-    public int BulletLevel
-    {
-        get => bulletLevel;
-        set => bulletLevel = value;
-    }
+    //private int bulletLevel = 1;
+    //public int BulletLevel
+    //{
+    //    get => bulletLevel;
+    //    set => bulletLevel = value;
+    //}
 
     private List<BulletBase> bulletList = new();
 
