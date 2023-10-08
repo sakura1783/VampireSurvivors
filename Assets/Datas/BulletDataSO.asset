@@ -60,7 +60,7 @@ MonoBehaviour:
       type: 3}
   - bulletNo: 5
     attackInterval: 3
-    destroyTime: 13
+    destroyTime: 15
     maxLevel: 5
     bulletSprite: {fileID: 21300000, guid: 429b8816a6f72431b8238f781d718fb9, type: 3}
     descliptionBullet: "\u51CD\u7D50\u9B54\u6CD5\u3002\u30D7\u30EC\u30A4\u30E4\u30FC\u304C\u5411\u3044\u3066\u3044\u308B\u65B9\u5411\u306B\u98DB\u3093\u3067\u3044\u304F\u3002\u6575\u306B\u5F53\u305F\u3063\u3066\u3082\u30C0\u30E1\u30FC\u30B8\u306F\u306A\u3044\u304C\u3001\u6570\u79D2\u9593\u51CD\u3089\u305B\u3066\u52D5\u304D\u3092\u6B62\u3081\u308B\u3002"

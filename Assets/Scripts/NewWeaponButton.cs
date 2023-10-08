@@ -9,9 +9,9 @@ public class NewWeaponButton : MonoBehaviour
 
     [SerializeField] private Button btnNewWeapon;
 
-    private BulletDataSO.BulletData bulletData;
+    //private BulletDataSO.BulletData bulletData;
 
-    private LevelupPopUp levelupPop;
+    //private LevelupPopUp levelupPop;
 
 
     /// <summary>
@@ -20,19 +20,20 @@ public class NewWeaponButton : MonoBehaviour
     /// <param name="bulletData"></param>
     public void SetUpBtnNewWeapon(LevelupPopUp levelupPop, BulletDataSO.BulletData bulletData)
     {
-        this.levelupPop = levelupPop;
-        this.bulletData = bulletData;
+        //this.levelupPop = levelupPop;
+        //this.bulletData = bulletData;
 
         imgNewWeaponBtn.sprite = bulletData.bulletSprite;
 
-        btnNewWeapon.onClick.AddListener(OnClickBtnNewWeapon);
+        //btnNewWeapon.onClick.AddListener(OnClickBtnNewWeapon);
+        btnNewWeapon.onClick.AddListener(() => OnClickBtnNewWeapon(levelupPop, bulletData));
     }
 
     /// <summary>
     /// btnNewWeaponを押した際の処理
     /// </summary>
-    private void OnClickBtnNewWeapon()
+    private void OnClickBtnNewWeapon(LevelupPopUp levelupPop, BulletDataSO.BulletData bulletData)
     {
-        levelupPop.SetSelectBulletDetail(bulletData, "NewWeapon");
+        levelupPop.SetSelectBulletDetail(bulletData, ButtonType.NewWeapon);  //"NewWeapon"
     }
 }

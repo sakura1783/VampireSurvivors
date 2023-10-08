@@ -3,6 +3,9 @@ using UnityEngine.Pool;
 
 public abstract class BulletGeneratorBase : MonoBehaviour, IGeneratable
 {
+    private int bulletLevel = 1;
+    public int BulletLevel => bulletLevel;
+
     //[SerializeField] protected float bulletSpeed;
 
     //[SerializeField] protected BulletBase bulletPrefab;
@@ -12,6 +15,7 @@ public abstract class BulletGeneratorBase : MonoBehaviour, IGeneratable
     protected float bulletTimer;
 
     protected BulletDataSO.BulletData bulletData;
+    public BulletDataSO.BulletData BulletData => bulletData;
 
     protected bool isSetUp = false;
 

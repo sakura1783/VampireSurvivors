@@ -5,6 +5,12 @@ using UnityEngine.UI;
 using System;  //絶対ではないがUnitaskを使う時は入れておくとよい
 using Cysharp.Threading.Tasks;  //UniTask
 
+public enum ButtonType
+{
+    NewWeapon,
+    LevelupWeapon,
+}
+
 public class LevelupPopUp : MonoBehaviour
 {
     [SerializeField] private CanvasGroup popUpCanvasGroup;
@@ -333,17 +339,19 @@ public class LevelupPopUp : MonoBehaviour
     /// <summary>
     /// 選択されたバレットの情報をポップアップに表示する
     /// </summary>
-    public void SetSelectBulletDetail(BulletDataSO.BulletData bulletData, string btnName)
+    public void SetSelectBulletDetail(BulletDataSO.BulletData bulletData, ButtonType buttonType)  //string btnName
     {
         selectedBulletData = bulletData;
         Debug.Log($"selectedBulletData : {selectedBulletData.bulletNo}");
 
-        if (btnName == "NewWeapon")
+        //if (btnName == "NewWeapon")
+        if (buttonType == ButtonType.NewWeapon)
         {
             txtBulletDescliption.text = bulletData.descliptionBullet;
         }
 
-        if (btnName == "LevelupWeapon")
+        //if (btnName == "LevelupWeapon")
+        if (buttonType == ButtonType.LevelupWeapon)
         {
             txtLevelupDescliption.text = bulletData.descliptionLevelup;
         }
