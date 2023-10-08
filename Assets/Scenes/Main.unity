@@ -1681,7 +1681,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 49}
-  m_SizeDelta: {x: 1120, y: 250}
+  m_SizeDelta: {x: 1160, y: 220}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &274982619
 MonoBehaviour:
@@ -1734,14 +1734,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 0
-    m_Right: 0
+    m_Left: 20
+    m_Right: 20
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 200, y: 200}
+  m_CellSize: {x: 170, y: 170}
   m_Spacing: {x: 20, y: 0}
   m_Constraint: 2
   m_ConstraintCount: 1
@@ -6115,16 +6115,6 @@ MonoBehaviour:
   charaLevel: 1
   bulletDatasList: []
   levelupPop: {fileID: 1171574961}
-  bullet1Prefab: {fileID: 7561750187626492420, guid: 03892eb2f38894886a7363f604c3a801,
-    type: 3}
-  bullet2Prefab: {fileID: 1810241835130644378, guid: afe29dcd45a504d7da481ac949769896,
-    type: 3}
-  bullet3Prefab: {fileID: 7643294589575921750, guid: 0867338f67f8a4f6285b79af8635715d,
-    type: 3}
-  bullet4Prefab: {fileID: 1169410501722239269, guid: 3f07aef646b8a4b73ace733bb81d06ee,
-    type: 3}
-  bullet5Prefab: {fileID: 4909106928436698919, guid: c23fc5fdfa7f04e0c9714f1c0249c030,
-    type: 3}
   temporaryObjectsPlace: {fileID: 530679511}
   maxHp: 100
   hp: 0
