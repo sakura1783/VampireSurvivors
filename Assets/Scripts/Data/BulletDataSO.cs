@@ -2,6 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// BulletGeneratorの種類
+/// </summary>
+public enum GeneratorType
+{
+    RefactorBullet0Generator,
+    RefactorBullet1Generator,
+    RefactorBullet2Generator,
+    RefactorBullet3Generator,
+    RefactorBullet4Generator,
+    RefactorBullet5Generator,
+}
+
 [CreateAssetMenu(fileName = "BulletDataSO", menuName = "Create BulletDataSO")]
 public class BulletDataSO : ScriptableObject
 {
@@ -25,5 +38,6 @@ public class BulletDataSO : ScriptableObject
         [Multiline] public string descliptionLevelup;
 
         public BulletBase bulletPrefab;
+        public GeneratorType generatorType;
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System;  //絶対ではないがUnitaskを使う時は入れておくとよい
+using System;
 using Cysharp.Threading.Tasks;  //UniTask
 
 public enum ButtonType
@@ -41,31 +41,31 @@ public class LevelupPopUp : MonoBehaviour
     [SerializeField] private GameManager gameManager;
 
     //各BulletGenerator
-    private BulletGenerator bulletGenerator;
-    public BulletGenerator BulletGenerator => bulletGenerator;
+    //private BulletGenerator bulletGenerator;
+    //public BulletGenerator BulletGenerator => bulletGenerator;
 
-    private BulletGenerator1 bulletGenerator1;
-    public BulletGenerator1 BulletGenerator1 => bulletGenerator1;
+    //private BulletGenerator1 bulletGenerator1;
+    //public BulletGenerator1 BulletGenerator1 => bulletGenerator1;
 
-    private BulletGenerator2 bulletGenerator2;
-    public BulletGenerator2 BulletGenerator2 => bulletGenerator2;
+    //private BulletGenerator2 bulletGenerator2;
+    //public BulletGenerator2 BulletGenerator2 => bulletGenerator2;
 
-    private BulletGenerator3 bulletGenerator3;
-    public BulletGenerator3 BulletGenerator3 => bulletGenerator3;
+    //private BulletGenerator3 bulletGenerator3;
+    //public BulletGenerator3 BulletGenerator3 => bulletGenerator3;
 
-    private BulletGenerator4 bulletGenerator4;
-    public BulletGenerator4 BulletGenerator4 => bulletGenerator4;
+    //private BulletGenerator4 bulletGenerator4;
+    //public BulletGenerator4 BulletGenerator4 => bulletGenerator4;
 
-    private BulletGenerator5 bulletGenerator5;
-    public BulletGenerator5 BulletGenerator5 => bulletGenerator5;
+    //private BulletGenerator5 bulletGenerator5;
+    //public BulletGenerator5 BulletGenerator5 => bulletGenerator5;
 
     private BulletDataSO.BulletData selectedBulletData;  //選ばれたバレットのデータ
 
     private CharaController charaController;
 
-    private List<int> attatchedBulletList = new();  //CharaSetにアタッチ済みのバレットのリスト(NewWeapon用)
+    //private List<int> attatchedBulletList = new();  //CharaSetにアタッチ済みのバレットのリスト(NewWeapon用)
 
-    private int[] attatchedBulletGeneratorsArray = new int[6];  //CharaSetにアタッチされているBulletGeneratorを順番に入れる(LevelupWeapon用)
+    //private int[] attatchedBulletGeneratorsArray = new int[6];  //CharaSetにアタッチされているBulletGeneratorを順番に入れる(LevelupWeapon用)
 
     private List<GameObject> btnsList = new();  //生成した全てのボタンのリスト
 
@@ -77,7 +77,7 @@ public class LevelupPopUp : MonoBehaviour
     /// <summary>
     /// 初期設定。CharaControllerのSetUpメソッドで実行する
     /// </summary>
-    public void SetUpLevelupPopUp(CharaController charaController, List<BulletDataSO.BulletData> bulletDatasList)
+    public void SetUpLevelupPopUp(CharaController charaController)  //List<BulletDataSO.BulletData> bulletDatasList
     {
         this.charaController = charaController;
 
@@ -94,7 +94,7 @@ public class LevelupPopUp : MonoBehaviour
 
         SetUpButtons();
 
-        attatchedBulletList.Add(0);  //デフォルトの弾は最初からついているのでリストに追加
+        //attatchedBulletList.Add(0);  //デフォルトの弾は最初からついているのでリストに追加
     }
 
     /// <summary>
@@ -138,12 +138,12 @@ public class LevelupPopUp : MonoBehaviour
     private void OnClickButtonSelect()
     {
         //選んだバレットのBulletGeneratorをCharaSetにアタッチ
-        AttatchBulletGenerator();
+        charaController.AttatchBulletGenerator(selectedBulletData);
 
         //CharaSetにアタッチされているBulletGeneratorたちをCharaControllerの各変数に入れる
         //charaController.AssainBulletGenerators();
 
-        attatchedBulletList.Add(selectedBulletData.bulletNo);
+        //attatchedBulletList.Add(selectedBulletData.bulletNo);
 
         HidePopUp();
     }
@@ -153,8 +153,10 @@ public class LevelupPopUp : MonoBehaviour
     /// </summary>
     private void OnClickButtonChoose()
     {
+        BulletGeneratorBase chooseLevelupBulletGenerator = charaController.AttatchedBulletGeneratorList.Find(bulletGenerator => bulletGenerator.BulletData.bulletNo == selectedBulletData.bulletNo);
+
         //選択したバレットをレベルアップ
-        LevelUpBullet();
+        chooseLevelupBulletGenerator.LevelUpBullet();
 
         HidePopUp();
     }
@@ -162,11 +164,11 @@ public class LevelupPopUp : MonoBehaviour
     /// <summary>
     /// ポップアップの表示。CharaControllerのLevelUpメソッドで実行する
     /// </summary>
-    public void ShowPopUp(List<BulletDataSO.BulletData> bulletDatasList)
+    public void ShowPopUp()  //List<BulletDataSO.BulletData> bulletDatasList
     {
         //btnNewWeaponの生成
         //GenerateBtnNewWeapon(bulletDatasList);
-        int newWeaponBtnCount = GenerateBtnNewWeapon(bulletDatasList);
+        int newWeaponBtnCount = GenerateBtnNewWeapon();  //bulletDatasList
 
         //btnLevelupの生成
         //StartCoroutine(GenerateLevelupWeaponBtn());
@@ -270,38 +272,38 @@ public class LevelupPopUp : MonoBehaviour
     /// <summary>
     /// btnNewWeaponの生成
     /// </summary>
-    private int GenerateBtnNewWeapon(List<BulletDataSO.BulletData> bulletDatasList)
+    private int GenerateBtnNewWeapon()  //List<BulletDataSO.BulletData> bulletDatasList
     {
         int count = 0;
 
         //持っていないバレットが0個(全てのバレットを手に入れている)場合
-        if (attatchedBulletList.Count >= 6)
+        if (charaController.AttatchedBulletGeneratorList.Count >= 6)
         {
             return count;  //ボタンは生成されない(0個)
         }
         //手に入れていないバレットが1個(持っているバレットが5つ以上)の場合
-        else if (attatchedBulletList.Count >= 5)
+        else if (charaController.AttatchedBulletGeneratorList.Count >= 5)
         {
             int randomNo = 0;
 
             do
             {
-                randomNo = UnityEngine.Random.Range(0, bulletDatasList.Count);
+                randomNo = UnityEngine.Random.Range(0, DataBaseManager.instance.bulletDataSO.bulletDataList.Count);
 
-            } while (attatchedBulletList.Contains(randomNo));
+            } while (charaController.AttatchedBulletGeneratorList.Exists(bulletGenerator => bulletGenerator.BulletData.bulletNo == randomNo));  //attatchedBulletList.Contains(randomNo));
 
             NewWeaponButton button = Instantiate(newWeaponBtnPrefab, newWeaponsPlace);
 
             btnsList.Add(button.gameObject);
 
-            button.SetUpBtnNewWeapon(this, bulletDatasList[randomNo]);
+            button.SetUpBtnNewWeapon(this, DataBaseManager.instance.bulletDataSO.bulletDataList[randomNo]);
 
             count++;
 
             return count;  //ボタンの生成数は必ず1個
         }
         //手に入れていないバレットが2個以上(持っているバレットが1個以上)の場合
-        else if (attatchedBulletList.Count >= 0)
+        else if (charaController.AttatchedBulletGeneratorList.Count >= 0)
         {
             //とりあえずの初期値
             int randomNo = 0;
@@ -314,9 +316,9 @@ public class LevelupPopUp : MonoBehaviour
                 //attatchedBulletNoListにrandomNoが含まれている、またはrandomNoとusedNoが同じ間ずっと繰り返す
                 do
                 {
-                    randomNo = UnityEngine.Random.Range(0, bulletDatasList.Count);
+                    randomNo = UnityEngine.Random.Range(0, DataBaseManager.instance.bulletDataSO.bulletDataList.Count);
 
-                } while (attatchedBulletList.Contains(randomNo) || randomNo == usedNo);
+                } while (charaController.AttatchedBulletGeneratorList.Exists(bulletGenerator  => bulletGenerator.BulletData.bulletNo == randomNo || randomNo == usedNo));  //attatchedBulletList.Contains(randomNo)
 
                 usedNo = randomNo;
 
@@ -325,7 +327,7 @@ public class LevelupPopUp : MonoBehaviour
                 //生成したボタンのゲームオブジェクトをリストに入れる
                 btnsList.Add(button.gameObject);
 
-                button.SetUpBtnNewWeapon(this, bulletDatasList[randomNo]);
+                button.SetUpBtnNewWeapon(this, DataBaseManager.instance.bulletDataSO.bulletDataList[randomNo]);
 
                 count++;  //ボタンの生成数は2個以上になる
             }
@@ -342,7 +344,7 @@ public class LevelupPopUp : MonoBehaviour
     public void SetSelectBulletDetail(BulletDataSO.BulletData bulletData, ButtonType buttonType)  //string btnName
     {
         selectedBulletData = bulletData;
-        Debug.Log($"selectedBulletData : {selectedBulletData.bulletNo}");
+        //Debug.Log($"selectedBulletData : {selectedBulletData.bulletNo}");
 
         //if (btnName == "NewWeapon")
         if (buttonType == ButtonType.NewWeapon)
@@ -360,43 +362,43 @@ public class LevelupPopUp : MonoBehaviour
     /// <summary>
     /// どのBulletGeneratorにするか決めて、アタッチ
     /// </summary>
-    private void AttatchBulletGenerator()
-    {
-        switch (selectedBulletData.bulletNo)
-        {
-            case 1:
-                bulletGenerator1 = charaController.gameObject.AddComponent<BulletGenerator1>();
-                //bulletGenerator1.SetUpBulletGenerator1(charaController, selectedBulletData, shurikenPlace);
-                bulletGenerator1.PrepareGenerateBullet(charaController.Direction);
-                Debug.Log($"bulletNo：{selectedBulletData.bulletNo}、BulletGenerator1をアタッチします");
-                break;
+    //private void AttatchBulletGenerator()
+    //{
+    //    switch (selectedBulletData.bulletNo)
+    //    {
+    //        case 1:
+    //            bulletGenerator1 = charaController.gameObject.AddComponent<BulletGenerator1>();
+    //            //bulletGenerator1.SetUpBulletGenerator1(charaController, selectedBulletData, shurikenPlace);
+    //            bulletGenerator1.PrepareGenerateBullet(charaController.Direction);
+    //            Debug.Log($"bulletNo：{selectedBulletData.bulletNo}、BulletGenerator1をアタッチします");
+    //            break;
 
-            case 2:
-                bulletGenerator2 = charaController.gameObject.AddComponent<BulletGenerator2>();
-                bulletGenerator2.SetUpBulletGenerator2(charaController);
-                Debug.Log($"bulletNo：{selectedBulletData.bulletNo}、BulletGenerator2をアタッチします");
-                break;
+    //        case 2:
+    //            bulletGenerator2 = charaController.gameObject.AddComponent<BulletGenerator2>();
+    //            bulletGenerator2.SetUpBulletGenerator2(charaController);
+    //            Debug.Log($"bulletNo：{selectedBulletData.bulletNo}、BulletGenerator2をアタッチします");
+    //            break;
 
-            case 3:
-                bulletGenerator3 = charaController.gameObject.AddComponent<BulletGenerator3>();
-                bulletGenerator3.SetUpBulletGenerator3(charaController);
-                Debug.Log($"bulletNo：{selectedBulletData.bulletNo}、BulletGenerator3をアタッチします");
-                break;
+    //        case 3:
+    //            bulletGenerator3 = charaController.gameObject.AddComponent<BulletGenerator3>();
+    //            bulletGenerator3.SetUpBulletGenerator3(charaController);
+    //            Debug.Log($"bulletNo：{selectedBulletData.bulletNo}、BulletGenerator3をアタッチします");
+    //            break;
 
-            case 4:
-                bulletGenerator4 = charaController.gameObject.AddComponent<BulletGenerator4>();
-                bulletGenerator4.attackInterval = selectedBulletData.attackInterval;  //攻撃のインターバル時間を設定
-                bulletGenerator4.SetUpBulletGenerator4(charaController);
-                Debug.Log($"bulletNo：{selectedBulletData.bulletNo}、BulletGenerator4をアタッチします");
-                break;
+    //        case 4:
+    //            bulletGenerator4 = charaController.gameObject.AddComponent<BulletGenerator4>();
+    //            bulletGenerator4.attackInterval = selectedBulletData.attackInterval;  //攻撃のインターバル時間を設定
+    //            bulletGenerator4.SetUpBulletGenerator4(charaController);
+    //            Debug.Log($"bulletNo：{selectedBulletData.bulletNo}、BulletGenerator4をアタッチします");
+    //            break;
 
-            case 5:
-                bulletGenerator5 = charaController.gameObject.AddComponent<BulletGenerator5>();
-                bulletGenerator5.SetUpBulletGenerator5(charaController);
-                Debug.Log($"bulletNo：{selectedBulletData.bulletNo}、BulletGenerator5をアタッチします");
-                break;
-        }
-    }
+    //        case 5:
+    //            bulletGenerator5 = charaController.gameObject.AddComponent<BulletGenerator5>();
+    //            bulletGenerator5.SetUpBulletGenerator5(charaController);
+    //            Debug.Log($"bulletNo：{selectedBulletData.bulletNo}、BulletGenerator5をアタッチします");
+    //            break;
+    //    }
+    //}
 
     /// <summary>
     /// btnLevelupWeaponの生成
@@ -407,35 +409,54 @@ public class LevelupPopUp : MonoBehaviour
         //いくつボタンが生成されたか
         int count = 0;
 
-        //CharaSetにアタッチされているBulletGeneratorの番号を配列に順番に入れる
-        //yield return StartCoroutine(CreateAttatchedBulletGeneratorsArray());
+        //    //CharaSetにアタッチされているBulletGeneratorの番号を配列に順番に入れる
+        //    //yield return StartCoroutine(CreateAttatchedBulletGeneratorsArray());
 
-        //上記を書き換え。async、awaitを使うことでUniTaskを使った非同期処理ができるようになる
-        //await CreateAttatchedBulletGeneratorsArray();
+        //    //上記を書き換え。async、awaitを使うことでUniTaskを使った非同期処理ができるようになる
+        //    //await CreateAttatchedBulletGeneratorsArray();
 
-        //foreach (var count in attatchedBulletGeneratorsArray) //この場合、countとはattactchedBulletGenratorsArrayの各要素の中身の番号を表すので(例えばこのクラスの場合、1個目にはは10が入っている)、これだとIndexOutOfRangeExceptionエラーが出てしまう
-        //上の処理を修正。for文に変更
-        for (int i = 0; i < attatchedBulletGeneratorsArray.Length; i++)
+        //    //foreach (var count in attatchedBulletGeneratorsArray) //この場合、countとはattactchedBulletGenratorsArrayの各要素の中身の番号を表すので(例えばこのクラスの場合、1個目にはは10が入っている)、これだとIndexOutOfRangeExceptionエラーが出てしまう
+        //    //上の処理を修正。for文に変更
+        //    for (int i = 0; i < attatchedBulletGeneratorsArray.Length; i++)
+        //    {
+        //        //配列の中身が初期値の0(つまり、BulletGeneratorがCharaSetにアタッチされていない)の場合、スキップ(ボタンを生成しない)
+        //        if (attatchedBulletGeneratorsArray[i] == 0)
+        //        {
+        //            continue;
+        //        }
+
+        //        //bulletLevelがmaxLevelに達している場合、スキップ
+        //        if (ReachedMaxLevel(i))
+        //        {
+        //            continue;
+        //        }
+
+        //        LevelupWeaponButton button = Instantiate(levelupWeaponBtnPrefab, levelupWeaponsPlace);
+
+        //        //生成したボタンのゲームオブジェクトをリストに追加
+        //        btnsList.Add(button.gameObject);
+
+        //        //ボタンの設定
+        //        //button.SetUpLevelupWeaponBtn(this, charaController.bulletDatasList[i]);
+
+        //        count++;
+        //    }
+
+        //    return count;
+
+        foreach (BulletGeneratorBase bulletGenerator in charaController.AttatchedBulletGeneratorList)
         {
-            //配列の中身が初期値の0(つまり、BulletGeneratorがCharaSetにアタッチされていない)の場合、スキップ(ボタンを生成しない)
-            if (attatchedBulletGeneratorsArray[i] == 0)
-            {
-                continue;
-            }
-
-            //bulletLevelがmaxLevelに達している場合、スキップ
-            if (ReachedMaxLevel(i))
+            //バレットが最大レベルに達している場合、スキップ
+            if (bulletGenerator.ReachedMaxLevel())
             {
                 continue;
             }
 
             LevelupWeaponButton button = Instantiate(levelupWeaponBtnPrefab, levelupWeaponsPlace);
 
-            //生成したボタンのゲームオブジェクトをリストに追加
             btnsList.Add(button.gameObject);
 
-            //TODO ボタンの設定 コメントアウト外して修正する
-            //button.SetUpLevelupWeaponBtn(this, charaController.bulletDatasList[i]);
+            button.SetUpLevelupWeaponBtn(this, bulletGenerator);
 
             count++;
         }
@@ -477,89 +498,89 @@ public class LevelupPopUp : MonoBehaviour
     /// <summary>
     /// bulletLevelがmaxLevelに達しているか判断する
     /// </summary>
-    private bool ReachedMaxLevel(int count)
-    {
-        switch (count)
-        {
-            case 0:
-                if (bulletGenerator.bulletLevel >= charaController.bulletDatasList[count].maxLevel)
-                {
-                    return true;
-                }
-                return false;
+    //private bool ReachedMaxLevel(int count)
+    //{
+    //    switch (count)
+    //    {
+    //        case 0:
+    //            if (bulletGenerator.bulletLevel >= charaController.bulletDatasList[count].maxLevel)
+    //            {
+    //                return true;
+    //            }
+    //            return false;
 
-            case 1:
-                if (bulletGenerator1.bulletLevel >= charaController.bulletDatasList[count].maxLevel)
-                {
-                    return true;
-                }
-                return false;
+    //        case 1:
+    //            if (bulletGenerator1.bulletLevel >= charaController.bulletDatasList[count].maxLevel)
+    //            {
+    //                return true;
+    //            }
+    //            return false;
 
-            case 2:
-                if (bulletGenerator2.bulletLevel >= charaController.bulletDatasList[count].maxLevel)
-                {
-                    return true;
-                }
-                return false;
+    //        case 2:
+    //            if (bulletGenerator2.bulletLevel >= charaController.bulletDatasList[count].maxLevel)
+    //            {
+    //                return true;
+    //            }
+    //            return false;
 
-            case 3:
-                if (bulletGenerator3.bulletLevel >= charaController.bulletDatasList[count].maxLevel)
-                {
-                    return true;
-                }
-                return false;
+    //        case 3:
+    //            if (bulletGenerator3.bulletLevel >= charaController.bulletDatasList[count].maxLevel)
+    //            {
+    //                return true;
+    //            }
+    //            return false;
 
-            case 4:
-                if (bulletGenerator4.bulletLevel >= charaController.bulletDatasList[count].maxLevel)
-                {
-                    return true;
-                }
-                return false;
+    //        case 4:
+    //            if (bulletGenerator4.bulletLevel >= charaController.bulletDatasList[count].maxLevel)
+    //            {
+    //                return true;
+    //            }
+    //            return false;
 
-            case 5:
-                if (bulletGenerator5.bulletLevel >= charaController.bulletDatasList[count].maxLevel)
-                {
-                    return true;
-                }
-                return false;
+    //        case 5:
+    //            if (bulletGenerator5.bulletLevel >= charaController.bulletDatasList[count].maxLevel)
+    //            {
+    //                return true;
+    //            }
+    //            return false;
 
-            default:
-                return false;
-        }
-    }
+    //        default:
+    //            return false;
+    //    }
+    //}
 
     /// <summary>
     /// 選ばれたバレットをレベルアップ
     /// </summary>
-    private void LevelUpBullet()
-    {
-        switch (selectedBulletData.bulletNo)
-        {
-            case 0:
-                bulletGenerator.bulletLevel++;
-                break;
+    //private void LevelUpBullet()
+    //{
+    //    switch (selectedBulletData.bulletNo)
+    //    {
+    //        case 0:
+    //            bulletGenerator.bulletLevel++;
+    //            break;
 
-            case 1:
-                bulletGenerator1.bulletLevel++;
-                bulletGenerator1.PrepareGenerateBullet(charaController.Direction);
-                break;
+    //        case 1:
+    //            bulletGenerator1.bulletLevel++;
+    //            bulletGenerator1.PrepareGenerateBullet(charaController.Direction);
+    //            break;
 
-            case 2:
-                bulletGenerator2.bulletLevel++;
-                break;
+    //        case 2:
+    //            bulletGenerator2.bulletLevel++;
+    //            break;
 
-            case 3:
-                bulletGenerator3.bulletLevel++;
-                break;
+    //        case 3:
+    //            bulletGenerator3.bulletLevel++;
+    //            break;
 
-            case 4:
-                bulletGenerator4.bulletLevel++;
-                bulletGenerator4.SetAttackIntervalByLevel();
-                break;
+    //        case 4:
+    //            bulletGenerator4.bulletLevel++;
+    //            bulletGenerator4.SetAttackIntervalByLevel();
+    //            break;
 
-            case 5:
-                bulletGenerator5.bulletLevel++;
-                break;
-        }
-    }
+    //        case 5:
+    //            bulletGenerator5.bulletLevel++;
+    //            break;
+    //    }
+    //}
 }

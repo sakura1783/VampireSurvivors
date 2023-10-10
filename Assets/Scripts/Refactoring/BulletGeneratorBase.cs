@@ -6,13 +6,15 @@ public abstract class BulletGeneratorBase : MonoBehaviour, IGeneratable
     protected int bulletLevel = 1;
     public int BulletLevel => bulletLevel;
 
-    //[SerializeField] protected float bulletSpeed;
+    //[SerializeField] protected float bulletSpeed;  //BulletDataがない時点のデバッグ用として利用できる
 
-    //[SerializeField] protected BulletBase bulletPrefab;
+    //[SerializeField] protected BulletBase bulletPrefab;  //同上
 
     protected CharaController charaController;
 
     protected float bulletTimer;
+
+    protected Transform temporaryObjectsPlace;
 
     protected BulletDataSO.BulletData bulletData;
     public BulletDataSO.BulletData BulletData => bulletData;
@@ -68,6 +70,23 @@ public abstract class BulletGeneratorBase : MonoBehaviour, IGeneratable
     }
 
     /// <summary>
+    /// 初期設定
+    /// </summary>
+    /// <param name="charaController"></param>
+    public virtual void SetUpBulletGenerator(CharaController charaController, BulletDataSO.BulletData bulletData, Transform place = null)
+    {
+        this.charaController = charaController;
+
+        temporaryObjectsPlace = charaController.temporaryObjectsPlace;  //4つのクラスで利用しているので共通化する。使わないクラスでは無視させる
+
+        this.bulletData = bulletData;
+
+        isSetUp = true;
+
+        Debug.Log("初期設定 完了");
+    }
+
+    /// <summary>
     /// bulletPool.Get()メソッドにより、createFunkとして実行される
     /// </summary>
     /// <returns></returns>
@@ -115,22 +134,27 @@ public abstract class BulletGeneratorBase : MonoBehaviour, IGeneratable
         return bullet;
     }
 
-    /// <summary>
-    /// 初期設定
-    /// </summary>
-    /// <param name="charaController"></param>
-    public virtual void SetUpBulletGenerator(CharaController charaController, BulletDataSO.BulletData bulletData, Transform place = null)
-    {
-        this.charaController = charaController;
-
-        this.bulletData = bulletData;
-
-        Debug.Log("初期設定 完了");
-    }
-
     public abstract void GenerateBullet();
 
     public abstract void GenerateBullet(Vector2 direction);
 
     public abstract void GenerateBullet<T>(Vector2 direction, T t);
+
+    /// <summary>
+    /// 弾が最大レベルに達しているか判定
+    /// </summary>
+    /// <returns></returns>
+    public bool ReachedMaxLevel()
+    {
+        return bulletLevel >= bulletData.maxLevel;
+    }
+
+    /// <summary>
+    /// バレットのレベルアップ
+    /// </summary>
+    public virtual void LevelUpBullet()
+    {
+        //最大値を超えない範囲で加算(前置きインクリメント(++変数)の書式で書くことで、計算結果を反映して処理を進めることができる)
+        bulletLevel = Mathf.Min(bulletData.maxLevel, ++bulletLevel);  //Mathf.Min()で2つ以上の値から最小値を返す
+    }
 }

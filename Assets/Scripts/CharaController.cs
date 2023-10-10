@@ -6,7 +6,7 @@ public class CharaController : MonoBehaviour
 {
     public int charaLevel = 1;
 
-    public List<BulletDataSO.BulletData> bulletDatasList = new();  //ポップアップに渡す情報。レベルアップ時にポップアップを出すのでここに宣言する
+    //public List<BulletDataSO.BulletData> bulletDatasList = new();  //ポップアップに渡す情報。レベルアップ時にポップアップを出すのでここに宣言する
 
     public LevelupPopUp levelupPop;
 
@@ -35,7 +35,7 @@ public class CharaController : MonoBehaviour
     //[SerializeField] private Collider2D leftStairTrigger;
     //[SerializeField] private Collider2D rightStairTrigger;  //isClimbedStairを判定するための階段のコライダー
 
-    [SerializeField] private float attackInterval;
+    //[SerializeField] private float attackInterval;
 
     //[SerializeField] private Bullet bulletPrefab;
 
@@ -55,9 +55,9 @@ public class CharaController : MonoBehaviour
     //[SerializeField] private EnemyGenerator enemyGenerator;
     //[SerializeField] private EnemyGenerator enemyGenerator1;
     //[SerializeField] private EnemyGenerator enemyGenerator2;
-    [SerializeField] private EnemyGeneratorObjectPool enemyGenerator;
-    [SerializeField] private EnemyGeneratorObjectPool enemyGenerator1;
-    [SerializeField] private EnemyGeneratorObjectPool enemyGenerator2;
+    //[SerializeField] private EnemyGeneratorObjectPool enemyGenerator;
+    //[SerializeField] private EnemyGeneratorObjectPool enemyGenerator1;
+    //[SerializeField] private EnemyGeneratorObjectPool enemyGenerator2;
 
     [SerializeField] private UIManager uiManager;
 
@@ -109,6 +109,16 @@ public class CharaController : MonoBehaviour
     //private float bulletTimer3;
     //private float bulletTimer4;
     //private float bulletTimer5;
+
+    public List<BulletGeneratorBase> AttatchedBulletGeneratorList = new();
+
+    private List<EnemyGeneratorObjectPool> enemyGeneratorList = new();
+
+    [SerializeField] private Transform enemyGeneratorSetTran;
+
+    [SerializeField] private EnemyGeneratorObjectPool enemyGeneratorPrefab;
+
+    [SerializeField] private int defaultBulletNo = 0;
 
 
     //テスト用。終わったら消す
@@ -162,13 +172,19 @@ public class CharaController : MonoBehaviour
         //StartCoroutine(PrepareAttack());
 
         //バレットのデータをリスト化
-        CreateBulletDatasList();
+        //CreateBulletDatasList();
 
         //アタッチされているBulletGeneratorたちを各変数に入れる
         //AssainBulletGenerators();
 
         //LevelupPopUpの設定
-        levelupPop.SetUpLevelupPopUp(this, bulletDatasList);
+        levelupPop.SetUpLevelupPopUp(this);  //bulletDatasList
+
+        //初期武器の追加
+        AttatchBulletGenerator(DataBaseManager.instance.GetBulletData(defaultBulletNo));
+
+        //敵のジェネレーターを生成(CharaLevel1のものが該当してEnemyGeneratorが1つ生成される)
+        CheckCreateEnemyGenerator();
     }
 
     /// <summary>
@@ -478,47 +494,97 @@ public class CharaController : MonoBehaviour
         //キャラのレベルのUI更新
         uiManager.UpdateDisplayCharaLevel();
 
-        levelupPop.ShowPopUp(bulletDatasList);
+        levelupPop.ShowPopUp();  //bulletDatasList
 
         //レベルに応じてバレット4の生成時間を短縮
         //bulletGenerator4.SetAttackIntervalByLevel();
 
-        //TODO 必要に応じて変更
-        if (charaLevel == 5)
+        //レベルに応じて、新しい敵の生成と生成のインターバル時間の短縮を行う
+        //if (charaLevel == 5)
+        //{
+        //    StartCoroutine(enemyGenerator1.GenerateEnemy(this));
+        //}
+        //if (charaLevel == 8)
+        //{
+        //    StartCoroutine(enemyGenerator2.GenerateEnemy(this));
+        //}
+
+        //新しい敵用のジェネレーターを生成するか判定
+        CheckCreateEnemyGenerator();
+
+        //if (charaLevel == 11 || charaLevel == 14 || charaLevel == 17)
+        //{
+        //    enemyGenerator.GenerateInterval -= 0.5f;
+        //    enemyGenerator1.GenerateInterval -= 0.5f;
+        //    enemyGenerator2.GenerateInterval -= 0.5f;
+        //}
+        //if (charaLevel == 19)
+        //{
+        //    enemyGenerator1.GenerateInterval -= 0.5f;
+        //    enemyGenerator2.GenerateInterval -= 0.5f;
+        //}
+        //if (charaLevel == 21)
+        //{
+        //    enemyGenerator2.GenerateInterval -= 0.5f;
+        //}
+
+        //TODO インターバル関係
+        //インターバル値の更新については、各Generator内のCheckGenerateIntervalメソッドで判定を行う
+        //foreach (var enemyGenerator in enemyGeneratorList)
+        //{
+        //    enemyGenerator.CheckGenerateInterval(charaLevel);
+        //}
+
+        //上記の処理をLINQで記述
+        enemyGeneratorList.ForEach(enemyGenerator => enemyGenerator.CheckGenerateInterval(charaLevel));
+    }
+
+    //TODO このメソッド見直す
+    /// <summary>
+    /// 新しい敵のジェネレーターを生成するか判定
+    /// </summary>
+    private void CheckCreateEnemyGenerator()
+    {
+        //GenerateData generateData = null;
+
+        ////判定
+        //if (charaLevel == 5)
+        //{
+        //    generateData = DataBaseManager.instance.generateDataSO.GetGenerateData(1);
+        //}
+        //else if (charaLevel == 8)
+        //{
+        //    generateData = DataBaseManager.instance.generateDataSO.GetGenerateData(2);
+        //}
+
+        ////該当がある場合のみ
+        //if (generateData)
+        //{
+        //    //新しい敵の生成を開始
+        //    enemyGenerator.SetUpEnemyGenerator(generateData, gameManager, this);
+        //}
+
+        //上記のリファクタリング(スクリプタブルオブジェクトを修正すれば、自動的にチェックしてくれる)
+        foreach (GenerateData generateData in DataBaseManager.instance.generateDataSO.generateDataList)
         {
-            StartCoroutine(enemyGenerator1.GenerateEnemy(this));
+            if (generateData.openCharaLevel == charaLevel)
+            {
+                //EnemyGenerator生成
+            }
         }
-        if (charaLevel == 8)
-        {
-            StartCoroutine(enemyGenerator2.GenerateEnemy(this));
-        }
-        if (charaLevel == 11 || charaLevel == 14 || charaLevel == 17)
-        {
-            enemyGenerator.GenerateInterval -= 0.5f;
-            enemyGenerator1.GenerateInterval -= 0.5f;
-            enemyGenerator2.GenerateInterval -= 0.5f;
-        }
-        if (charaLevel == 19)
-        {
-            enemyGenerator1.GenerateInterval -= 0.5f;
-            enemyGenerator2.GenerateInterval -= 0.5f;
-        }
-        if (charaLevel == 21)
-        {
-            enemyGenerator2.GenerateInterval -= 0.5f;
-        }
+
     }
 
     /// <summary>
     /// バレットのデータをリスト化
     /// </summary>
-    private void CreateBulletDatasList()
-    {
-        foreach (var bulletData in DataBaseManager.instance.bulletDataSO.bulletDataList)
-        {
-            bulletDatasList.Add(bulletData);
-        }
-    }
+    //private void CreateBulletDatasList()
+    //{
+    //    foreach (var bulletData in DataBaseManager.instance.bulletDataSO.bulletDataList)
+    //    {
+    //        bulletDatasList.Add(bulletData);
+    //    }
+    //}
 
     /// <summary>
     /// アタッチされているBulletGeneratorを各変数に入れる
@@ -534,4 +600,31 @@ public class CharaController : MonoBehaviour
 
     //    //Debug.Log("AssainBulletGeneratorsが動きました");
     //}
+
+    /// <summary>
+    /// 武器の追加
+    /// </summary>
+    /// <param name="selectedBulletData"></param>
+    public void AttatchBulletGenerator(BulletDataSO.BulletData selectedBulletData)  //selectedBulletData = 選ばれたバレットのデータ
+    {
+        //GeneratorType(enum)を文字列に変換し、その名前と同じType(クラス)が存在するか判定
+        Type type = Type.GetType(selectedBulletData.generatorType.ToString());
+
+        //該当するクラスがないなら処理を終了
+        if (!type) 
+        {
+            Debug.Log($"{selectedBulletData.generatorType.ToString()} が見つかりません");
+
+            //TODO returnする？
+        }
+
+        //GeneratorType(enum)に該当するクラスが見つかったのでアタッチして設定する
+        BulletGeneratorBase bulletGenerator = gameObject.AddComponent(type) as BulletGeneratorBase;  //as 〇〇で、〇〇にキャスト
+
+        bulletGenerator.SetUpBulletGenerator(this, selectedBulletData);
+
+        AttatchedBulletGeneratorList.Add(bulletGenerator);
+
+        Debug.Log($"{selectedBulletData.generatorType.ToString()} をアタッチします");
+    }
 }
