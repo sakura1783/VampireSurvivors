@@ -181,7 +181,7 @@ public class CharaController : MonoBehaviour
         levelupPop.SetUpLevelupPopUp(this);  //bulletDatasList
 
         //初期武器の追加
-        AttatchBulletGenerator(DataBaseManager.instance.GetBulletData(defaultBulletNo));
+        //TODO AttatchBulletGenerator(DataBaseManager.instance.GetBulletData(defaultBulletNo));
 
         //敵のジェネレーターを生成(CharaLevel1のものが該当してEnemyGeneratorが1つ生成される)
         CheckCreateEnemyGenerator();
@@ -536,7 +536,7 @@ public class CharaController : MonoBehaviour
         //}
 
         //上記の処理をLINQで記述
-        enemyGeneratorList.ForEach(enemyGenerator => enemyGenerator.CheckGenerateInterval(charaLevel));
+        //TODO enemyGeneratorList.ForEach(enemyGenerator => enemyGenerator.CheckGenerateInterval(charaLevel));
     }
 
     //TODO このメソッド見直す
@@ -565,9 +565,9 @@ public class CharaController : MonoBehaviour
         //}
 
         //上記のリファクタリング(スクリプタブルオブジェクトを修正すれば、自動的にチェックしてくれる)
-        foreach (GenerateData generateData in DataBaseManager.instance.generateDataSO.generateDataList)
+        //TODO foreach (GenerateData generateData in DataBaseManager.instance.generateDataSO.generateDataList)
         {
-            if (generateData.openCharaLevel == charaLevel)
+            //TODO if (generateData.openCharaLevel == charaLevel)
             {
                 //EnemyGenerator生成
             }
@@ -608,10 +608,10 @@ public class CharaController : MonoBehaviour
     public void AttatchBulletGenerator(BulletDataSO.BulletData selectedBulletData)  //selectedBulletData = 選ばれたバレットのデータ
     {
         //GeneratorType(enum)を文字列に変換し、その名前と同じType(クラス)が存在するか判定
-        Type type = Type.GetType(selectedBulletData.generatorType.ToString());
+        //TODO Type type = Type.GetType(selectedBulletData.generatorType.ToString());
 
         //該当するクラスがないなら処理を終了
-        if (!type) 
+        //TODO if (!type) 
         {
             Debug.Log($"{selectedBulletData.generatorType.ToString()} が見つかりません");
 
@@ -619,11 +619,11 @@ public class CharaController : MonoBehaviour
         }
 
         //GeneratorType(enum)に該当するクラスが見つかったのでアタッチして設定する
-        BulletGeneratorBase bulletGenerator = gameObject.AddComponent(type) as BulletGeneratorBase;  //as 〇〇で、〇〇にキャスト
+        //TODO BulletGeneratorBase bulletGenerator = gameObject.AddComponent(type) as BulletGeneratorBase;  //as 〇〇で、〇〇にキャスト
 
-        bulletGenerator.SetUpBulletGenerator(this, selectedBulletData);
+        //TODO bulletGenerator.SetUpBulletGenerator(this, selectedBulletData);
 
-        AttatchedBulletGeneratorList.Add(bulletGenerator);
+        //TODO AttatchedBulletGeneratorList.Add(bulletGenerator);
 
         Debug.Log($"{selectedBulletData.generatorType.ToString()} をアタッチします");
     }
