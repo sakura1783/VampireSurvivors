@@ -14,7 +14,7 @@ public class RefactorBullet0Generator : BulletGeneratorBase
     //    set => bulletLevel = value;
     //}
 
-    [SerializeField] private Transform temporaryObjectsPlace;
+    //[SerializeField] private Transform temporaryObjectsPlace;
 
     [SerializeField] private float offsetDegrees;  //角度の基準値(各バレット同士の角度間隔)
 

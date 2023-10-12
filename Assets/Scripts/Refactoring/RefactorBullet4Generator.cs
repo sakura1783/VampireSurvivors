@@ -22,7 +22,7 @@ public class RefactorBullet4Generator : BulletGeneratorBase
         set => attackInterval = value;
     }
 
-    private Transform temporaryObjectsPlace;
+    //private Transform temporaryObjectsPlace;
 
     private EnemyController target;
 

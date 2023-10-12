@@ -54,7 +54,7 @@ public class ResultPopUp : MonoBehaviour
 
         Debug.Log("2");
 
-        gameManager.IsDisplayResultPopUp = false;
+        gameManager.IsProcessingPaused = false;
 
         //シーン遷移
         TransitionManager.instance.PrepareLoadNextScene();
@@ -67,7 +67,7 @@ public class ResultPopUp : MonoBehaviour
     /// </summary>
     public void ShowPopUp()
     {
-        gameManager.IsDisplayResultPopUp = true;
+        gameManager.IsProcessingPaused = true;
 
         Sequence seqence = DOTween.Sequence();
 

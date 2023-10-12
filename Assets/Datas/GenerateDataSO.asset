@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 389838ddf3e384416a74094af9b7e823, type: 3}
+  m_Name: GenerateDataSO
+  m_EditorClassIdentifier: 
+  generateDataList:
+  - id: 0
+    openCharaLevel: 1
+    generateInterval: 2
+    enemyPrefab: {fileID: 2042724052510328650, guid: d86ed7f9f0a124b24ad7737b4b17ba95,
+      type: 3}
+    generatorPrefab: {fileID: 3433708280571044628, guid: 0d0ee996c65ad40668da8609490216fc,
+      type: 3}
+    upgradeDatas:
+    - level: 11
+      offsetInterval: 0.5
+    - level: 14
+      offsetInterval: 0.5
+    - level: 17
+      offsetInterval: 0.5
+  - id: 1
+    openCharaLevel: 5
+    generateInterval: 2.5
+    enemyPrefab: {fileID: 8710062228191938084, guid: fd1739aace8d84501a0fcfcdc839a8a3,
+      type: 3}
+    generatorPrefab: {fileID: 2747048950558053273, guid: 984b0923b72f041128c1438be532f895,
+      type: 3}
+    upgradeDatas:
+    - level: 11
+      offsetInterval: 0.5
+    - level: 14
+      offsetInterval: 0.5
+    - level: 17
+      offsetInterval: 0.5
+    - level: 19
+      offsetInterval: 0.5
+  - id: 2
+    openCharaLevel: 8
+    generateInterval: 3
+    enemyPrefab: {fileID: 1366000708758563288, guid: 4e4258da16c6e4f21ba3843847be4ff6,
+      type: 3}
+    generatorPrefab: {fileID: 362560000953589906, guid: 36c0ddc58c48147498a7b30cb75a31a3,
+      type: 3}
+    upgradeDatas:
+    - level: 11
+      offsetInterval: 0.5
+    - level: 14
+      offsetInterval: 0.5
+    - level: 17
+      offsetInterval: 0.5
+    - level: 19
+      offsetInterval: 0.5
+    - level: 21
+      offsetInterval: 0.5

@@ -2,19 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
+using System.Linq;
 
 public class EnemyGeneratorObjectPool : MonoBehaviour
 {
-    [SerializeField] private float generateInterval;
-    public float GenerateInterval
-    {
-        get => generateInterval;
-        set => generateInterval = value;
-    }
+    //[SerializeField] private float generateInterval;
+    //public float GenerateInterval
+    //{
+    //    get => generateInterval;
+    //    set => generateInterval = value;
+    //}
 
-    [SerializeField] private EnemyController enemyPrefab;
+    //[SerializeField] private EnemyController enemyPrefab;
 
-    [SerializeField] private GameManager gameManger;
+    private GameManager gameManager;
+
+    protected GenerateData generateData;
+
+    protected float currentGenerateInterval;
 
     [SerializeField] private int initialPoolSize = 5;
 
@@ -48,12 +53,30 @@ public class EnemyGeneratorObjectPool : MonoBehaviour
     }
 
     /// <summary>
+    /// 初期設定
+    /// </summary>
+    /// <param name="generateData"></param>
+    /// <param name="gameManager"></param>
+    /// <param name="charaController"></param>
+    public void SetUpEnemyGenerator(GenerateData generateData, GameManager gameManager, CharaController charaController)
+    {
+        this.generateData = generateData;
+        this.gameManager = gameManager;
+
+        //敵生成の初期インターバル値の設定
+        currentGenerateInterval = generateData.generateInterval;
+
+        //生成開始
+        StartCoroutine(GenerateEnemy(charaController));
+    }
+
+    /// <summary>
     /// bulletPool.Get()メソッドにより、createFunkとして実行される
     /// </summary>
     /// <returns></returns>
     private EnemyController Create()
     {
-        EnemyController enemyInstance = Instantiate(enemyPrefab);
+        EnemyController enemyInstance = Instantiate(generateData.enemyPrefab);
 
         //参照を与えておく(依存性注入する)ことで、Bullet側でReleaseできる
         enemyInstance.ObjectPool = enemyPool;
@@ -102,17 +125,16 @@ public class EnemyGeneratorObjectPool : MonoBehaviour
     /// <returns></returns>
     public IEnumerator GenerateEnemy(CharaController charaController)
     {
-        while (!gameManger.IsGameUp)
+        while (!gameManager.IsGameUp)
         {
-            //TODO 敵を生成しない場合の条件を追加する
-            if (gameManger.IsDisplayPopUp || gameManger.IsDisplayTitlePopUp || gameManger.IsDisplayResultPopUp)
+            if (gameManager.IsProcessingPaused)
             {
                 yield return null;
 
                 continue;
             }
 
-            yield return new WaitForSeconds(generateInterval);
+            yield return new WaitForSeconds(currentGenerateInterval);
 
             //通常の生成方法。今回は利用しない
             //EnemyController enemy = Instantiate(enemyPrefab, transform);
@@ -122,5 +144,42 @@ public class EnemyGeneratorObjectPool : MonoBehaviour
 
             enemy.SetUpEnemyController(charaController);
         }
+    }
+
+    /// <summary>
+    /// レベルアップ時のインターバル値の補正チェック。該当するレベルの場合にはインターバル値を補正
+    /// </summary>
+    /// <param name="newCharaLevel"></param>
+    public void CheckGenerateInterval(int newCharaLevel)
+    {
+        for (int i = 0; i < generateData.upgradeDatas.Length; i++)
+        {
+            if (generateData.upgradeDatas[i].level == newCharaLevel)
+            {
+                currentGenerateInterval -= generateData.upgradeDatas[i].offsetInterval;
+
+                break;
+            }
+        }
+
+        //foreachの場合
+        //foreach (GenerateData.UpgradeData upgradeData in generateData.upgradeDatas)
+        //{
+        //    if (upgradeData.level == newCharaLevel)
+        //    {
+        //        currentGenerateInterval -= upgradeData.offsetInterval;
+
+        //        break;
+        //    }
+        //}
+
+        //上記をLINQで記述
+        //GenerateData.UpgradeData matchingUpgrade = generateData.upgradeDatas.FirstOrDefault(data => data.level == newCharaLevel);
+
+        //nullの可能性がある(該当するレベルのデータがない時)ので、安全のためnullチェックをしてから計算する
+        //if (matchingUpgrade != null)
+        //{
+        //    currentGenerateInterval -= matchingUpgrade.offsetInterval;
+        //}
     }
 }

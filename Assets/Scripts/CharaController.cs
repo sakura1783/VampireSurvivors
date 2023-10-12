@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class CharaController : MonoBehaviour
 {
@@ -114,9 +115,9 @@ public class CharaController : MonoBehaviour
 
     private List<EnemyGeneratorObjectPool> enemyGeneratorList = new();
 
-    [SerializeField] private Transform enemyGeneratorSetTran;
+    [SerializeField] private Transform enemyGeneratorSetTran;  //EnemyGeneratorsをアサイン
 
-    [SerializeField] private EnemyGeneratorObjectPool enemyGeneratorPrefab;
+    //[SerializeField] private EnemyGeneratorObjectPool enemyGeneratorPrefab;
 
     [SerializeField] private int defaultBulletNo = 0;
 
@@ -137,7 +138,7 @@ public class CharaController : MonoBehaviour
     void Update()
     {
         //ポップアップ表示中は動かない
-        if (gameManager.IsDisplayPopUp || gameManager.IsDisplayTitlePopUp || gameManager.IsDisplayResultPopUp)
+        if (gameManager.IsProcessingPaused)
         {
             return;
         }
@@ -181,7 +182,7 @@ public class CharaController : MonoBehaviour
         levelupPop.SetUpLevelupPopUp(this);  //bulletDatasList
 
         //初期武器の追加
-        //TODO AttatchBulletGenerator(DataBaseManager.instance.GetBulletData(defaultBulletNo));
+        AttatchBulletGenerator(DataBaseManager.instance.GetBulletData(defaultBulletNo));
 
         //敵のジェネレーターを生成(CharaLevel1のものが該当してEnemyGeneratorが1つ生成される)
         CheckCreateEnemyGenerator();
@@ -536,10 +537,9 @@ public class CharaController : MonoBehaviour
         //}
 
         //上記の処理をLINQで記述
-        //TODO enemyGeneratorList.ForEach(enemyGenerator => enemyGenerator.CheckGenerateInterval(charaLevel));
+        enemyGeneratorList.ForEach(enemyGenerator => enemyGenerator.CheckGenerateInterval(charaLevel));
     }
 
-    //TODO このメソッド見直す
     /// <summary>
     /// 新しい敵のジェネレーターを生成するか判定
     /// </summary>
@@ -565,11 +565,21 @@ public class CharaController : MonoBehaviour
         //}
 
         //上記のリファクタリング(スクリプタブルオブジェクトを修正すれば、自動的にチェックしてくれる)
-        //TODO foreach (GenerateData generateData in DataBaseManager.instance.generateDataSO.generateDataList)
+        foreach (GenerateData generateData in DataBaseManager.instance.generateDataSO.generateDataList)
         {
-            //TODO if (generateData.openCharaLevel == charaLevel)
+            if (generateData.openCharaLevel == charaLevel)
             {
                 //EnemyGenerator生成
+                EnemyGeneratorObjectPool enemyGenerator = Instantiate(generateData.generatorPrefab, enemyGeneratorSetTran);
+
+                //enemyGenerator.transform.localPosition = generateData.generatorTran.position;
+
+                //生成する敵の情報を設定
+                enemyGenerator.SetUpEnemyGenerator(generateData, gameManager, this);
+
+                enemyGeneratorList.Add(enemyGenerator);
+
+                //Break;で抜けてもいい
             }
         }
 
@@ -608,22 +618,22 @@ public class CharaController : MonoBehaviour
     public void AttatchBulletGenerator(BulletDataSO.BulletData selectedBulletData)  //selectedBulletData = 選ばれたバレットのデータ
     {
         //GeneratorType(enum)を文字列に変換し、その名前と同じType(クラス)が存在するか判定
-        //TODO Type type = Type.GetType(selectedBulletData.generatorType.ToString());
+        Type type = Type.GetType(selectedBulletData.generatorType.ToString());  //using System;を追加する
 
         //該当するクラスがないなら処理を終了
-        //TODO if (!type) 
+        if (type == null) 
         {
             Debug.Log($"{selectedBulletData.generatorType.ToString()} が見つかりません");
 
-            //TODO returnする？
+            return;
         }
 
         //GeneratorType(enum)に該当するクラスが見つかったのでアタッチして設定する
-        //TODO BulletGeneratorBase bulletGenerator = gameObject.AddComponent(type) as BulletGeneratorBase;  //as 〇〇で、〇〇にキャスト
+        BulletGeneratorBase bulletGenerator = gameObject.AddComponent(type) as BulletGeneratorBase;  //as 〇〇で、〇〇にキャスト
 
-        //TODO bulletGenerator.SetUpBulletGenerator(this, selectedBulletData);
+        bulletGenerator.SetUpBulletGenerator(this, selectedBulletData);
 
-        //TODO AttatchedBulletGeneratorList.Add(bulletGenerator);
+        AttatchedBulletGeneratorList.Add(bulletGenerator);
 
         Debug.Log($"{selectedBulletData.generatorType.ToString()} をアタッチします");
     }

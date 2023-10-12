@@ -23,7 +23,7 @@ public class Cannon : MonoBehaviour
         while (true)
         {
             //ポップアップ表示中は新たなバレットを生成しない
-            if (charaController.GameManager.IsDisplayPopUp || charaController.GameManager.IsDisplayTitlePopUp || charaController.GameManager.IsDisplayResultPopUp)
+            if (charaController.GameManager.IsProcessingPaused)
             {
                 yield return null;
 

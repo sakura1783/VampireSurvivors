@@ -37,26 +37,41 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private NameEntryPopUp nameEntryPop;
 
-    private bool isDisplayPopUp = false;  //ポップアップ表示中かどうか
-    //public bool IsDisplayPopUp { get; set; }
-    public bool IsDisplayPopUp
+    //private bool isDisplayPopUp = false;  //ポップアップ表示中かどうか
+    ////public bool IsDisplayPopUp { get; set; }
+    //public bool IsDisplayPopUp
+    //{
+    //    get { return isDisplayPopUp; }
+    //    //get => isDisplayPopUp;
+    //    set { isDisplayPopUp = value; }
+    //    //set => isDisplayPopUp = value;  //setするときに2行以上処理を書くときは省略は使えないので注意
+    //}
+
+    //private bool isDisplayTitlePopUp = true;
+    //public bool IsDisplayTitlePopUp
+    //{
+    //    get => isDisplayTitlePopUp; set => isDisplayTitlePopUp = value;
+    //}
+
+    //private bool isDisplayResultPopUp = false;
+    //public bool IsDisplayResultPopUp
+    //{
+    //    get => isDisplayResultPopUp; set => isDisplayResultPopUp = value;
+    //}
+
+    //上記の代わりにTimeScale停止用の変数と弾や敵の生成停止用の変数を作る
+    private bool isTimePaused = false;  //TimeScaleを0にするかどうか(すでに生成されている弾などの挙動を一時停止)
+    public bool IsTimePaused
     {
-        get { return isDisplayPopUp; }
-        //get => isDisplayPopUp;
-        set { isDisplayPopUp = value; }
-        //set => isDisplayPopUp = value;  //setするときに2行以上処理を書くときは省略は使えないので注意
+        get => isTimePaused;
+        set => isTimePaused = value;
     }
 
-    private bool isDisplayTitlePopUp = true;
-    public bool IsDisplayTitlePopUp
+    private bool isProcessingPaused = false;  //ゲーム内で行われている処理を停止するかどうか(まだ生成されていない敵や弾の生成やプレイ時間の計測の一時停止)
+    public bool IsProcessingPaused
     {
-        get => isDisplayTitlePopUp; set => isDisplayTitlePopUp = value;
-    }
-
-    private bool isDisplayResultPopUp = false;
-    public bool IsDisplayResultPopUp
-    {
-        get => isDisplayResultPopUp; set => isDisplayResultPopUp = value;
+        get => isProcessingPaused;
+        set => isProcessingPaused = value;
     }
 
     private int killEnemyCount;
@@ -95,8 +110,8 @@ public class GameManager : MonoBehaviour
 
         treasureChestGenerator.SetUpTreasureChestGenerator();
 
-        //敵の生成開始
-        StartCoroutine(enemyGenerator.GenerateEnemy(charaController));
+        //敵の生成開始  //TODO いらない場合はコメントアウト
+        //StartCoroutine(enemyGenerator.GenerateEnemy(charaController));
 
         //大砲の攻撃開始
         StartCoroutine(cannon0.PrepareGenerateBullet());
@@ -105,7 +120,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (isDisplayTitlePopUp || isDisplayResultPopUp)
+        if (isProcessingPaused)
         {
             return;
         }
@@ -131,7 +146,7 @@ public class GameManager : MonoBehaviour
         }
 
         //ポップアップ表示中は物理演算で動いているゲームオブジェクト(例えばバレットなど)の動きを一時停止する
-        if (isDisplayPopUp)
+        if (isTimePaused)
         {
             Time.timeScale = 0;
         }

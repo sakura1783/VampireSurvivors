@@ -14,7 +14,7 @@ public class RefactorBullet3Generator : BulletGeneratorBase
     //    set => bulletLevel = value;
     //}
 
-    private Transform temporaryObjectsPlace;
+    //private Transform temporaryObjectsPlace;
 
     private Vector3 lineDirection;
 

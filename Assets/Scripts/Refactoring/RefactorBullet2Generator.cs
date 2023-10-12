@@ -16,7 +16,7 @@ public class RefactorBullet2Generator : BulletGeneratorBase
     //    set => bulletLevel = value;
     //}
 
-    private Transform temporaryObjectsPlace;
+    //private Transform temporaryObjectsPlace;
 
     private EnemyController target;  //追尾対象の敵
 

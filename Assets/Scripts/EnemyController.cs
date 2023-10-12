@@ -38,7 +38,7 @@ public class EnemyController : MonoBehaviour
     void Update()
     {
         //ポップアップ表示中は動きを止める
-        if (charaController.GameManager.IsDisplayPopUp)
+        if (charaController.GameManager.IsTimePaused)
         {
             return;
         }

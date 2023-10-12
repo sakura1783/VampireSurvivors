@@ -84,7 +84,8 @@ public class ItemPopUp : MonoBehaviour
     /// </summary>
     public void ShowPopUp(GameObject treasureChestObj)
     {
-        gameManager.IsDisplayPopUp = true;
+        gameManager.IsTimePaused = true;
+        gameManager.IsProcessingPaused = true;
 
         popUpCanvasGroup.alpha = 1;
         popUpCanvasGroup.blocksRaycasts = true;
@@ -97,7 +98,8 @@ public class ItemPopUp : MonoBehaviour
     /// </summary>
     public void HidePopUp()
     {
-        gameManager.IsDisplayPopUp = false;
+        gameManager.IsTimePaused = false;
+        gameManager.IsProcessingPaused = false;
 
         InitializePopUp();
 

@@ -58,6 +58,12 @@ public abstract class BulletGeneratorBase : MonoBehaviour, IGeneratable
             return;
         }
 
+        //ポップアップ表示中は生成しない
+        if (charaController.GameManager.IsProcessingPaused)
+        {
+            return;
+        }
+
         //アタックポーションの効果中は攻撃速度を1.5倍にする
         bulletTimer += charaController.Item.IsAttackTimeReduced ? Time.deltaTime * (float)1.5f : Time.deltaTime;
 

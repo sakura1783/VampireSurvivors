@@ -183,7 +183,8 @@ public class LevelupPopUp : MonoBehaviour
             return;
         }
 
-        gameManager.IsDisplayPopUp = true;
+        gameManager.IsTimePaused = true;
+        gameManager.IsProcessingPaused = true;
 
         popUpCanvasGroup.alpha = 1;
 
@@ -195,7 +196,8 @@ public class LevelupPopUp : MonoBehaviour
     /// </summary>
     public void HidePopUp()
     {
-        gameManager.IsDisplayPopUp = false;
+        gameManager.IsTimePaused = false;
+        gameManager.IsProcessingPaused = false;
 
         InitializePopUp();
     }

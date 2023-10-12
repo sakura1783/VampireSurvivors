@@ -35,6 +35,8 @@ public class TitlePopUp : MonoBehaviour
     /// </summary>
     public void SetUpTitlePopUp()
     {
+        gameManager.IsProcessingPaused = true;
+
         SetUpButtons();
 
         //lblTapPromptCanvasGroup.DOFade(0, 1.5f).SetEase(Ease.Linear).SetLoops(-1, LoopType.Yoyo).SetLink(gameObject);  //ループ処理があるのでSetLinkを書く
@@ -88,7 +90,7 @@ public class TitlePopUp : MonoBehaviour
         popupCanvasGroup.blocksRaycasts = false;
         popupCanvasGroup.DOFade(0, 1f).SetEase(Ease.Linear).OnComplete(() =>  //ここにはループの処理はないためSetLinkは書かなくてよい
         {
-            gameManager.IsDisplayTitlePopUp = false;
+            gameManager.IsProcessingPaused = false;
 
             //BGM再生
             AudioManager.instance.PreparePlayBGM(BgmType.Battle);

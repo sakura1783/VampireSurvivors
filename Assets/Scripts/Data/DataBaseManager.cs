@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DataBaseManager : MonoBehaviour
@@ -8,6 +6,7 @@ public class DataBaseManager : MonoBehaviour
 
     public BulletDataSO bulletDataSO;
     public ItemDataSO itemDataSO;
+    public GenerateDataSO generateDataSO;
 
 
     void Awake()
@@ -21,5 +20,15 @@ public class DataBaseManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    /// <summary>
+    /// 弾のデータ取得用
+    /// </summary>
+    /// <param name="searchNo"></param>
+    /// <returns></returns>
+    public BulletDataSO.BulletData GetBulletData(int searchNo)
+    {
+        return bulletDataSO.bulletDataList.Find(data => data.bulletNo == searchNo);
     }
 }
