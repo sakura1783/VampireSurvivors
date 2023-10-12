@@ -34,6 +34,11 @@ public class RefactorBullet2Generator : BulletGeneratorBase
 
     protected override void Update()
     {
+        if (charaController.GameManager.IsProcessingPaused)
+        {
+            return;
+        }
+
         //アタックポーションの効果中は攻撃速度を1.5倍にする
         bulletTimer += charaController.Item.IsAttackTimeReduced ? Time.deltaTime * (float)1.5f : Time.deltaTime;
 
