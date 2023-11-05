@@ -17,6 +17,21 @@ public class RefactorBullet1Generator : BulletGeneratorBase
     private List<BulletBase> bulletList = new();
 
 
+    protected override void Update() { }
+
+    /// <summary>
+    /// 初期設定
+    /// </summary>
+    /// <param name="charaController"></param>
+    /// <param name="bulletData"></param>
+    /// <param name="place"></param>
+    public override void SetUpBulletGenerator(CharaController charaController, BulletDataSO.BulletData bulletData, Transform place = null)
+    {
+        base.SetUpBulletGenerator(charaController, bulletData, place);
+
+        GenerateBullet(charaController.Direction);
+    }
+
     /// <summary>
     /// オブジェクトプールと継承を使った弾の生成
     /// </summary>
@@ -66,5 +81,15 @@ public class RefactorBullet1Generator : BulletGeneratorBase
         }
 
         bulletList.Clear();
+    }
+
+    /// <summary>
+    /// バレットのレベルアップ
+    /// </summary>
+    public override void LevelUpBullet()
+    {
+        base.LevelUpBullet();
+
+        GenerateBullet(charaController.Direction);
     }
 }
