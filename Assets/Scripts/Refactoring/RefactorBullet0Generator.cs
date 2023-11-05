@@ -23,96 +23,112 @@ public class RefactorBullet0Generator : BulletGeneratorBase
     /// 弾生成の準備
     /// </summary>
     /// <param name="direction"></param>
-    public void PrepareGenerateBullet(Vector2 direction)
-    {
-        //switch (bulletLevel)
-        //{
-        //    case 1:
-        //        GenerateBullet(direction);
-        //        break;
+    //public void PrepareGenerateBullet(Vector2 direction)
+    //{
+    //    //switch (bulletLevel)
+    //    //{
+    //    //    case 1:
+    //    //        GenerateBullet(direction);
+    //    //        break;
 
-        //    case 2:
-        //        for (int i = -1; i < 2; i += 2)
-        //        {
-        //            GenerateBullet(CalculateBulletDirection(i, direction));
-        //        }
-        //        break;
+    //    //    case 2:
+    //    //        for (int i = -1; i < 2; i += 2)
+    //    //        {
+    //    //            GenerateBullet(CalculateBulletDirection(i, direction));
+    //    //        }
+    //    //        break;
 
-        //    case 3:
-        //        for (int i = -1; i < 2; i++)
-        //        {
-        //            GenerateBullet(CalculateBulletDirection(i, direction));
-        //        }
-        //        break;
+    //    //    case 3:
+    //    //        for (int i = -1; i < 2; i++)
+    //    //        {
+    //    //            GenerateBullet(CalculateBulletDirection(i, direction));
+    //    //        }
+    //    //        break;
 
-        //    case 4:
-        //        for (int i = -3; i < 4; i += 2)
-        //        {
-        //            GenerateBullet(CalculateBulletDirection(i, direction));
-        //        }
-        //        break;
+    //    //    case 4:
+    //    //        for (int i = -3; i < 4; i += 2)
+    //    //        {
+    //    //            GenerateBullet(CalculateBulletDirection(i, direction));
+    //    //        }
+    //    //        break;
 
-        //    default:
-        //        for (int i = -2; i < 3; i++)
-        //        {
-        //            GenerateBullet(CalculateBulletDirection(i, direction));
-        //        }
-        //        break;
-        //}
+    //    //    default:
+    //    //        for (int i = -2; i < 3; i++)
+    //    //        {
+    //    //            GenerateBullet(CalculateBulletDirection(i, direction));
+    //    //        }
+    //    //        break;
+    //    //}
 
-        //上の処理の書き換え。計算式の仕組みを作ることで、処理の一元化を図る
+    //    //上の処理の書き換え。計算式の仕組みを作ることで、処理の一元化を図る
 
-        //上記の処理を計算式に置き換えた場合
-        float totalSpreadAngle = offsetDegrees;
+    //    //上記の処理を計算式に置き換えた場合
+    //    float totalSpreadAngle = offsetDegrees;
 
-        for (int i = 0; i < bulletLevel; i++)
-        {
-            //発射角度を0でセット(生成する弾が一つの時はこのまま使う)
-            float offsetAngle = 0;
+    //    for (int i = 0; i < bulletLevel; i++)
+    //    {
+    //        //発射角度を0でセット(生成する弾が一つの時はこのまま使う)
+    //        float offsetAngle = 0;
 
-            //生成する弾が二つ以上の場合
-            if (bulletLevel > 1)
-            {
-                //弾の広がり全体の角度(扇形の中心角)を、発射する弾の数-1で割り、各弾1つあたりの角度間隔を調整して補正値とする。
-                //例えば totalSpreadAngle=30 なら、弾2つの場合は30度、弾3つの場合は15度になる
-                float angleStep = totalSpreadAngle / (bulletLevel - 1);
+    //        //生成する弾が二つ以上の場合
+    //        if (bulletLevel > 1)
+    //        {
+    //            //弾の広がり全体の角度(扇形の中心角)を、発射する弾の数-1で割り、各弾1つあたりの角度間隔を調整して補正値とする。
+    //            //例えば totalSpreadAngle=30 なら、弾2つの場合は30度、弾3つの場合は15度になる
+    //            float angleStep = totalSpreadAngle / (bulletLevel - 1);
 
-                //各弾の角度を計算する
-                //-totalSpreadAngle/2 は弾の広がりの中心から左側の角度を表す。この中心から、弾の数だけangleStepを増加させることで、各弾の角度を決定する
-                //この操作により、弾の広がりの範囲内に対して、弾同士の角度間隔を等間隔で弾を配置する。
-                //例えば弾2つの場合は-15度と15度(直角三角形の底角2つの方向)、弾3つの場合は-15度、0度、15度(直角三角形の頂角と底角2つの方向)になる
-                offsetAngle = -totalSpreadAngle / 2 + i * angleStep;
-            }
+    //            //各弾の角度を計算する
+    //            //-totalSpreadAngle/2 は弾の広がりの中心から左側の角度を表す。この中心から、弾の数だけangleStepを増加させることで、各弾の角度を決定する
+    //            //この操作により、弾の広がりの範囲内に対して、弾同士の角度間隔を等間隔で弾を配置する。
+    //            //例えば弾2つの場合は-15度と15度(直角三角形の底角2つの方向)、弾3つの場合は-15度、0度、15度(直角三角形の頂角と底角2つの方向)になる
+    //            offsetAngle = -totalSpreadAngle / 2 + i * angleStep;
+    //        }
 
-            Debug.Log($"offsetAngleの値：{offsetAngle}");
+    //        //Debug.Log($"offsetAngleの値：{offsetAngle}");
 
-            //第一引数は角度情報をそのまま渡す
-            Vector2 offsetDirection = CalculateBulletDirection(offsetAngle, direction);
+    //        //第一引数は角度情報をそのまま渡す
+    //        Vector2 offsetDirection = CalculateBulletDirection(offsetAngle, direction);
 
-            GenerateBullet(offsetDirection);
-        }
-    }
+    //        GenerateBullet(offsetDirection, hoge);
+    //    }
+    //}
 
     /// <summary>
     /// バレット生成
     /// </summary>
     /// <param name="direction"></param>
-    public override void GenerateBullet(Vector2 direction)
+    public override void GenerateBullet<T>(Vector2 direction, T t)
     {
+        Vector2 offsetDirection;
+
+        //ここからPrepare内の処理を移動
         for (int i = 0; i < bulletLevel; i++)
         {
+            float offsetAngle = 0;
+
+            if (bulletLevel > 1)
+            {
+                float angleStep = offsetDegrees / (bulletLevel - 1);
+
+                offsetAngle = -offsetDegrees / 2 + i * angleStep;
+            }
+
+            offsetDirection = CalculateBulletDirection(offsetAngle, direction);
+
+        //ここまで
+
             //プールから弾を取得。ない場合は新しく生成
             BulletBase bullet = GetBullet(transform.position, Quaternion.identity);
 
             bullet.transform.SetParent(temporaryObjectsPlace);
 
-            bullet.Shoot(direction);
+            bullet.Shoot(offsetDirection);
         }
     }
 
-    public override void GenerateBullet() { }
+    //public override void GenerateBullet() { }
 
-    public override void GenerateBullet<T>(Vector2 direction, T t) { }
+    //public override void GenerateBullet<T>(Vector2 direction, T t) { }
 
     /// <summary>
     /// 弾の方向を計算する

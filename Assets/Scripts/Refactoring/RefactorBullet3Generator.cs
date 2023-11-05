@@ -50,7 +50,7 @@ public class RefactorBullet3Generator : BulletGeneratorBase
     /// <summary>
     /// 弾生成
     /// </summary>
-    public override void GenerateBullet(Vector2 direction)
+    public override void GenerateBullet<T>(Vector2 direction, T t)
     {
         //レベルに応じて、直線の長さを調整する(大きくしないとバレット同士の間隔が詰まってしまう)。/2はバレット同士の間隔は広げつつ、急激に広がりすぎないようにするための調整。(適宜、計算方法を検討する)
         float currentBulletLine = bulletLine / 2 * bulletLevel;
@@ -75,11 +75,11 @@ public class RefactorBullet3Generator : BulletGeneratorBase
             if (bulletLevel > 1)
             {
                 //直線上の角度間隔の計算
-                float t = (float)i / (bulletLevel - 1);
+                float theta = (float)i / (bulletLevel - 1);
 
                 //直線上に用意する弾の数で、各弾の角度間隔を算出(Mathf.Lerp([マイナス側の半径値], [プラス側の半径値], [直線上の等間隔数]))
                 //Mathf.Lerp(最小値, 最大値, 最小値~最大値の何割になる値を使うか(0~1))。i = 0の時は(-5, 5, 0)で、これは、-5と5の範囲を0~100%で表現するとした時、0%の時の値を計算して、というもの。0%の時は、-5になる(Mathf.Lerp(-5, 5, 0) = -5)。
-                angle = Mathf.Lerp(-currentBulletLine / 2, currentBulletLine / 2, t);
+                angle = Mathf.Lerp(-currentBulletLine / 2, currentBulletLine / 2, theta);
             }
 
             //angle * lineDirectionをすることで、傾いた状態での直線上の等間隔の値が算出できる
@@ -94,7 +94,7 @@ public class RefactorBullet3Generator : BulletGeneratorBase
         }
     }
 
-    public override void GenerateBullet() { }
+    //public override void GenerateBullet() { }
 
-    public override void GenerateBullet<T>(Vector2 direction, T t) { }
+    //public override void GenerateBullet<T>(Vector2 direction, T t) { }
 }

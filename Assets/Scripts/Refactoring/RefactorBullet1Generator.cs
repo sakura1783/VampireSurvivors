@@ -29,14 +29,14 @@ public class RefactorBullet1Generator : BulletGeneratorBase
     {
         base.SetUpBulletGenerator(charaController, bulletData, place);
 
-        GenerateBullet(charaController.Direction);
+        GenerateBullet(charaController.Direction, hoge);
     }
 
     /// <summary>
     /// オブジェクトプールと継承を使った弾の生成
     /// </summary>
     /// <param name="generatePos"></param>
-    public override void GenerateBullet(Vector2 direction)
+    public override void GenerateBullet<T>(Vector2 direction, T t)
     {
         //プールに弾を全て戻し、リストからも削除
         DestroyBullets();
@@ -65,9 +65,9 @@ public class RefactorBullet1Generator : BulletGeneratorBase
         }
     }
 
-    public override void GenerateBullet() { }
+    //public override void GenerateBullet() { }
 
-    public override void GenerateBullet<T>(Vector2 direction, T t) { }
+    //public override void GenerateBullet<T>(Vector2 direction, T t) { }
 
     /// <summary>
     /// BulletGenerator1のDestroyObjectsFromListメソッドををオブジェクトプールを使って記述
@@ -90,6 +90,6 @@ public class RefactorBullet1Generator : BulletGeneratorBase
     {
         base.LevelUpBullet();
 
-        GenerateBullet(charaController.Direction);
+        GenerateBullet(charaController.Direction, hoge);
     }
 }

@@ -33,48 +33,50 @@ public class RefactorBullet5Generator : BulletGeneratorBase
     /// <param name="direction"></param>
     public void PrepareGenerateBullet(Vector2 direction)
     {
+        //TODO 修正する
+
         //TODO switch文無くす
-        switch (bulletLevel)
-        {
-            case 1:
-                GenerateBullet(direction);
-                break;
+        //switch (bulletLevel)
+        //{
+        //    case 1:
+        //        GenerateBullet(direction);
+        //        break;
 
-            case 2:
-                for (int i = -1; i < 2; i += 2)
-                {
-                    GenerateBullet(CalculateBulletDirection(i, direction));
-                }
-                break;
+        //    case 2:
+        //        for (int i = -1; i < 2; i += 2)
+        //        {
+        //            GenerateBullet(CalculateBulletDirection(i, direction));
+        //        }
+        //        break;
 
-            case 3:
-                for (int i = -1; i < 2; i++)
-                {
-                    GenerateBullet(CalculateBulletDirection(i, direction));
-                }
-                break;
+        //    case 3:
+        //        for (int i = -1; i < 2; i++)
+        //        {
+        //            GenerateBullet(CalculateBulletDirection(i, direction));
+        //        }
+        //        break;
 
-            case 4:
-                for (int i = -3; i < 4; i += 2)
-                {
-                    GenerateBullet(CalculateBulletDirection(i, direction));
-                }
-                break;
+        //    case 4:
+        //        for (int i = -3; i < 4; i += 2)
+        //        {
+        //            GenerateBullet(CalculateBulletDirection(i, direction));
+        //        }
+        //        break;
 
-            default:
-                for (int i = -2; i < 3; i++)
-                {
-                    GenerateBullet(CalculateBulletDirection(i, direction));
-                }
-                break;
-        }
+        //    default:
+        //        for (int i = -2; i < 3; i++)
+        //        {
+        //            GenerateBullet(CalculateBulletDirection(i, direction));
+        //        }
+        //        break;
+        //}
     }
 
     /// <summary>
     /// 弾生成
     /// </summary>
     /// <param name="direction"></param>
-    public override void GenerateBullet(Vector2 direction)
+    public override void GenerateBullet<T>(Vector2 direction, T t)
     {
         //プールから取り出す。ない場合は新しく生成
         BulletBase bullet = GetBullet(transform.position, Quaternion.identity);
@@ -86,9 +88,9 @@ public class RefactorBullet5Generator : BulletGeneratorBase
         bullet.Shoot(direction);
     }
 
-    public override void GenerateBullet() { }
+    //public override void GenerateBullet() { }
 
-    public override void GenerateBullet<T>(Vector2 direction, T t) { }
+    //public override void GenerateBullet<T>(Vector2 direction, T t) { }
 
     /// <summary>
     /// バレットの方向を計算

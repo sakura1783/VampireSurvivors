@@ -30,21 +30,12 @@ public class RefactorBullet4Generator : BulletGeneratorBase
 
 
     /// <summary>
-    /// 初期設定
-    /// </summary>
-    /// <param name="charaController"></param>
-    public override void SetUpBulletGenerator(CharaController charaController, BulletDataSO.BulletData bulletData, Transform place)
-    {
-        base.SetUpBulletGenerator(charaController, bulletData);
-
-        temporaryObjectsPlace = this.charaController.temporaryObjectsPlace;
-    }
-
-    /// <summary>
     /// 弾生成
     /// </summary>
-    public override async void GenerateBullet()
+    public override async void GenerateBullet<T>(Vector2 direction, T t)
     {
+        Debug.Log("雷生成");
+
         await CalculateGeneratePos();
 
         //攻撃対象がいる場合のみバレットを生成
@@ -55,17 +46,16 @@ public class RefactorBullet4Generator : BulletGeneratorBase
 
             bullet.transform.SetParent(temporaryObjectsPlace);
 
-            //TODO 括弧にRefactorBullet4のdestroyTime変数を指定したい
-            //bullet.ReleaseBullet(
+            bullet.ReleaseBullet(bulletData.destroyTime);
 
             //リストからtargetを削除
             GameData.instance.targetList.Remove(target);
         }
     }
 
-    public override void GenerateBullet(Vector2 direction) { }
+    //public override void GenerateBullet(Vector2 direction) { }
 
-    public override void GenerateBullet<T>(Vector2 direction, T t) { }
+    //public override void GenerateBullet<T>(Vector2 direction, T t) { }
 
     /// <summary>
     /// 弾の生成位置を計算

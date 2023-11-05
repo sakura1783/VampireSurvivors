@@ -110,7 +110,7 @@ public class GameManager : MonoBehaviour
 
         treasureChestGenerator.SetUpTreasureChestGenerator();
 
-        //敵の生成開始  //TODO いらない場合はコメントアウト
+        //敵の生成開始
         //StartCoroutine(enemyGenerator.GenerateEnemy(charaController));
 
         //大砲の攻撃開始

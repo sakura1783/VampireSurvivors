@@ -21,6 +21,8 @@ public abstract class BulletGeneratorBase : MonoBehaviour, IGeneratable
 
     protected bool isSetUp = false;
 
+    protected int hoge;  //GenerateBulletメソッドは1つに統一したいのでT型に代入する適当な変数hogeを作る
+
     protected IObjectPool<BulletBase> bulletPool;  //弾用のオブジェクトプール(参照はインターフェースで持っておくとスタック型(スタック型のオブジェクトプールは、新しいオブジェクトの取得と返却が高速だが、オブジェクトの返却順序は保証されない)と連結リスト型(連結リスト型のオブジェクトプールはオブジェクトの取得と返却が一定の時間で行われるため、一定の性能が期待できるが、一部の操作がスタック型より遅い可能性がある)の実装を変更可能。newのタイミングで実装変更できる)
 
     [SerializeField] protected int initialPoolSize = 5;  //オブジェクトプールの初期サイズ(最初に作っておく弾の数)
@@ -71,7 +73,7 @@ public abstract class BulletGeneratorBase : MonoBehaviour, IGeneratable
         {
             bulletTimer = 0;
 
-            GenerateBullet(charaController.Direction);
+            GenerateBullet(charaController.Direction, hoge);
         }
     }
 
@@ -89,7 +91,7 @@ public abstract class BulletGeneratorBase : MonoBehaviour, IGeneratable
 
         isSetUp = true;
 
-        Debug.Log("初期設定 完了");
+        Debug.Log("BulletGeneratorBase 初期設定完了");
     }
 
     /// <summary>
@@ -140,9 +142,9 @@ public abstract class BulletGeneratorBase : MonoBehaviour, IGeneratable
         return bullet;
     }
 
-    public abstract void GenerateBullet();
+    //public abstract void GenerateBullet();
 
-    public abstract void GenerateBullet(Vector2 direction);
+    //public abstract void GenerateBullet(Vector2 direction);
 
     public abstract void GenerateBullet<T>(Vector2 direction, T t);
 

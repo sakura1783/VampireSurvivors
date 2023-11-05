@@ -11,12 +11,11 @@ public class RefactorBullet4 : BulletBase
     public float DestroyTime => destroyTime;
 
 
-    //TODO いらなくなったらコメントアウト
-    void Awake()
-    {
-        //プールに戻す
-        ReleaseBullet(destroyTime);
-    }
+    //void Awake()
+    //{
+    //    //プールに戻す
+    //    ReleaseBullet(destroyTime);
+    //}
 
     public override void Shoot(Vector2 direction) { }
 }

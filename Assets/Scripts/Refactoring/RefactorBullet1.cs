@@ -36,7 +36,7 @@ public class RefactorBullet1 : BulletBase
             Debug.Log("CharaControllerが取得できませんでした");
         }
 
-        Debug.Log("RefactorBullet1のSetUpメソッドが動きました");
+        //Debug.Log("RefactorBullet1のSetUpメソッドが動きました");
     }
 
     public override void Shoot(Vector2 direction) { }  //このクラスでは利用しないが、BulletBaseでShootメソッドがabstractで定義されているため、必ず定義しなければいけない
