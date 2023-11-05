@@ -120,29 +120,27 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (isProcessingPaused)
+        if (!isProcessingPaused)
         {
-            return;
-        }
+            //残り時間の更新
+            gameTime += Time.deltaTime;
 
-        //残り時間の更新
-        gameTime += Time.deltaTime;
+            //残り時間表示のUIを更新
+            uiManager.UpdateDisplayGameTime();
 
-        //残り時間表示のUIを更新
-        uiManager.UpdateDisplayGameTime();
+            //if (remainingTime <= 0)
+            //{
+            //    //ゲーム終了の処理
+            //}
 
-        //if (remainingTime <= 0)
-        //{
-        //    //ゲーム終了の処理
-        //}
+            //時間経過でもスコアを加算(1秒ごとに10加算)
+            scoreTimer += Time.deltaTime;
+            if (scoreTimer >= 1)
+            {
+                scoreTimer = 0;
 
-        //時間経過でもスコアを加算(1秒ごとに10加算)
-        scoreTimer += Time.deltaTime;
-        if (scoreTimer >= 1)
-        {
-            scoreTimer = 0;
-
-            AddScore(scorePerSecond);
+                AddScore(scorePerSecond);
+            }
         }
 
         //ポップアップ表示中は物理演算で動いているゲームオブジェクト(例えばバレットなど)の動きを一時停止する
