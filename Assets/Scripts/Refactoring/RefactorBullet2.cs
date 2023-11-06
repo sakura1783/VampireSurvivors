@@ -28,9 +28,6 @@ public class RefactorBullet2 : BulletBase
         if (target is EnemyController trackingTarget)
         {
             this.target = trackingTarget;
-
-            //TODO このログが出るか確認
-            Debug.Log("RefactorBullet2のSetUpメソッドによりtargetに情報が代入されました");
         }
     }
 

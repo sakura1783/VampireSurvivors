@@ -81,7 +81,7 @@ public class EnemyGeneratorObjectPool : MonoBehaviour
         //参照を与えておく(依存性注入する)ことで、Bullet側でReleaseできる
         enemyInstance.ObjectPool = enemyPool;
 
-        GameData.instance.enemiesList.Add(enemyInstance);
+        //GameData.instance.enemiesList.Add(enemyInstance);
 
         Debug.Log("新しく敵を生成");
         Debug.Log(enemyInstance.ObjectPool);
@@ -113,6 +113,8 @@ public class EnemyGeneratorObjectPool : MonoBehaviour
         EnemyController enemy = enemyPool.Get();
         enemy.transform.position = position;
         enemy.transform.rotation = rotation;
+
+        GameData.instance.enemiesList.Add(enemy);
 
         Debug.Log("生成命令(敵)");
         return enemy;

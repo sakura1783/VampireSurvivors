@@ -30,12 +30,23 @@ public class RefactorBullet4Generator : BulletGeneratorBase
 
 
     /// <summary>
+    /// 初期設定
+    /// </summary>
+    /// <param name="charaController"></param>
+    /// <param name="bulletData"></param>
+    /// <param name="place"></param>
+    public override void SetUpBulletGenerator(CharaController charaController, BulletDataSO.BulletData bulletData, Transform place = null)
+    {
+        base.SetUpBulletGenerator(charaController, bulletData, place);
+
+        SetAttackIntervalByLevel();
+    }
+
+    /// <summary>
     /// 弾生成
     /// </summary>
     public override async void GenerateBullet<T>(Vector2 direction, T t)
     {
-        Debug.Log("雷生成");
-
         await CalculateGeneratePos();
 
         //攻撃対象がいる場合のみバレットを生成
@@ -43,6 +54,8 @@ public class RefactorBullet4Generator : BulletGeneratorBase
         {
             //プールから弾を取り出す。ない場合は新しく生成
             BulletBase bullet = GetBullet(offsetPos, Quaternion.identity);
+
+            Debug.Log("③雷生成");
 
             bullet.transform.SetParent(temporaryObjectsPlace);
 
@@ -69,6 +82,8 @@ public class RefactorBullet4Generator : BulletGeneratorBase
         {
             offsetPos = new Vector2(target.transform.position.x, target.transform.position.y + 3.5f);
         }
+        
+        Debug.Log("②動きました");
     }
 
     /// <summary>
@@ -80,7 +95,7 @@ public class RefactorBullet4Generator : BulletGeneratorBase
         target = null;
 
         //敵が存在していて、かつ、攻撃対象に設定可能な敵がいる場合
-        if (GameData.instance.enemiesList.Count > 0 && GameData.instance.enemiesList.Count == GameData.instance.targetList.Count)
+        if (GameData.instance.enemiesList.Count > 0 && GameData.instance.enemiesList.Count != GameData.instance.targetList.Count)
         {
             //do_while文 <= do{ 条件式がtrueの間繰り返される処理 }while(条件式)。この場合、targetListにtargetが含まれている間、do{}内の処理を繰り返す
             do
@@ -92,9 +107,14 @@ public class RefactorBullet4Generator : BulletGeneratorBase
             } while (GameData.instance.targetList.Contains(target));
 
             GameData.instance.targetList.Add(target);
+
+            Debug.Log($"ターゲット：{target}");
         }
 
         await UniTask.DelayFrame(1);
+
+        //TODO コメントアウト
+        Debug.Log("①動きました");
     }
 
     /// <summary>
@@ -128,5 +148,15 @@ public class RefactorBullet4Generator : BulletGeneratorBase
                 attackInterval = 0.5f;
                 break;
         }
+    }
+
+    /// <summary>
+    /// バレットのレベルアップ処理
+    /// </summary>
+    public override void LevelUpBullet()
+    {
+        base.LevelUpBullet();
+
+        SetAttackIntervalByLevel();
     }
 }

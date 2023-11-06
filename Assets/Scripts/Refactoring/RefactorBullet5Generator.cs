@@ -89,7 +89,7 @@ public class RefactorBullet5Generator : BulletGeneratorBase
 
             bullet.Shoot(offsetDirection);
 
-            Debug.Log("氷発射");
+            //Debug.Log("氷発射");
         }
     }
 

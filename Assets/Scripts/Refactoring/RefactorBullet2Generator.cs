@@ -40,6 +40,8 @@ public class RefactorBullet2Generator : BulletGeneratorBase
 
                 bullet.transform.SetParent(temporaryObjectsPlace);
 
+                Debug.Log("追尾弾発射");
+
                 //targetの情報を弾に渡す
                 bullet.SetUpBullet(target);
 
