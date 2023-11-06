@@ -28,6 +28,8 @@ public class RefactorBullet5 : BulletBase
     /// <param name="parentTran"></param>
     public override void SetUpBullet<T>(T parentTran)
     {
+        base.SetUpBullet(hoge);
+
         if (parentTran is Transform temporaryObjectsPlace)
         {
             this.temporaryObjectsPlace = temporaryObjectsPlace;
@@ -36,7 +38,7 @@ public class RefactorBullet5 : BulletBase
 
     public override void Shoot(Vector2 direction)
     {
-        SetUpBullet();
+        //SetUpBullet();
 
         if (rb)
         {

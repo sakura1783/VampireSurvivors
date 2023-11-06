@@ -7,8 +7,8 @@ using UnityEngine;
 /// </summary>
 public class RefactorBullet4 : BulletBase
 {
-    private float destroyTime = 0.3f;
-    public float DestroyTime => destroyTime;
+    //private float destroyTime = 0.3f;
+    //public float DestroyTime => destroyTime;
 
 
     //void Awake()

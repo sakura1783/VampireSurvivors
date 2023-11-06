@@ -14,7 +14,7 @@ public class RefactorBullet3 : BulletBase
 
     public override void Shoot(Vector2 direction)
     {
-        SetUpBullet();
+        SetUpBullet(hoge);
 
         if (rb)
         {

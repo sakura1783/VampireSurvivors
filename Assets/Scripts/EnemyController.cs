@@ -62,9 +62,12 @@ public class EnemyController : MonoBehaviour
         {
             isReleasedToPool = true;
 
+            //リストから削除
+            GameData.instance.enemiesList.Remove(this);
+
             objectPool.Release(this);
 
-            Debug.Log("ObjectPool");
+            Debug.Log("敵をオブジェクトプールに戻します");
         }
     }
 
@@ -74,6 +77,8 @@ public class EnemyController : MonoBehaviour
     /// <param name="charaController"></param>
     public void SetUpEnemyController(CharaController charaController)
     {
+        isReleasedToPool = false;
+
         this.charaController = charaController;
         this.treasureChestGenerator = charaController.TreasureChestGenerator;
         this.gameManager = charaController.GameManager;
@@ -114,7 +119,7 @@ public class EnemyController : MonoBehaviour
             AudioManager.instance.PlaySE(SeType.Hit);
 
             //リストから削除
-            GameData.instance.enemiesList.Remove(this);
+            //GameData.instance.enemiesList.Remove(this);
 
             //倒した敵の数を加算
             gameManager.AddKillEnemyCount();
@@ -169,7 +174,7 @@ public class EnemyController : MonoBehaviour
             AudioManager.instance.PlaySE(SeType.Hit);
 
             //リストから削除
-            GameData.instance.enemiesList.Remove(this);
+            //GameData.instance.enemiesList.Remove(this);
 
             //※プレイヤーと敵が直接ぶつかった場合は敵キル数、スコアともに加算しない
 

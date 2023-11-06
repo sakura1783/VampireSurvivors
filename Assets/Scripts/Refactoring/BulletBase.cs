@@ -8,6 +8,8 @@ public abstract class BulletBase : MonoBehaviour, IShootable
     protected Rigidbody2D rb;
     public Rigidbody2D Rb => rb;
 
+    protected int hoge;
+
     private IObjectPool<BulletBase> objectPool;
     public IObjectPool<BulletBase> ObjectPool  //弾にObjectPoolへの参照を与えるプロパティ
     {
@@ -15,7 +17,7 @@ public abstract class BulletBase : MonoBehaviour, IShootable
         set => objectPool = value;
     }
 
-    private bool isReleasedToPool = false;  //弾がすでにプールに戻されているか
+    public bool isReleasedToPool = false;  //弾がすでにプールに戻されているか
 
 
     /// <summary>
@@ -43,16 +45,18 @@ public abstract class BulletBase : MonoBehaviour, IShootable
     /// <param name="t">初期設定に使用するジェネリック型のパラメータ。メソッドの実行側で適切な型を指定する。</param>
     public virtual void SetUpBullet<T>(T t)
     {
+        isReleasedToPool = false;
+
         TryGetComponent(out rb);
     }
 
     /// <summary>
     /// 上記メソッドのオーバーロード
     /// </summary>
-    public virtual void SetUpBullet()
-    {
-        TryGetComponent(out rb);
-    }
+    //public virtual void SetUpBullet()
+    //{
+    //    TryGetComponent(out rb);
+    //}
 
     /// <summary>
     /// 弾を発射する

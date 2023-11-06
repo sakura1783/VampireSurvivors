@@ -23,8 +23,15 @@ public class RefactorBullet2 : BulletBase
         transform.position = Vector2.MoveTowards(transform.position, target.transform.position, bulletSpeed * Time.deltaTime);
     }
 
+    /// <summary>
+    /// 初期設定
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="target"></param>
     public override void SetUpBullet<T>(T target)
     {
+        isReleasedToPool = false;
+
         if (target is EnemyController trackingTarget)
         {
             this.target = trackingTarget;

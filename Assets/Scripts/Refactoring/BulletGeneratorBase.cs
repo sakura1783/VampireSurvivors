@@ -42,7 +42,7 @@ public abstract class BulletGeneratorBase : MonoBehaviour, IGeneratable
             maxSize: 1000
         );
 
-        Debug.Log(bulletPool.CountInactive); //この時点ではインスタンスなしなので、0が出る
+        //Debug.Log(bulletPool.CountInactive); //この時点ではインスタンスなしなので、0が出る
 
         //デバッグ用
         //BulletBase bullet = bulletPool.Get();  //ないので作る
@@ -91,7 +91,7 @@ public abstract class BulletGeneratorBase : MonoBehaviour, IGeneratable
 
         isSetUp = true;
 
-        Debug.Log("BulletGeneratorBase 初期設定完了");
+        //Debug.Log("BulletGeneratorBase 初期設定完了");
     }
 
     /// <summary>

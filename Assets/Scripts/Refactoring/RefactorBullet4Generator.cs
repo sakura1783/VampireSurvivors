@@ -29,6 +29,30 @@ public class RefactorBullet4Generator : BulletGeneratorBase
     private Vector2 offsetPos;  //最終的な生成位置
 
 
+    protected override void Update()
+    {
+        if (!isSetUp)
+        {
+            return;
+        }
+
+        //ポップアップ表示中は生成しない
+        if (charaController.GameManager.IsProcessingPaused)
+        {
+            return;
+        }
+
+        //アタックポーションの効果中は攻撃速度を1.5倍にする
+        bulletTimer += charaController.Item.IsAttackTimeReduced ? Time.deltaTime * (float)1.5f : Time.deltaTime;
+
+        if (bulletTimer >= attackInterval)
+        {
+            bulletTimer = 0;
+
+            GenerateBullet(charaController.Direction, hoge);
+        }
+    }
+
     /// <summary>
     /// 初期設定
     /// </summary>
@@ -37,9 +61,9 @@ public class RefactorBullet4Generator : BulletGeneratorBase
     /// <param name="place"></param>
     public override void SetUpBulletGenerator(CharaController charaController, BulletDataSO.BulletData bulletData, Transform place = null)
     {
-        base.SetUpBulletGenerator(charaController, bulletData, place);
-
         SetAttackIntervalByLevel();
+
+        base.SetUpBulletGenerator(charaController, bulletData, place);
     }
 
     /// <summary>
@@ -55,7 +79,9 @@ public class RefactorBullet4Generator : BulletGeneratorBase
             //プールから弾を取り出す。ない場合は新しく生成
             BulletBase bullet = GetBullet(offsetPos, Quaternion.identity);
 
-            Debug.Log("③雷生成");
+            bullet.isReleasedToPool = false;
+
+            //Debug.Log("③雷生成");
 
             bullet.transform.SetParent(temporaryObjectsPlace);
 
@@ -83,7 +109,7 @@ public class RefactorBullet4Generator : BulletGeneratorBase
             offsetPos = new Vector2(target.transform.position.x, target.transform.position.y + 3.5f);
         }
         
-        Debug.Log("②動きました");
+        //Debug.Log("②動きました");
     }
 
     /// <summary>
@@ -108,13 +134,12 @@ public class RefactorBullet4Generator : BulletGeneratorBase
 
             GameData.instance.targetList.Add(target);
 
-            Debug.Log($"ターゲット：{target}");
+            //Debug.Log($"ターゲット：{target}");
         }
 
         await UniTask.DelayFrame(1);
 
-        //TODO コメントアウト
-        Debug.Log("①動きました");
+        //Debug.Log("①動きました");
     }
 
     /// <summary>
@@ -148,6 +173,8 @@ public class RefactorBullet4Generator : BulletGeneratorBase
                 attackInterval = 0.5f;
                 break;
         }
+
+        //Debug.Log("雷のインターバル時間が短縮されました");
     }
 
     /// <summary>
