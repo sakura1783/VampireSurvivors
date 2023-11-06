@@ -16,7 +16,7 @@ public class RefactorBullet0Generator : BulletGeneratorBase
 
     //[SerializeField] private Transform temporaryObjectsPlace;
 
-    [SerializeField] private float offsetDegrees;  //角度の基準値(各バレット同士の角度間隔)
+    [SerializeField] private float offsetDegrees = 7;  //角度の基準値(各バレット同士の角度間隔)
 
 
     /// <summary>
@@ -123,6 +123,8 @@ public class RefactorBullet0Generator : BulletGeneratorBase
             bullet.transform.SetParent(temporaryObjectsPlace);
 
             bullet.Shoot(offsetDirection);
+
+            //Debug.Log("デフォルト弾発射");
         }
     }
 

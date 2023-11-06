@@ -18,7 +18,7 @@ public class RefactorBullet3Generator : BulletGeneratorBase
 
     private Vector3 lineDirection;
 
-    [SerializeField] private float bulletLine;  //バレットたちが配置される直線
+    [SerializeField] private float bulletLine = 0.3f;  //バレットたちが配置される直線
 
     [SerializeField] private bool isDebugDrawRayOn;  //デバッグ用の描画処理をするかどうか
 

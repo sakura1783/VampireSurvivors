@@ -6002,7 +6002,6 @@ GameObject:
   - component: {fileID: 727885833}
   - component: {fileID: 727885834}
   - component: {fileID: 727885835}
-  - component: {fileID: 727885836}
   m_Layer: 11
   m_Name: CharaSet
   m_TagString: Player
@@ -6104,23 +6103,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &727885836
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 727885831}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d2f18a5b04094e6badbde4cd7d36f36, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletLevel: 1
-  bulletPrefab: {fileID: 5810569422408170661, guid: e932ba920e0dd44d8bed95bf8c20b428,
-    type: 3}
-  temporaryObjectsPlace: {fileID: 530679511}
-  offsetDegrees: 5
 --- !u!1 &729908978
 GameObject:
   m_ObjectHideFlags: 0
