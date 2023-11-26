@@ -191,20 +191,6 @@ public class GameData : MonoBehaviour
         //sortedPlayersDataDicから順に要素を取り出す
         foreach (var playerData in sortedPlayersDataList)
         {
-            //同じプレイヤーが含まれておらず、かつスコアが0以上の場合
-            if (!playerList.Contains(playerData.playerName) && playerData.score > 0)
-            {
-                if (count == 3)
-                {
-                    //ランキングに入るかどうかを決めるthirdScore変数に値を代入
-                    GameData.instance.thirdScore = playerData.score;
-
-                    //thirdScoreをセーブ
-                    PlayerPrefs.SetInt("ThirdScore_Key", thirdScore);
-                    PlayerPrefs.Save();
-                }
-            }
-
             //同じプレイヤーが含まれていた場合、リストから削除
             if (playerList.Contains(playerData.playerName))
             {
@@ -216,8 +202,24 @@ public class GameData : MonoBehaviour
             {
                 playersDataList.Remove((playerData.playerName, playerData.score));
 
+                count++;
+
                 //必要なデータのみリストに保存できたらメソッドから抜ける
-                return;
+                continue;
+            }
+
+            //同じプレイヤーが含まれておらず、かつスコアが0以上の場合
+            if (!playerList.Contains(playerData.playerName) && playerData.score > 0)
+            {
+                if (count == 2)
+                {
+                    //ランキングに入るかどうかを決めるthirdScore変数に値を代入
+                    GameData.instance.thirdScore = playerData.score;
+
+                    //thirdScoreをセーブ
+                    PlayerPrefs.SetInt("ThirdScore_Key", thirdScore);
+                    PlayerPrefs.Save();
+                }
             }
 
             //ランキングに同じプレイヤーが重複しないようにリストに追加
@@ -264,6 +266,8 @@ public class GameData : MonoBehaviour
                 {
                     txt3rdName.text = playerData.playerName;
                     txt3rdScore.text = playerData.score.ToString();
+
+                    Debug.Log("ランキングを読み込みました");
 
                     //ランキングが全て埋まったら抜ける
                     return;

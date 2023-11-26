@@ -18,6 +18,7 @@ public class EnemyController : MonoBehaviour
     private TreasureChestGenerator treasureChestGenerator;
 
     private GameManager gameManager;
+    public GameManager GameManager => gameManager;
 
     private IObjectPool<EnemyController> objectPool;
     public IObjectPool<EnemyController> ObjectPool

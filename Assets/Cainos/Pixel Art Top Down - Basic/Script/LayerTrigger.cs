@@ -11,11 +11,15 @@ namespace Cainos.PixelArtTopDown_Basic
         //public string layer;
         //public string sortingLayer;
 
-        [SerializeField] private MapManager mapManager;
+        //[SerializeField] private MapManager mapManager;
 
 
-        private void OnTriggerExit2D(Collider2D other)
-        {
+        /// <summary>
+        /// 上記メソッドで記録しておいた座標との大小に応じてisClimbStairsの真偽を決定する
+        /// </summary>
+        /// <param name="other"></param>
+        //private void OnTriggerExit2D(Collider2D other)
+        //{
             //同じようなことを自分で制御してあるのでコメントアウト
             //other.gameObject.layer = LayerMask.NameToLayer(layer);
 
@@ -26,26 +30,25 @@ namespace Cainos.PixelArtTopDown_Basic
             //    sr.sortingLayerName = sortingLayer;
             //}
 
-            if (other.CompareTag("Player"))
-            {
-                if (!mapManager.isClimbedStairs)
-                {
-                    mapManager.isClimbedStairs = true;
+            //if (other.CompareTag("Player"))
+            //{
+            //    if (!mapManager.isClimbedStairs)
+            //    {
+            //        mapManager.isClimbedStairs = true;
 
-                    mapManager.JudgeClimbedStairs();
+            //        mapManager.JudgeClimbedStairs();
 
-                    return;
-                }
-                else
-                {
-                    mapManager.isClimbedStairs = false;
+            //        return;
+            //    }
+            //    else
+            //    {
+            //        mapManager.isClimbedStairs = false;
 
-                    mapManager.JudgeClimbedStairs();
+            //        mapManager.JudgeClimbedStairs();
 
-                    return;
-                }
-            }
-        }
-
+            //        return;
+            //    }
+            //}
+        //}
     }
 }

@@ -30,7 +30,7 @@ public class MapManager : MonoBehaviour
             rightTunnelWall.enabled = false;
             gateTopWall.enabled = true;
             wall_switchTilemap.enabled = true;
-            base_switchTilemap.SetActive(false);
+            //base_switchTilemap.SetActive(false);
         }
 
         //階段を降りた(建物の下にいる)際の処理
@@ -40,7 +40,7 @@ public class MapManager : MonoBehaviour
             rightTunnelWall.enabled = true;
             gateTopWall.enabled = false;
             wall_switchTilemap.enabled = false;
-            base_switchTilemap.SetActive(true);
+            //base_switchTilemap.SetActive(true);
         }
 
         Debug.Log("コライダーのオン、オフを切り替えました");

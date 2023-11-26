@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private EnemyGeneratorObjectPool enemyGenerator;
 
     [SerializeField] private MapManager mapManager;
+    public MapManager MapManager => mapManager;
 
     //[SerializeField] private CharaManager charaManager;
 
@@ -198,6 +199,8 @@ public class GameManager : MonoBehaviour
         if (totalScore >= GameData.instance.thirdScore)
         {
             GameData.instance.playersDataList.Add((playerName, totalScore));  //タプルを使っているのでカッコを忘れないようにする。タプルは(型1 値1, 型2 値2)という風に記述するため
+
+            Debug.Log("スコアを追加します");
         }
     }
 }

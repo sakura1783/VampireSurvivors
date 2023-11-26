@@ -102,6 +102,9 @@ public class LevelupPopUp : MonoBehaviour
     /// </summary>
     private void SetUpButtons()
     {
+        btnSelect.interactable = false;
+        btnChoose.interactable = false;
+
         btnLevelup.onClick.AddListener(OnClickButtonLevelup);
         btnNewWeapon.onClick.AddListener(OnClickButtonNewWeapon);
         btnSelect.onClick.AddListener(OnClickButtonSelect);
@@ -221,6 +224,9 @@ public class LevelupPopUp : MonoBehaviour
         step2_LevelupCanvasGroup.blocksRaycasts = false;
         step2_NewWeaponCanvasGroup.blocksRaycasts = false;
 
+        btnSelect.interactable = false;
+        btnChoose.interactable = false;
+
         //ToggleButtonVisibilityメソッドで変更を加えたStep1のボタンの押下反応と描画の初期化
         btnNewWeapon.gameObject.SetActive(true);
         btnNewWeapon.interactable = true;
@@ -300,6 +306,9 @@ public class LevelupPopUp : MonoBehaviour
 
             button.SetUpBtnNewWeapon(this, DataBaseManager.instance.bulletDataSO.bulletDataList[randomNo]);
 
+            //生成されているボタンのバレットを選択しているバレットとして設定(プレイヤーがバレットを選択せず決定ボタンを押した場合、エラーになるため)
+            //SetSelectBulletDetail(DataBaseManager.instance.bulletDataSO.bulletDataList[randomNo], ButtonType.NewWeapon);
+
             count++;
 
             return count;  //ボタンの生成数は必ず1個
@@ -331,7 +340,13 @@ public class LevelupPopUp : MonoBehaviour
 
                 button.SetUpBtnNewWeapon(this, DataBaseManager.instance.bulletDataSO.bulletDataList[randomNo]);
 
-                count++;  //ボタンの生成数は2個以上になる
+                //最初に生成されたボタンの場合、選択しているバレットとして設定する
+                //if (i == 0)
+                //{
+                //    SetSelectBulletDetail(DataBaseManager.instance.bulletDataSO.bulletDataList[randomNo], ButtonType.NewWeapon);
+                //}
+
+                count++;  //ボタンの生成数は2個になる
             }
 
             return count;
@@ -346,17 +361,21 @@ public class LevelupPopUp : MonoBehaviour
     public void SetSelectBulletDetail(BulletDataSO.BulletData bulletData, ButtonType buttonType)  //string btnName
     {
         selectedBulletData = bulletData;
-        //Debug.Log($"selectedBulletData : {selectedBulletData.bulletNo}");
+        Debug.Log($"selectedBulletData : {selectedBulletData.bulletNo}");
 
         //if (btnName == "NewWeapon")
         if (buttonType == ButtonType.NewWeapon)
         {
+            btnSelect.interactable = true;
+
             txtBulletDescliption.text = bulletData.descliptionBullet;
         }
 
         //if (btnName == "LevelupWeapon")
         if (buttonType == ButtonType.LevelupWeapon)
         {
+            btnChoose.interactable = true;
+
             txtLevelupDescliption.text = bulletData.descliptionLevelup;
         }
     }
@@ -459,6 +478,12 @@ public class LevelupPopUp : MonoBehaviour
             btnsList.Add(button.gameObject);
 
             button.SetUpLevelupWeaponBtn(this, bulletGenerator);
+
+            //最初に生成されたボタンの場合、選択しているバレットとして設定
+            //if (count == 0)
+            //{
+            //    SetSelectBulletDetail(bulletGenerator.BulletData, ButtonType.LevelupWeapon);
+            //}
 
             count++;
         }
