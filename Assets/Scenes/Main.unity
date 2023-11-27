@@ -929,7 +929,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 109568495}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -1053,7 +1053,7 @@ GameObject:
   - component: {fileID: 150050906}
   - component: {fileID: 150050908}
   - component: {fileID: 150050907}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LeftTunnelWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5885,8 +5885,8 @@ GameObject:
   m_Component:
   - component: {fileID: 636940330}
   - component: {fileID: 636940331}
-  - component: {fileID: 636940333}
-  m_Layer: 3
+  - component: {fileID: 636940332}
+  m_Layer: 6
   m_Name: TunnelTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5961,19 +5961,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &636940333
-MonoBehaviour:
+--- !u!61 &636940332
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 636940329}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d8327f2fd1c44015b0a9d873ea2f075, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tunnelSprite: {fileID: 1097580792}
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &649974288
 GameObject:
   m_ObjectHideFlags: 0
@@ -6141,7 +6154,7 @@ MonoBehaviour:
   charaLevel: 1
   levelupPop: {fileID: 1171574961}
   temporaryObjectsPlace: {fileID: 530679511}
-  maxHp: 10
+  maxHp: 50
   hp: 0
   moveSpeed: 3
   leftBottomLimitTran: {fileID: 774257007}
@@ -23396,7 +23409,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1600642380}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalPosition: {x: 0, y: -1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -23416,7 +23429,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.3}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -23427,7 +23440,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 1.5}
+  m_Size: {x: 1.5, y: 2.5}
   m_EdgeRadius: 0
 --- !u!1 &1613237280
 GameObject:
@@ -24146,7 +24159,7 @@ GameObject:
   - component: {fileID: 1644902311}
   - component: {fileID: 1644902313}
   - component: {fileID: 1644902312}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: RightTunnelWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31578,7 +31591,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6503408618561984238}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalPosition: {x: 0, y: -1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -31615,7 +31628,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.3}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -31626,7 +31639,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 1.5}
+  m_Size: {x: 1.5, y: 2.5}
   m_EdgeRadius: 0
 --- !u!4 &6503408619607568705
 Transform:

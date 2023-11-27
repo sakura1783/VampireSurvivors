@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// プレイヤーの描画処理とマップのコライダー処理
+/// </summary>
 public class SpriteOrderSwitcher : MonoBehaviour
 {
     private SpriteRenderer sr;  //アタッチしたキャラのSpriteRenderer
@@ -19,10 +22,10 @@ public class SpriteOrderSwitcher : MonoBehaviour
         Reset();
 
         //mapManager変数に情報を代入する
-        if (gameObject.TryGetComponent(out EnemyController enemyController))
-        {
-            mapManager = enemyController.GameManager.MapManager;
-        }
+        //if (gameObject.TryGetComponent(out EnemyController enemyController))
+        //{
+        //    mapManager = enemyController.GameManager.MapManager;
+        //}
         if (gameObject.TryGetComponent(out CharaController charaController))
         {
             mapManager = charaController.GameManager.MapManager;
@@ -33,10 +36,10 @@ public class SpriteOrderSwitcher : MonoBehaviour
     {
         if (transform.GetChild(0).TryGetComponent(out sr))
         {
-            Debug.Log($"SpriteRendererを取得しました：{sr}");
-        }
+            defaultOrderNum = sr.sortingOrder;
 
-        defaultOrderNum = sr.sortingOrder;
+            //Debug.Log($"SpriteRendererを取得しました：{sr}");
+        }
     }
 
     //private void OnTriggerStay2D(Collider2D col)
@@ -66,6 +69,8 @@ public class SpriteOrderSwitcher : MonoBehaviour
         if (other.gameObject.name == "LayerTrigger0")  //<= 階段は2つあり、それぞれ向きが違うのでゲームオブジェクトの名前で分岐
         {
             yCoordinate = transform.position.y;
+
+            Debug.Log($"yCoordinate：{yCoordinate}");
         }
 
         if (other.gameObject.name == "LayerTrigger1")
@@ -75,65 +80,66 @@ public class SpriteOrderSwitcher : MonoBehaviour
     }
 
     /// <summary>
-    /// 上で記録しておいた座標との大小に応じてisClimbStairsを切り替える
+    /// コライダーに出入りする際の座標の差に応じてコライダーと描画を切り替える
     /// </summary>
     /// <param name="col"></param>
     private void OnTriggerExit2D(Collider2D col)
     {
         if (col.gameObject.name == "LayerTrigger0")
         {
-            //コライダーから出た時、上で記録した座標以上だったら
-            if (yCoordinate <= transform.position.y)
+            //コライダーから出た時と入った時の座標が一定以上離れていたら
+            if (Mathf.Abs(yCoordinate - transform.position.y) > 2f)
             {
-                if (CompareTag("Player"))
-                {
-                    mapManager.isClimbedStairs = true;
+                //if (CompareTag("Player"))
+                //{
+                //真偽値を反転させる
+                mapManager.isClimbedStairs = !mapManager.isClimbedStairs;
 
-                    mapManager.JudgeClimbedStairs();
-                }
+                mapManager.JudgeClimbedStairs();
+                //}
 
                 //キャラの描画順をトンネルよりも高くする
-                SwitchSpriteOrder(true);
+                SwitchSpriteOrder(mapManager.isClimbedStairs);
             }
-            //上で記録した座標以下だったら
-            if (yCoordinate >= transform.position.y)
-            {
-                if (CompareTag("Player"))
-                {
-                    mapManager.isClimbedStairs = false;
+            //座標の差があまりない場合、いる位置に変わりはないので何も処理を行わない。
+            //else
+            //{
+            //if (CompareTag("Player"))
+            //{
+            //    mapManager.isClimbedStairs = false;
 
-                    mapManager.JudgeClimbedStairs();
-                }
+            //    mapManager.JudgeClimbedStairs();
+            //}
 
-                //キャラの描画順をトンネルよりも低くする(描画順をもとに戻す)
-                SwitchSpriteOrder(false);
-            }
+            //キャラの描画順をトンネルよりも低くする(描画順をもとに戻す)
+            //SwitchSpriteOrder(mapManager);
+            //}
         }
 
         if (col.gameObject.name == "LayerTrigger1")
         {
-            if (xCoordinate <= transform.position.x)
+            if (Mathf.Abs(xCoordinate - transform.position.x) > 2f)
             {
-                if (CompareTag("Player"))
-                {
-                    mapManager.isClimbedStairs = true;
+                //if (CompareTag("Player"))
+                //{
+                mapManager.isClimbedStairs = !mapManager.isClimbedStairs;
 
-                    mapManager.JudgeClimbedStairs();
-                }
+                mapManager.JudgeClimbedStairs();
+                //}
 
-                SwitchSpriteOrder(true);
+                SwitchSpriteOrder(mapManager.isClimbedStairs);
             }
-            if (xCoordinate >= transform.position.x)
-            {
-                if (CompareTag("Player"))
-                {
-                    mapManager.isClimbedStairs = false;
+            //else
+            //{
+            //    if (CompareTag("Player"))
+            //    {
+            //        mapManager.isClimbedStairs = false;
 
-                    mapManager.JudgeClimbedStairs();
-                }
+            //        mapManager.JudgeClimbedStairs();
+            //    }
 
-                SwitchSpriteOrder(false);
-            }
+            //    SwitchSpriteOrder(false);
+            //}
         }
 
         //次回の判定に備えて、各変数を初期化
@@ -155,5 +161,7 @@ public class SpriteOrderSwitcher : MonoBehaviour
         {
             sr.sortingOrder = defaultOrderNum;
         }
+
+        //Debug.Log("SwitchSpriteOrderが動きました");
     }
 }
