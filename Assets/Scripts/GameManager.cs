@@ -203,4 +203,24 @@ public class GameManager : MonoBehaviour
             Debug.Log("スコアを追加します");
         }
     }
+
+    /// <summary>
+    /// ハイスコアを保存する
+    /// </summary>
+    public void SaveHighScore()
+    {
+        //TODO 名前か何かで指定しないと他のプレイヤーの記録が自分のハイスコアに置き換わってしまうのではないか
+
+        GameData.instance.highScore = PlayerPrefs.GetInt("HighScore_Key");
+
+        if (totalScore > GameData.instance.highScore)
+        {
+            GameData.instance.highScore = totalScore;
+
+            PlayerPrefs.SetInt("HighScore_Key", GameData.instance.highScore);
+            PlayerPrefs.SetInt("KillEnemyCount_Key", killEnemyCount);
+            PlayerPrefs.SetInt("SurvivedTime_Key", (int)gameTime);
+            PlayerPrefs.Save();
+        }
+    }
 }

@@ -23,12 +23,12 @@ public class GameData : MonoBehaviour
     //public Dictionary<string, int> playersData = new();  //プレイヤーの名前とスコアのデータ
     public List<(string playerName, int score)> playersDataList = new();  //ディクショナリだとKeyが一意でなければならない(プレイヤー同士の名前の重複が許可されない)のでtuple(タプル)型に変更 
 
-    private Text txt1stName;
-    private Text txt1stScore;
-    private Text txt2ndName;
-    private Text txt2ndScore;
-    private Text txt3rdName;
-    private Text txt3rdScore;
+    //private Text txt1stName;
+    //private Text txt1stScore;
+    //private Text txt2ndName;
+    //private Text txt2ndScore;
+    //private Text txt3rdName;
+    //private Text txt3rdScore;
 
     //PlayerPrefs用
     //private string firstName;
@@ -37,6 +37,8 @@ public class GameData : MonoBehaviour
     //private int secondScore;
     //private string thirdName;
     //public int thirdScore;  //3位以内かを判断するために外部クラスで使う必要があるのでこれだけpublicにする
+
+    public int highScore;  //自己ベスト
 
 
     void Awake()
@@ -61,29 +63,29 @@ public class GameData : MonoBehaviour
     /// <summary>
     /// 初期設定の準備
     /// </summary>
-    public void PrepareSetUpGameData(TitlePopUp titlePop)
-    {
-        StartCoroutine(SetUpGameData(titlePop));
-    }
+    //public void PrepareSetUpGameData(TitlePopUp titlePop)
+    //{
+    //    StartCoroutine(SetUpGameData(titlePop));
+    //}
 
     /// <summary>
     /// 初期設定の実処理
     /// </summary>
     /// <param name="titlePop"></param>
-    private IEnumerator SetUpGameData(TitlePopUp titlePop)
-    {
-        //シーン遷移後にアサイン情報が消えるので毎回ゲーム開始時に外部クラスから情報を代入
-        txt1stName = titlePop.Txt1stName;
-        txt1stScore = titlePop.Txt1stScore;
-        txt2ndName = titlePop.Txt2ndName;
-        txt2ndScore = titlePop.Txt2ndScore;
-        txt3rdName = titlePop.Txt3rdName;
-        txt3rdScore = titlePop.Txt3rdScore;
+    //private IEnumerator SetUpGameData(TitlePopUp titlePop)
+    //{
+    //    //シーン遷移後にアサイン情報が消えるので毎回ゲーム開始時に外部クラスから情報を代入
+    //    txt1stName = titlePop.Txt1stName;
+    //    txt1stScore = titlePop.Txt1stScore;
+    //    txt2ndName = titlePop.Txt2ndName;
+    //    txt2ndScore = titlePop.Txt2ndScore;
+    //    txt3rdName = titlePop.Txt3rdName;
+    //    txt3rdScore = titlePop.Txt3rdScore;
 
-        yield return null;
+    //    yield return null;
 
-        //Debug.Log("SetUpGameData動きました");
-    }
+    //    //Debug.Log("SetUpGameData動きました");
+    //}
 
     /// <summary>
     /// プレイヤーのスコアと名前をランキングに追加
@@ -180,7 +182,7 @@ public class GameData : MonoBehaviour
     public void OrganizePlayersDataList()
     {
         //何回foreach文が回ったか
-        int count = 0;
+        //int count = 0;
 
         //ランキングに同じプレイヤーが入らないようにプレイヤーの名前を保管するリストを宣言
         List<string> playerList = new();
@@ -189,92 +191,117 @@ public class GameData : MonoBehaviour
         var sortedPlayersDataList = playersDataList.OrderByDescending(data => data.score);
 
         //sortedPlayersDataDicから順に要素を取り出す
-        foreach (var playerData in sortedPlayersDataList)
+        //foreach (var playerData in sortedPlayersDataList)
+        //{
+        //    //同じプレイヤーが含まれていた場合、リストから削除
+        //    if (playerList.Contains(playerData.playerName))
+        //    {
+        //        playersDataList.Remove((playerData.playerName, playerData.score));
+        //    }
+
+        //    //ランキング4位以下もリストから削除
+        //    if (count >= 3)
+        //    {
+        //        playersDataList.Remove((playerData.playerName, playerData.score));
+
+        //        count++;
+
+        //        //必要なデータのみリストに保存できたらメソッドから抜ける
+        //        continue;
+        //    }
+
+        //    //同じプレイヤーが含まれておらず、かつスコアが0以上の場合
+        //    if (!playerList.Contains(playerData.playerName) && playerData.score > 0)
+        //    {
+        //        if (count == 2)
+        //        {
+        //            //ランキングに入るかどうかを決めるthirdScore変数に値を代入
+        //            GameData.instance.thirdScore = playerData.score;
+
+        //            //thirdScoreをセーブ
+        //            PlayerPrefs.SetInt("ThirdScore_Key", thirdScore);
+        //            PlayerPrefs.Save();
+        //        }
+        //    }
+
+        //    //ランキングに同じプレイヤーが重複しないようにリストに追加
+        //    playerList.Add(playerData.playerName);
+
+        //    count++;
+        //}
+
+        //上記の書き換え
+        var filteredDataList = sortedPlayersDataList.Where((data, index) =>  //<= indexはsortedPlayersDataListの各要素に対するインデックスが自動的に割り当てられる。
         {
-            //同じプレイヤーが含まれていた場合、リストから削除
-            if (playerList.Contains(playerData.playerName))
+            //4位以下、スコア0以下、同じプレイヤーが含まれている場合
+            if (index >= 3 || playerList.Contains(data.playerName) || data.score <= 0)
             {
-                playersDataList.Remove((playerData.playerName, playerData.score));
+                //データを削除
+                playersDataList.Remove((data.playerName, data.score));
             }
 
-            //ランキング4位以下もリストから削除
-            if (count >= 3)
+            //重複を防ぐためにプレイヤーの名前をリストに追加
+            playerList.Add(data.playerName);
+
+            //3位のスコアを保持
+            if (index == 2)
             {
-                playersDataList.Remove((playerData.playerName, playerData.score));
+                thirdScore = data.score;
 
-                count++;
-
-                //必要なデータのみリストに保存できたらメソッドから抜ける
-                continue;
+                PlayerPrefs.SetInt("ThirdScore_Key", thirdScore);
+                PlayerPrefs.Save();
             }
 
-            //同じプレイヤーが含まれておらず、かつスコアが0以上の場合
-            if (!playerList.Contains(playerData.playerName) && playerData.score > 0)
-            {
-                if (count == 2)
-                {
-                    //ランキングに入るかどうかを決めるthirdScore変数に値を代入
-                    GameData.instance.thirdScore = playerData.score;
+            return true;
+        });
 
-                    //thirdScoreをセーブ
-                    PlayerPrefs.SetInt("ThirdScore_Key", thirdScore);
-                    PlayerPrefs.Save();
-                }
-            }
-
-            //ランキングに同じプレイヤーが重複しないようにリストに追加
-            playerList.Add(playerData.playerName);
-
-            count++;
-        }
-
-        //playersDataListをセーブ
-        PlayerPrefsUtility.SaveList<(string, int)>("PlayersDataList_Key", GameData.instance.playersDataList);
+        //整理されたデータを保存
+        PlayerPrefsUtility.SaveList<(string, int)>("PlayersDataList_Key", playersDataList);
     }
 
     /// <summary>
     /// ランキング読み込み
     /// </summary>
-    public void LoadRanking()
-    {
-        //セーブしておいたplayersDataリストをロード
-        playersDataList = PlayerPrefsUtility.LoadList<(string, int)>("PlayersDataList_Key");
+    //public void LoadRanking()
+    //{
+    //    //セーブしておいたplayersDataリストをロード
+    //    playersDataList = PlayerPrefsUtility.LoadList<(string, int)>("PlayersDataList_Key");
 
-        //何回foreach文が回ったか。この値でどの順位にどの値を入れるかを決める
-        int count = 0;
+    //    //何回foreach文が回ったか。この値でどの順位にどの値を入れるかを決める
+    //    int count = 0;
 
-        //スコアが高い順にリストを並び替え
-        //var sortedPlayersDataList = playersData.OrderByDescending(data => data.score);
-        var sortedPlayersDataList = playersDataList.OrderByDescending(data => data.score);
+    //    //スコアが高い順にリストを並び替え
+    //    //var sortedPlayersDataList = playersData.OrderByDescending(data => data.score);
+    //    var sortedPlayersDataList = playersDataList.OrderByDescending(data => data.score);
 
-        foreach (var playerData in sortedPlayersDataList)
-        {
-            //スコアが0以上であればタイトル画面の対応するランキングに表示
-            if (playerData.score >= 0)
-            {
-                if (count == 0)
-                {
-                    txt1stName.text = playerData.playerName;
-                    txt1stScore.text = playerData.score.ToString();
-                }
-                if (count == 1)
-                {
-                    txt2ndName.text = playerData.playerName;
-                    txt2ndScore.text = playerData.score.ToString();
-                }
-                if (count == 2)
-                {
-                    txt3rdName.text = playerData.playerName;
-                    txt3rdScore.text = playerData.score.ToString();
+    //    foreach (var playerData in sortedPlayersDataList)
+    //    {
+    //        //スコアが0以上であればタイトル画面の対応するランキングに表示
+    //        if (playerData.score >= 0)
+    //        {
+    //            if (count == 0)
+    //            {
+    //                txt1stName.text = playerData.playerName;
+    //                txt1stScore.text = playerData.score.ToString();
+    //            }
+    //            if (count == 1)
+    //            {
+    //                txt2ndName.text = playerData.playerName;
+    //                txt2ndScore.text = playerData.score.ToString();
+    //            }
+    //            if (count == 2)
+    //            {
+    //                txt3rdName.text = playerData.playerName;
+    //                txt3rdScore.text = playerData.score.ToString();
 
-                    Debug.Log("ランキングを読み込みました");
+    //                Debug.Log("ランキングを読み込みました");
 
-                    //ランキングが全て埋まったら抜ける
-                    return;
-                }
-            }
+    //                //ランキングが全て埋まったら抜ける
+    //                return;
+    //            }
+    //        }
 
-            count++;
-        }
-    }
+    //        count++;
+    //    }
+    //}
 }
