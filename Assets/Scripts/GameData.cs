@@ -233,7 +233,7 @@ public class GameData : MonoBehaviour
         //上記の書き換え
         var filteredDataList = sortedPlayersDataList.Where((data, index) =>  //<= indexはsortedPlayersDataListの各要素に対するインデックスが自動的に割り当てられる。
         {
-            //4位以下、スコア0以下、同じプレイヤーが含まれている場合
+            //4位以下、または同じプレイヤーが含まれている場合
             if (index >= 3 || playerList.Contains(data.playerName) || data.score <= 0)
             {
                 //データを削除
@@ -253,10 +253,10 @@ public class GameData : MonoBehaviour
             }
 
             return true;
-        });
+        }).ToList();  //<= LINQで利用するメソッド(WhereやSelectなど)は戻り値がIEnumerable型になるので、filteredDataListはIEnumerable型。今回は下でList型を要求しているのでToList()でList型にする。
 
         //整理されたデータを保存
-        PlayerPrefsUtility.SaveList<(string, int)>("PlayersDataList_Key", playersDataList);
+        PlayerPrefsUtility.SaveList<(string, int)>("PlayersDataList_Key", filteredDataList);
     }
 
     /// <summary>
