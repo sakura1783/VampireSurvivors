@@ -25,15 +25,30 @@ public abstract class BulletBase : MonoBehaviour, IShootable
     /// </summary>
     public virtual async void ReleaseBullet(float destroyTime = 0)
     {
-        await UniTask.Delay(System.TimeSpan.FromSeconds(destroyTime));
+        //await(UniTask)による非同期処理でエラーが出るので、UniTaskのキャンセル処理の導入、キャンセルになった場合でもエラーの回避を行えるようにする
 
-        if (!isReleasedToPool)
+        var token = this.GetCancellationTokenOnDestroy();  //<= GetCancellationTokenOnDestroyはUniTaskに用意されている処理。この処理(メソッド)の前に書いたクラスに基づいて、それが破棄される時に処理をキャンセルする。
+
+        //try/catchを利用して、エラーが出た場合でも警告のみでゲームが停止しないように制御する。(try{例外が発生する可能性のあるコード} catch(Exception){Exceptionに対する処理})
+        try
         {
-            isReleasedToPool = true;
+            await UniTask.Delay(System.TimeSpan.FromSeconds(destroyTime), cancellationToken: token);
 
-            objectPool.Release(this);
+            //ゲームオブジェクトがnullでない、かつアクティブである場合
+            //if (!isReleasedToPool)
+            if (gameObject && gameObject.activeInHierarchy && !isReleasedToPool)
+            {
+                isReleasedToPool = true;
 
-            Debug.Log(objectPool);
+                objectPool.Release(this);
+
+                //Debug.Log(objectPool);
+            }
+        }
+        catch (System.OperationCanceledException exception)  //本来であれば、OperationCanceledExceptionエラーが出る(エラーの種類を引数で指定することで、そのエラーに対する処理ができる)。
+        {
+            //Delayがキャンセルされた際の処理
+            Debug.LogWarning("Delay was canceled bue to object being destroyed.");
         }
     }
 

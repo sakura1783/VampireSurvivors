@@ -95,6 +95,8 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        GameData.instance.ResetGameData();
+
         titlePop.SetUpTitlePopUp();
 
         nameEntryPop.SetUpNameEntryPopUp();
@@ -190,19 +192,19 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// playersDataリストに値を追加する
     /// </summary>
-    public void AddToPlayersDataList()
-    {
-        //セーブしておいたthirdScoreをロード
-        GameData.instance.thirdScore = PlayerPrefs.GetInt("ThirdScore_Key");
+    //public void AddToPlayersDataList()
+    //{
+    //    //セーブしておいたthirdScoreをロード
+    //    GameData.instance.thirdScore = PlayerPrefs.GetInt("ThirdScore_Key");
 
-        //スコアが3位以内ならリストに値を追加
-        if (totalScore >= GameData.instance.thirdScore)
-        {
-            GameData.instance.playersDataList.Add((playerName, totalScore));  //タプルを使っているのでカッコを忘れないようにする。タプルは(型1 値1, 型2 値2)という風に記述するため
+    //    //スコアが3位以内ならリストに値を追加
+    //    if (totalScore >= GameData.instance.thirdScore)
+    //    {
+    //        GameData.instance.playersDataList.Add((playerName, totalScore));  //タプルを使っているのでカッコを忘れないようにする。タプルは(型1 値1, 型2 値2)という風に記述するため
 
-            Debug.Log("スコアを追加します");
-        }
-    }
+    //        Debug.Log("スコアを追加します");
+    //    }
+    //}
 
     /// <summary>
     /// ハイスコアを保存する

@@ -45,10 +45,10 @@ public class ResultPopUp : MonoBehaviour
     private void OnClickBtnToTitle()
     {
         //3位以内の場合、プレイヤーの名前とスコアをplayersDataListに追加
-        gameManager.AddToPlayersDataList();
+        //gameManager.AddToPlayersDataList();
 
         //playersDataListの整理と並び替え
-        GameData.instance.OrganizePlayersDataList();
+        GameData.instance.OrganizePlayersDataList(gameManager.PlayerName, gameManager.TotalScore);
 
         //ハイスコアを保存
         gameManager.SaveHighScore();

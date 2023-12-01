@@ -17,7 +17,7 @@ public class GameData : MonoBehaviour
     //public string firstName;
     //public int secondScore;
     //public string secondName;
-    public int thirdScore;
+    //public int thirdScore;
     //public string thirdName;
 
     //public Dictionary<string, int> playersData = new();  //プレイヤーの名前とスコアのデータ
@@ -58,6 +58,20 @@ public class GameData : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        //セーブしておいたplayersDataListの情報を取得(実行ボタンを押してPlayモードに入る時は、GameDataのplayersDataListには何も情報が入っていない。情報が空っぽのままだと、ランキングが更新されない原因になる)
+        playersDataList = PlayerPrefsUtility.LoadList<(string, int)>("PlayersDataList_Key");
+
+        Debug.Log($"playersDataListの情報を取得しました：{playersDataList.Count}");
+    }
+
+    /// <summary>
+    /// 各Listの初期化(Listからいなくなった敵の情報などはMissingとして残り続けるため)
+    /// </summary>
+    public void ResetGameData()
+    {
+        enemiesList.Clear();
+        targetList.Clear();
     }
 
     /// <summary>
@@ -179,84 +193,178 @@ public class GameData : MonoBehaviour
     /// <summary>
     /// PlayersDataListの整理と並び替え
     /// </summary>
-    public void OrganizePlayersDataList()
+    //public void OrganizePlayersDataList()
+    //{
+    //何回foreach文が回ったか
+    //int count = 0;
+
+    //ランキングに同じプレイヤーが入らないようにプレイヤーの名前を保管するリストを宣言
+    //List<string> playerList = new();
+
+    //スコアが高い順にPlayersDataListを並び替える
+    //var sortedPlayersDataList = playersDataList.OrderByDescending(data => data.score);
+
+    //sortedPlayersDataDicから順に要素を取り出す
+    //foreach (var playerData in sortedPlayersDataList)
+    //{
+    //    //同じプレイヤーが含まれていた場合、リストから削除
+    //    if (playerList.Contains(playerData.playerName))
+    //    {
+    //        playersDataList.Remove((playerData.playerName, playerData.score));
+    //    }
+
+    //    //ランキング4位以下もリストから削除
+    //    if (count >= 3)
+    //    {
+    //        playersDataList.Remove((playerData.playerName, playerData.score));
+
+    //        count++;
+
+    //        //必要なデータのみリストに保存できたらメソッドから抜ける
+    //        continue;
+    //    }
+
+    //    //同じプレイヤーが含まれておらず、かつスコアが0以上の場合
+    //    if (!playerList.Contains(playerData.playerName) && playerData.score > 0)
+    //    {
+    //        if (count == 2)
+    //        {
+    //            //ランキングに入るかどうかを決めるthirdScore変数に値を代入
+    //            GameData.instance.thirdScore = playerData.score;
+
+    //            //thirdScoreをセーブ
+    //            PlayerPrefs.SetInt("ThirdScore_Key", thirdScore);
+    //            PlayerPrefs.Save();
+    //        }
+    //    }
+
+    //    //ランキングに同じプレイヤーが重複しないようにリストに追加
+    //    playerList.Add(playerData.playerName);
+
+    //    count++;
+    //}
+
+    //上記の書き換え
+    //var filteredDataList = sortedPlayersDataList.Where((data, index) =>  //<= indexはsortedPlayersDataListの各要素に対するインデックスが自動的に割り当てられる。
+    //{
+    //    //4位以下、または同じプレイヤーが含まれている場合
+    //    if (index >= 3 || playerList.Contains(data.playerName) || data.score <= 0)
+    //    {
+    //        //データを削除
+    //        playersDataList.Remove((data.playerName, data.score));
+    //    }
+
+    //    //重複を防ぐためにプレイヤーの名前をリストに追加
+    //    playerList.Add(data.playerName);
+
+    //    //3位のスコアを保持
+    //    if (index == 2)
+    //    {
+    //        thirdScore = data.score;
+
+    //        PlayerPrefs.SetInt("ThirdScore_Key", thirdScore);
+    //        PlayerPrefs.Save();
+    //    }
+
+    //    return true;
+    //}).ToList();  //<= LINQで利用するメソッド(WhereやSelectなど)は戻り値がIEnumerable型になるので、filteredDataListはIEnumerable型。今回は下でList型を要求しているのでToList()でList型にする。
+
+    ////デバッグ用
+    //foreach (var data in filteredDataList)
+    //{
+    //    Debug.Log($"PlayerName：{data.playerName}, Score：{data.score}");
+    //}
+
+    //foreach (var playerName in playerList)
+    //{
+    //    Debug.Log($"PlayerName：{playerName}");
+    //}
+
+    //playersDataList = filteredDataList;
+
+    //整理されたデータを保存
+    //PlayerPrefsUtility.SaveList<(string, int)>("PlayersDataList_Key", filteredDataList);
+    //}
+
+    /// <summary>
+    /// PlayersDataListの整理と並び替え。上記ではうまくいかないので修正
+    /// </summary>
+    /// <param name="newPlayerName"></param>
+    /// <param name="newTotalScore"></param>
+    public void OrganizePlayersDataList(string newPlayerName, int newTotalScore)
     {
-        //何回foreach文が回ったか
-        //int count = 0;
+        //セーブしておいた3位の記録を取得
+        int thirdScore = PlayerPrefs.GetInt("ThirdScore_Key");
 
-        //ランキングに同じプレイヤーが入らないようにプレイヤーの名前を保管するリストを宣言
-        List<string> playerList = new();
-
-        //スコアが高い順にPlayersDataListを並び替える
-        var sortedPlayersDataList = playersDataList.OrderByDescending(data => data.score);
-
-        //sortedPlayersDataDicから順に要素を取り出す
-        //foreach (var playerData in sortedPlayersDataList)
-        //{
-        //    //同じプレイヤーが含まれていた場合、リストから削除
-        //    if (playerList.Contains(playerData.playerName))
-        //    {
-        //        playersDataList.Remove((playerData.playerName, playerData.score));
-        //    }
-
-        //    //ランキング4位以下もリストから削除
-        //    if (count >= 3)
-        //    {
-        //        playersDataList.Remove((playerData.playerName, playerData.score));
-
-        //        count++;
-
-        //        //必要なデータのみリストに保存できたらメソッドから抜ける
-        //        continue;
-        //    }
-
-        //    //同じプレイヤーが含まれておらず、かつスコアが0以上の場合
-        //    if (!playerList.Contains(playerData.playerName) && playerData.score > 0)
-        //    {
-        //        if (count == 2)
-        //        {
-        //            //ランキングに入るかどうかを決めるthirdScore変数に値を代入
-        //            GameData.instance.thirdScore = playerData.score;
-
-        //            //thirdScoreをセーブ
-        //            PlayerPrefs.SetInt("ThirdScore_Key", thirdScore);
-        //            PlayerPrefs.Save();
-        //        }
-        //    }
-
-        //    //ランキングに同じプレイヤーが重複しないようにリストに追加
-        //    playerList.Add(playerData.playerName);
-
-        //    count++;
-        //}
-
-        //上記の書き換え
-        var filteredDataList = sortedPlayersDataList.Where((data, index) =>  //<= indexはsortedPlayersDataListの各要素に対するインデックスが自動的に割り当てられる。
+        //スコアが3位以内でなければ処理しない
+        if (newTotalScore <= thirdScore)
         {
-            //4位以下、または同じプレイヤーが含まれている場合
-            if (index >= 3 || playerList.Contains(data.playerName) || data.score <= 0)
+            return;
+        }
+
+        //同じ名前の情報がList内に登録されている場合
+        if (playersDataList.Exists(playerData => playerData.playerName == newPlayerName))
+        {
+            //playersDataList.RemoveAll(playerData => playerData.playerName == newPlayerName);  <= これだと、スコアが何であろうと常に古い方のデータが消えてしまう
+
+            //同じ名前の情報を抽出
+            var sameNameData = playersDataList.Where(data => data.playerName == newPlayerName).ToList();
+            //sameNameData.Add((newPlayerName, newTotalScore));  //<= 新しいデータを追加しないと、リストの中身は1個なので常にplayersDataListに入っている古いデータが削除されることになるので注意
+
+            //抽出された情報の中から、スコアが小さい方を取り出す
+            //var minScoreData = sameNameData.OrderBy(data => data.score).FirstOrDefault();
+
+            //スコアが小さい方の情報を削除
+            //playersDataList.Remove(minScoreData);  //<= newScoreが上回った場合、まだplayersDataListにminScoreDataの情報が入っていないため、消せない
+
+
+            //newTotalScoreが上回る場合
+            if (sameNameData[0].score < newTotalScore)
             {
-                //データを削除
-                playersDataList.Remove((data.playerName, data.score));
+                //古いデータを消す
+                playersDataList.RemoveAll(playerData => playerData.playerName == newPlayerName);
             }
-
-            //重複を防ぐためにプレイヤーの名前をリストに追加
-            playerList.Add(data.playerName);
-
-            //3位のスコアを保持
-            if (index == 2)
+            //newTotalScoreが上回らない場合(例：1位に同じ名前が入っていて、newScoreが2位に入る値を持っている時など)
+            else
             {
-                thirdScore = data.score;
+                //新しいデータは追加せず(スコアが高い方のデータを残すので、新しいデータはいらない)、そのままplayersDataListの並び替えと保存だけ行って処理を終了する。(理解が難しかったら絵を描いて想像する)
+                playersDataList = playersDataList.OrderByDescending(data => data.score).ToList();
 
-                PlayerPrefs.SetInt("ThirdScore_Key", thirdScore);
-                PlayerPrefs.Save();
+                PlayerPrefsUtility.SaveList<(string, int)>("PlayersDataList_Key", playersDataList);
+
+                return;
             }
+        }
 
-            return true;
-        }).ToList();  //<= LINQで利用するメソッド(WhereやSelectなど)は戻り値がIEnumerable型になるので、filteredDataListはIEnumerable型。今回は下でList型を要求しているのでToList()でList型にする。
+        //3位まで情報が入っている場合、追加するまでに3位の情報を削除
+        //(1位と2位しかない場合には、ここは処理しない)
+        if (playersDataList.Count >= 3)
+        {
+            playersDataList.RemoveAt(2);
+        }
+
+        //スコアが3位以内なのでリストに値を追加
+        playersDataList.Add((newPlayerName, newTotalScore));
+
+        Debug.Log($"スコアを追加します：{playersDataList.Count}");
+
+        //スコアの降順に並び替えてListを更新
+        playersDataList = playersDataList.OrderByDescending(data => data.score).ToList();
 
         //整理されたデータを保存
-        PlayerPrefsUtility.SaveList<(string, int)>("PlayersDataList_Key", filteredDataList);
+        PlayerPrefsUtility.SaveList<(string, int)>("PlayersDataList_Key", playersDataList);
+
+        //3位の更新
+        thirdScore = playersDataList.Count > 2 ? playersDataList[2].score : 0;
+        PlayerPrefs.SetInt("ThirdScore_Key", thirdScore);
+
+        //ログ表示してデバッグする
+        foreach (var playerData in playersDataList)
+        {
+            Debug.Log($"{playerData.playerName}, {playerData.score}");
+        }
+
+        Debug.Log("OrganizeListが動きました");
     }
 
     /// <summary>

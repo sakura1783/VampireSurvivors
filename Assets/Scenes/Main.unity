@@ -801,7 +801,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemiesList: []
   targetList: []
-  thirdScore: 0
   highScore: 0
 --- !u!1 &105116346
 GameObject:
@@ -951,12 +950,14 @@ MonoBehaviour:
   btnEditName: {fileID: 737324367}
   gameManager: {fileID: 919231863}
   nameEntryPop: {fileID: 358688894}
-  txt1stName: {fileID: 971202144}
-  txt1stScore: {fileID: 1613237282}
-  txt2ndName: {fileID: 2051261818}
-  txt2ndScore: {fileID: 2000283379}
-  txt3rdName: {fileID: 984021558}
-  txt3rdScore: {fileID: 1938645117}
+  txtNames:
+  - {fileID: 971202144}
+  - {fileID: 2051261818}
+  - {fileID: 984021558}
+  txtScores:
+  - {fileID: 1613237282}
+  - {fileID: 2000283379}
+  - {fileID: 1938645117}
   txtHighScore: {fileID: 1465491876}
   txtKillEnemyCount: {fileID: 1333484747}
   txtSurvivedTime: {fileID: 780224683}
