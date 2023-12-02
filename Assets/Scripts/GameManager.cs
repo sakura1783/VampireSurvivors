@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using unityroom.Api;
 
 public class GameManager : MonoBehaviour
 {
@@ -95,6 +96,8 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        //UnityroomApiClient.Instance.SendScore(1, 123.45f, ScoreboardWriteMode.Always);
+
         GameData.instance.ResetGameData();
 
         titlePop.SetUpTitlePopUp();

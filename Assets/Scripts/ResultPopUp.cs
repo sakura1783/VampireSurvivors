@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using DG.Tweening;
+using unityroom.Api;
 
 public class ResultPopUp : MonoBehaviour
 {
@@ -54,6 +55,9 @@ public class ResultPopUp : MonoBehaviour
         gameManager.SaveHighScore();
 
         gameManager.IsProcessingPaused = false;
+
+        UnityroomApiClient.Instance.SendScore(1, (float)gameManager.TotalScore, ScoreboardWriteMode.HighScoreDesc);
+        UnityroomApiClient.Instance.SendScore(2, gameManager.GameTime, ScoreboardWriteMode.HighScoreDesc);
 
         //シーン遷移
         TransitionManager.instance.PrepareLoadNextScene();
